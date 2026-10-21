@@ -88,3 +88,16 @@ Only established facts. All coordinates are in metres: x is right and y is away 
   - It must be an original, realistic voxel wild boar: bristly dark-brown coat, a ridge along the back, a long snout, small curved tusks. Nothing that looks like a game mob.
   - **Design APPROVED 2026-10-21** (`voxelchars.build_boar`, calm and agitated moods; sheet `bibles/DESIGN_tobias_and_boar.png`).
 - **Possible micro-lesson**: a boar's lower tusks keep growing all its life, and the upper ones sharpen them like a knife sharpener.
+
+## The blueprint book and its missing pages (approved 2026-10-21; planned from Scene 006)
+- **The book**: an old, worn blueprint book in Grandpa's own handwriting. Years ago he designed the trip hammer in it, then
+  stopped building. Tobias borrowed it from Grandpa's bookshelf "ages ago", which is how he could fix the machine.
+- **Page twelve**: a garden gate with a lever (the Scene 007 Blueprint Build). When he opens it, the drawing lifts off the
+  paper as a glowing blue 3D wireframe for 2–3 s, then settles back.
+- **The mystery**:
+  - **Pages are torn out** (13, 14, ...). They turn up around the land one at a time: in a bottle in the stream, under a
+    stone, in a bird's nest, in the cabin's roof beams. Each page found is the next Blueprint Build.
+  - Who tore them out and hid them is **unknown**. Grandpa's favourite theory, stated with total confidence, is **aliens**.
+    It's a comic theory the show never confirms. The real answer is left open; it could later be touching (young Grandpa,
+    or Tobias) or stay a running gag.
+- **Saved for later**: Grandpa asking an AI assistant on his laptop at the cabin. Always an unbranded, made-up assistant.

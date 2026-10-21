@@ -253,10 +253,11 @@ def main():
         for f in [int(a) for a in args[args.index("--still") + 1:] if a.isdigit()]:
             Image.frombytes("RGB", (W, H), compose((f, src))).save(os.path.join(C.BUILD, "stills", "%04d.png" % f))
         return
+    # exactly NF frames: the sound is padded with silence (apad) and cut at the film's length, so no frame is dropped
     ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (W, H),
                            "-r", str(FPS), "-i", "-", "-i", os.path.join(C.BUILD, "audio", "mix.wav"), "-map", "0:v", "-map", "1:a",
                            "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-profile:v", "high",
-                           "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", "-movflags", "+faststart", out],
+                           "-af", "apad", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-t", "%.6f" % (NF / FPS), "-movflags", "+faststart", out],
                           stdin=subprocess.PIPE)
     with Pool(max(1, os.cpu_count() or 2)) as pool:
         for buf in pool.imap(compose, [(f, src) for f in range(NF)], chunksize=4):

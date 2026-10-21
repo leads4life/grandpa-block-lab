@@ -82,3 +82,15 @@ Only established facts. "Engine" = what the renderer can actually do today.
   - He sets the webcam on a bank stone, then replaces the rotten post with a stone footing and a new post (micro-lesson: wet wood + fungi = rot; stone keeps the post dry).
   - He greets a rabbit ("Morning!"), asks it to subscribe, then says "bruh" to the tree it vanished behind.
   - He finds tiny boot prints: "Rabbits don't fix machines."
+
+## Tobias: a recurring character, not a constant one (user, 2026-10-21)
+- He appears when his animal knowledge or his deadpan is needed, then **leaves gracefully**, always for a real reason that
+  is already part of the story: homework or a school night (he's in elementary school), checking his garden fence,
+  dinner, the school bus.
+- Episodes centre on Grandpa: his builds, his commentary, his chat.
+
+## Grandpa's boar worry (planned from Scene 006)
+- He isn't over the boar. Now and then a small grey **memory cloud** pops up over his head: a mini voxel boar snorting at
+  him, replaying the "You kinda bussin'!" moment. It always comes at the worst moment.
+- It's played for warm laughs. The real point is a feelings beat in his own voice: being scared is normal, and building
+  something helps.

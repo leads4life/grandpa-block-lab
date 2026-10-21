@@ -167,3 +167,22 @@ GitHub with `engine/tools/backup_to_github.py`:
   - **Faces toward camera** for the lines that live on a face (`facing(...)`).
   - **No cast member looming in the foreground**: at most 5% of the frame.
   - **Every body point in frame**: an animal's nose, middle and rump all stay in.
+
+## Recurring segment: Blueprint Builds (user, 2026-10-21)
+Grandpa's "Mister Rogers moment": now and then (about once every 2–3 scenes) a blueprint turns up in the adventure and he
+builds it, talking chat through it.
+- **The ritual**:
+  1. The find (paper-crinkle ASMR; he reads it upside down first).
+  2. The build, block by block (clicks), while he guesses, grumbles and jokes.
+  3. The oops: his overconfidence makes the first try fail. This is where the lesson lives.
+  4. He works out why, fixes it and tests it. One short "aha" card.
+  5. The button.
+- **A lesson, not a lecture**:
+  - At most 2–3 science sentences; the build shows the idea and the mistake teaches it.
+  - Grandpa learns too.
+  - The habit on show is always try → fail → look closer → fix.
+- **Rule 1 applies**: the blueprint comes from something already set up, and the build stays in the world.
+- **One build per 60 s scene.**
+- **Grandpa solo**: Tobias exits gracefully before the build, so the focus is Grandpa, the build and his commentary.
+- **Animals are never hurt.** Deterrents are humane (gates, fences that give a short harmless jolt).
+- **Kids watch**: Grandpa never touches live wires, and nothing in a build is unsafe to copy.

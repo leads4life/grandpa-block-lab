@@ -104,7 +104,7 @@ Only established facts. All coordinates are in metres: x is right and y is away 
 
 ## Scene 006 additions ("Page Twelve"; preview, not yet approved)
 - **Tobias's lean-to workshop**, just south of his garden and tucked under the oak at (-6.39, 0.9). It is open to the south.
-  - Four wooden posts at x -6.45 / -5.85 and y 1.3 / 1.8, with a flat plank roof at 1.4–1.5 m.
+  - Four wooden posts at x -6.5 / -5.8 and y 1.3 / 1.8, with a flat plank roof at 1.4–1.5 m.
   - A kid's plank bench along the back, top at 0.50 m.
   - On the bench: the **blueprint book** (open; a faint grid where one square = one block; the trip hammer on the left
     page, the lever gate on the right; torn stubs along the edge), a **glass grub jar** with a wooden lid ("For science."),

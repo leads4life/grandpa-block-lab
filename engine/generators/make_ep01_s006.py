@@ -26,11 +26,11 @@ PROP_OUT = [round(C5["structures"]["prop"]["root"][i][3], 4) for i in range(3)]
 # Tobias's lean-to workshop, south of his garden, tucked under the oak at (-6.39, 0.9): open to the south, a kid's bench
 # along the back, a flat plank roof at 1.4-1.5 m.
 DX = 0.05                                                           # the posts sit between grid cells
-POSTS = [[x, y, z] for x in (-65, -59) for y in (13, 18) for z in range(14)]
-S["lean_posts"] = dict(cells=POSTS, at=[DX, 0.0, 0.0], centered=False, material="wood", block_shape=[0.5, 0.5, 1],
+POSTS = [[x, y, z] for x in (-65, -58) for y in (13, 18) for z in range(14)]
+S["lean_posts"] = dict(cells=POSTS, at=[0.0, 0.0, 0.0], centered=False, material="wood", block_shape=[0.5, 0.5, 1],
                        expect_blocks=len(POSTS), prebuilt=True)
-ROOF = [[x, y, 14] for x in range(-65, -58) for y in range(12, 20)]
-S["lean_roof"] = dict(cells=ROOF, at=[DX, 0.0, 0.0], centered=False, material="planks", block_shape=[1, 1, 0.6],
+ROOF = [[x, y, 14] for x in range(-65, -57) for y in range(12, 20)]
+S["lean_roof"] = dict(cells=ROOF, at=[0.0, 0.0, 0.0], centered=False, material="planks", block_shape=[1, 1, 0.6],
                       expect_blocks=len(ROOF), prebuilt=True)
 BENCH_LEGS = [[x, y, z] for x in (-64, -60) for y in (16, 17) for z in range(4)]
 S["bench_legs"] = dict(cells=BENCH_LEGS, at=[DX, 0.0, 0.0], centered=False, material="planks", block_shape=[0.35, 0.35, 1],
@@ -66,9 +66,9 @@ S["jar"] = dict(cells=[[0, 0, 0]], at=[-5.93, 1.68, BENCH_TOP - 0.01], centered=
 S["jar_lid"] = dict(cells=[[0, 0, 0]], at=[-5.93, 1.68, BENCH_TOP - 0.01], centered=False, material="wood",
                     block_shape=[0.68, 0.68, 0.18], expect_blocks=1, prebuilt=True)
 S["jar_lid"]["at"][2] = round(BENCH_TOP - 0.01 + 0.09 - 0.1 + 0.018, 4)  # (top flush: lifts the lid onto the jar)
-LEAN_BOXES = [((-6.52, 1.13, 1.39), (-5.78, 1.97, 1.51)),                                                 # the roof
-              ((-6.43, 1.27, 0.0), (-6.37, 1.33, 1.5)), ((-5.83, 1.27, 0.0), (-5.77, 1.33, 1.5)),        # front posts
-              ((-6.43, 1.77, 0.0), (-6.37, 1.83, 1.5)), ((-5.83, 1.77, 0.0), (-5.77, 1.83, 1.5)),        # back posts
+LEAN_BOXES = [((-6.57, 1.13, 1.39), (-5.73, 1.97, 1.51)),                                                 # the roof
+              ((-6.53, 1.27, 0.0), (-6.47, 1.33, 1.5)), ((-5.83, 1.27, 0.0), (-5.77, 1.33, 1.5)),        # front posts
+              ((-6.53, 1.77, 0.0), (-6.47, 1.83, 1.5)), ((-5.83, 1.77, 0.0), (-5.77, 1.83, 1.5)),        # back posts
               ((-6.4, 1.55, 0.0), (-5.9, 1.75, 0.5))]                                                     # bench
 MACHINE = [((-4.45, 0.95, 0.70), (-4.35, 1.85, 0.80)), ((-4.55, 1.75, 0.0), (-4.25, 2.15, 0.5)), ((-4.55, 1.85, 0.5), (-4.25, 2.05, 0.7)),
            ((-5.05, 0.42, -0.05), (-4.95, 1.58, 1.2)), ((-4.55, 1.25, 0.0), (-4.45, 1.35, 0.8))]
@@ -132,15 +132,15 @@ POSES = {
     "peer_down": dict(lean=0.3, head=(0.0, -0.22, 0.0)),
     "admire": dict(lean=0.16, head=(0.0, -0.06, 0.0)),
     "dreamy": dict(head=(0.0, 0.16, 0.10), lean=-0.04),
-    "batten": dict(lean=0.06, hand_R={"char": [-0.2, -0.22, 0.98]}),
+    "batten": dict(lean=0.06, hand_L={"char": [0.2, -0.22, 0.98]}),     # (the left fist: clear of the posts)
 }
 CARRY = {"char": [-0.17, -0.18, 0.40]}
 G0 = C5["grandpa"]["root"]                                          # (-5.43, 2.42), garden's east edge
 T0 = (-6.0, 2.84)                                                   # Tobias, garden's north-west edge
 G_WORK = (-6.15, 1.33)                                              # at the bench, facing it (north)
 T_SPOT = (-6.66, 1.5)                                               # Tobias, just west of the lean-to
-G_OUT = (-5.55, 1.36)                                               # stepped out east, to watch Tobias go
-G_IN_VIA = [(-5.47, 1.95), (-5.5, 1.45), (-5.62, 1.08), (-6.02, 1.04)]
+G_OUT = (-5.48, 1.38)                                               # stepped out east, to watch Tobias go
+G_IN_VIA = [(-5.41, 1.95), (-5.4, 1.45), (-5.58, 0.98), (-6.02, 0.98)]
 CUBE = (-6.35, 1.63)                                                # the webcam on the bench's west end
 CAM_YAW = round(math.degrees(math.atan2(G_WORK[0] - CUBE[0], -(G_WORK[1] - CUBE[1]))), 2)   # lens (local -y) toward him
 rotz = lambda v, a: (v[0] * math.cos(math.radians(a)) - v[1] * math.sin(math.radians(a)), v[0] * math.sin(math.radians(a)) + v[1] * math.cos(math.radians(a)))
@@ -213,7 +213,7 @@ VIEW_DROP = T_GONE - 0.8                                            # he logs of
 OUT0 = T_LEAVE + 0.5
 OUT1 = OUT0 + 1.6
 A[LOOK_B]["until"] = round(OUT0, 3)
-walk(OUT0, OUT1, G_OUT, via=[(-6.02, 1.04), (-5.6, 1.06)])
+walk(OUT0, OUT1, G_OUT, via=[(-6.02, 0.98), (-5.6, 0.98)])
 look(OUT1 - 0.2, T_GONE + 0.4, pos=(-5.7, 4.6, 0.7), body=True, rate=0.12)
 s, e = say("justme", 0.0, at=max(VIEW_DROP + 0.5, OUT1 + 0.2))
 face("worried", s - 0.2, e + 0.5)
@@ -244,7 +244,7 @@ pose("head_shake", s - 0.05, e + 0.1)
 face("alert", s - 0.1, e + 0.4)
 BACK0 = e + 0.1
 BACK1 = BACK0 + 1.3
-walk(BACK0, BACK1, G_WORK, via=[(-5.6, 1.06), (-6.02, 1.04)])
+walk(BACK0, BACK1, G_WORK, via=[(-5.6, 0.98), (-6.02, 0.98)])
 look(BACK1 - 0.3, 99.0, pos=BOOK, body=True, rate=0.18)
 # 10. page twelve: the drawing lifts off the paper
 FLIP = BACK1 + 0.3
@@ -337,8 +337,8 @@ def g_in(x, y):                                                     # under the 
 def kid_in(x, y):
     return [(x, y, 0.45), (x, y, 0.75)]
 STOPS = [(0.0, G0[:2]), (G_GO, G0[:2])]
-for leg_t0, leg_t1, pts in ((G_GO, G_ARR, [G0[:2]] + G_IN_VIA + [G_WORK]), (OUT0, OUT1, [G_WORK, (-6.02, 1.04), (-5.6, 1.06), G_OUT]),
-                            (BACK0, BACK1, [G_OUT, (-5.6, 1.06), (-6.02, 1.04), G_WORK])):
+for leg_t0, leg_t1, pts in ((G_GO, G_ARR, [G0[:2]] + G_IN_VIA + [G_WORK]), (OUT0, OUT1, [G_WORK, (-6.02, 0.98), (-5.6, 0.98), G_OUT]),
+                            (BACK0, BACK1, [G_OUT, (-5.6, 0.98), (-6.02, 0.98), G_WORK])):
     STOPS += [(p[0], (p[1], p[2])) for p in keyed(leg_t0, leg_t1, pts)[1:]]
     STOPS.append((leg_t1 + 0.001, pts[-1]))
 STOPS.sort(key=lambda s: s[0])
@@ -353,12 +353,13 @@ L_OUT = make_los([box_at(G_OUT)])
 BOOK_PTS = [(BOOK[0] - 0.11, BOOK[1] - 0.07, BOOK[2]), (BOOK[0] + 0.11, BOOK[1] + 0.07, BOOK[2])]
 last = C5["camera"]["last_key"]
 cam = [orbit(0.0, last["target"], last["az"], last["el"], last["dist"])]
+CUT_INS = math.ceil((SCALE0 + 0.4) * FPS - 1e-6) / FPS
 NORTH = facing(G_WORK, 90, 30)
 CLOUD_PTS = gp(*G_OUT)[1:] + [(CLOUD_AT[0], CLOUD_AT[1], 2.05), (CLOUD_AT[0] - 0.42, CLOUD_AT[1], 1.6), (CLOUD_AT[0] + 0.42, CLOUD_AT[1], 1.6)]                                       # his face, at the bench
 SHOTS = [
     # (the walk plays on Scene 005's last framing: they walk toward us; we cut in as he reaches the bench)
     # at the bench: Grandpa, the book, the jar, Tobias beside
-    lambda: auto_frame(G_ARR - 0.6, g_in(*G_WORK) + kid_in(*T_SPOT) + [(-5.93, 1.68, 0.55)], (-6.3, 1.5, 0.75), 65, 11, 1.9,
+    lambda: auto_frame(G_ARR - 2.0, g_in(*G_WORK) + kid_in(*T_SPOT) + [(-5.93, 1.68, 0.55)], (-6.3, 1.5, 0.75), 65, 11, 1.9,
                        both(AIR, NORTH), prev=cam, path_clear=PATH, los=L_BENCH, who=who_at),
     # "MY handwriting": closer, his face over the book
     lambda: auto_frame(LS["hand"] + 0.3, g_in(*G_WORK) + BOOK_PTS, (G_WORK[0], 1.45, 0.85), 62, 17, 1.75,
@@ -368,8 +369,8 @@ SHOTS = [
                        both(AIR, NORTH), apart=((G_WORK[0], G_WORK[1], 0.95), (T_SPOT[0], T_SPOT[1], 0.68)), apart_min=0.3,
                        prev=cam, path_clear=PATH, los=L_BENCH, who=who_at),
     # the scale lesson: an insert of the page (cutaway)
-    lambda: auto_frame(SCALE0 + 0.4, BOOK_PTS, (BOOK[0], BOOK[1], BOOK[2]), 100, 55, 0.75, AIR, prev=cam, path_clear=PATH,
-                       los=make_los([]), who=None),
+    lambda: [dict(cam[-1], at=round(CUT_INS - 1.0 / FPS, 4)),                       # a hard cut to the page (no push in)
+             auto_frame(CUT_INS, BOOK_PTS, (BOOK[0], BOOK[1], BOOK[2]), 100, 55, 0.75, AIR, los=make_los([]))],
     # the tablet buzz and the exit: Tobias leaves, north, past the garden
     lambda: auto_frame(BUZZ + 0.2, g_in(*G_WORK) + kid_in(*T_SPOT) + [(-5.93, 1.68, 0.55)], (-6.3, 1.5, 0.75), 65, 11, 1.9,
                        both(AIR, NORTH), prev=cam, path_clear=PATH, los=L_BENCH, who=who_at),
@@ -412,7 +413,7 @@ story = dict(title="Page Twelve", slug="grandpa_ep01_scene006", voice="am_santa"
              qa=dict(rests_on=[["mug", "table_top"], ["post2", "footing"], ["webcam", "bench"], ["book", "bench"], ["jar", "bench"]],
                      frame_points=["hat", "face", "chest"],
                      solid=["wheel", "anvil", "pivot_frame", "head", "new_post", "footing", "post2", "rock", "helve", "lean_posts", "bench_legs"],
-                     cutaways=[[round(SCALE0 + 0.4, 3), round(BUZZ + 0.2, 3)]]))
+                     cutaways=[[round(CUT_INS, 3), round(BUZZ + 0.2, 3)]]))
 json.dump(story, open("/home/user/blocklab/stories/grandpa_ep01_scene006.json", "w"), indent=1)
 print("film %.2f s" % FILM)
 for lid, _, who, *_ in LINES:

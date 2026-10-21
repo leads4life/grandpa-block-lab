@@ -361,7 +361,7 @@ c1 = min([t for t in cuts if t > c0 + 0.5] or [S_K])                            
 assert abs(c0 - H_CAMS) < 0.1, ("the cutaway should start with a cut", c0, H_CAMS)
 CUTAWAYS = [[round(c0, 3), round(c1 + 1.0 / FPS, 3)]]
 cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C3["overlay"]["live_viewers"]]]),
-         dict(style="panel", y=170, border="amber", when=round(LS["how"] + 0.2, 3), until=round(LE["hate"] + 0.2, 3), rows=[
+         dict(style="panel", y="top", border="amber", when=round(LS["how"] + 0.2, 3), until=round(LE["hate"] + 0.2, 3), rows=[
              dict(text="WATER-POWERED BOAR SCARER", color="white", at=round(LS["how"] + 0.3, 3), size=40),
              dict(text="like Japan's shishi-odoshi", color="cyan", at=round(S_K + 0.7, 3), size=36)])]
 W4 = {k: v for k, v in S3["world"].items() if k not in ("leaves", "clouds_pass", "critters")}

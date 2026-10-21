@@ -312,9 +312,9 @@ for shot in SHOTS:                                                  # each move 
     cam += k if isinstance(k, list) else [k]
 cam, PATCHED = fix_path(cam, clear_air, at_t, path_clear=solid_free)
 cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C2["overlay"]["live_viewers"]]]),
-         dict(style="panel", y=170, border="amber", when=round(LS["rot"] + 0.3, 3), until=round(LS["stone"] + 0.3, 3), rows=[
+         dict(style="panel", y="top", border="amber", when=round(LS["rot"] + 0.3, 3), until=round(LS["stone"] + 0.3, 3), rows=[
              dict(text="WET WOOD + FUNGI = ROT", color="white", at=round(LS["rot"] + 0.4, 3), size=40)]),
-         dict(style="panel", y=170, border="cyan", when=round(LS["stone"] + 0.5, 3), until=round(LE["back"] + 0.3, 3), rows=[
+         dict(style="panel", y="top", border="cyan", when=round(LS["stone"] + 0.5, 3), until=round(LE["back"] + 0.3, 3), rows=[
              dict(text="STONE FOOTING", color="white", at=round(LS["stone"] + 0.6, 3), size=40),
              dict(text="keeps the post dry", color="cyan", at=round(LS["stone"] + 1.6, 3), size=40)])]
 W3 = dict(S2["world"])

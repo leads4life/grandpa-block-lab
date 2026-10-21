@@ -8,7 +8,7 @@ import subprocess
 
 import numpy as np
 import scipy.io.wavfile as wav
-from scipy.signal import butter, sosfilt
+from scipy.signal import resample_poly, butter, sosfilt
 
 import bl_common as C
 
@@ -213,6 +213,21 @@ def sfx(kind):
     if kind == "rustle":         # something big pushing through the bushes
         t = tt(1.2)
         return bp(n(1.2), 600, 6000) * np.hanning(len(t)) * (0.5 + 0.5 * (np.sin(2 * np.pi * 5.5 * t) > 0.3)) * 0.8
+    if kind.startswith("echo|"):  # "echo|<frozen slug>|<line id>|<repeats>": a remembered line, echoing (dream flashback)
+        import json as _json
+        _, slug, lid, reps = kind.split("|")
+        fz = os.path.join(C.HERE, "frozen", slug)
+        ln = [l for l in _json.load(open(os.path.join(fz, "dialogue.json")))["lines"] if l["id"] == lid][0]
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", os.path.join(fz, "voice.flac"), "-ss", "%.3f" % ln["start"],
+                              "-t", "%.3f" % (ln["end"] - ln["start"]), "-f", "s16le", "-ac", "1", "-ar", str(SR), "-"],
+                             check=True, capture_output=True).stdout
+        x = np.frombuffer(raw, dtype=np.int16).astype(np.float64) / 32767
+        out = np.zeros(int((len(x) / SR + 1.25 * int(reps) + 2.0) * SR))
+        for k in range(int(reps)):                       # each repeat fainter, a touch slower and lower, more reverb
+            y = resample_poly(x, 100 + 4 * k, 100) if k else x
+            y = reverb(y, 0.9 + 0.35 * k, 0.35 + 0.15 * k) * 0.72 ** k
+            j = int(1.25 * k * SR); out[j:j + len(y)] += y[:len(out) - j]
+        return lp(out, 6500)
     if kind == "settle":         # settling into the chair / cloth rustle
         t = tt(0.4)
         return bp(n(0.4), 500, 3500) * np.hanning(len(t)) * 0.5

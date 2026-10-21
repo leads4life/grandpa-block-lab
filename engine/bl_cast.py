@@ -237,3 +237,86 @@ def build_tobias_actor(sc, c, fps, nf, mouth=None):
             CH.pose_bone(arm, b, off=tuple(off), S=tuple(S))
             _key(arm.pose.bones[b], "location", "rotation_quaternion", "scale", f=f)
     return root
+
+
+# ---------------------------------------------------------------------------------------------------- memory cloud
+def build_memory_cloud(sc, c, fps, nf):
+    """A TV-style memory cloud over someone's head: a puffy grey cloud (small puffs trailing down to the head) with a mini
+    agitated boar inside replaying the moment. {"kind": "memory_cloud", "at": [x, y, z], "visible": [t_in, t_out],
+    "yaw": degrees (the boar faces this way), "boar": {"huffs": [...], "stomps": [...], "clacks": [...]}} -- times absolute."""
+    root = bpy.data.objects.new("MemoryCloud", None)
+    sc.collection.objects.link(root)
+    M = [VK.mat("Cloud_lit", (0.93, 0.94, 0.97), rough=1.0), VK.mat("Cloud_shade", (0.78, 0.80, 0.86), rough=1.0)]
+    puffs = [((0, 0, 0.02), (0.62, 0.30, 0.30), 0), ((-0.24, 0, 0.12), (0.34, 0.28, 0.30), 0), ((0.22, 0, 0.14), (0.38, 0.28, 0.30), 0),
+             ((0.02, 0, 0.2), (0.40, 0.26, 0.24), 0), ((0, 0, -0.1), (0.52, 0.26, 0.10), 1)]
+    tail = [((0.07, 0, -0.26), (0.08, 0.08, 0.08), 0), ((0.11, 0, -0.38), (0.05, 0.05, 0.05), 0)]   # little puffs down to the head
+    cloud = VK.mesh_obj("MemoryCloudPuffs", puffs + tail, M, parent=root)
+    spec = dict(kind="boar", path=[[-1.0, 0.0, -0.02], [nf / fps + 1, 0.0, -0.02]], mood=[[-9.0, "agitated"]],
+                yaw=[[-9.0, c.get("yaw", 180.0)]], **{k: v for k, v in c.get("boar", {}).items()})
+    boar = build_boar_actor(sc, spec, fps, nf)
+    boar.parent = root
+    boar.scale = (0.26, 0.26, 0.26)
+    # (the boar keys its own location in its parent's space: it stands on the cloud's floor; scale it into the cloud)
+    for fc in (boar.animation_data.action.fcurves if boar.animation_data and boar.animation_data.action else []):
+        if fc.data_path == "location" and fc.array_index == 2:
+            for kp in fc.keyframe_points:
+                kp.co.y = kp.co.y * 0.26 - 0.08
+    vis = c.get("visible", [-1e9, 1e9])
+    x0, y0, z0 = c["at"]
+    for f in range(nf):
+        t = f / fps
+        k = 0.0
+        if vis[0] <= t <= vis[1]:
+            k = C.smooth((t - vis[0]) / 0.45)                       # drifts in...
+            if t > vis[1] - 0.18:                                   # ...and POPS
+                u = (t - (vis[1] - 0.18)) / 0.18
+                k = (1 + 0.35 * math.sin(math.pi * min(u, 0.5) * 2)) if u < 0.5 else (1.35 * (1 - (u - 0.5) / 0.5))
+        bob = 0.025 * math.sin(2 * math.pi * 0.45 * t)
+        root.location = (x0 + 0.015 * math.sin(2 * math.pi * 0.3 * t), y0, z0 + bob)
+        root.scale = (k, k, k)
+        root.rotation_euler = (0, 0, math.radians(c.get("face", 0.0)))
+        _key(root, "location", "scale", "rotation_euler", f=f)
+    return root
+
+
+# ------------------------------------------------------------------------------------------------- 3D blueprint
+def build_hologram(sc, c, fps, nf):
+    """A blueprint drawing lifting off the page as a glowing blue 3D wireframe that turns slowly, then settles back.
+    {"kind": "hologram", "model": "lever_gate", "at": [x, y, z], "visible": [t_in, t_out]}"""
+    root = bpy.data.objects.new("Hologram", None)
+    sc.collection.objects.link(root)
+    glow = VK.emission_material("Holo_line", (0.35, 0.75, 1.0), 4.0)
+    e = 0.008                                                       # line thickness
+    def frame_box(cx, cy, cz, sx, sy, sz):                          # the 12 edges of a box
+        out = []
+        for dx in (-sx / 2, sx / 2):
+            for dy in (-sy / 2, sy / 2):
+                out.append(((cx + dx, cy + dy, cz), (e, e, sz), 0))
+        for dy in (-sy / 2, sy / 2):
+            for dz in (-sz / 2, sz / 2):
+                out.append(((cx, cy + dy, cz + dz), (sx, e, e), 0))
+        for dx in (-sx / 2, sx / 2):
+            for dz in (-sz / 2, sz / 2):
+                out.append(((cx + dx, cy, cz + dz), (e, sy, e), 0))
+        return out
+    lines = []
+    if c.get("model", "lever_gate") == "lever_gate":                # posts, a stone gate panel, the lever beam on its pivot
+        for x in (-0.16, 0.16):
+            lines += frame_box(x, 0, 0.12, 0.03, 0.03, 0.24)
+        lines += frame_box(0.0, 0, 0.08, 0.26, 0.02, 0.14)
+        lines += frame_box(0.04, 0, 0.27, 0.42, 0.02, 0.02) + frame_box(-0.06, 0, 0.245, 0.03, 0.03, 0.03)
+        lines += [((0.0, 0, 0.0), (0.46, 0.18, e), 0)]               # the drawing's ground line
+    holo = VK.mesh_obj("HologramLines", lines, [glow], parent=root)
+    vis = c.get("visible", [-1e9, 1e9])
+    x0, y0, z0 = c["at"]
+    for f in range(nf):
+        t = f / fps
+        k = 0.0
+        if vis[0] <= t <= vis[1]:
+            k = C.smooth((t - vis[0]) / 0.35) * C.smooth((vis[1] - t) / 0.35)
+        root.location = (x0, y0, z0 + 0.12 * k)                     # lifts off the page...
+        root.rotation_euler = (0, 0, math.radians(c.get("yaw", 0.0)) + 0.9 * max(0.0, t - vis[0]))   # ...turning slowly
+        s_ = max(k, 1e-3) if k > 0 else 0.0
+        root.scale = (s_ * 1.4, s_ * 1.4, s_ * 1.4)
+        _key(root, "location", "rotation_euler", "scale", f=f)
+    return root

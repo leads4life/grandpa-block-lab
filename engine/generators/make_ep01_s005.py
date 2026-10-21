@@ -243,7 +243,7 @@ for shot in SHOTS:
     cam += k if isinstance(k, list) else [k]
 cam, PATCHED = fix_path(cam, clear_air, who_at, path_clear=solid_free)
 cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C4["overlay"]["live_viewers"]]]),
-         dict(style="panel", y=170, border="amber", when=round(LS["holes"] + 1.0, 3), until=round(LE["grubs"] + 0.2, 3), rows=[
+         dict(style="panel", y="top", border="amber", when=round(LS["holes"] + 1.0, 3), until=round(LE["grubs"] + 0.2, 3), rows=[
              dict(text="ROOTING", color="white", at=round(LS["holes"] + 1.1, 3), size=40),
              dict(text="boars dig with their snouts for roots & grubs", color="cyan", at=round(LS["holes"] + 2.2, 3), size=32)])]
 W5 = {k: v for k, v in S4["world"].items() if k != "critters"}

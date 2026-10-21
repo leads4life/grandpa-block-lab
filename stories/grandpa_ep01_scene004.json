@@ -3191,7 +3191,7 @@
   },
   {
    "style": "panel",
-   "y": 170,
+   "y": "top",
    "border": "amber",
    "when": 14.61,
    "until": 24.64,

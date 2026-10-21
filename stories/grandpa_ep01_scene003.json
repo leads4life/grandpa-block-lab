@@ -3155,7 +3155,7 @@
   },
   {
    "style": "panel",
-   "y": 170,
+   "y": "top",
    "border": "amber",
    "when": 9.18,
    "until": 14.562,
@@ -3170,7 +3170,7 @@
   },
   {
    "style": "panel",
-   "y": 170,
+   "y": "top",
    "border": "cyan",
    "when": 14.762,
    "until": 22.478,

@@ -151,10 +151,15 @@ def card(d, ov, c, t, f):
         if not vis:
             return
         y0 = c.get("y", 300)
+        half = LAY["panel_w"]
+        if y0 == "top":                                         # on the line of the two top pills, between them, text-wide
+            y0 = LAY["tag"][1]
+            tag_r = LAY["tag"][0] + F("bold", 28).getlength(P["channel_tag"] or "") + 50
+            half = min(half, CX - tag_r - 40, max(F("bold", r.get("size", 46)).getlength(fill_text(r["text"], f)) for r in c["rows"]) / 2 + 40)
         heights = [int(r.get("size", 46) * 1.6) for r in vis]
         hgt = 30 + sum(heights)
         border = COL.get(c.get("border", "cyan"), COL["cyan"])
-        d.rounded_rectangle((CX - LAY["panel_w"], y0, CX + LAY["panel_w"], y0 + hgt), radius=26, fill=(16, 22, 30, int(200 * a)), outline=border + (int(200 * a),), width=4)
+        d.rounded_rectangle((CX - half, y0, CX + half, y0 + hgt), radius=26, fill=(16, 22, 30, int(200 * a)), outline=border + (int(200 * a),), width=4)
         yy = y0 + 15
         for r, hh in zip(vis, heights):
             aa = smooth((t - r["t"]) / 0.25) * a
@@ -183,12 +188,37 @@ def captions(d, t):
                 t0 += dur
 
 
+def dream(base, c, t):
+    """The TV dream / flashback look: the picture ripples, softens and glows, with hazy edges -- fading in and out."""
+    import numpy as np
+    from PIL import ImageFilter
+    w = env(t, c["t0"], c["t1"], fi=c.get("fade_in", 0.7), fo=c.get("fade_out", 0.35))
+    if w <= 0:
+        return base
+    a = np.asarray(base).astype(np.float32)
+    ys = np.arange(H)
+    shift = (c.get("amp", 14) * w * np.sin(2 * np.pi * (ys / c.get("period", 120.0) + t * c.get("speed", 0.9)))).astype(int)
+    idx = (np.arange(W)[None, :] - shift[:, None]) % W
+    a = a[ys[:, None], idx]
+    soft = np.asarray(Image.fromarray(a.astype(np.uint8)).filter(ImageFilter.GaussianBlur(3 + 5 * w))).astype(np.float32)
+    a = a * (1 - 0.55 * w) + soft * 0.55 * w                              # softened
+    a = a + (255 - a) * 0.12 * w                                          # a little hazy glow
+    yy, xx = np.mgrid[0:H, 0:W]
+    r = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2)
+    edge = np.clip((r - 0.62) / 0.5, 0, 1)[..., None] * w                 # dreamy white-blue edges
+    a = a * (1 - 0.85 * edge) + np.array([236, 242, 255], np.float32) * 0.85 * edge
+    return Image.fromarray(np.clip(a, 0, 255).astype(np.uint8))
+
+
 def compose(args):
     f, src = args
     t = f / FPS
     base = Image.open(os.path.join(src, "%04d.png" % f)).convert("RGB")
     if base.size != (W, H):
         base = base.resize((W, H), Image.BICUBIC)
+    for c in P["cards"]:                                                  # "dream" cards act on the picture itself
+        if c.get("style") == "dream":
+            base = dream(base, c, t)
     img = base.convert("RGBA")
     ov = Image.new("RGBA", (W, H))
     d = ImageDraw.Draw(ov)
@@ -200,6 +230,8 @@ def compose(args):
         d.text((tx + (tw + 50) / 2, ty + 31), tag, font=F("bold", 28), fill=INK + (255,), anchor="mm")
     end_t = min([c["t0"] for c in P["cards"] if c.get("style") == "end"] + [P["film"] + 1])
     for c in P["cards"]:
+        if c.get("style") == "dream":
+            continue
         card(d, ov, c, t, f)
         d = ImageDraw.Draw(ov)
     if t < end_t:

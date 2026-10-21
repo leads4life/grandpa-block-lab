@@ -35,6 +35,8 @@ def apply_fx(a, sr, fx):
         tone = fx.get("tone", 1.0)
         af = "asetrate=%d,aresample=%d,atempo=%.5f,rubberband=pitch=%.5f:formant=preserved:window=short:pitchq=quality,highpass=f=%d" % (
             int(round(sr * tone)), sr, 1 / tone, fx.get("pitch", 1.0), fx.get("highpass", 20))
+        if fx.get("aecho"):                                  # e.g. a dreamy murmur: "0.8:0.6:220|440:0.4|0.25"
+            af += ",aecho=" + fx["aecho"]
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-af", af, "-ar", str(sr), dst], check=True)
         r, b = wav.read(dst)
     return b.astype(np.float64) / 32767

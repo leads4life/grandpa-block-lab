@@ -685,6 +685,9 @@ def build_world(sc, P):
     for c in W.get("critters", []):
         if c["kind"] == "rabbit":
             build_rabbit(sc, c, fps, P["nf"])
+        elif c["kind"] in ("memory_cloud", "hologram"):
+            import bl_cast
+            (bl_cast.build_memory_cloud if c["kind"] == "memory_cloud" else bl_cast.build_hologram)(sc, c, fps, P["nf"])
         elif c["kind"] in ("boar", "tobias"):                        # the cast beyond Grandpa (bl_cast)
             import bl_cast
             if c["kind"] == "boar":

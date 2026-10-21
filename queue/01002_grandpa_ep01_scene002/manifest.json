@@ -1,0 +1,27 @@
+{
+ "slug": "grandpa_ep01_scene002",
+ "title": "Clunk, Clunk... Rest.",
+ "episode": 1,
+ "scene": 2,
+ "film": 31.766666666666666,
+ "engine_commit": "9363d18acb4a9513d4fec6371c03899ddbb4e30c",
+ "engine_files": [
+  "bl_audio.py",
+  "bl_cast.py",
+  "bl_common.py",
+  "bl_overlay.py",
+  "bl_perform.py",
+  "bl_scene.py",
+  "bl_verify.py",
+  "bl_voice.py",
+  "bl_world.py",
+  "render.py",
+  "voxelchars.py",
+  "voxelkit.py"
+ ],
+ "engine_sha": "346069586436",
+ "accepted_fails": [
+  "no clipping into"
+ ],
+ "approved": "2026-10-21 15:01"
+}

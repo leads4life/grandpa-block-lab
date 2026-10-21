@@ -3585,7 +3585,7 @@
   },
   {
    "style": "panel",
-   "y": 170,
+   "y": "top",
    "border": "amber",
    "when": 19.826,
    "until": 26.232,

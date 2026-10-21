@@ -4,7 +4,7 @@
  "episode": 1,
  "scene": 5,
  "film": 30.433333333333334,
- "engine_commit": "82adb3f2e3357524d5aeb9ed91ff4c2402d4533f",
+ "engine_commit": "2112590c706251690433759d0ef7c85d3aee7182",
  "engine_files": [
   "bl_audio.py",
   "bl_cast.py",
@@ -19,7 +19,7 @@
   "voxelchars.py",
   "voxelkit.py"
  ],
- "engine_sha": "f4114f28b143",
+ "engine_sha": "346069586436",
  "accepted_fails": [],
- "approved": "2026-10-21 13:54"
+ "approved": "2026-10-21 14:44"
 }

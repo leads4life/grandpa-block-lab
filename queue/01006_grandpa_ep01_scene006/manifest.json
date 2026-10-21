@@ -1,0 +1,30 @@
+{
+ "slug": "grandpa_ep01_scene006",
+ "title": "Page Twelve",
+ "episode": 1,
+ "scene": 6,
+ "film": 69.86666666666666,
+ "engine_commit": "9a0c62302bbbd6567def5e7e4c2e830df35a5385",
+ "engine_files": [
+  "bl_audio.py",
+  "bl_cast.py",
+  "bl_common.py",
+  "bl_overlay.py",
+  "bl_perform.py",
+  "bl_scene.py",
+  "bl_verify.py",
+  "bl_voice.py",
+  "bl_world.py",
+  "render.py",
+  "voxelchars.py",
+  "voxelkit.py"
+ ],
+ "engine_sha": "e3f5c0717f85",
+ "accepted_fails": [
+  "grandpa stays in the picture",
+  "nothing hides grandpa",
+  "no clipping into",
+  "length about"
+ ],
+ "approved": "2026-10-21 20:45"
+}

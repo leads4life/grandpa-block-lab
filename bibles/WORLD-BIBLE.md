@@ -91,7 +91,7 @@ Only established facts. All coordinates are in metres: x is right and y is away 
 
 ## The blueprint book and its missing pages (approved 2026-10-21; planned from Scene 006)
 - **The book**: an old, worn blueprint book in Grandpa's own handwriting. Years ago he designed the trip hammer in it, then
-  stopped building. Tobias borrowed it from Grandpa's bookshelf "ages ago", which is how he could fix the machine.
+  stopped building. Tobias borrowed it from Grandpa's bookshelf "ages ago... when I was a little boy" (he still is one), which is how he could fix the machine.
 - **Page twelve**: a garden gate with a lever (the Scene 007 Blueprint Build). When he opens it, the drawing lifts off the
   paper as a glowing blue 3D wireframe for 2–3 s, then settles back.
 - **The mystery**:

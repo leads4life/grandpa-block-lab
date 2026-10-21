@@ -85,6 +85,8 @@ LINES = [("way", "Come on. My workshop's this way.", "tobias", None, None),
          ("science", "For science.", "tobias", None, None),
          ("book", "And this is how I fixed your machine.", "tobias", None, None),
          ("hand", "Wait. That's... MY handwriting.", None, None, None),
+         ("borrowed", "I borrowed it from your bookshelf. Ages ago... when I was a little boy.", "tobias", None, None),
+         ("where", "...So THAT's where it went.", None, None, None),
          ("built", "I built that? ...I built that! Why'd I ever stop?", None, None, None),
          ("started", "You stopped building. So I started.", "tobias", None, None),
          ("scale", "Look, chat. One square on the page... is one block out here. That's scale.", None, None, None),
@@ -99,7 +101,7 @@ LINES = [("way", "Come on. My workshop's this way.", "tobias", None, None),
          ("fancy", "Ooh. Fancy. A garden gate... with a lever.", None, None, None),
          ("torn", "Chat... somebody's been tearing pages out of my book.", None, None, None),
          ("hatches", "Chat... batten down the hatches!", None, None, None)]
-GUESS = dict(way=1.9, have=1.4, grubs=1.7, science=1.0, book=2.1, hand=2.2, built=3.4, started=2.1, scale=4.6, homework=2.2,
+GUESS = dict(way=1.9, have=1.4, grubs=1.7, science=1.0, book=2.1, hand=2.2, borrowed=2.6, where=1.7, built=3.4, started=2.1, scale=4.6, homework=2.2,
              twelve=2.1, first=1.4, justme=1.2, alone=3.4, murmur=3.9, nope=1.7, page=1.1, fancy=3.2, torn=3.2, hatches=2.1)
 dur_file = os.path.join(HERE, "ep01_s006_durations.json")
 D = dict(GUESS, **(json.load(open(dur_file)) if "--fit" in sys.argv and os.path.exists(dur_file) else {}))
@@ -180,9 +182,17 @@ T_POINT = s + 0.3
 look(s, e + 0.2, pos=(T_SPOT[0], T_SPOT[1], 0.7), body=False)
 s, e = say("hand", 0.35)
 LOOK_B = len(A); look(s - 0.5, 99.0, pos=BOOK, body=True, rate=0.15)
-pose("read_book", s - 0.4, e + 4.0, ease=0.35)
+pose("read_book", s - 0.4, e + 0.5, ease=0.35)
 face("surprised", s + 0.6, e + 0.4, set=dict(brow=1.1, smile=0.0))
-s, e = say("built", 0.3)
+# the book came from his own shelf (the coloured books in the cabin, Scene 001)
+s, e = say("borrowed", 0.3)
+look(s - 0.2, e + 0.3, pos=(T_SPOT[0], T_SPOT[1], 0.7), body=False)
+face("confused", s + 0.3, e + 0.2)
+s, e = say("where", 0.3)
+look(s - 0.1, e + 0.3, pos=(T_SPOT[0], T_SPOT[1], 0.7), body=False)
+face("side_eye", s - 0.1, e + 0.3)
+s, e = say("built", 0.35)
+pose("read_book", s - 0.4, s + 1.4, ease=0.35)
 B_UP = s + 1.4                                                      # "...I built that!"
 pose("built_up", B_UP, B_UP + 1.3, ease=0.25)
 face("smile", B_UP - 0.1, B_UP + 1.2, set=dict(smile=1.0, brow=0.8))
@@ -309,17 +319,20 @@ tobias = dict(kind="tobias", stride=0.16, seed=11, path=path,
                      [round(T_POINT, 3), round(T_POINT + 1.8, 3), "point_down"], [round(TAB0, 3), round(TAB1, 3), "hold_tablet"],
                      [round(LS["first"], 3), round(LE["first"], 3), "easy_R"]],
               faces=[[-1.0, "smile"], [round(LS["science"], 3), "deadpan"], [round(LE["science"] + 0.4, 3), "calm"],
+                     [round(LS["borrowed"], 3), "calm"], [round(LE["where"] - 0.4, 3), "smile"],
                      [round(LS["started"], 3), "calm"], [round(LS["homework"], 3), "deadpan"], [round(LS["first"], 3), "smile"]],
               look=[[round(T_POINT, 3), round(T_POINT + 1.8, 3), list(BOOK)]],
               visible=[-1.0, round(T_GONE, 3)])
 
 # ---------------------------------------------------------------- lines -> bl_voice
+SPEAK = {"alone": "Alone. In the woods. Where the boar... livs."}   # "lives" as in "where it lives" (the TTS said "nine lives")
 lines = []
 for i, (lid, text, who, speed, fx) in enumerate(LINES):
     ln = dict(id=lid, text=text, pause=0.0)
     if who: ln["who"] = who
     if speed: ln["speed"] = speed
     if fx: ln["fx"] = fx
+    if lid in SPEAK: ln["speak"] = SPEAK[lid]
     lines.append(ln)
     if i:
         lines[i - 1]["pause"] = round(LS[lid] - LE[LINES[i - 1][0]], 3)

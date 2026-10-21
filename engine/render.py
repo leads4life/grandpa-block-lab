@@ -61,7 +61,9 @@ def black_fraction(path):
 
 t0 = time.time()
 done = 0
-for f in range(sc.frame_start, sc.frame_end + 1):
+F0 = max(sc.frame_start, int(os.environ.get("FRAME_FROM", sc.frame_start)))   # one part of a long scene (render queue)
+F1 = min(sc.frame_end, int(os.environ.get("FRAME_TO", sc.frame_end)))
+for f in range(F0, F1 + 1):
     path = os.path.join(out, "%04d.png" % f)
     if os.path.exists(path):
         continue

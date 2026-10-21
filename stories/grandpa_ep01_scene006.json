@@ -6,7 +6,7 @@
  "format": "wide",
  "channel_tag": "GRANDPA'S BLOCK LAB",
  "start": 0.35,
- "tail": 0.7883,
+ "tail": 0.791,
  "seed": 29,
  "blink": true,
  "target_duration": 60,
@@ -71,27 +71,27 @@
       1.5
      ],
      [
-      32.485,
+      38.733,
       -6.36,
       1.95
      ],
      [
-      33.45,
+      39.698,
       -6.2,
       2.9
      ],
      [
-      34.01,
+      40.258,
       -5.95,
       3.4
      ],
      [
-      34.739,
+      40.987,
       -5.75,
       4.1
      ],
      [
-      35.543,
+      41.791,
       -5.68,
       4.9
      ]
@@ -106,28 +106,28 @@
       14.3
      ],
      [
-      17.57,
+      23.817,
       -18.4
      ],
      [
-      20.438,
+      26.686,
       14.3
      ],
      [
-      25.277,
+      31.524,
       -18.4
      ]
     ],
     "tablet": [
      [
-      25.427,
-      27.983
+      31.674,
+      34.231
      ]
     ],
     "poses": [
      [
       -1.0,
-      64.7,
+      70.867,
       "notebook_L"
      ],
      [
@@ -141,13 +141,13 @@
       "point_down"
      ],
      [
-      25.427,
-      27.983,
+      31.674,
+      34.231,
       "hold_tablet"
      ],
      [
-      30.399,
-      31.643,
+      36.647,
+      37.891,
       "easy_R"
      ]
     ],
@@ -165,15 +165,23 @@
       "calm"
      ],
      [
-      17.87,
+      14.19,
       "calm"
      ],
      [
-      25.877,
+      19.688,
+      "smile"
+     ],
+     [
+      24.117,
+      "calm"
+     ],
+     [
+      32.124,
       "deadpan"
      ],
      [
-      30.399,
+      36.647,
       "smile"
      ]
     ],
@@ -190,7 +198,7 @@
     ],
     "visible": [
      -1.0,
-     35.543
+     41.791
     ]
    },
    {
@@ -201,22 +209,22 @@
      1.58
     ],
     "visible": [
-     40.623,
-     47.871
+     46.787,
+     54.035
     ],
     "yaw": 180.0,
     "boar": {
      "huffs": [
-      41.223,
-      42.473,
-      43.723
+      47.387,
+      48.637,
+      49.887
      ],
      "stomps": [
-      41.723,
-      42.973
+      47.887,
+      49.137
      ],
      "clacks": [
-      42.423
+      48.587
      ]
     },
     "face": 177
@@ -230,8 +238,8 @@
      0.53
     ],
     "visible": [
-     53.005,
-     56.405
+     59.169,
+     62.569
     ],
     "size": 0.75,
     "yaw": 0.0
@@ -271,6 +279,17 @@
    "id": "hand",
    "text": "Wait. That's... MY handwriting.",
    "pause": 0.3
+  },
+  {
+   "id": "borrowed",
+   "text": "I borrowed it from your bookshelf. Ages ago... when I was a little boy.",
+   "pause": 0.3,
+   "who": "tobias"
+  },
+  {
+   "id": "where",
+   "text": "...So THAT's where it went.",
+   "pause": 0.35
   },
   {
    "id": "built",
@@ -314,7 +333,8 @@
   {
    "id": "alone",
    "text": "Alone. In the woods. Where the boar... lives.",
-   "pause": 3.35
+   "pause": 3.35,
+   "speak": "Alone. In the woods. Where the boar... livs."
   },
   {
    "id": "murmur",
@@ -4618,14 +4638,14 @@
    "type": "spin",
    "target": "wheel",
    "axis": "x",
-   "degrees": -8442.251,
+   "degrees": -9114.978,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -12.687,
-   "until": 64.7,
+   "until": 70.867,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -4633,14 +4653,14 @@
    "type": "spin",
    "target": "axle",
    "axis": "x",
-   "degrees": -8442.251,
+   "degrees": -9114.978,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -12.687,
-   "until": 64.7,
+   "until": 70.867,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -4648,14 +4668,14 @@
    "type": "spin",
    "target": "cam1",
    "axis": "x",
-   "degrees": -8442.251,
+   "degrees": -9114.978,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -12.687,
-   "until": 64.7,
+   "until": 70.867,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -4663,14 +4683,14 @@
    "type": "spin",
    "target": "cam2",
    "axis": "x",
-   "degrees": -8442.251,
+   "degrees": -9114.978,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -12.137,
-   "until": 64.7,
+   "until": 70.867,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -4693,7 +4713,7 @@
    "rise": 0.45,
    "drop": 0.07,
    "when": -10.0,
-   "until": 64.7
+   "until": 70.867
   },
   {
    "type": "trip",
@@ -4714,7 +4734,7 @@
    "rise": 0.45,
    "drop": 0.07,
    "when": -10.0,
-   "until": 64.7,
+   "until": 70.867,
    "sound_at": [
     -4.4,
     1.95,
@@ -4863,7 +4883,7 @@
    "target": "prop",
    "hand": "none",
    "when": -1.0,
-   "until": 64.7,
+   "until": 70.867,
    "reach": 0.05,
    "keys": [
     {
@@ -4880,7 +4900,7 @@
      ]
     },
     {
-     "t": 64.7,
+     "t": 70.867,
      "at": [
       -4.0,
       2.33,
@@ -4999,7 +5019,7 @@
   {
    "type": "look",
    "when": 11.058,
-   "until": 32.443,
+   "until": 38.691,
    "body": true,
    "rate": 0.15,
    "pos": [
@@ -5012,7 +5032,7 @@
    "type": "pose",
    "pose": "read_book",
    "when": 11.158,
-   "until": 17.89,
+   "until": 14.39,
    "ease": 0.35
   },
   {
@@ -5026,10 +5046,51 @@
    }
   },
   {
+   "type": "look",
+   "when": 13.99,
+   "until": 18.688,
+   "body": false,
+   "pos": [
+    -6.66,
+    1.5,
+    0.7
+   ]
+  },
+  {
+   "type": "face",
+   "expr": "confused",
+   "when": 14.49,
+   "until": 18.588
+  },
+  {
+   "type": "look",
+   "when": 18.588,
+   "until": 20.388,
+   "body": false,
+   "pos": [
+    -6.66,
+    1.5,
+    0.7
+   ]
+  },
+  {
+   "type": "face",
+   "expr": "side_eye",
+   "when": 18.588,
+   "until": 20.388
+  },
+  {
+   "type": "pose",
+   "pose": "read_book",
+   "when": 20.038,
+   "until": 21.838,
+   "ease": 0.35
+  },
+  {
    "type": "face",
    "expr": "smile",
-   "when": 15.49,
-   "until": 16.79,
+   "when": 21.738,
+   "until": 23.038,
    "set": {
     "smile": 1.0,
     "brow": 0.8
@@ -5038,20 +5099,20 @@
   {
    "type": "pose",
    "pose": "built_up",
-   "when": 15.59,
-   "until": 16.89,
+   "when": 21.838,
+   "until": 23.138,
    "ease": 0.25
   },
   {
    "type": "face",
    "expr": "worried",
-   "when": 16.89,
-   "until": 17.77
+   "when": 23.138,
+   "until": 24.017
   },
   {
    "type": "look",
-   "when": 17.47,
-   "until": 20.738,
+   "when": 23.717,
+   "until": 26.986,
    "body": false,
    "pos": [
     -6.66,
@@ -5062,20 +5123,20 @@
   {
    "type": "face",
    "expr": "warm",
-   "when": 18.17,
-   "until": 20.838
+   "when": 24.417,
+   "until": 27.086
   },
   {
    "type": "pose",
    "pose": "read_book",
-   "when": 20.138,
-   "until": 25.177,
+   "when": 26.386,
+   "until": 31.424,
    "ease": 0.3
   },
   {
    "type": "look",
-   "when": 20.138,
-   "until": 25.177,
+   "when": 26.386,
+   "until": 31.424,
    "body": false,
    "pos": [
     -6.15,
@@ -5086,19 +5147,19 @@
   {
    "type": "face",
    "expr": "raised",
-   "when": 20.438,
-   "until": 24.977
+   "when": 26.686,
+   "until": 31.224
   },
   {
    "type": "sfx",
    "sound": "buzz",
-   "when": 25.277,
+   "when": 31.524,
    "gain": 0.8
   },
   {
    "type": "look",
-   "when": 25.277,
-   "until": 28.383,
+   "when": 31.524,
+   "until": 34.631,
    "body": true,
    "rate": 0.15,
    "pos": [
@@ -5110,8 +5171,8 @@
   {
    "type": "face",
    "expr": "worried",
-   "when": 26.077,
-   "until": 28.383,
+   "when": 32.324,
+   "until": 34.631,
    "set": {
     "smile": 0.0
    }
@@ -5119,8 +5180,8 @@
   {
    "type": "face",
    "expr": "warm",
-   "when": 30.399,
-   "until": 32.243
+   "when": 36.647,
+   "until": 38.491
   },
   {
    "type": "move",
@@ -5141,14 +5202,14 @@
      0.0
     ]
    ],
-   "when": 32.443,
-   "until": 34.043,
+   "when": 38.691,
+   "until": 40.291,
    "face": "path"
   },
   {
    "type": "look",
-   "when": 33.843,
-   "until": 35.943,
+   "when": 40.091,
+   "until": 42.191,
    "body": true,
    "rate": 0.12,
    "pos": [
@@ -5160,20 +5221,20 @@
   {
    "type": "face",
    "expr": "worried",
-   "when": 35.043,
-   "until": 36.857
+   "when": 41.291,
+   "until": 43.105
   },
   {
    "type": "pose",
    "pose": "nervous",
-   "when": 36.707,
-   "until": 40.373,
+   "when": 42.955,
+   "until": 46.537,
    "ease": 0.3
   },
   {
    "type": "look",
-   "when": 36.807,
-   "until": 37.807,
+   "when": 43.055,
+   "until": 44.055,
    "body": false,
    "pos": [
     -6.9,
@@ -5184,16 +5245,16 @@
   {
    "type": "face",
    "expr": "worried",
-   "when": 36.807,
-   "until": 40.573,
+   "when": 43.055,
+   "until": 46.737,
    "set": {
     "brow": 0.9
    }
   },
   {
    "type": "look",
-   "when": 37.807,
-   "until": 38.807,
+   "when": 44.055,
+   "until": 45.055,
    "body": false,
    "pos": [
     -6.3,
@@ -5203,8 +5264,8 @@
   },
   {
    "type": "look",
-   "when": 38.807,
-   "until": 40.573,
+   "when": 45.055,
+   "until": 46.737,
    "body": false,
    "pos": [
     -4.5,
@@ -5214,21 +5275,21 @@
   },
   {
    "type": "face_camera",
-   "when": 40.323,
-   "until": 48.071
+   "when": 46.487,
+   "until": 54.235
   },
   {
    "type": "pose",
    "pose": "dreamy",
-   "when": 40.523,
-   "until": 47.971,
+   "when": 46.687,
+   "until": 54.135,
    "ease": 0.5
   },
   {
    "type": "face",
    "expr": "content",
-   "when": 40.523,
-   "until": 47.971,
+   "when": 46.687,
+   "until": 54.135,
    "set": {
     "lid": 0.45,
     "smile": 0.45
@@ -5237,20 +5298,20 @@
   {
    "type": "sfx",
    "sound": "echo|grandpa_ep01_scene004|bussin|3",
-   "when": 40.823,
+   "when": 46.987,
    "gain": 0.9
   },
   {
    "type": "face",
    "expr": "alert",
-   "when": 47.871,
-   "until": 49.987
+   "when": 54.035,
+   "until": 56.151
   },
   {
    "type": "pose",
    "pose": "head_shake",
-   "when": 47.921,
-   "until": 49.687
+   "when": 54.085,
+   "until": 55.851
   },
   {
    "type": "move",
@@ -5271,14 +5332,14 @@
      0.0
     ]
    ],
-   "when": 49.687,
-   "until": 50.987,
+   "when": 55.851,
+   "until": 57.151,
    "face": "path"
   },
   {
    "type": "look",
-   "when": 50.687,
-   "until": 64.7,
+   "when": 56.851,
+   "until": 70.867,
    "body": true,
    "rate": 0.18,
    "pos": [
@@ -5290,34 +5351,34 @@
   {
    "type": "pose",
    "pose": "flip_page",
-   "when": 51.287,
-   "until": 52.387,
+   "when": 57.451,
+   "until": 58.551,
    "ease": 0.2
   },
   {
    "type": "sfx",
    "sound": "page",
-   "when": 51.437,
+   "when": 57.601,
    "gain": 0.7
   },
   {
    "type": "sfx",
    "sound": "page",
-   "when": 51.887,
+   "when": 58.051,
    "gain": 0.6
   },
   {
    "type": "pose",
    "pose": "admire",
-   "when": 52.805,
-   "until": 56.605,
+   "when": 58.969,
+   "until": 62.769,
    "ease": 0.35
   },
   {
    "type": "face",
    "expr": "raised",
-   "when": 53.605,
-   "until": 57.272,
+   "when": 59.769,
+   "until": 63.436,
    "set": {
     "smile": 0.6
    }
@@ -5325,26 +5386,26 @@
   {
    "type": "pose",
    "pose": "read_book",
-   "when": 56.822,
-   "until": 58.822,
+   "when": 62.986,
+   "until": 64.986,
    "ease": 0.3
   },
   {
    "type": "face",
    "expr": "confused",
-   "when": 57.122,
-   "until": 58.622
+   "when": 63.286,
+   "until": 64.786
   },
   {
    "type": "face_camera",
-   "when": 58.422,
-   "until": 64.7
+   "when": 64.586,
+   "until": 70.867
   },
   {
    "type": "face",
    "expr": "worried",
-   "when": 58.622,
-   "until": 60.904,
+   "when": 64.786,
+   "until": 67.068,
    "set": {
     "brow": 1.0
    }
@@ -5352,8 +5413,8 @@
   {
    "type": "face",
    "expr": "alert",
-   "when": 60.854,
-   "until": 64.7,
+   "when": 67.018,
+   "until": 70.867,
    "set": {
     "brow": -0.4,
     "smile": 0.0
@@ -5362,8 +5423,8 @@
   {
    "type": "pose",
    "pose": "batten",
-   "when": 61.154,
-   "until": 64.7,
+   "when": 67.318,
+   "until": 70.867,
    "ease": 0.25
   }
  ],
@@ -5424,7 +5485,7 @@
    "dist": 1.925
   },
   {
-   "at": 17.6667,
+   "at": 23.9,
    "target": [
     -6.15,
     1.45,
@@ -5435,7 +5496,7 @@
    "dist": 1.925
   },
   {
-   "at": 17.7,
+   "at": 23.9333,
    "target": [
     -6.4,
     1.42,
@@ -5446,7 +5507,7 @@
    "dist": 1.9
   },
   {
-   "at": 20.8333,
+   "at": 27.0667,
    "target": [
     -6.4,
     1.42,
@@ -5457,7 +5518,7 @@
    "dist": 1.9
   },
   {
-   "at": 20.8667,
+   "at": 27.1,
    "target": [
     -6.15,
     1.63,
@@ -5468,7 +5529,7 @@
    "dist": 0.75
   },
   {
-   "at": 25.4667,
+   "at": 31.7,
    "target": [
     -6.15,
     1.63,
@@ -5479,7 +5540,7 @@
    "dist": 0.75
   },
   {
-   "at": 25.5,
+   "at": 31.7333,
    "target": [
     -6.3,
     1.5,
@@ -5490,7 +5551,7 @@
    "dist": 1.9
   },
   {
-   "at": 33.8333,
+   "at": 40.0667,
    "target": [
     -6.3,
     1.5,
@@ -5501,7 +5562,7 @@
    "dist": 1.9
   },
   {
-   "at": 33.8667,
+   "at": 40.1,
    "target": [
     -6.1,
     2.3,
@@ -5512,7 +5573,7 @@
    "dist": 3.08
   },
   {
-   "at": 35.0333,
+   "at": 41.2667,
    "target": [
     -6.1,
     2.3,
@@ -5523,7 +5584,7 @@
    "dist": 3.08
   },
   {
-   "at": 35.0667,
+   "at": 41.3,
    "target": [
     -5.48,
     1.38,
@@ -5534,7 +5595,7 @@
    "dist": 3.2
   },
   {
-   "at": 40.7,
+   "at": 46.8667,
    "target": [
     -5.48,
     1.38,
@@ -5545,7 +5606,7 @@
    "dist": 3.2
   },
   {
-   "at": 40.7333,
+   "at": 46.9,
    "target": [
     -5.4,
     1.38,
@@ -5556,7 +5617,7 @@
    "dist": 3.36
   },
   {
-   "at": 53.2,
+   "at": 59.3667,
    "target": [
     -5.4,
     1.38,
@@ -5567,7 +5628,7 @@
    "dist": 3.36
   },
   {
-   "at": 53.2333,
+   "at": 59.4,
    "target": [
     -6.15,
     1.48,
@@ -5578,7 +5639,7 @@
    "dist": 1.75
   },
   {
-   "at": 58.4,
+   "at": 64.5667,
    "target": [
     -6.15,
     1.48,
@@ -5589,7 +5650,7 @@
    "dist": 1.75
   },
   {
-   "at": 58.4333,
+   "at": 64.6,
    "target": [
     -6.15,
     1.33,
@@ -5611,7 +5672,7 @@
      4
     ],
     [
-     34.743,
+     40.991,
      3
     ]
    ]
@@ -5620,45 +5681,45 @@
    "style": "panel",
    "y": "top",
    "border": "amber",
-   "when": 20.738,
-   "until": 25.377,
+   "when": 26.986,
+   "until": 31.624,
    "rows": [
     {
      "text": "SCALE",
      "color": "white",
-     "at": 20.838,
+     "at": 27.086,
      "size": 40
     },
     {
      "text": "1 square = 1 block",
      "color": "cyan",
-     "at": 22.438,
+     "at": 28.686,
      "size": 32
     }
    ]
   },
   {
    "style": "dream",
-   "when": 40.323,
-   "until": 47.971
+   "when": 46.487,
+   "until": 54.135
   },
   {
    "style": "panel",
    "y": "top",
    "border": "cyan",
-   "when": 53.305,
-   "until": 56.405,
+   "when": 59.469,
+   "until": 62.569,
    "rows": [
     {
      "text": "PAGE 12",
      "color": "white",
-     "at": 53.405,
+     "at": 59.569,
      "size": 40
     },
     {
      "text": "a garden gate with a lever",
      "color": "cyan",
-     "at": 55.205,
+     "at": 61.369,
      "size": 32
     }
    ]
@@ -5707,8 +5768,8 @@
   ],
   "cutaways": [
    [
-    20.867,
-    25.477
+    27.1,
+    31.724
    ]
   ]
  }

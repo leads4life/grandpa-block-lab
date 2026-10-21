@@ -43,6 +43,7 @@ REPO = "leads4life/grandpa-block-lab"
 BRANCH = "main"                 # the branch whose queue/ folder holds the approved scenes
 ONLY_SCENE = ""                 # e.g. "grandpa_ep01_scene004" to render that one; "" = the next one not yet in the pool
 USE_GPU = True
+PART_SECONDS = 35               # long scenes render in parts of at most this many seconds, one part per run of step 5
 CLEAN_FRAMES_AFTER = True       # delete a scene's frames from Drive once its clip is safely in the pool
 
 import os, json, glob, shutil, subprocess, hashlib, datetime
@@ -141,17 +142,29 @@ print(plan["nf"], "frames,", plan["w"], "x", plan["h"])
 ''')
 
 md("""
-## 5. Render all frames (1920×1080)
-The long step. Resumable: frames already in Drive are skipped.
+## 5. Render the frames (1920×1080), one part at a time
+The long step. A scene longer than `PART_SECONDS` renders in parts of about 30 s: each run of this cell renders the
+next part, so a session never has to last the whole scene. Resumable: frames already in Drive are skipped. Once every
+part is done, carry on to step 6 (one clip per scene goes to the pool).
 """)
 code('''
+import math
 FRAMES_DIR = os.path.join(DRIVE, "frames", SLUG)
 os.makedirs(FRAMES_DIR, exist_ok=True)
 gpu = "1" if USE_GPU else "0"
-!GPU={gpu} FRAMES_DIR={FRAMES_DIR} {BLENDER} -b -P render.py 2>&1 | grep -E --line-buffered "Rendering on|No CUDA|RENDERED|RENDER DONE|RETRY|Error"
-done = len(glob.glob(FRAMES_DIR + "/*.png"))
-print(done, "of", plan["nf"], "frames rendered")
-assert done >= plan["nf"], "Not all frames are rendered yet: run this cell again."
+nf = plan["nf"]
+n_parts = max(1, math.ceil(nf / (PART_SECONDS * 30)))
+bounds = [round(nf * k / n_parts) for k in range(n_parts + 1)]
+have = lambda a, b: sum(os.path.exists(os.path.join(FRAMES_DIR, "%04d.png" % f)) for f in range(a, b))
+todo = [k for k in range(n_parts) if have(bounds[k], bounds[k + 1]) < bounds[k + 1] - bounds[k]]
+if todo:
+    k = todo[0]
+    print("rendering part %d of %d: frames %d-%d (%.1f-%.1f s)" % (k + 1, n_parts, bounds[k], bounds[k + 1] - 1, bounds[k] / 30, bounds[k + 1] / 30))
+    a, b = bounds[k], bounds[k + 1] - 1
+    !GPU={gpu} FRAMES_DIR={FRAMES_DIR} FRAME_FROM={a} FRAME_TO={b} {BLENDER} -b -P render.py 2>&1 | grep -E --line-buffered "Rendering on|No CUDA|RENDERED|RENDER DONE|RETRY|Error"
+done = have(0, nf)
+print(done, "of", nf, "frames rendered;", "parts done: %d of %d" % (sum(have(bounds[k], bounds[k + 1]) == bounds[k + 1] - bounds[k] for k in range(n_parts)), n_parts))
+assert done >= nf, "Not all parts are rendered yet: run this cell again for the next part."
 ''')
 
 md("## 6. Graphics, captions, encode and every automatic check")

@@ -54,7 +54,8 @@ def main():
     cast = dict(CAST, **story.get("cast", {}))
     for ln in story["lines"]:
         who = cast.get(ln.get("who"), {})                  # a line with no "who" is Grandpa, exactly as before
-        a, sr = k.create(ln["text"], voice=ln.get("voice", who.get("voice", story["voice"])),
+        a, sr = k.create(ln.get("speak", ln["text"]),     # "speak": how to say it, when the spelling misleads the TTS
+                         voice=ln.get("voice", who.get("voice", story["voice"])),
                          speed=ln.get("speed", who.get("speed", story["speed"])))[:2]
         a = np.asarray(a, dtype=np.float64)
         fx = ln.get("fx", who.get("fx"))                    # a line's own effect (e.g. panic: higher) wins

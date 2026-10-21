@@ -6,6 +6,9 @@
 - Grandpa Tovi's elementary-school-aged grandson. **Size (user-approved 2026-10-21): the larger version**, about 0.83 m to the top of his bucket hat, around Grandpa's chest. (A smaller 0.62 m version was tried and rejected.) Design: `voxelchars.build_tobias`, sheet `bibles/DESIGN_tobias_and_boar.png`. Intelligent, observant, fascinated by animals. Studies animal behaviour, instincts and characteristics.
 - He often knows more about animals than Grandpa, and turns up unexpectedly just when his knowledge is needed.
 - **Calm confidence**, a deliberate contrast to Grandpa's panic.
+- **Voice (user-picked "G4", 2026-10-21)**: Grandpa's own voice (Kokoro `am_santa`), made a young kid's: speed 1.12, tone ×1.33 (a smaller voice box), pitch ×1.203 on top (so ×1.60 in all), high-pass 150 Hz. About 270–300 Hz.
+  - Defined once in `bl_voice.CAST["tobias"]`. A story line with `"who": "tobias"` uses it, and his jaw follows only his own lines (`dialogue.json` gains `mouths`).
+  - Lines without `who` are Grandpa, exactly as before (verified: Scene 003's voice rebuilds bit-identical).
 - **Story role**: he secretly fixed the trip hammer (tiny boot prints, new planks). Probably the 4th viewer.
 
 Only established facts. "Engine" = what the renderer can actually do today.

@@ -44,6 +44,8 @@ PALETTE = {                                    # (dark, light) texel colours
     "coffee": ((0.13, 0.07, 0.04), (0.24, 0.14, 0.07)),
     "oldwood": ((0.28, 0.25, 0.20), (0.44, 0.40, 0.32)),       # weathered, grey-brown (old machines, fences)
     "darkiron": ((0.15, 0.15, 0.17), (0.30, 0.30, 0.33)),      # hammer heads, tools
+    "soil": ((0.24, 0.15, 0.08), (0.38, 0.25, 0.14)),          # tilled garden earth
+    "sprout": ((0.24, 0.56, 0.12), (0.46, 0.80, 0.24)),        # young garden plants
 }
 GLOW = {"screen": ((0.62, 0.80, 1.0), 2.2), "led": ((1.0, 0.12, 0.08), 8.0)}   # emissive extras
 

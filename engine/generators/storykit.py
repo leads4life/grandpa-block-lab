@@ -27,7 +27,7 @@ def project(eye, tgt, p):
 
 
 def auto_frame(t, must, tgt, az0, el0, dist0, keep_clear, margin=0.82, apart=None, prev=None, path_clear=None, fps=30,
-               los=None, who=None):
+               los=None, who=None, apart_min=0.42):
     """Nearest camera (az, el, dist around tgt) to the wanted one that keeps every point of `must` inside the frame,
     stands in clear air (keep_clear(eye) is True) and, if `apart` = (a, b), keeps a and b at least 0.21 frame apart.
     With `prev` (the camera keys so far), the move from the last of them must pass path_clear on every frame; if no
@@ -47,7 +47,7 @@ def auto_frame(t, must, tgt, az0, el0, dist0, keep_clear, margin=0.82, apart=Non
                     continue
                 if apart:
                     qa, qb = project(eye, tgt, apart[0]), project(eye, tgt, apart[1])
-                    if qa is None or qb is None or math.hypot(qa[0] - qb[0], qa[1] - qb[1]) < 0.42:
+                    if qa is None or qb is None or math.hypot(qa[0] - qb[0], qa[1] - qb[1]) < apart_min:
                         continue
                 if los and not los(eye, must):
                     continue

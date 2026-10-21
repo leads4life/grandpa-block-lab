@@ -121,6 +121,8 @@ POSES = {                                                             # bone: (r
     "kick_R": {"thigh.R": (-62, 0, 0), "shin.R": (18, 0, 0), "spine": (6, 0, 0)},
     "crouch": {"thigh.R": (-80, 0, 0), "shin.R": (110, 0, 0), "thigh.L": (-80, 0, 0), "shin.L": (110, 0, 0), "spine": (-25, 0, 0)},
     "lean_in": {"spine": (-10, 0, 0)},
+    "hold_tablet": {"upper_arm.R": (-48, -10, 0), "forearm.R": (-55, 0, 0), "upper_arm.L": (-48, 10, 0), "forearm.L": (-55, 0, 0)},
+    "point_down": {"upper_arm.R": (-55, 8, 0), "forearm.R": (12, 0, 0), "spine": (-8, 0, 0)},
 }
 FACES = {                                                             # face bone: dict(off=..., S=...)
     "neutral": {},
@@ -153,10 +155,23 @@ def _face_mix(faces, t, blend=0.15):
     return out
 
 
+def build_tablet(sc):
+    """Tobias's block tablet: a dark slab with a glowing screen showing Grandpa's stream (the LIVE badge, him in frame).
+    Built facing -y (his front), centred on its own origin."""
+    M = [VK.mat("Tab_body", (0.12, 0.12, 0.14), rough=0.4), VK.emission_material("Tab_screen", (0.55, 0.75, 0.95), 2.0),
+         VK.emission_material("Tab_live", (1.0, 0.15, 0.1), 6.0), VK.emission_material("Tab_white", (1.0, 1.0, 1.0), 3.0),
+         VK.emission_material("Tab_grandpa", (0.85, 0.45, 0.30), 2.0)]
+    boxes = [((0, 0, 0), (0.15, 0.014, 0.11), 0), ((0, -0.0075, 0), (0.13, 0.002, 0.09), 1),
+             ((-0.045, -0.009, 0.032), (0.026, 0.002, 0.012), 2), ((0.0, -0.009, 0.032), (0.05, 0.002, 0.008), 3),    # LIVE badge
+             ((0.0, -0.009, -0.012), (0.03, 0.002, 0.05), 4), ((0.0, -0.009, 0.016), (0.026, 0.002, 0.022), 3)]          # him, beard
+    return VK.mesh_obj("TobiasTablet", boxes, M)
+
+
 def build_tobias_actor(sc, c, fps, nf, mouth=None):
     root = bpy.data.objects.new("TobiasActor", None)
     sc.collection.objects.link(root)
     arm = CH.build_tobias(sc, parent=root)
+    tablet = build_tablet(sc) if c.get("tablet") else None
     vis, rise = c.get("visible", [-1e9, 1e9]), c.get("rise")
     stride, dist, prev = c.get("stride", 0.16), 0.0, None
     walk = dict(c, hop=0.0)
@@ -173,12 +188,22 @@ def build_tobias_actor(sc, c, fps, nf, mouth=None):
         ph = math.pi * dist / stride
         hd = C.actor_heading(c, t)
         z = 0.0
+        for h0, h1 in c.get("hops", []):                              # hopping from stone to stone, one hop per stride
+            if h0 <= t <= h1 and moving:
+                z = max(z, 0.07 * abs(math.sin(ph)))
         if rise and t < rise[1]:                                      # stands up from behind something
             z = -0.30 * (1 - C.smooth((t - rise[0]) / max(1e-6, rise[1] - rise[0])))
         k = 1.0 if vis[0] <= t <= vis[1] else 0.0
         root.location, root.scale = (x, y, z), (k, k, k)
         root.rotation_euler = (0, 0, hd + math.pi / 2)                # his front is local -y; heading 0 = facing +x
         _key(root, "location", "rotation_euler", "scale", f=f)
+        if tablet is not None:                                       # held up in front of his chest, screen facing out
+            tw = max([_env(t, t0, t1, 0.2) for t0, t1 in c["tablet"]] + [0.0])
+            fwd = Vector((math.cos(hd), math.sin(hd), 0.0))
+            tablet.location = Vector((x, y, z)) + fwd * 0.17 + Vector((0, 0, 0.47))
+            tablet.rotation_euler = (math.radians(-12), 0, hd + math.pi / 2)    # its -y (the screen) along his facing: away from him
+            tablet.scale = (tw, tw, tw)
+            _key(tablet, "location", "rotation_euler", "scale", f=f)
         rot = {b: Vector((0.0, 0.0, 0.0)) for b in BODY_BONES}
         if moving:                                                    # walking: legs and arms swing
             sw = math.sin(ph)

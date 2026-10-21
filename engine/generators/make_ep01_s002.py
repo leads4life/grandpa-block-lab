@@ -279,7 +279,7 @@ cam = [orbit(0.0, last["target"], last["az"], last["el"], last["dist"]),
        orbit(LS["who"], (-3.95, 0.8, 0.82), -30, 10, 1.65),
        orbit(FILM, (-3.95, 0.78, 0.85), -40, 10, 1.55)]
 cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C1["overlay"]["live_viewers"]]]),
-         dict(style="title", text="TRIP HAMMER", color="amber", y=230, size=88, when=round(LS["trip"] + 0.2, 3), until=round(LS["how"] + 0.4, 3)),
+         dict(style="title", text="TRIP HAMMER", color="amber", y=185, size=88, when=round(LS["trip"] + 0.2, 3), until=round(LS["how"] + 0.4, 3)),
          dict(style="panel", y="top", border="cyan", when=round(LS["cams"] + 0.6, 3), until=round(LE["cams"] + 0.6, 3), rows=[
              dict(text="CAM: round and round", color="white", at=round(LS["cams"] + 0.7, 3), size=40),
              dict(text="becomes up and down", color="amber", at=round(LS["cams"] + 2.0, 3), size=40)])]

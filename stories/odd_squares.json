@@ -1,0 +1,63 @@
+{
+  "title": "Odd numbers make squares",
+  "slug": "odd_squares",
+  "voice": "am_santa",
+  "speed": 0.95,
+  "channel_tag": "GRANDPA'S BLOCK LAB",
+
+  "lines": [
+    {"id": "hook",    "text": "Want a magic trick? Add up odd numbers... and you always get a perfect square.", "pause": 0.5},
+    {"id": "one",     "text": "One block. One by one.", "pause": 0.4},
+    {"id": "three",   "text": "Add three, around the corner. Two by two. That's four.", "pause": 0.4},
+    {"id": "five",    "text": "Add five. Three by three. Nine.", "pause": 0.4},
+    {"id": "more",    "text": "Seven makes sixteen. Nine makes twenty-five. A perfect square, every single time!", "pause": 0.6},
+    {"id": "payoff",  "text": "So one plus three, all the way to nineteen? That's ten odd numbers. Ten by ten. One hundred!", "pause": 0.0}
+  ],
+
+  "grandpa": {"start": [-0.45, 0.55]},
+
+  "structures": {
+    "odd1":    {"gnomon": 0, "at": [-0.75, -0.25], "centered": false, "material": "gold",  "stand": "left", "expect_blocks": 1},
+    "odd3":    {"gnomon": 1, "at": [-0.75, -0.25], "centered": false, "material": "blue",  "stand": "left", "expect_blocks": 3},
+    "odd5":    {"gnomon": 2, "at": [-0.75, -0.25], "centered": false, "material": "grass", "stand": "left", "expect_blocks": 5},
+    "odd7":    {"gnomon": 3, "at": [-0.75, -0.25], "centered": false, "material": "brick", "stand": "left", "expect_blocks": 7},
+    "odd9":    {"gnomon": 4, "at": [-0.75, -0.25], "centered": false, "material": "wood",  "stand": "left", "expect_blocks": 9},
+    "hundred": {"box": [10, 10, 1], "at": [0.05, -0.55], "centered": false, "material": "stone", "stand": "behind", "expect_blocks": 100}
+  },
+
+  "actions": [
+    {"type": "face_camera", "when": 0.0, "until": ["hook", 0.5]},
+    {"type": "build", "target": "odd1", "when": ["one", "start", -0.1], "until": ["one", 0.35]},
+    {"type": "build", "target": "odd3", "order": "x", "when": ["three", 0.05], "until": ["three", 0.45]},
+    {"type": "build", "target": "odd5", "order": "x", "when": ["five", 0.0], "until": ["five", 0.45]},
+    {"type": "build", "target": "odd7", "order": "x", "when": ["more", 0.0], "until": ["more", 0.24]},
+    {"type": "build", "target": "odd9", "order": "x", "when": ["more", 0.27], "until": ["more", 0.52]},
+    {"type": "build", "target": "hundred", "order": "y", "when": ["payoff", 0.45], "until": ["payoff", "end", -0.2]},
+    {"type": "face_camera", "when": ["payoff", "end", 0.1], "until": "end"}
+  ],
+
+  "camera": [
+    {"at": 0.0,                     "target": [-0.45, 0.1, 0.35], "az": -62, "el": 18, "dist": 1.9},
+    {"at": ["hook", "end"],         "target": [-0.62, 0.02, 0.16], "az": -62, "el": 40, "dist": 2.25},
+    {"at": ["more", "end"],         "target": [-0.62, 0.02, 0.16], "az": -60, "el": 42, "dist": 2.3},
+    {"at": ["payoff", 0.45],        "target": [0.05, 0.0, 0.1],   "az": -60, "el": 52, "dist": 3.3},
+    {"at": "end",                   "target": [0.05, 0.0, 0.1],   "az": -64, "el": 52, "dist": 3.1}
+  ],
+
+  "cards": [
+    {"style": "title", "text": "ODD NUMBERS", "color": "white", "y": 470, "when": ["hook", "start"], "until": ["hook", "end", 0.2]},
+    {"style": "title", "text": "= SQUARES?", "color": "amber", "y": 590, "size": 110, "when": ["hook", 0.45], "until": ["hook", "end", 0.2]},
+    {"style": "title", "text": "1 = 1×1", "color": "amber", "y": 420, "size": 90, "when": ["one", 0.4], "until": ["three", "start", -0.1]},
+    {"style": "title", "text": "1+3 = 4 = 2×2", "color": "cyan", "y": 420, "size": 84, "when": ["three", 0.5], "until": ["five", "start", -0.1]},
+    {"style": "title", "text": "1+3+5 = 9 = 3×3", "color": "green", "y": 420, "size": 80, "when": ["five", 0.5], "until": ["more", "start", -0.1]},
+    {"style": "title", "text": "… + 7 = 16 = 4×4", "color": "red", "y": 420, "size": 78, "when": ["more", 0.26], "until": ["more", 0.53]},
+    {"style": "title", "text": "… + 9 = 25 = 5×5", "color": "amber", "y": 420, "size": 78, "when": ["more", 0.54], "until": ["more", "end", 0.4]},
+    {"style": "bubble", "text": "{count:hundred} BLOCKS", "anchor": "hundred:top", "color": "cyan", "when": ["payoff", 0.45], "until": ["payoff", "end", 0.5]},
+    {"style": "panel", "y": 300, "border": "amber", "when": ["payoff", "start"], "until": ["payoff", "end", 0.5], "rows": [
+      {"text": "1+3+5+…+19", "color": "white", "at": ["payoff", 0.05], "size": 54},
+      {"text": "10 odd numbers", "color": "cyan", "at": ["payoff", 0.48], "size": 44},
+      {"text": "= 10×10 = 100", "color": "amber", "at": ["payoff", 0.8], "size": 54}]},
+    {"style": "end", "title1": "ODD NUMBERS", "title2": "MAKE SQUARES", "sub": "The first n odd numbers always add up to n × n",
+     "cta": "Follow for more Block Lab", "when": ["payoff", "end", 0.2]}
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "title": "Why giants can't exist",
+  "slug": "giants",
+  "voice": "am_santa",
+  "speed": 0.95,
+  "start": 0.3,
+  "tail": 1.6,
+  "channel_tag": "GRANDPA'S BLOCK LAB",
+
+  "lines": [
+    {"id": "hook",   "text": "Make something twice as big... and it gets weaker. Watch.", "pause": 0.5},
+    {"id": "small",  "text": "This little fella? Nine blocks.", "pause": 0.45},
+    {"id": "big",    "text": "Now twice as tall, twice as wide, twice as deep. Seventy-two blocks. Eight times the weight!", "pause": 0.5},
+    {"id": "legs",   "text": "But his legs only got four times thicker. So every leg carries twice the load.", "pause": 0.6},
+    {"id": "giant",  "text": "Make him ten times bigger... and... crack.", "pause": 1.8},
+    {"id": "payoff", "text": "That's why elephants need thick legs. And why real giants can't exist.", "pause": 0.0}
+  ],
+
+  "grandpa": {"start": [-0.28, 0.36]},
+
+  "structures": {
+    "small": {"cells": [[0,0,0],[2,0,0],[0,0,1],[1,0,1],[2,0,1],[0,0,2],[1,0,2],[2,0,2],[1,0,3]],
+              "at": [-0.40, 0.0], "material": "sandstone", "eyes": true, "stand": "behind",
+              "parts": {"legs": "z < 1"}, "expect_blocks": 9},
+    "big":   {"copy_of": "small", "scale": 2, "at": [0.38, 0.0], "material": "sandstone", "eyes": true, "stand": "right",
+              "parts": {"legs": "z < 2"}, "expect_blocks": 72}
+  },
+
+  "actions": [
+    {"type": "face_camera", "when": 0.0, "until": ["hook", 0.15]},
+    {"type": "point", "pos": [-0.40, 0.0, 0.05], "when": ["hook", 0.15], "until": ["hook", "end", -0.3]},
+    {"type": "build", "target": "small", "order": "z", "when": ["small", "start", -0.25], "until": ["small", "start", 1.95]},
+    {"type": "build", "target": "big", "order": "z", "when": ["big", "start", 0.2], "until": ["big", "end", -1.6]},
+    {"type": "highlight", "target": "small", "part": "legs", "when": ["legs", "start", 0.4], "until": ["legs", "end", 0.4]},
+    {"type": "highlight", "target": "big", "part": "legs", "when": ["legs", "start", 0.4], "until": ["legs", "end", 0.4]},
+    {"type": "point", "target": "big", "offset": [0.2, -0.06, 0.14], "when": ["legs", "start", 0.3], "until": ["legs", "end", -0.2]},
+    {"type": "move", "to": [0.83, -0.45], "when": ["giant", "start", 0.1], "until": ["giant", "start", 0.7]},
+    {"type": "move", "to": [-0.85, -0.45], "when": ["giant", "start", 0.7], "until": ["giant", "start", 1.9]},
+    {"type": "grow", "target": "big", "factor": 5, "to": [0.25, 1.45], "when": ["giant", "start", 0.3], "until": ["giant", "start", 1.9]},
+    {"type": "crack", "target": "big", "part": "legs", "when": ["giant", "start", 2.1], "until": ["giant", "end"]},
+    {"type": "collapse", "target": "big", "when": ["giant", "end", 0.05]},
+    {"type": "shrug", "when": ["payoff", "start", 0.2], "until": ["payoff", "start", 1.3]},
+    {"type": "face_camera", "when": ["payoff", "start"], "until": "end"}
+  ],
+
+  "camera": [
+    {"at": 0.0,                        "target": [-0.38, 0.12, 0.42], "az": -62, "el": 15, "dist": 1.9},
+    {"at": ["hook", "end"],            "target": [-0.36, 0.12, 0.40], "az": -62, "el": 16, "dist": 2.0},
+    {"at": ["small", "end", 0.3],      "target": [-0.02, 0.15, 0.42], "az": -60, "el": 21, "dist": 2.9},
+    {"at": ["big", "end"],             "target": [0.0, 0.15, 0.42],   "az": -58, "el": 21, "dist": 2.75},
+    {"at": ["legs", "start", 0.6],     "target": [0.15, 0.08, 0.30],  "az": -56, "el": 12, "dist": 2.5},
+    {"at": ["legs", "end"],            "target": [0.17, 0.08, 0.30],  "az": -56, "el": 12, "dist": 2.45},
+    {"at": ["giant", "start", 0.5],    "target": [0.0, 0.05, 0.30],   "az": -60, "el": 12, "dist": 2.6},
+    {"at": ["giant", "start", 1.9],    "target": [-0.1, 0.85, 1.75],  "az": -62, "el": 9,  "dist": 7.6},
+    {"at": ["giant", "end", 1.25],     "target": [-0.1, 0.85, 1.35],  "az": -62, "el": 10, "dist": 7.4},
+    {"at": ["payoff", "start", 0.5],   "target": [-0.6, 0.1, 0.75],   "az": -100, "el": 12, "dist": 3.6},
+    {"at": "end",                      "target": [-0.66, 0.0, 0.78],  "az": -100, "el": 12, "dist": 3.2}
+  ],
+
+  "cards": [
+    {"style": "title", "text": "TWICE AS BIG", "color": "white", "y": 470, "when": ["hook", "start", -0.05], "until": ["hook", "end", 0.2]},
+    {"style": "title", "text": "= WEAKER?", "color": "amber", "y": 590, "size": 110, "when": 1.3, "until": ["hook", "end", 0.2]},
+    {"style": "bubble", "text": "9 BLOCKS", "anchor": "small:top", "color": "amber", "when": ["small", "start", 1.6], "until": ["big", "start", 0.8]},
+    {"style": "bubble", "text": "{count:big} BLOCKS", "anchor": "big:top", "color": "cyan", "when": ["big", "start", 0.2], "until": ["legs", "start", 0.3]},
+    {"style": "title", "text": "2× SIZE", "color": "cyan", "y": 420, "size": 92, "when": ["big", "start"], "until": ["big", 0.62]},
+    {"style": "title", "text": "72 ÷ 9 = ×8 WEIGHT", "color": "amber", "y": 420, "size": 76, "when": ["big", 0.78], "until": ["legs", "start", 0.2]},
+    {"style": "tag", "text": "AREA 1", "anchor": "small:part:legs", "color": "cyan", "dy": 70, "when": ["legs", "start", 0.3], "until": ["legs", "end", 0.4]},
+    {"style": "tag", "text": "AREA 4", "anchor": "big:part:legs", "color": "cyan", "dy": 70, "when": ["legs", "start", 0.3], "until": ["legs", "end", 0.4]},
+    {"style": "panel", "y": 300, "border": "cyan", "when": ["legs", "start", 0.3], "until": ["legs", "end", 0.4], "rows": [
+      {"text": "LEG AREA   ×4", "color": "cyan", "at": ["legs", 0.05]},
+      {"text": "WEIGHT   ×8", "color": "amber", "at": ["legs", 0.45]},
+      {"text": "LOAD PER LEG   8 ÷ 4 = ×2", "color": "red", "at": ["legs", 0.62]}]},
+    {"style": "title", "text": "10× BIGGER", "color": "white", "y": 430, "size": 104, "when": ["giant", "start", 0.3], "until": ["giant", "start", 2.2]},
+    {"style": "panel", "y": 300, "border": "red", "when": ["giant", "start", 2.1], "until": ["giant", "end", 0.55], "rows": [
+      {"text": "WEIGHT   ×1000", "color": "amber", "at": ["giant", "start", 2.1]},
+      {"text": "LEG AREA   ×100", "color": "cyan", "at": ["giant", "start", 2.45]},
+      {"text": "LOAD PER LEG   ×10", "color": "red", "at": ["giant", "start", 2.8]}]},
+    {"style": "impact", "text": "CRACK!", "color": "red", "y": 640, "when": ["giant", "end"], "until": ["giant", "end", 1.05]},
+    {"style": "panel", "y": 300, "border": "amber", "when": ["payoff", "start", 0.2], "until": ["payoff", "end", 0.4], "rows": [
+      {"text": "THE SQUARE–CUBE LAW", "color": "amber", "at": ["payoff", "start", 0.2], "size": 52},
+      {"text": "size ×2  →  strength ×4", "color": "cyan", "at": ["payoff", "start", 0.2], "size": 42},
+      {"text": "weight ×8", "color": "red", "at": ["payoff", "start", 0.2], "size": 42}]},
+    {"style": "end", "title1": "WHY GIANTS", "title2": "CAN'T EXIST", "sub": "J.B.S. Haldane, \"On Being the Right Size\" (1926)",
+     "cta": "Follow for more Block Lab", "when": ["payoff", "end", 0.15]}
+  ]
+}

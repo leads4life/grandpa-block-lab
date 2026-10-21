@@ -1,0 +1,1926 @@
+{
+ "title": "Is This Thing On?",
+ "slug": "grandpa_ep01_scene001",
+ "voice": "am_santa",
+ "speed": 0.95,
+ "format": "wide",
+ "channel_tag": "GRANDPA'S BLOCK LAB",
+ "start": 0.5,
+ "tail": 0.4103,
+ "seed": 11,
+ "blink": true,
+ "target_duration": 30,
+ "scene": {
+  "episode": 1,
+  "scene": 1,
+  "name": "Is This Thing On?",
+  "next": "ep01_scene002"
+ },
+ "world": {
+  "ground": "grass",
+  "time": "morning",
+  "weather": "clear",
+  "animals": [
+   "birds"
+  ],
+  "interior": "cabin",
+  "sun": [
+   -0.96,
+   -0.06,
+   -0.27
+  ],
+  "exposure": 0.15
+ },
+ "lines": [
+  {
+   "id": "hello",
+   "text": "Hello? Can anybody hear me?",
+   "pause": 0.15
+  },
+  {
+   "id": "on",
+   "text": "Is this thing on?",
+   "pause": 0.35
+  },
+  {
+   "id": "box",
+   "text": "An old man talking to a box.",
+   "pause": 0.2
+  },
+  {
+   "id": "committed",
+   "text": "My grandfather would've had me committed.",
+   "pause": 0.45
+  },
+  {
+   "id": "viewers",
+   "text": "Three viewers?",
+   "pause": 0.3
+  },
+  {
+   "id": "pharmacy",
+   "text": "I get more attention at the pharmacy blood pressure machine.",
+   "pause": 0.3
+  },
+  {
+   "id": "welcome",
+   "text": "Anyway, welcome to Grandpa's Block Lab.",
+   "pause": 0.2
+  },
+  {
+   "id": "creator",
+   "text": "Apparently I'm a content creator now.",
+   "pause": 0.3
+  },
+  {
+   "id": "coffee",
+   "text": "Ah, coffee.",
+   "pause": 0.9
+  },
+  {
+   "id": "reliable",
+   "text": "The one reliable thing in my life.",
+   "pause": 0.1
+  },
+  {
+   "id": "spill",
+   "text": "Until I spill it.",
+   "pause": 0.55
+  },
+  {
+   "id": "up",
+   "text": "All right, up we go.",
+   "pause": 0.0
+  },
+  {
+   "id": "back",
+   "text": "Oh! My back just filed a complaint.",
+   "pause": 0.75
+  },
+  {
+   "id": "what",
+   "text": "...What was that?",
+   "pause": 0.0
+  }
+ ],
+ "grandpa": {
+  "start": [
+   0.0,
+   0.34,
+   0.0
+  ],
+  "outfit": {
+   "hat": "cap",
+   "shirt": "rust",
+   "extras": []
+  }
+ },
+ "poses": {
+  "hands_table": {
+   "hand_R": {
+    "char": [
+     -0.32,
+     -0.17,
+     0.585
+    ]
+   },
+   "hand_L": {
+    "char": [
+     0.14,
+     -0.16,
+     0.59
+    ]
+   }
+  },
+  "tap_cam": {
+   "hand_R": {
+    "obj": "webcam",
+    "off": [
+     0.0,
+     -0.025,
+     0.35
+    ],
+    "tap": [
+     2.2,
+     0.018
+    ]
+   },
+   "twist": -0.12
+  },
+  "fix_lean": {
+   "lean": 0.5,
+   "twist": -0.15,
+   "hips": [
+    0.0,
+    -0.1,
+    0.0
+   ],
+   "hand_L": {
+    "char": [
+     0.24,
+     -0.1,
+     0.7
+    ]
+   }
+  },
+  "catch_mug": {
+   "hand_R": {
+    "obj": "mug",
+    "off": [
+     -0.07,
+     0.0,
+     0.08
+    ]
+   },
+   "lean": 0.06
+  },
+  "reach_mug": {
+   "lean": 0.25
+  },
+  "push_up": {
+   "hand_R": {
+    "char": [
+     -0.15,
+     -0.085,
+     0.63
+    ]
+   },
+   "hand_L": {
+    "char": [
+     0.15,
+     -0.085,
+     0.63
+    ]
+   },
+   "elbows": 0.6
+  },
+  "peer": {
+   "lean": 0.08,
+   "head": [
+    0.0,
+    -0.04,
+    0.0
+   ]
+  },
+  "lean_in_cam": {
+   "lean": 0.18,
+   "hips": [
+    0.0,
+    -0.01,
+    0.0
+   ]
+  },
+  "head_tilt": {
+   "head": [
+    0.0,
+    0.0,
+    0.16
+   ]
+  }
+ },
+ "structures": {
+  "table_legs": {
+   "cells": [
+    [
+     -4,
+     -1,
+     0
+    ],
+    [
+     -4,
+     -1,
+     1
+    ],
+    [
+     -4,
+     -1,
+     2
+    ],
+    [
+     -4,
+     -1,
+     3
+    ],
+    [
+     -4,
+     -1,
+     4
+    ],
+    [
+     -4,
+     2,
+     0
+    ],
+    [
+     -4,
+     2,
+     1
+    ],
+    [
+     -4,
+     2,
+     2
+    ],
+    [
+     -4,
+     2,
+     3
+    ],
+    [
+     -4,
+     2,
+     4
+    ],
+    [
+     4,
+     -1,
+     0
+    ],
+    [
+     4,
+     -1,
+     1
+    ],
+    [
+     4,
+     -1,
+     2
+    ],
+    [
+     4,
+     -1,
+     3
+    ],
+    [
+     4,
+     -1,
+     4
+    ],
+    [
+     4,
+     2,
+     0
+    ],
+    [
+     4,
+     2,
+     1
+    ],
+    [
+     4,
+     2,
+     2
+    ],
+    [
+     4,
+     2,
+     3
+    ],
+    [
+     4,
+     2,
+     4
+    ]
+   ],
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "centered": false,
+   "material": "planks",
+   "expect_blocks": 20,
+   "prebuilt": true,
+   "block_shape": [
+    0.5,
+    0.5,
+    1
+   ]
+  },
+  "table_top": {
+   "cells": [
+    [
+     -4,
+     -1,
+     4
+    ],
+    [
+     -4,
+     0,
+     4
+    ],
+    [
+     -4,
+     1,
+     4
+    ],
+    [
+     -4,
+     2,
+     4
+    ],
+    [
+     -3,
+     -1,
+     4
+    ],
+    [
+     -3,
+     0,
+     4
+    ],
+    [
+     -3,
+     1,
+     4
+    ],
+    [
+     -3,
+     2,
+     4
+    ],
+    [
+     -2,
+     -1,
+     4
+    ],
+    [
+     -2,
+     0,
+     4
+    ],
+    [
+     -2,
+     1,
+     4
+    ],
+    [
+     -2,
+     2,
+     4
+    ],
+    [
+     -1,
+     -1,
+     4
+    ],
+    [
+     -1,
+     0,
+     4
+    ],
+    [
+     -1,
+     1,
+     4
+    ],
+    [
+     -1,
+     2,
+     4
+    ],
+    [
+     0,
+     -1,
+     4
+    ],
+    [
+     0,
+     0,
+     4
+    ],
+    [
+     0,
+     1,
+     4
+    ],
+    [
+     0,
+     2,
+     4
+    ],
+    [
+     1,
+     -1,
+     4
+    ],
+    [
+     1,
+     0,
+     4
+    ],
+    [
+     1,
+     1,
+     4
+    ],
+    [
+     1,
+     2,
+     4
+    ],
+    [
+     2,
+     -1,
+     4
+    ],
+    [
+     2,
+     0,
+     4
+    ],
+    [
+     2,
+     1,
+     4
+    ],
+    [
+     2,
+     2,
+     4
+    ],
+    [
+     3,
+     -1,
+     4
+    ],
+    [
+     3,
+     0,
+     4
+    ],
+    [
+     3,
+     1,
+     4
+    ],
+    [
+     3,
+     2,
+     4
+    ],
+    [
+     4,
+     -1,
+     4
+    ],
+    [
+     4,
+     0,
+     4
+    ],
+    [
+     4,
+     1,
+     4
+    ],
+    [
+     4,
+     2,
+     4
+    ]
+   ],
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "centered": false,
+   "material": "planks",
+   "expect_blocks": 36,
+   "prebuilt": true,
+   "block_shape": [
+    1,
+    1,
+    0.5
+   ]
+  },
+  "chair_legs": {
+   "cells": [
+    [
+     -1,
+     5,
+     0
+    ],
+    [
+     -1,
+     5,
+     1
+    ],
+    [
+     -1,
+     5,
+     2
+    ],
+    [
+     -1,
+     7,
+     0
+    ],
+    [
+     -1,
+     7,
+     1
+    ],
+    [
+     -1,
+     7,
+     2
+    ],
+    [
+     -1,
+     7,
+     3
+    ],
+    [
+     -1,
+     7,
+     4
+    ],
+    [
+     -1,
+     7,
+     5
+    ],
+    [
+     -1,
+     7,
+     6
+    ],
+    [
+     1,
+     5,
+     0
+    ],
+    [
+     1,
+     5,
+     1
+    ],
+    [
+     1,
+     5,
+     2
+    ],
+    [
+     1,
+     7,
+     0
+    ],
+    [
+     1,
+     7,
+     1
+    ],
+    [
+     1,
+     7,
+     2
+    ],
+    [
+     1,
+     7,
+     3
+    ],
+    [
+     1,
+     7,
+     4
+    ],
+    [
+     1,
+     7,
+     5
+    ],
+    [
+     1,
+     7,
+     6
+    ]
+   ],
+   "at": [
+    0.0,
+    0.04,
+    0.0
+   ],
+   "centered": false,
+   "material": "wood",
+   "expect_blocks": 20,
+   "prebuilt": true,
+   "block_shape": [
+    0.5,
+    0.5,
+    1
+   ]
+  },
+  "seat": {
+   "cells": [
+    [
+     -1,
+     5,
+     2
+    ],
+    [
+     -1,
+     6,
+     2
+    ],
+    [
+     0,
+     5,
+     2
+    ],
+    [
+     0,
+     6,
+     2
+    ],
+    [
+     1,
+     5,
+     2
+    ],
+    [
+     1,
+     6,
+     2
+    ]
+   ],
+   "at": [
+    0.0,
+    0.04,
+    0.0
+   ],
+   "centered": false,
+   "material": "wood",
+   "expect_blocks": 6,
+   "prebuilt": true,
+   "block_shape": [
+    1,
+    1,
+    0.5
+   ]
+  },
+  "chair_back": {
+   "cells": [
+    [
+     -1,
+     7,
+     6
+    ],
+    [
+     0,
+     7,
+     4
+    ],
+    [
+     0,
+     7,
+     5
+    ],
+    [
+     0,
+     7,
+     6
+    ],
+    [
+     1,
+     7,
+     6
+    ]
+   ],
+   "at": [
+    0.0,
+    0.04,
+    0.0
+   ],
+   "centered": false,
+   "material": "wood",
+   "expect_blocks": 5,
+   "prebuilt": true,
+   "block_shape": [
+    1,
+    0.4,
+    1
+   ]
+  },
+  "laptop_base": {
+   "cells": [
+    [
+     -1,
+     -1,
+     0
+    ],
+    [
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     -1,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     -1,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   "at": [
+    -0.12,
+    0.14,
+    0.42
+   ],
+   "centered": false,
+   "material": "steel",
+   "expect_blocks": 6,
+   "prebuilt": true,
+   "yaw": -18.0,
+   "block_shape": [
+    1,
+    1,
+    0.2
+   ]
+  },
+  "laptop_screen": {
+   "cells": [
+    [
+     -1,
+     -1,
+     1
+    ],
+    [
+     -1,
+     -1,
+     2
+    ],
+    [
+     0,
+     -1,
+     1
+    ],
+    [
+     0,
+     -1,
+     2
+    ],
+    [
+     1,
+     -1,
+     1
+    ],
+    [
+     1,
+     -1,
+     2
+    ]
+   ],
+   "at": [
+    -0.12,
+    0.14,
+    0.42
+   ],
+   "centered": false,
+   "material": "steel",
+   "expect_blocks": 6,
+   "prebuilt": true,
+   "yaw": -18.0,
+   "extras": [
+    {
+     "c": [
+      0,
+      -0.088,
+      0.21
+     ],
+     "s": [
+      0.27,
+      0.004,
+      0.17
+     ],
+     "m": "screen"
+    }
+   ],
+   "block_shape": [
+    1,
+    0.2,
+    1
+   ]
+  },
+  "webcam": {
+   "cells": [
+    [
+     0,
+     -1,
+     3
+    ]
+   ],
+   "at": [
+    -0.12,
+    0.14,
+    0.42
+   ],
+   "centered": false,
+   "material": "rubber",
+   "expect_blocks": 1,
+   "prebuilt": true,
+   "yaw": -18.0,
+   "extras": [
+    {
+     "c": [
+      0,
+      -0.066,
+      0.35
+     ],
+     "s": [
+      0.046,
+      0.008,
+      0.046
+     ],
+     "m": "steel"
+    },
+    {
+     "c": [
+      0,
+      -0.061,
+      0.35
+     ],
+     "s": [
+      0.026,
+      0.004,
+      0.026
+     ],
+     "m": "coffee"
+    },
+    {
+     "c": [
+      0.026,
+      -0.066,
+      0.383
+     ],
+     "s": [
+      0.01,
+      0.006,
+      0.01
+     ],
+     "m": "led"
+    }
+   ],
+   "block_shape": [
+    0.8,
+    0.6,
+    1
+   ]
+  },
+  "cam_cap": {
+   "cells": [
+    [
+     0,
+     -1,
+     4
+    ]
+   ],
+   "at": [
+    -0.12,
+    0.14,
+    0.42
+   ],
+   "centered": false,
+   "material": "red",
+   "expect_blocks": 1,
+   "prebuilt": true,
+   "yaw": -18.0,
+   "block_shape": [
+    0.8,
+    0.6,
+    1
+   ]
+  },
+  "mug": {
+   "cells": [
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "at": [
+    0.22,
+    0.06,
+    0.48
+   ],
+   "centered": false,
+   "material": "ceramic",
+   "expect_blocks": 1,
+   "prebuilt": true,
+   "extras": [
+    {
+     "c": [
+      0,
+      0,
+      0.096
+     ],
+     "s": [
+      0.05,
+      0.05,
+      0.004
+     ],
+     "m": "coffee"
+    },
+    {
+     "c": [
+      0.042,
+      0,
+      0.083
+     ],
+     "s": [
+      0.024,
+      0.014,
+      0.012
+     ],
+     "m": "ceramic"
+    },
+    {
+     "c": [
+      0.042,
+      0,
+      0.037
+     ],
+     "s": [
+      0.024,
+      0.014,
+      0.012
+     ],
+     "m": "ceramic"
+    },
+    {
+     "c": [
+      0.05,
+      0,
+      0.06
+     ],
+     "s": [
+      0.012,
+      0.014,
+      0.05
+     ],
+     "m": "ceramic"
+    }
+   ],
+   "block_shape": [
+    0.6,
+    0.6,
+    0.8
+   ]
+  }
+ },
+ "actions": [
+  {
+   "type": "pose",
+   "pose": "seated",
+   "when": -5.0,
+   "until": 28.739,
+   "ease_out": 1.3
+  },
+  {
+   "type": "pose",
+   "pose": "hands_table",
+   "when": -5.0,
+   "until": 27.939,
+   "ease_out": 0.4
+  },
+  {
+   "type": "look",
+   "pos": [
+    -0.139,
+    0.083,
+    0.77
+   ],
+   "when": -5.0,
+   "until": 31.327,
+   "body": false
+  },
+  {
+   "type": "pose",
+   "pose": "lean_in_cam",
+   "when": -5.0,
+   "until": 3.0,
+   "ease_out": 1.3
+  },
+  {
+   "type": "face",
+   "expr": "squint",
+   "when": -5.0,
+   "until": 2.6,
+   "ease_out": 0.4
+  },
+  {
+   "type": "face",
+   "expr": "raised",
+   "when": 1.1,
+   "until": 2.805
+  },
+  {
+   "type": "pose",
+   "pose": "head_tilt",
+   "when": 1.2,
+   "until": 2.905
+  },
+  {
+   "type": "pose",
+   "pose": "tap_cam",
+   "when": 2.505,
+   "until": 4.259,
+   "ease": 0.25
+  },
+  {
+   "type": "sfx",
+   "sound": "tap",
+   "when": 3.035,
+   "gain": 0.9
+  },
+  {
+   "type": "sfx",
+   "sound": "tap",
+   "when": 3.485,
+   "gain": 0.9
+  },
+  {
+   "type": "face",
+   "expr": "surprised",
+   "when": 3.555,
+   "until": 4.505,
+   "ease": 0.12
+  },
+  {
+   "type": "fly",
+   "target": "cam_cap",
+   "v0": [
+    0.3593,
+    0.3217,
+    1.2982
+   ],
+   "g": 9.81,
+   "when": 3.605,
+   "until": 4.025,
+   "sound": "none"
+  },
+  {
+   "type": "look",
+   "pos": [
+    0.0,
+    0.18,
+    0.55
+   ],
+   "when": 3.755,
+   "until": 5.105,
+   "body": false
+  },
+  {
+   "type": "pose",
+   "pose": "fix_lean",
+   "when": 3.809,
+   "until": 5.709
+  },
+  {
+   "type": "look",
+   "pos": [
+    -0.12,
+    0.14,
+    0.82
+   ],
+   "when": 3.909,
+   "until": 5.609,
+   "body": false
+  },
+  {
+   "type": "sfx",
+   "sound": "clatter",
+   "when": 4.015,
+   "gain": 0.8
+  },
+  {
+   "type": "hold",
+   "target": "cam_cap",
+   "hand": "R",
+   "when": 4.209,
+   "until": 5.409,
+   "reach": 0.4,
+   "grip": [
+    0.0,
+    -0.05,
+    0.45
+   ],
+   "keys": [
+    {
+     "t": 4.2090000000000005,
+     "at": [
+      0.0309,
+      0.2751,
+      0.1
+     ],
+     "rot": [
+      0,
+      0,
+      -18.0
+     ]
+    },
+    {
+     "t": 4.759,
+     "at": [
+      -0.0191,
+      0.2051,
+      0.36
+     ],
+     "rot": [
+      0,
+      0,
+      7.0
+     ]
+    },
+    {
+     "t": 5.409000000000001,
+     "at": [
+      -0.12,
+      0.14,
+      0.42
+     ],
+     "rot": [
+      0,
+      0,
+      -18.0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "face",
+   "expr": "side_eye",
+   "when": 4.505,
+   "until": 5.309,
+   "set": {
+    "gx": 0.0
+   }
+  },
+  {
+   "type": "sfx",
+   "sound": "click_block",
+   "when": 5.389,
+   "gain": 1.0
+  },
+  {
+   "type": "pose",
+   "pose": "lean_back",
+   "when": 5.759,
+   "until": 9.11,
+   "ease": 0.45
+  },
+  {
+   "type": "pose",
+   "pose": "head_shake",
+   "when": 5.809,
+   "until": 6.709,
+   "ease": 0.2
+  },
+  {
+   "type": "face",
+   "expr": "side_eye",
+   "when": 6.906,
+   "until": 9.06
+  },
+  {
+   "type": "look",
+   "pos": [
+    -0.145,
+    0.064,
+    0.63
+   ],
+   "when": 9.11,
+   "until": 10.81,
+   "body": false
+  },
+  {
+   "type": "pose",
+   "pose": "peer",
+   "when": 9.16,
+   "until": 10.71
+  },
+  {
+   "type": "face",
+   "expr": "raised",
+   "when": 9.26,
+   "until": 10.71
+  },
+  {
+   "type": "pose",
+   "pose": "shrug",
+   "when": 10.211,
+   "until": 11.161,
+   "ease": 0.25
+  },
+  {
+   "type": "face",
+   "expr": "confused",
+   "when": 10.261,
+   "until": 11.261
+  },
+  {
+   "type": "face",
+   "expr": "smirk",
+   "when": 11.661,
+   "until": 14.604
+  },
+  {
+   "type": "face",
+   "expr": "warm",
+   "when": 14.604,
+   "until": 18.091
+  },
+  {
+   "type": "pose",
+   "pose": "present",
+   "when": 15.204,
+   "until": 17.941,
+   "ease": 0.4
+  },
+  {
+   "type": "look",
+   "pos": [
+    -0.145,
+    0.064,
+    0.63
+   ],
+   "when": 16.746,
+   "until": 17.546,
+   "body": false
+  },
+  {
+   "type": "face",
+   "expr": "smile",
+   "when": 16.796,
+   "until": 17.646,
+   "set": {
+    "smile": 1.0,
+    "brow": 0.6
+   }
+  },
+  {
+   "type": "face",
+   "expr": "smirk",
+   "when": 17.991,
+   "until": 20.753
+  },
+  {
+   "type": "pose",
+   "pose": "nod",
+   "when": 18.091,
+   "until": 18.891,
+   "ease": 0.2
+  },
+  {
+   "type": "pose",
+   "pose": "reach_mug",
+   "when": 20.203,
+   "until": 21.003,
+   "ease": 0.3
+  },
+  {
+   "type": "look",
+   "pos": [
+    0.22,
+    0.06,
+    0.58
+   ],
+   "when": 20.253,
+   "until": 20.853,
+   "body": false
+  },
+  {
+   "type": "hold",
+   "target": "mug",
+   "hand": "L",
+   "when": 20.653,
+   "until": 27.339,
+   "reach": 0.4,
+   "grip": [
+    0.095,
+    0.0,
+    0.09
+   ],
+   "keys": [
+    {
+     "t": 20.653000000000002,
+     "at": [
+      0.22,
+      0.06,
+      0.48
+     ]
+    },
+    {
+     "t": 22.021,
+     "at": "mouth",
+     "off": [
+      0.035,
+      -0.075,
+      -0.1
+     ],
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "t": 22.271,
+     "at": "mouth",
+     "off": [
+      0.035,
+      -0.07,
+      -0.095
+     ],
+     "rot": [
+      -22,
+      0,
+      0
+     ]
+    },
+    {
+     "t": 22.621000000000002,
+     "at": "mouth",
+     "off": [
+      0.035,
+      -0.07,
+      -0.095
+     ],
+     "rot": [
+      -22,
+      0,
+      0
+     ]
+    },
+    {
+     "t": 23.121000000000002,
+     "at": [
+      0.15,
+      0.19,
+      0.63
+     ],
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "t": 26.389,
+     "at": [
+      0.15,
+      0.19,
+      0.63
+     ],
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "t": 26.519,
+     "at": [
+      0.16,
+      0.19,
+      0.64
+     ],
+     "rot": [
+      0,
+      28,
+      0
+     ]
+    },
+    {
+     "t": 26.659,
+     "at": [
+      0.14,
+      0.19,
+      0.63
+     ],
+     "rot": [
+      0,
+      -22,
+      0
+     ]
+    },
+    {
+     "t": 26.788999999999998,
+     "at": [
+      0.15,
+      0.19,
+      0.63
+     ],
+     "rot": [
+      0,
+      9,
+      0
+     ]
+    },
+    {
+     "t": 26.939,
+     "at": [
+      0.15,
+      0.19,
+      0.63
+     ],
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "t": 27.339,
+     "at": [
+      0.22,
+      0.06,
+      0.48
+     ],
+     "rot": [
+      0,
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "sfx",
+   "sound": "clink",
+   "when": 20.673,
+   "gain": 0.7
+  },
+  {
+   "type": "pose",
+   "pose": "sip",
+   "when": 21.921,
+   "until": 22.871,
+   "ease": 0.25
+  },
+  {
+   "type": "face",
+   "expr": "content",
+   "when": 22.171,
+   "until": 23.421,
+   "ease": 0.3
+  },
+  {
+   "type": "sfx",
+   "sound": "sip",
+   "when": 22.221,
+   "gain": 0.8
+  },
+  {
+   "type": "face",
+   "expr": "worried",
+   "when": 26.369,
+   "until": 26.839,
+   "ease": 0.08
+  },
+  {
+   "type": "sfx",
+   "sound": "slosh",
+   "when": 26.389,
+   "gain": 0.7
+  },
+  {
+   "type": "look",
+   "pos": [
+    0.15,
+    0.19,
+    0.73
+   ],
+   "when": 26.389,
+   "until": 27.139,
+   "body": false
+  },
+  {
+   "type": "pose",
+   "pose": "catch_mug",
+   "when": 26.409,
+   "until": 27.189,
+   "ease": 0.15
+  },
+  {
+   "type": "face",
+   "expr": "relief",
+   "when": 26.839,
+   "until": 27.839
+  },
+  {
+   "type": "pose",
+   "pose": "reach_mug",
+   "when": 26.939,
+   "until": 27.639,
+   "ease": 0.3
+  },
+  {
+   "type": "sfx",
+   "sound": "clink",
+   "when": 27.319,
+   "gain": 0.8
+  },
+  {
+   "type": "pose",
+   "pose": "push_up",
+   "when": 27.339,
+   "until": 28.589,
+   "ease": 0.3
+  },
+  {
+   "type": "pose",
+   "pose": "rise",
+   "when": 27.439,
+   "until": 28.639,
+   "ease": 0.6
+  },
+  {
+   "type": "sfx",
+   "sound": "creak",
+   "when": 27.489,
+   "gain": 0.9
+  },
+  {
+   "type": "face",
+   "expr": "wince",
+   "when": 27.539,
+   "until": 28.039,
+   "ease": 0.12,
+   "set": {
+    "lid": 0.4
+   }
+  },
+  {
+   "type": "slide",
+   "target": "chair_legs",
+   "by": [
+    0.0,
+    0.16,
+    0.0
+   ],
+   "when": 27.789,
+   "until": 28.389,
+   "sound": "none"
+  },
+  {
+   "type": "slide",
+   "target": "seat",
+   "by": [
+    0.0,
+    0.16,
+    0.0
+   ],
+   "when": 27.789,
+   "until": 28.389,
+   "sound": "scrape"
+  },
+  {
+   "type": "slide",
+   "target": "chair_back",
+   "by": [
+    0.0,
+    0.16,
+    0.0
+   ],
+   "when": 27.789,
+   "until": 28.389,
+   "sound": "none"
+  },
+  {
+   "type": "pose",
+   "pose": "hand_on_back",
+   "when": 28.344,
+   "until": 31.077,
+   "ease": 0.3
+  },
+  {
+   "type": "face",
+   "expr": "wince",
+   "when": 28.344,
+   "until": 29.294,
+   "ease": 0.1
+  },
+  {
+   "type": "face",
+   "expr": "squint",
+   "when": 29.294,
+   "until": 30.927,
+   "set": {
+    "smile": -0.3
+   }
+  },
+  {
+   "type": "pose",
+   "pose": "cap_adjust",
+   "when": 30.877,
+   "until": 31.677,
+   "ease": 0.25
+  },
+  {
+   "type": "sfx",
+   "sound": "clunk_far",
+   "when": 30.977,
+   "gain": 1.0
+  },
+  {
+   "type": "face",
+   "expr": "alert",
+   "when": 31.097,
+   "until": 34.0,
+   "ease": 0.15
+  },
+  {
+   "type": "look",
+   "pos": [
+    -1.6,
+    0.7,
+    0.95
+   ],
+   "when": 31.327,
+   "until": 34.0,
+   "body": true,
+   "rate": 0.06
+  },
+  {
+   "type": "move",
+   "to": [
+    -0.42,
+    0.52,
+    0.0
+   ],
+   "via": [
+    [
+     0.0,
+     0.5,
+     0.0
+    ]
+   ],
+   "when": 31.327,
+   "until": 32.577
+  }
+ ],
+ "camera": [
+  {
+   "at": 0.0,
+   "target": [
+    -0.03,
+    0.42,
+    0.82
+   ],
+   "az": -107.89,
+   "el": 27.75,
+   "dist": 0.558
+  },
+  {
+   "at": 3.655,
+   "target": [
+    -0.03,
+    0.42,
+    0.82
+   ],
+   "az": -105.42,
+   "el": 26.13,
+   "dist": 0.636
+  },
+  {
+   "at": 4.055,
+   "target": [
+    -0.03,
+    0.36,
+    0.78
+   ],
+   "az": -93.87,
+   "el": 25.89,
+   "dist": 0.824
+  },
+  {
+   "at": 5.305,
+   "target": [
+    -0.06,
+    0.32,
+    0.72
+   ],
+   "az": -62,
+   "el": 13,
+   "dist": 1.75
+  },
+  {
+   "at": 7.056,
+   "target": [
+    -0.04,
+    0.36,
+    0.76
+   ],
+   "az": -66,
+   "el": 11,
+   "dist": 1.55
+  },
+  {
+   "at": 9.16,
+   "target": [
+    -0.04,
+    0.4,
+    0.8
+   ],
+   "az": -64,
+   "el": 9,
+   "dist": 1.2
+  },
+  {
+   "at": 14.404,
+   "target": [
+    -0.04,
+    0.4,
+    0.8
+   ],
+   "az": -66,
+   "el": 9,
+   "dist": 1.15
+  },
+  {
+   "at": 16.904,
+   "target": [
+    0.0,
+    0.6,
+    0.85
+   ],
+   "az": -80,
+   "el": 10,
+   "dist": 2.55
+  },
+  {
+   "at": 20.353,
+   "target": [
+    0.02,
+    0.45,
+    0.78
+   ],
+   "az": -70,
+   "el": 10,
+   "dist": 1.9
+  },
+  {
+   "at": 21.453,
+   "target": [
+    0.06,
+    0.34,
+    0.74
+   ],
+   "az": -58,
+   "el": 10,
+   "dist": 1.3
+  },
+  {
+   "at": 27.439,
+   "target": [
+    0.04,
+    0.34,
+    0.76
+   ],
+   "az": -60,
+   "el": 10,
+   "dist": 1.4
+  },
+  {
+   "at": 28.739,
+   "target": [
+    -0.05,
+    0.28,
+    0.85
+   ],
+   "az": -66,
+   "el": 8,
+   "dist": 2.0
+  },
+  {
+   "at": 31.527,
+   "target": [
+    -0.15,
+    0.32,
+    0.88
+   ],
+   "az": -85,
+   "el": 13,
+   "dist": 2.05
+  },
+  {
+   "at": 33.0,
+   "target": [
+    -0.75,
+    0.55,
+    0.9
+   ],
+   "az": -100,
+   "el": 11,
+   "dist": 2.6
+  }
+ ],
+ "cards": [
+  {
+   "style": "live",
+   "when": 0.0,
+   "until": "end",
+   "viewers": [
+    [
+     0.0,
+     3
+    ],
+    [
+     16.646,
+     4
+    ]
+   ]
+  }
+ ],
+ "qa": {
+  "close_ups": [
+   [
+    0.0,
+    4.205
+   ]
+  ],
+  "rests_on": [
+   [
+    "mug",
+    "table_top"
+   ],
+   [
+    "cam_cap",
+    "webcam"
+   ]
+  ],
+  "seat": "seat",
+  "seated_until": 27.439,
+  "frame_points": [
+   "hat",
+   "face",
+   "chest"
+  ],
+  "solid": [
+   "table_top",
+   "table_legs",
+   "seat",
+   "chair_back",
+   "laptop_base",
+   "laptop_screen",
+   "mug"
+  ]
+ }
+}

@@ -1,0 +1,75 @@
+[PASS] table_legs has 20 blocks -- 20 built
+[PASS] table_legs: every block in its own grid cell
+[PASS] table_top has 36 blocks -- 36 built
+[PASS] table_top: every block in its own grid cell
+[PASS] chair_legs has 20 blocks -- 20 built
+[PASS] chair_legs: every block in its own grid cell
+[PASS] seat has 6 blocks -- 6 built
+[PASS] seat: every block in its own grid cell
+[PASS] chair_back has 5 blocks -- 5 built
+[PASS] chair_back: every block in its own grid cell
+[PASS] laptop_base has 6 blocks -- 6 built
+[PASS] laptop_base: every block in its own grid cell
+[PASS] laptop_screen has 6 blocks -- 6 built
+[PASS] laptop_screen: every block in its own grid cell
+[PASS] webcam has 1 blocks -- 1 built
+[PASS] webcam: every block in its own grid cell
+[PASS] cam_cap has 1 blocks -- 1 built
+[PASS] cam_cap: every block in its own grid cell
+[PASS] mug has 1 blocks -- 1 built
+[PASS] mug: every block in its own grid cell
+[PASS] blocks hold still once placed -- 0 moved
+[PASS] chair_legs slides as scripted (1 moves) -- worst difference 0.0000
+[PASS] seat slides as scripted (1 moves) -- worst difference 0.0000
+[PASS] chair_back slides as scripted (1 moves) -- worst difference 0.0000
+[PASS] cam_cap flies on its arc -- worst difference 0.0000
+[PASS] world built: grass ground, morning, clear
+[PASS] birds fly
+[PASS] grandpa stays in the picture every frame (hat, face, chest, face in close-ups) -- 0 frames out; closest to the edge 5.9% of the frame
+[PASS] R hand stays on the cam_cap while holding it (4.2-5.4 s) -- largest gap 0.0 mm
+[PASS] L hand stays on the mug while holding it (20.7-27.3 s) -- largest gap 0.0 mm
+[PASS] mug rests on the table_top at the end -- gap 0.3 mm
+[PASS] cam_cap rests on the webcam at the end -- gap 0.4 mm
+[PASS] seated on the seat (hip joint 4.5-8 cm above the seat) -- 5.6-6.4 cm
+[FAIL] no clipping into table_top, table_legs, seat, chair_back, laptop_base, laptop_screen, mug (sampled every 3rd frame) -- 4 frames, deepest 1.4 cm (first frame 129)
+[PASS] length about 30 s (within -10%..+10%) -- 33.00 s
+[PASS] face shows "squint" at -1.2 s -- face offset 0.0541
+[PASS] face shows "raised" at 1.9 s -- face offset 0.0160
+[PASS] face shows "surprised" at 4.0 s -- face offset 0.0199
+[PASS] face shows "side_eye" at 4.9 s -- face offset 0.0348
+[PASS] face shows "side_eye" at 8.0 s -- face offset 0.0492
+[PASS] face shows "raised" at 10.0 s -- face offset 0.0160
+[PASS] face shows "confused" at 10.7 s -- face offset 0.0121
+[PASS] face shows "smirk" at 13.1 s -- face offset 0.0293
+[PASS] face shows "warm" at 16.3 s -- face offset 0.0457
+[PASS] face shows "smile" at 17.2 s -- face offset 0.0421
+[PASS] face shows "smirk" at 19.4 s -- face offset 0.0293
+[PASS] face shows "content" at 22.8 s -- face offset 0.0621
+[PASS] face shows "worried" at 26.6 s -- face offset 0.0269
+[PASS] face shows "relief" at 27.3 s -- face offset 0.0526
+[PASS] face shows "wince" at 27.8 s -- face offset 0.0448
+[PASS] face shows "wince" at 28.8 s -- face offset 0.0737
+[PASS] face shows "squint" at 30.1 s -- face offset 0.0557
+[PASS] face shows "alert" at 32.5 s -- face offset 0.0154
+[PASS] continuity state saved and matches the last frame
+[PASS] mouth moves on: "Hello? Can anybody hear me?"
+[PASS] mouth moves on: "Is this thing on?"
+[PASS] mouth moves on: "An old man talking to a box."
+[PASS] mouth moves on: "My grandfather would've had me committed."
+[PASS] mouth moves on: "Three viewers?"
+[PASS] mouth moves on: "I get more attention at the pharmacy blood p"
+[PASS] mouth moves on: "Anyway, welcome to Grandpa's Block Lab."
+[PASS] mouth moves on: "Apparently I'm a content creator now."
+[PASS] mouth moves on: "Ah, coffee."
+[PASS] mouth moves on: "The one reliable thing in my life."
+[PASS] mouth moves on: "Until I spill it."
+[PASS] mouth moves on: "All right, up we go."
+[PASS] mouth moves on: "Oh! My back just filed a complaint."
+[PASS] mouth moves on: "...What was that?"
+[PASS] mouth closed between lines
+[PASS] MP4 1920x1080 H.264 yuv420p 30 fps
+[PASS] MP4 AAC audio, full length -- 33.00 s, 990 frames
+[PASS] loudness about -14 LUFS, no clipping -- -14.3 LUFS, peak -2.0 dBFS
+[PASS] fills the 16:9 frame edge to edge (no black bars) -- 12 frames sampled
+
+OVERALL: SOME CHECKS FAILED

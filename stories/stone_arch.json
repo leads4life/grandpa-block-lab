@@ -1,0 +1,1241 @@
+{
+ "title": "Why stone arches stand",
+ "slug": "stone_arch",
+ "voice": "am_santa",
+ "speed": 0.95,
+ "channel_tag": "GRANDPA'S BLOCK LAB",
+ "lines": [
+  {
+   "id": "hook",
+   "text": "Roman bridges have stood for two thousand years... with no glue at all. How?",
+   "pause": 0.5
+  },
+  {
+   "id": "flat",
+   "text": "Lay stone flat across a gap, and the middle sags. Its bottom gets stretched...",
+   "pause": 0.15
+  },
+  {
+   "id": "crack",
+   "text": "and stone hates being stretched!",
+   "pause": 1.0
+  },
+  {
+   "id": "arch",
+   "text": "Now curve the stones into an arch. Each one leans on the next.",
+   "pause": 0.3
+  },
+  {
+   "id": "key",
+   "text": "The keystone at the top locks them all together.",
+   "pause": 0.3
+  },
+  {
+   "id": "squeeze",
+   "text": "Now every stone gets squeezed instead. And stone loves being squeezed.",
+   "pause": 0.4
+  },
+  {
+   "id": "payoff",
+   "text": "Pile on more weight? It only squeezes tighter. That's why Roman arches are still standing!",
+   "pause": 0.0
+  }
+ ],
+ "grandpa": {
+  "start": [
+   0.0,
+   0.2
+  ],
+  "outfit": {
+   "hat": "hardhat",
+   "extras": [
+    "vest"
+   ]
+  }
+ },
+ "structures": {
+  "flat": {
+   "cells": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     9,
+     0,
+     0
+    ],
+    [
+     10,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     1,
+     1,
+     0
+    ],
+    [
+     9,
+     1,
+     0
+    ],
+    [
+     10,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     1,
+     0,
+     1
+    ],
+    [
+     9,
+     0,
+     1
+    ],
+    [
+     10,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     9,
+     1,
+     1
+    ],
+    [
+     10,
+     1,
+     1
+    ],
+    [
+     0,
+     0,
+     2
+    ],
+    [
+     1,
+     0,
+     2
+    ],
+    [
+     9,
+     0,
+     2
+    ],
+    [
+     10,
+     0,
+     2
+    ],
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     9,
+     1,
+     2
+    ],
+    [
+     10,
+     1,
+     2
+    ],
+    [
+     0,
+     0,
+     3
+    ],
+    [
+     1,
+     0,
+     3
+    ],
+    [
+     9,
+     0,
+     3
+    ],
+    [
+     10,
+     0,
+     3
+    ],
+    [
+     0,
+     1,
+     3
+    ],
+    [
+     1,
+     1,
+     3
+    ],
+    [
+     9,
+     1,
+     3
+    ],
+    [
+     10,
+     1,
+     3
+    ],
+    [
+     0,
+     0,
+     4
+    ],
+    [
+     1,
+     0,
+     4
+    ],
+    [
+     9,
+     0,
+     4
+    ],
+    [
+     10,
+     0,
+     4
+    ],
+    [
+     0,
+     1,
+     4
+    ],
+    [
+     1,
+     1,
+     4
+    ],
+    [
+     9,
+     1,
+     4
+    ],
+    [
+     10,
+     1,
+     4
+    ],
+    [
+     0,
+     0,
+     5
+    ],
+    [
+     1,
+     0,
+     5
+    ],
+    [
+     9,
+     0,
+     5
+    ],
+    [
+     10,
+     0,
+     5
+    ],
+    [
+     0,
+     1,
+     5
+    ],
+    [
+     1,
+     1,
+     5
+    ],
+    [
+     9,
+     1,
+     5
+    ],
+    [
+     10,
+     1,
+     5
+    ],
+    [
+     0,
+     0,
+     6
+    ],
+    [
+     1,
+     0,
+     6
+    ],
+    [
+     2,
+     0,
+     6
+    ],
+    [
+     3,
+     0,
+     6
+    ],
+    [
+     4,
+     0,
+     6
+    ],
+    [
+     5,
+     0,
+     6
+    ],
+    [
+     6,
+     0,
+     6
+    ],
+    [
+     7,
+     0,
+     6
+    ],
+    [
+     8,
+     0,
+     6
+    ],
+    [
+     9,
+     0,
+     6
+    ],
+    [
+     10,
+     0,
+     6
+    ],
+    [
+     0,
+     1,
+     6
+    ],
+    [
+     1,
+     1,
+     6
+    ],
+    [
+     2,
+     1,
+     6
+    ],
+    [
+     3,
+     1,
+     6
+    ],
+    [
+     4,
+     1,
+     6
+    ],
+    [
+     5,
+     1,
+     6
+    ],
+    [
+     6,
+     1,
+     6
+    ],
+    [
+     7,
+     1,
+     6
+    ],
+    [
+     8,
+     1,
+     6
+    ],
+    [
+     9,
+     1,
+     6
+    ],
+    [
+     10,
+     1,
+     6
+    ]
+   ],
+   "at": [
+    -0.88,
+    0.0
+   ],
+   "material": "sandstone",
+   "stand": "right",
+   "parts": {
+    "mid": "z == 6 and 3 <= x <= 7"
+   },
+   "expect_blocks": 70
+  },
+  "arch": {
+   "cells": [
+    [
+     3,
+     0,
+     6
+    ],
+    [
+     3,
+     1,
+     6
+    ],
+    [
+     4,
+     0,
+     6
+    ],
+    [
+     4,
+     1,
+     6
+    ],
+    [
+     6,
+     0,
+     6
+    ],
+    [
+     6,
+     1,
+     6
+    ],
+    [
+     7,
+     0,
+     6
+    ],
+    [
+     7,
+     1,
+     6
+    ],
+    [
+     2,
+     0,
+     5
+    ],
+    [
+     2,
+     1,
+     5
+    ],
+    [
+     3,
+     0,
+     5
+    ],
+    [
+     3,
+     1,
+     5
+    ],
+    [
+     7,
+     0,
+     5
+    ],
+    [
+     7,
+     1,
+     5
+    ],
+    [
+     8,
+     0,
+     5
+    ],
+    [
+     8,
+     1,
+     5
+    ],
+    [
+     1,
+     0,
+     4
+    ],
+    [
+     1,
+     1,
+     4
+    ],
+    [
+     2,
+     0,
+     4
+    ],
+    [
+     2,
+     1,
+     4
+    ],
+    [
+     8,
+     0,
+     4
+    ],
+    [
+     8,
+     1,
+     4
+    ],
+    [
+     9,
+     0,
+     4
+    ],
+    [
+     9,
+     1,
+     4
+    ],
+    [
+     0,
+     0,
+     3
+    ],
+    [
+     0,
+     1,
+     3
+    ],
+    [
+     1,
+     0,
+     3
+    ],
+    [
+     1,
+     1,
+     3
+    ],
+    [
+     9,
+     0,
+     3
+    ],
+    [
+     9,
+     1,
+     3
+    ],
+    [
+     10,
+     0,
+     3
+    ],
+    [
+     10,
+     1,
+     3
+    ],
+    [
+     0,
+     0,
+     2
+    ],
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     1,
+     0,
+     2
+    ],
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     9,
+     0,
+     2
+    ],
+    [
+     9,
+     1,
+     2
+    ],
+    [
+     10,
+     0,
+     2
+    ],
+    [
+     10,
+     1,
+     2
+    ],
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     1
+    ],
+    [
+     1,
+     0,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     9,
+     0,
+     1
+    ],
+    [
+     9,
+     1,
+     1
+    ],
+    [
+     10,
+     0,
+     1
+    ],
+    [
+     10,
+     1,
+     1
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     1,
+     1,
+     0
+    ],
+    [
+     9,
+     0,
+     0
+    ],
+    [
+     9,
+     1,
+     0
+    ],
+    [
+     10,
+     0,
+     0
+    ],
+    [
+     10,
+     1,
+     0
+    ]
+   ],
+   "at": [
+    0.32,
+    -0.05
+   ],
+   "centered": false,
+   "material": "stone",
+   "stand": "left",
+   "expect_blocks": 56
+  },
+  "keystone": {
+   "cells": [
+    [
+     5,
+     0,
+     6
+    ],
+    [
+     5,
+     1,
+     6
+    ]
+   ],
+   "at": [
+    0.32,
+    -0.05
+   ],
+   "centered": false,
+   "material": "gold",
+   "stand": "right",
+   "parts": {
+    "all": "z >= 0"
+   },
+   "expect_blocks": 2
+  },
+  "load": {
+   "cells": [
+    [
+     3,
+     0,
+     7
+    ],
+    [
+     4,
+     0,
+     7
+    ],
+    [
+     5,
+     0,
+     7
+    ],
+    [
+     6,
+     0,
+     7
+    ],
+    [
+     7,
+     0,
+     7
+    ],
+    [
+     3,
+     1,
+     7
+    ],
+    [
+     4,
+     1,
+     7
+    ],
+    [
+     5,
+     1,
+     7
+    ],
+    [
+     6,
+     1,
+     7
+    ],
+    [
+     7,
+     1,
+     7
+    ],
+    [
+     3,
+     0,
+     8
+    ],
+    [
+     4,
+     0,
+     8
+    ],
+    [
+     5,
+     0,
+     8
+    ],
+    [
+     6,
+     0,
+     8
+    ],
+    [
+     7,
+     0,
+     8
+    ],
+    [
+     3,
+     1,
+     8
+    ],
+    [
+     4,
+     1,
+     8
+    ],
+    [
+     5,
+     1,
+     8
+    ],
+    [
+     6,
+     1,
+     8
+    ],
+    [
+     7,
+     1,
+     8
+    ]
+   ],
+   "at": [
+    0.32,
+    -0.05
+   ],
+   "centered": false,
+   "material": "brick",
+   "stand": "right",
+   "expect_blocks": 20
+  }
+ },
+ "actions": [
+  {
+   "type": "face_camera",
+   "when": 0.0,
+   "until": [
+    "hook",
+    "end"
+   ]
+  },
+  {
+   "type": "build",
+   "target": "flat",
+   "order": "z",
+   "when": [
+    "hook",
+    0.15
+   ],
+   "until": [
+    "flat",
+    0.25
+   ]
+  },
+  {
+   "type": "point",
+   "target": "flat",
+   "offset": [
+    0,
+    0,
+    0.62
+   ],
+   "when": [
+    "flat",
+    0.3
+   ],
+   "until": [
+    "crack",
+    "end"
+   ]
+  },
+  {
+   "type": "crack",
+   "target": "flat",
+   "part": "mid",
+   "when": [
+    "flat",
+    0.55
+   ],
+   "until": [
+    "crack",
+    0.7
+   ]
+  },
+  {
+   "type": "collapse",
+   "target": "flat",
+   "when": [
+    "crack",
+    "end",
+    0.05
+   ]
+  },
+  {
+   "type": "build",
+   "target": "arch",
+   "order": "z",
+   "when": [
+    "arch",
+    0.1
+   ],
+   "until": [
+    "arch",
+    "end",
+    0.1
+   ]
+  },
+  {
+   "type": "build",
+   "target": "keystone",
+   "stand_at": [
+    0.0,
+    0.2
+   ],
+   "when": [
+    "key",
+    0.1
+   ],
+   "until": [
+    "key",
+    0.4
+   ]
+  },
+  {
+   "type": "highlight",
+   "target": "keystone",
+   "part": "all",
+   "when": [
+    "key",
+    0.4
+   ],
+   "until": [
+    "squeeze",
+    "start"
+   ]
+  },
+  {
+   "type": "point",
+   "target": "arch",
+   "offset": [
+    0.55,
+    0.05,
+    0.45
+   ],
+   "when": [
+    "squeeze",
+    "start"
+   ],
+   "until": [
+    "squeeze",
+    "end"
+   ]
+  },
+  {
+   "type": "build",
+   "target": "load",
+   "order": "z",
+   "stand_at": [
+    0.0,
+    0.2
+   ],
+   "when": [
+    "payoff",
+    0.05
+   ],
+   "until": [
+    "payoff",
+    0.45
+   ]
+  },
+  {
+   "type": "face_camera",
+   "when": [
+    "payoff",
+    0.55
+   ],
+   "until": "end"
+  }
+ ],
+ "camera": [
+  {
+   "at": 0.0,
+   "target": [
+    -0.48,
+    0.05,
+    0.42
+   ],
+   "az": -80,
+   "el": 10,
+   "dist": 2.0
+  },
+  {
+   "at": [
+    "hook",
+    "end"
+   ],
+   "target": [
+    -0.6,
+    0.0,
+    0.38
+   ],
+   "az": -82,
+   "el": 14,
+   "dist": 2.3
+  },
+  {
+   "at": [
+    "crack",
+    "end",
+    0.6
+   ],
+   "target": [
+    -0.62,
+    0.0,
+    0.3
+   ],
+   "az": -86,
+   "el": 16,
+   "dist": 2.4
+  },
+  {
+   "at": [
+    "arch",
+    0.15
+   ],
+   "target": [
+    0.62,
+    0.0,
+    0.36
+   ],
+   "az": -94,
+   "el": 14,
+   "dist": 1.85
+  },
+  {
+   "at": [
+    "squeeze",
+    "end"
+   ],
+   "target": [
+    0.66,
+    0.0,
+    0.38
+   ],
+   "az": -98,
+   "el": 14,
+   "dist": 1.75
+  },
+  {
+   "at": "end",
+   "target": [
+    0.64,
+    0.0,
+    0.46
+   ],
+   "az": -104,
+   "el": 16,
+   "dist": 2.05
+  }
+ ],
+ "cards": [
+  {
+   "style": "title",
+   "text": "2,000 YEARS",
+   "color": "white",
+   "y": 470,
+   "when": [
+    "hook",
+    "start"
+   ],
+   "until": [
+    "hook",
+    "end",
+    0.2
+   ]
+  },
+  {
+   "style": "title",
+   "text": "NO GLUE?",
+   "color": "amber",
+   "y": 590,
+   "size": 110,
+   "when": [
+    "hook",
+    0.55
+   ],
+   "until": [
+    "hook",
+    "end",
+    0.2
+   ]
+  },
+  {
+   "style": "tag",
+   "text": "STRETCHED",
+   "anchor": "flat:part:mid",
+   "color": "red",
+   "dy": 60,
+   "when": [
+    "flat",
+    0.7
+   ],
+   "until": [
+    "crack",
+    "end"
+   ]
+  },
+  {
+   "style": "impact",
+   "text": "CRACK!",
+   "color": "red",
+   "y": 560,
+   "when": [
+    "crack",
+    "end",
+    0.05
+   ],
+   "until": [
+    "crack",
+    "end",
+    1.1
+   ]
+  },
+  {
+   "style": "title",
+   "text": "ARCH",
+   "color": "cyan",
+   "y": 470,
+   "when": [
+    "arch",
+    0.2
+   ],
+   "until": [
+    "key",
+    "start"
+   ]
+  },
+  {
+   "style": "bubble",
+   "text": "KEYSTONE",
+   "anchor": "keystone:top",
+   "color": "amber",
+   "when": [
+    "key",
+    0.4
+   ],
+   "until": [
+    "squeeze",
+    "start"
+   ]
+  },
+  {
+   "style": "panel",
+   "y": 340,
+   "border": "cyan",
+   "when": [
+    "squeeze",
+    "start"
+   ],
+   "until": [
+    "payoff",
+    "start",
+    -0.1
+   ],
+   "rows": [
+    {
+     "text": "STONE vs STRETCHING: weak",
+     "color": "red",
+     "at": [
+      "squeeze",
+      0.05
+     ],
+     "size": 46
+    },
+    {
+     "text": "STONE vs SQUEEZING: strong",
+     "color": "green",
+     "at": [
+      "squeeze",
+      0.6
+     ],
+     "size": 46
+    }
+   ]
+  },
+  {
+   "style": "bubble",
+   "text": "+{count:load} BLOCKS",
+   "anchor": "load:top",
+   "color": "cyan",
+   "when": [
+    "payoff",
+    0.05
+   ],
+   "until": [
+    "payoff",
+    "end",
+    0.3
+   ]
+  },
+  {
+   "style": "end",
+   "title1": "ARCHES",
+   "title2": "LOVE A SQUEEZE",
+   "sub": "Stone resists squeezing about 10x better than stretching",
+   "cta": "Follow for more Block Lab",
+   "when": [
+    "payoff",
+    "end",
+    0.2
+   ]
+  }
+ ],
+ "world": {
+  "ground": "grass",
+  "time": "morning",
+  "weather": "clouds",
+  "animals": [
+   "birds",
+   "cat"
+  ]
+ }
+}

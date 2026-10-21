@@ -35,8 +35,8 @@ md("""
 This notebook renders the **approved** scene at full quality: landscape **1920×1080, 30 fps**, picture edge to edge
 (no bars), with captions, the `LIVE` badge, procedural ASMR sound and −14 LUFS audio, then runs the automatic checks.
 
-* Default: **Episode 1, Scene 002, "Clunk, Clunk... Rest."** → `grandpa_ep01_scene002_FINAL.mp4` (+ its continuity state). Set `EXAMPLE = "grandpa_ep01_scene001"` for Scene 001.
-* Grandpa's voice and timings for both scenes are **frozen** (embedded below), so the final matches the approved preview
+* Default: **Episode 1, Scene 002, "Clunk, Clunk... Rest."** → `grandpa_ep01_scene002_FINAL.mp4` (+ its continuity state). Set `EXAMPLE = "grandpa_ep01_scene001"` for Scene 001, or `EXAMPLE = "grandpa_ep01_scene003"` for Scene 003 "Rotten to the Core".
+* Grandpa's voice and timings for every episode scene are **frozen** (embedded below), so the final matches the approved preview
   exactly. Set `USE_FROZEN_VOICE = False` to re-synthesise with Kokoro (`am_santa`) instead.
 * Any other story still works, including the vertical 1080×1920 **Shorts** (e.g. `lock_key`, `trebuchet`): upload it in
   section 2, or set `EXAMPLE`.

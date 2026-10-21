@@ -1,0 +1,21 @@
+# QA: Episode 1, Scene 003 "Rotten to the Core" (detailed preview)
+
+- Length 32.87 s (target 30 s, +9.6%, within the allowed +10%). 986 frames, 30 fps. -14.2 LUFS.
+- **Automated checks (bl_verify): all 102 pass**, including:
+  - **Hand on the webcam** while carrying it and setting it down: 0.0 mm gap. It ends resting on the bank stone (0.4 mm).
+  - **No clipping** into the machine, the new post, the footing, the new post2 or the stone (0 frames).
+  - **Grandpa in frame** every frame (closest 9% from the edge). The camera never whips (fastest 0.2°/frame outside cuts).
+  - post2 rests on the footing (0.4 mm). Mouth moves on every line and closes between lines.
+- **Camera rules** (new this scene, now in the Production Bible):
+  - Every move is checked frame by frame: never inside a wall, canopy or the machine, clear line of sight to Grandpa, at most 15% foreground clutter.
+  - **3 cuts, all on story beats**: the machine, the rabbit wide shot, the footprints.
+- **Repair shots** (your note): moved so the post and stone footing sit beside him, not behind his back.
+- **Fixes during QA**:
+  - A checker bug: holds carried over from the previous scene were read from the wrong frames.
+  - His walk now goes around the new post.
+  - The point stops short of the post.
+  - The webcam sits on a stone (Rule 2).
+- **Continuity**:
+  - Grandpa ends at the work spot by the footprints.
+  - The webcam is set down on the bank stone, not carried.
+  - The hammer runs on both cams. LIVE 4 viewers.

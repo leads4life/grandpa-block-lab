@@ -534,6 +534,18 @@ for c in W.get("critters", []):
             x, y = C.critter_state(dict(c, hop=0.0), c["startle"])[:2]
             place(stems["fx"], c["startle"] + 0.03, squeal(), heard(c["startle"], x, y, 0.8, 0.15, 1.0))
         continue
+    if c["kind"] == "memory_cloud":                             # the remembered boar: faint, far off, reverberant
+        b = c.get("boar", {})
+        for key, snd, g in (("huffs", huff, 0.5), ("clacks", tusk_clack, 0.35), ("stomps", hoof_stomp, 0.45)):
+            for ts in b.get(key, []):
+                place(stems["fx"], ts, lp(reverb(snd(), 1.2, 0.5), 3000), g)
+        continue
+    if c["kind"] == "hologram":                                 # a soft rising shimmer as the drawing lifts off the page
+        x = tt(1.2)
+        f = 880 + 660 * x / x[-1]
+        sh = sum(a * np.sin(2 * np.pi * np.cumsum(f * m) / SR) for m, a in ((1.0, 0.5), (1.5, 0.25), (2.0, 0.15)))
+        place(stems["fx"], c["visible"][0], sh * np.hanning(len(x)) * 0.12)
+        continue
     if c["kind"] == "tobias":                                   # a kid's light footsteps on the grass
         for ts in C.actor_steps(dict(c, stride=c.get("stride", 0.16))):
             x, y = C.critter_state(dict(c, hop=0.0), ts)[:2]

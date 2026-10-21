@@ -24,8 +24,9 @@ def rotz(v, deg):
 # ---------------------------------------------------------------- the world exactly as Scene 002 left it
 for name, st in S2["structures"].items():
     st = json.loads(json.dumps(st))
-    root = C2["structures"][name]["root"]
-    st["at"] = [round(root[0][3], 4), round(root[1][3], 4), round(root[2][3], 4)]
+    if name not in ("wheel", "axle", "cam1", "cam2"):                # spinning parts: continuity stores them rotated about
+        root = C2["structures"][name]["root"]                        # the pivot, so they keep their own place; their spin
+        st["at"] = [round(root[0][3], 4), round(root[1][3], 4), round(root[2][3], 4)]   # carries on from the clock instead
     S[name] = st
 CARRY = {"char": [-0.17, -0.18, 0.40]}                              # how he held the webcam at the end of Scene 002
 CUBE_OFF = (0.0, -0.1, 0.35)

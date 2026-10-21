@@ -247,20 +247,21 @@ def build_memory_cloud(sc, c, fps, nf):
     root = bpy.data.objects.new("MemoryCloud", None)
     sc.collection.objects.link(root)
     M = [VK.mat("Cloud_lit", (0.93, 0.94, 0.97), rough=1.0), VK.mat("Cloud_shade", (0.78, 0.80, 0.86), rough=1.0)]
-    puffs = [((0, 0, 0.02), (0.62, 0.30, 0.30), 0), ((-0.24, 0, 0.12), (0.34, 0.28, 0.30), 0), ((0.22, 0, 0.14), (0.38, 0.28, 0.30), 0),
-             ((0.02, 0, 0.2), (0.40, 0.26, 0.24), 0), ((0, 0, -0.1), (0.52, 0.26, 0.10), 1)]
+    B = 0.06                                                        # the puffs sit back; the boar plays on the ledge in front
+    puffs = [((0, B, 0.04), (0.62, 0.30, 0.30), 0), ((-0.24, B, 0.14), (0.34, 0.28, 0.30), 0), ((0.22, B, 0.16), (0.38, 0.28, 0.30), 0),
+             ((0.02, B, 0.22), (0.40, 0.26, 0.24), 0), ((0, -0.04, -0.1), (0.56, 0.40, 0.10), 1)]
     tail = [((0.07, 0, -0.26), (0.08, 0.08, 0.08), 0), ((0.11, 0, -0.38), (0.05, 0.05, 0.05), 0)]   # little puffs down to the head
     cloud = VK.mesh_obj("MemoryCloudPuffs", puffs + tail, M, parent=root)
-    spec = dict(kind="boar", path=[[-1.0, 0.0, -0.02], [nf / fps + 1, 0.0, -0.02]], mood=[[-9.0, "agitated"]],
+    slot = bpy.data.objects.new("MemoryBoarSlot", None)             # the mini boar's stage: scaled down, standing on the ledge
+    sc.collection.objects.link(slot)
+    slot.parent = root
+    slot.location = (0.0, 0.0, -0.05)
+    slot.scale = (0.26, 0.26, 0.26)
+    y_ = -0.15 / 0.26                                               # (its own keys are in the slot's scaled space)
+    spec = dict(kind="boar", path=[[-1.0, 0.0, y_], [nf / fps + 1, 0.0, y_]], mood=[[-9.0, "agitated"]],
                 yaw=[[-9.0, c.get("yaw", 180.0)]], **{k: v for k, v in c.get("boar", {}).items()})
     boar = build_boar_actor(sc, spec, fps, nf)
-    boar.parent = root
-    boar.scale = (0.26, 0.26, 0.26)
-    # (the boar keys its own location in its parent's space: it stands on the cloud's floor; scale it into the cloud)
-    for fc in (boar.animation_data.action.fcurves if boar.animation_data and boar.animation_data.action else []):
-        if fc.data_path == "location" and fc.array_index == 2:
-            for kp in fc.keyframe_points:
-                kp.co.y = kp.co.y * 0.26 - 0.08
+    boar.parent = slot
     vis = c.get("visible", [-1e9, 1e9])
     x0, y0, z0 = c["at"]
     for f in range(nf):

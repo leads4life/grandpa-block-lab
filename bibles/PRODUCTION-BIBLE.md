@@ -135,6 +135,10 @@ GitHub with `engine/tools/backup_to_github.py`:
   - the LIVE viewer count
   - the ambience type and the last line
 - The next scene starts its generator from that file: Grandpa's start position, facing, pose, prop positions, camera and viewer count.
+- **Never carry a spinning part's matrix** (wheel, axle, cams). Its stored matrix is rotated about the pivot, so its
+  translation is not a position. Keep the part's own `at`, and continue the spin from the machine's clock. (Bug found 2026-10-21:
+  Scenes 003–005 had the waterwheel and axle floating about 1.5 m up in the trees. Fixed in the Scene 003 generator, with
+  003–005 regenerated. Only those four parts moved.)
 
 ## Known engine limits and next steps
 - **Picking up exactly where a scene ended.** Scene 002's generator has to copy the end state across by hand. It reads the continuity file, then sets Grandpa's start position and each prop's position in its story JSON. A small helper that does this automatically is the planned next step.

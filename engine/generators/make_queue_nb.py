@@ -102,6 +102,8 @@ os.makedirs("build/audio", exist_ok=True)
 shutil.copy(SCENE["dir"] + "/story.json", "build/story.json")
 shutil.copy(SCENE["dir"] + "/dialogue.json", "build/dialogue.json")
 PKG = SCENE["dir"]
+if os.path.isdir(PKG + "/frozen"):                   # remembered lines a flashback echoes (earlier scenes' frozen voices)
+    shutil.copytree(PKG + "/frozen", "frozen", dirs_exist_ok=True)
 !ffmpeg -v error -y -i {PKG}/voice.flac -ar 48000 -ac 1 -c:a pcm_s16le build/audio/voice.wav
 story = json.load(open("build/story.json"))
 print("story:", story["title"], "|", len(story["lines"]), "lines | frozen voice", SCENE["film"], "s")

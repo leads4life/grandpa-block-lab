@@ -47,6 +47,11 @@ def main():
     shutil.copy(story_p, os.path.join(dst, "story.json"))
     shutil.copy(voice_p, os.path.join(dst, "voice.flac"))
     shutil.copy(dlg_p, os.path.join(dst, "dialogue.json"))
+    for src in sorted({a["sound"].split("|")[1] for a in story.get("actions", []) if a.get("type") == "sfx" and a["sound"].startswith("echo|")}):
+        fz = os.path.join(dst, "frozen", src)                         # a flashback echoes an earlier scene's frozen line
+        os.makedirs(fz, exist_ok=True)
+        for n in ("voice.flac", "dialogue.json"):
+            shutil.copy(os.path.join(repo, "frozen", src, n), os.path.join(fz, n))
     man = dict(slug=slug, title=story.get("title", slug), episode=sc.get("episode"), scene=sc.get("scene"), film=dlg["film"],
                engine_commit=commit, engine_files=files, engine_sha=h.hexdigest()[:12], accepted_fails=a.accept,
                approved=datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))

@@ -14,6 +14,25 @@ later choice, and every reveal has to pay off what was set up, measurably:
 - **Leaving**: when he leaves, he picks it back up (or deliberately leaves it, as a gag).
 - **Where it is** goes in the continuity file every scene: carried, or set down at a position. The next scene starts from that.
 
+## Rule 3: the approval gate (user, 2026-10-21)
+Every scene is made **30 s at a time**. Finished scenes are **pooled**, and episodes are **stitched later**. After each preview:
+- **Always ask: "Send this to the workflow pool?"**
+  - **Yes**:
+    1. Freeze the voice.
+    2. Export the scene package (`story.json` + `voice.flac` + `dialogue.json`) to the render **queue**.
+    3. The Colab render notebook renders one scene per run, and puts the finished clip in the **pool**.
+  - **No**: ask for further instructions, fix the scene, show a new preview, and ask again.
+- Nothing enters the queue without the user's yes.
+- Stitching an episode from the pool is a separate step. It checks that each scene's end state matches the next one's start, and it levels the audio once across the whole episode.
+
+## Rule 4: back up after every run (user, 2026-10-21)
+The working machine is temporary. **After every run** (each preview, fix round or approval), the whole project goes to
+GitHub with `engine/tools/backup_to_github.py`:
+- **What it copies**: the engine, the generators and tools, the bibles and designs, the stories, the frozen voices,
+  every scene folder (story, generator, continuity, previews, QA) and the notebooks.
+- It commits and pushes to the current working branch, then confirms that GitHub has the same commit.
+- **Only** a backup goes to the working branch. A scene enters the render queue only through Rule 3's yes.
+
 ## Formats
 - **Episode scenes**: `"format": "wide"`, so 1920×1080 landscape, 30 fps, H.264 yuv420p, AAC 48 kHz, −14 LUFS.
   The picture fills the frame edge to edge (verified: no black bars).

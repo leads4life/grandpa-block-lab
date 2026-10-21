@@ -1599,8 +1599,8 @@
    ],
    "at": [
     0.0,
-    0.3185,
-    1.4655
+    0.0,
+    0.0
    ],
    "centered": false,
    "material": "oldwood",
@@ -1652,8 +1652,8 @@
    ],
    "at": [
     0.0,
-    0.3185,
-    1.4655
+    0.0,
+    0.0
    ],
    "centered": false,
    "material": "wood",
@@ -1675,8 +1675,8 @@
    ],
    "at": [
     0.0,
-    0.3185,
-    1.4655
+    0.0,
+    0.0
    ],
    "centered": false,
    "material": "wood",
@@ -1701,8 +1701,8 @@
    ],
    "at": [
     0.0,
-    0.2924,
-    1.4454
+    0.0,
+    0.0
    ],
    "centered": false,
    "material": "wood",

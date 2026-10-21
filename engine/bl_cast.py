@@ -243,7 +243,7 @@ def build_tobias_actor(sc, c, fps, nf, mouth=None):
 def build_memory_cloud(sc, c, fps, nf):
     """A TV-style memory cloud over someone's head: a puffy grey cloud (small puffs trailing down to the head) with a mini
     agitated boar inside replaying the moment. {"kind": "memory_cloud", "at": [x, y, z], "visible": [t_in, t_out],
-    "yaw": degrees (the boar faces this way), "boar": {"huffs": [...], "stomps": [...], "clacks": [...]}} -- times absolute."""
+    "yaw": degrees (the boar faces this way), "boar": {"huffs": [...], "stomps": [...], "clacks": [...]}, "size": 1.0} -- times absolute."""
     root = bpy.data.objects.new("MemoryCloud", None)
     sc.collection.objects.link(root)
     M = [VK.mat("Cloud_lit", (0.93, 0.94, 0.97), rough=1.0), VK.mat("Cloud_shade", (0.78, 0.80, 0.86), rough=1.0)]
@@ -274,6 +274,7 @@ def build_memory_cloud(sc, c, fps, nf):
                 k = (1 + 0.35 * math.sin(math.pi * min(u, 0.5) * 2)) if u < 0.5 else (1.35 * (1 - (u - 0.5) / 0.5))
         bob = 0.025 * math.sin(2 * math.pi * 0.45 * t)
         root.location = (x0 + 0.015 * math.sin(2 * math.pi * 0.3 * t), y0, z0 + bob)
+        k *= c.get("size", 1.0)                                    # "size": a smaller (or bigger) cloud
         root.scale = (k, k, k)
         root.rotation_euler = (0, 0, math.radians(c.get("face", 0.0)))
         _key(root, "location", "scale", "rotation_euler", f=f)

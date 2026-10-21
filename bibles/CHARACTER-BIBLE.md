@@ -21,7 +21,7 @@ Only established facts. "Engine" = what the renderer can actually do today.
 - The face rig moves his *existing* face blocks only. The one addition is a hairline-thin skin-coloured eyelid strip, invisible when his eyes are open.
 
 ## Running gag: Grandpa's slang
-- Now and then, **at most once per scene**, he tries new-generation slang and **gets it a bit wrong**: aimed at the wrong thing (calling a tree "bruh"), or with the wrong meaning ("no cap" while touching his cap, "slay" about a sandwich).
+- **Woven in whenever the moment calls for it** (user, 2026-10-21; replaces "at most once per scene"), never forced and never in a sincere beat. He **always gets it a bit wrong**: aimed at the wrong thing (calling a tree "bruh"), or with the wrong meaning ("no cap" while touching his cap, "slay" about a sandwich).
 - He's proud of himself every time, and it's warm, never mean.
 - **Fear catchphrase: "NO CAP, CHAT!"** (user-defined recurring trait).
   - He blurts it only when he is **genuinely scared**, especially around boars.

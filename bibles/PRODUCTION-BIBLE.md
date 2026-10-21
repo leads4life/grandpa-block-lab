@@ -15,7 +15,10 @@ later choice, and every reveal has to pay off what was set up, measurably:
 - **Where it is** goes in the continuity file every scene: carried, or set down at a position. The next scene starts from that.
 
 ## Rule 3: the approval gate (user, 2026-10-21)
-Every scene is made **30 s at a time**. Finished scenes are **pooled**, and episodes are **stitched later**. After each preview:
+Every scene is **60 s ±10%** from Scene 006 on (user, 2026-10-21): one complete comic arc (setup, escalation, punchline,
+button) with room for pauses and the micro-lesson. Scenes 001–005 stay at their approved ~30 s. Each scene is **rendered in
+two ~30 s parts** (one Colab run each, so a disconnect still costs very little), and the parts are joined back into the scene.
+Finished scenes are **pooled**, and episodes are **stitched later**. After each preview:
 - **Always ask: "Send this to the workflow pool?"**
   - **Yes**:
     1. Freeze the voice.

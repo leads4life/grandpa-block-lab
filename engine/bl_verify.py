@@ -210,7 +210,9 @@ from bpy_extras.object_utils import world_to_camera_view
 out_frames, worst = [], 1.0
 QA = P.get("qa", {})
 exempt = [(C.Clock(P["lines"], P["film"])(a), C.Clock(P["lines"], P["film"])(b)) for a, b in QA.get("close_ups", [])]
-for f in range(NF):                                                # grandpa never leaves the picture: hat to boots, every frame
+cutaway = [(float(a), float(b)) for a, b in QA.get("cutaways", [])]   # "cutaways": [[t0, t1]] -- shots of someone else
+in_cut = lambda f: any(a <= f / FPS <= b for a, b in cutaway)
+for f in [f for f in range(NF) if not in_cut(f)]:                 # grandpa never leaves the picture: hat to boots, every frame
     sc.frame_set(f)                                                # (a story's "qa": {"close_ups": [[t0, t1]]}: his face only)
     head = arm.matrix_world @ arm.pose.bones["head"].tail
     face = arm.matrix_world @ arm.pose.bones["head"].head.lerp(arm.pose.bones["head"].tail, 0.5)
@@ -226,12 +228,12 @@ for f in range(NF):                                                # grandpa nev
         if m < 0.03:
             out_frames.append(f)
             break
-check("grandpa stays in the picture every frame (%s%s)" % ("hat to boots" if "frame_points" not in QA else ", ".join(QA["frame_points"]),
-      ", face in close-ups" if exempt else ""), not out_frames,
+check("grandpa stays in the picture every frame (%s%s%s)" % ("hat to boots" if "frame_points" not in QA else ", ".join(QA["frame_points"]),
+      ", face in close-ups" if exempt else "", ", except %d cutaway(s)" % len(cutaway) if cutaway else ""), not out_frames,
       "%d frames out%s; closest to the edge %.1f%% of the frame" % (len(out_frames), (" from frame %d" % out_frames[0]) if out_frames else "", worst * 100))
 held = {a["target"] for a in P["actions"] if a["type"] == "hold"}
 blocked, deps = [], bpy.context.evaluated_depsgraph_get()
-for f in range(0, NF, 2):                                          # nothing stands between the camera and his face / chest
+for f in [f for f in range(0, NF, 2) if not in_cut(f)]:             # nothing stands between the camera and his face / chest
     sc.frame_set(f)
     deps = bpy.context.evaluated_depsgraph_get()
     eye = sc.camera.matrix_world.translation
@@ -264,7 +266,7 @@ check("camera never whips round (except clean one-frame cuts)", not whips,
       "fastest turn %.1f deg/frame outside cuts" % max([t for f, t in enumerate(turns) if not (0 < f < NF - 2 and turns[f] > 6 and turns[f - 1] < 3 and turns[f + 1] < 3)] or [0]))
 perf = json.load(open(os.path.join(C.BUILD, "perf.json"))) if os.path.exists(os.path.join(C.BUILD, "perf.json")) else []
 holds = [a for a in P["actions"] if a["type"] == "hold"]
-for a in holds:                                                    # the hand is on the prop the whole time it carries it
+for a in [h for h in holds if h.get("hand") != "none"]:            # the hand is on the prop the whole time it carries it
     worst = 0.0
     for f in range(max(0, int(math.ceil(a["t0"] * FPS))), min(NF, int(a["t1"] * FPS) + 1)):   # holds carried in start before frame 0
         sc.frame_set(f)
@@ -345,11 +347,28 @@ for f in range(NF):
     pb = arm.pose.bones
     jaw.append(((pb["head"].matrix.inverted() @ pb["jaw"].matrix).translation - jr).length)
 spoken = set()
-for ln in P["lines"]:
+for ln in [l for l in P["lines"] if not l.get("who")]:            # Grandpa's own lines (other speakers: below)
     fs = range(int(ln["start"] * FPS), int(ln["end"] * FPS) + 1)
     spoken |= set(range(fs.start - 2, fs.stop + 3))
     check("mouth moves on: \"%s\"" % ln["text"][:44], max(jaw[f] for f in fs) > 0.02)
-check("mouth closed between lines", max(jaw[f] for f in range(NF) if f not in spoken) < 1e-4)
+check("mouth closed between lines" + (" (and while others speak)" if any(l.get("who") for l in P["lines"]) else ""),
+      max(jaw[f] for f in range(NF) if f not in spoken) < 1e-4)
+for who in sorted({l["who"] for l in P["lines"] if l.get("who")}):  # e.g. Tobias: his jaw, on his lines only
+    rig = bpy.data.objects.get(who.capitalize())
+    if rig is None:
+        check("%s is in the scene to speak his lines" % who, False)
+        continue
+    ang = []
+    for f in range(NF):
+        sc.frame_set(f)
+        q = rig.pose.bones["jaw"].rotation_quaternion
+        ang.append(math.degrees(2 * math.acos(min(1.0, abs(q.w)))))
+    mine = set()
+    for ln in [l for l in P["lines"] if l.get("who") == who]:
+        fs = range(int(ln["start"] * FPS), int(ln["end"] * FPS) + 1)
+        mine |= set(range(fs.start - 2, fs.stop + 3))
+        check("%s's mouth moves on: \"%s\"" % (who, ln["text"][:38]), max(ang[f] for f in fs) > 4.0)
+    check("%s's mouth closed between his lines" % who, max(ang[f] for f in range(NF) if f not in mine) < 0.5)
 
 sr, x = wav.read(os.path.join(C.BUILD, "audio", "stem_build.wav"))
 x = x.astype(float)

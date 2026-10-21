@@ -55,8 +55,9 @@ def main():
         a, sr = k.create(ln["text"], voice=ln.get("voice", who.get("voice", story["voice"])),
                          speed=ln.get("speed", who.get("speed", story["speed"])))[:2]
         a = np.asarray(a, dtype=np.float64)
-        if who.get("fx"):
-            a = apply_fx(a, sr, who["fx"])
+        fx = ln.get("fx", who.get("fx"))                    # a line's own effect (e.g. panic: higher) wins
+        if fx:
+            a = apply_fx(a, sr, fx)
         a = resample_poly(a, SR // 1000, sr // 1000)
         env = np.convolve(np.abs(a), np.ones(240) / 240, mode="same")
         idx = np.where(env > 0.01 * env.max())[0]

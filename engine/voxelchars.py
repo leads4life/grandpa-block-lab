@@ -161,13 +161,15 @@ BOAR_C = dict(coat=((0.08, 0.06, 0.05), (0.22, 0.16, 0.11)), coat2=((0.05, 0.04,
               pale=((0.42, 0.36, 0.30), (0.62, 0.56, 0.48)))
 
 
-def build_boar(sc, mood="calm", name="Boar"):
+def build_boar(sc, mood="calm", name="Boar", parts=False):
     """An original voxel wild boar (deliberately unlike any game mob: no pink cube head). Wedge silhouette: tall bristly
     shoulders and mane, back sloping down to a lean rump, thin dark legs, a long tapering dark snout, pale whiskery cheeks,
     small eyes, pointed ears, curved tusks that show, a thin tufted tail. Faces +x.
     mood "calm": head level, ears up, mane flat. mood "agitated": head down to charge, ears pinned back, mane and hackles
     up, angry brows, a huff of breath from the nose, tail straight up, front legs planted wide, dust at the hooves.
-    Returns the root object (body); the head is a child pivoting at the neck."""
+    Returns the root object (body); the head is a child pivoting at the neck.
+    parts=True (for animation): legs, the huff puffs and the dust come back as separate objects, pivoting at the hip,
+    nose and ground: {"body", "head", "legs": [4], "puff", "dust"} (same boxes, so the same look)."""
     px = 0.012
     M = [VK.pixel_material("B_coat", *BOAR_C["coat"], px, bump=0.35), VK.pixel_material("B_coat2", *BOAR_C["coat2"], px, bump=0.35),
          VK.pixel_material("B_pale", *BOAR_C["pale"], px, bump=0.3), VK.mat("B_disc", (0.36, 0.28, 0.27)),
@@ -181,8 +183,9 @@ def build_boar(sc, mood="calm", name="Boar"):
             ((-0.32, 0, 0.36), (0.07, 0.25, 0.20), COAT),
             ((0.05, 0, 0.215), (0.44, 0.24, 0.03), COAT2)]           # belly shadow
     spread = 0.05 if ag else 0.0
+    legs, dust, puffs = [], [], []
     for lx, ly in ((0.20 + spread, -0.10), (0.20 + spread, 0.10), (-0.22, -0.09), (-0.22, 0.09)):
-        body += [((lx, ly, 0.13), (0.065, 0.065, 0.20), COAT2), ((lx, ly, 0.02), (0.075, 0.075, 0.04), HOOF)]
+        legs.append(((lx, ly), [((0, 0, -0.10), (0.065, 0.065, 0.20), COAT2), ((0, 0, -0.21), (0.075, 0.075, 0.04), HOOF)]))
     up = 1.8 if ag else 0.7                                          # the mane: tallest at the neck, down the spine
     for rx, rh in ((0.29, 0.11), (0.23, 0.13), (0.17, 0.12), (0.11, 0.11), (0.05, 0.09), (-0.01, 0.07), (-0.07, 0.05),
                    (-0.13, 0.05), (-0.19, 0.04), (-0.25, 0.03)):
@@ -194,10 +197,9 @@ def build_boar(sc, mood="calm", name="Boar"):
     if ag:
         body += [((-0.36, 0, 0.47), (0.022, 0.022, 0.14), COAT2), ((-0.36, 0, 0.555), (0.04, 0.035, 0.04), COAT2)]  # tail up
         for dx, dy, s in ((0.33, -0.17, 0.05), (0.29, 0.18, 0.04), (0.37, 0.15, 0.035), (0.36, -0.22, 0.03), (0.25, -0.2, 0.025)):
-            body.append(((dx, dy, s / 2), (s, s, s), DUST))
+            dust.append(((dx, dy, s / 2), (s, s, s), DUST))
     else:
         body += [((-0.37, 0, 0.36), (0.022, 0.022, 0.12), COAT2), ((-0.37, 0, 0.29), (0.035, 0.035, 0.04), COAT2)]  # tail down
-    root = VK.mesh_obj(name, body, M)
     head = [((0.08, 0, 0.0), (0.18, 0.26, 0.26), COAT),             # skull
             ((0.20, 0, -0.04), (0.10, 0.20, 0.17), COAT),            # the snout tapers in steps...
             ((0.29, 0, -0.06), (0.10, 0.15, 0.12), COAT2),
@@ -227,8 +229,20 @@ def build_boar(sc, mood="calm", name="Boar"):
     if ag:                                                           # HUFF: breath blasting from the nose
         for dx, dz, sz, k in ((0.44, -0.07, 0.035, 1.0), (0.49, -0.06, 0.03, 1.5), (0.535, -0.08, 0.022, 2.0)):
             for y in (-0.025, 0.025):
-                head.append(((dx, y * k, dz), (sz, sz, sz), PUFF))
-    hd = VK.mesh_obj(name + "Head", head, M, parent=root)
-    hd.location = (0.31, 0, 0.42)
-    hd.rotation_euler = (0, math.radians(26 if ag else 2), 0)        # nose down, ready to charge
-    return root
+                puffs.append(((dx, y * k, dz), (sz, sz, sz), PUFF))
+    pitch = math.radians(26 if ag else 2)                            # nose down, ready to charge
+    if not parts:
+        for (lx, ly), bx in legs:
+            body += [((lx + c[0], ly + c[1], 0.23 + c[2]), sz, m) for c, sz, m in bx]
+        root = VK.mesh_obj(name, body + dust, M)
+        hd = VK.mesh_obj(name + "Head", head + puffs, M, parent=root)
+        hd.location, hd.rotation_euler = (0.31, 0, 0.42), (0, pitch, 0)
+        return root
+    out = dict(body=VK.mesh_obj(name, body, M), legs=[])
+    out["head"] = VK.mesh_obj(name + "Head", head, M, parent=out["body"])
+    out["head"].location, out["head"].rotation_euler = (0.31, 0, 0.42), (0, pitch, 0)
+    for i, ((lx, ly), bx) in enumerate(legs):
+        lg = VK.mesh_obj("%sLeg%d" % (name, i), bx, M, parent=out["body"]); lg.location = (lx, ly, 0.23); out["legs"].append(lg)
+    out["puff"] = VK.mesh_obj(name + "Puff", puffs, M, parent=out["head"]) if puffs else None
+    out["dust"] = VK.mesh_obj(name + "Dust", dust, M, parent=out["body"]) if dust else None
+    return out

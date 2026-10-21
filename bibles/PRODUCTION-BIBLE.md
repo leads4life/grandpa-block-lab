@@ -120,3 +120,28 @@ later choice, and every reveal has to pay off what was set up, measurably:
   - Plan: use fixed mix levels for every segment, and normalise once on the assembled episode.
   - The wall-clock tick restarts its rhythm at 0.37 s in each scene; for seamless assembly, offset it by the scene's start time in the episode.
 - **Speed.** A 1920×1080 frame of this cabin takes several seconds on a T4. A 33 s scene is roughly 45–75 min of GPU time.
+
+## Added for Scene 004 (all reusable; older scenes rebuild bit-identical, which is verified)
+- **The cast beyond Grandpa** (`bl_cast.py`, approved designs in `voxelchars.py`), as `world.critters` entries:
+  - **`boar`**: walks a keyed `path` with a trotting gait. It also takes:
+    - `yaw` keys while standing
+    - `backing` windows (backs away, still facing them)
+    - `mood` calm/agitated (switched on a huff)
+    - `huffs` (breath puffs, snout jerk), `clacks` (head shake), `stomps` (front leg lifts and slams, dust)
+    - `startle` (a jump and a squeal)
+  - **`tobias`**: walks with arm and leg swing. It also takes:
+    - `yaw`, `look`, `visible`
+    - `poses` (point_R, easy_R, notebook_L, write_R, kick_R, lean_in)
+    - `faces` (calm, smile, deadpan)
+    - his own blinks
+    - his jaw driven by his own voice (`dialogue.json` `mouths.tobias`)
+- **Voices**: a line's `"who": "tobias"` uses `bl_voice.CAST`. A line can also carry its own `speed` and `fx`; "NO CAP, CHAT!" is 1.3× and pitched up for panic.
+- **Hand-free holds** (`"hand": "none"`): a keyed path no hand grips. Use it for props someone else moves (Tobias yanks the prop and tosses it), or for a prop lying still before it's picked up.
+- **Machine off and on**:
+  - **Off**: a `spin` lifts the hammer arm onto a prop, and `skip` windows silence both cams.
+  - **On again**: a −16° spin over the 0.45 s rise before a scheduled strike, so the cam takes the weight and the strike lands on the clock.
+- **Camera rules added** (generator):
+  - **The cast block the view too**: Grandpa (widened for raised arms), the boar and Tobias.
+  - **Faces toward camera** for the lines that live on a face (`facing(...)`).
+  - **No cast member looming in the foreground**: at most 5% of the frame.
+  - **Every body point in frame**: an animal's nose, middle and rump all stay in.

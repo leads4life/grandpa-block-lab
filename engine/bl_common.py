@@ -156,6 +156,30 @@ def critter_state(c, t):
     return x, y, z, heading, moving
 
 
+def actor_heading(c, t):
+    """Heading (radians) of a walking actor (boar, Tobias): along the path while moving; while standing, the story's
+    "yaw" keys [[t, degrees], ...] (eased, the short way round) once the first one has passed, else the last heading."""
+    x, y, z, hd, moving = critter_state(dict(c, hop=0.0), t)
+    if moving and any(w[0] <= t <= w[1] for w in c.get("backing", [])):
+        return hd + math.pi                                # "backing": [[t0, t1]] -- backs away, still facing us
+    ks = c.get("yaw", [])
+    if moving or not ks or t < ks[0][0]:
+        return hd
+    if t >= ks[-1][0]:
+        return math.radians(ks[-1][1])
+    for k0, k1 in zip(ks, ks[1:]):
+        if t <= k1[0]:
+            u = smooth((t - k0[0]) / max(1e-6, k1[0] - k0[0]))
+            d = (k1[1] - k0[1] + 180) % 360 - 180
+            return math.radians(k0[1] + d * u)
+    return hd
+
+
+def actor_steps(c):
+    """Footfall times of a walking actor: one per "stride" metres along its path (for footstep sounds)."""
+    return critter_landings(dict(c, hop_len=c.get("stride", 0.18)))
+
+
 def critter_landings(c):
     """Times its feet touch down (one per hop) -- for the hop sounds."""
     out, hl = [], c.get("hop_len", 0.22)

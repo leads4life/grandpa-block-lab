@@ -1,0 +1,93 @@
+[PASS] table_legs has 20 blocks -- 20 built
+[PASS] table_legs: every block in its own grid cell
+[PASS] table_top has 36 blocks -- 36 built
+[PASS] table_top: every block in its own grid cell
+[PASS] chair_legs has 20 blocks -- 20 built
+[PASS] chair_legs: every block in its own grid cell
+[PASS] seat has 6 blocks -- 6 built
+[PASS] seat: every block in its own grid cell
+[PASS] chair_back has 5 blocks -- 5 built
+[PASS] chair_back: every block in its own grid cell
+[PASS] laptop_base has 6 blocks -- 6 built
+[PASS] laptop_base: every block in its own grid cell
+[PASS] laptop_screen has 6 blocks -- 6 built
+[PASS] laptop_screen: every block in its own grid cell
+[PASS] webcam has 1 blocks -- 1 built
+[PASS] webcam: every block in its own grid cell
+[PASS] cam_cap has 1 blocks -- 1 built
+[PASS] cam_cap: every block in its own grid cell
+[PASS] mug has 1 blocks -- 1 built
+[PASS] mug: every block in its own grid cell
+[PASS] wheel has 53 blocks -- 53 built
+[PASS] wheel: every block in its own grid cell
+[PASS] axle has 8 blocks -- 8 built
+[PASS] axle: every block in its own grid cell
+[PASS] cam1 has 1 blocks -- 1 built
+[PASS] cam1: every block in its own grid cell
+[PASS] cam2 has 1 blocks -- 1 built
+[PASS] cam2: every block in its own grid cell
+[PASS] new_post has 5 blocks -- 5 built
+[PASS] new_post: every block in its own grid cell
+[PASS] helve has 9 blocks -- 9 built
+[PASS] helve: every block in its own grid cell
+[PASS] head has 12 blocks -- 12 built
+[PASS] head: every block in its own grid cell
+[PASS] anvil has 60 blocks -- 60 built
+[PASS] anvil: every block in its own grid cell
+[PASS] pivot_frame has 8 blocks -- 8 built
+[PASS] pivot_frame: every block in its own grid cell
+[PASS] new_pin has 1 blocks -- 1 built
+[PASS] new_pin: every block in its own grid cell
+[PASS] footing has 4 blocks -- 4 built
+[PASS] footing: every block in its own grid cell
+[PASS] post2 has 3 blocks -- 3 built
+[PASS] post2: every block in its own grid cell
+[PASS] rock has 4 blocks -- 4 built
+[PASS] rock: every block in its own grid cell
+[PASS] footprints has 6 blocks -- 6 built
+[PASS] footprints: every block in its own grid cell
+[PASS] prop has 1 blocks -- 1 built
+[PASS] prop: every block in its own grid cell
+00:00.684  blend            | Read blend: "/tmp/claude-0/-home-user/3ffe6a42-e20c-59ee-a796-ce8de686e5e0/scratchpad/s4work/build/blocklab.blend"
+[PASS] blocks hold still once placed -- 0 moved
+[PASS] helve strikes as scripted (16 strikes) -- worst difference 0.0000
+[PASS] head strikes as scripted (16 strikes) -- worst difference 0.0000
+[PASS] wheel spins as scripted (1 turns, -4653.13 deg in all) -- worst difference 0.0000
+[PASS] axle spins as scripted (1 turns, -4653.13 deg in all) -- worst difference 0.0000
+[PASS] cam1 spins as scripted (1 turns, -4653.13 deg in all) -- worst difference 0.0000
+[PASS] cam2 spins as scripted (1 turns, -4653.13 deg in all) -- worst difference 0.0000
+[PASS] helve spins as scripted (2 turns, 0 deg in all) -- worst difference 0.0000
+[PASS] head spins as scripted (2 turns, 0 deg in all) -- worst difference 0.0000
+[PASS] world built: grass ground, morning, clear
+[PASS] birds fly
+[PASS] grandpa stays in the picture every frame (hat, face, chest, except 1 cutaway(s)) -- 0 frames out; closest to the edge 10.5% of the frame
+[PASS] nothing hides grandpa from the camera (face / chest, every 2nd frame)
+[PASS] camera never whips round (except clean one-frame cuts) -- fastest turn 0.8 deg/frame outside cuts
+[PASS] R hand stays on the prop while holding it (3.0-3.9 s) -- largest gap 0.0 mm
+[PASS] mug rests on the table_top at the end -- gap 0.3 mm
+[PASS] post2 rests on the footing at the end -- gap 0.4 mm
+[PASS] webcam rests on the rock at the end -- gap 0.4 mm
+[FAIL] no clipping into wheel, anvil, pivot_frame, head, new_post, footing, post2, rock, helve (sampled every 3rd frame) -- 2 frames, deepest 1.1 cm (first frame 87); anvil at frames [87]; helve at frames [96]
+[PASS] length about 30 s (within -10%..+10%) -- 31.10 s
+[PASS] face shows "alert" at -2.2 s -- face offset 0.0154
+[PASS] face shows "content" at 4.8 s -- face offset 0.0621
+[PASS] face shows "raised" at 6.2 s -- face offset 0.0160
+[PASS] face shows "smirk" at 7.8 s -- face offset 0.0293
+[PASS] face shows "surprised" at 17.4 s -- face offset 0.0225
+[PASS] face shows "warm" at 28.3 s -- face offset 0.0457
+[PASS] continuity state saved and matches the last frame
+[PASS] mouth moves on: "You kinda bussin'!"
+[PASS] mouth moves on: "NO CAP, CHAT!"
+[PASS] mouth moves on: "Tobias... you just gained a thousand aura po"
+[PASS] mouth closed between lines (and while others speak)
+[PASS] tobias's mouth moves on: "Grandpa. You turned off the boar alarm"
+[PASS] tobias's mouth moves on: "The water turns the wheel, the cams li"
+[PASS] tobias's mouth moves on: "Boars hate surprise noises. I fixed it"
+[PASS] tobias's mouth moves on: "That's not how aura works, Grandpa."
+[PASS] tobias's mouth closed between his lines
+[PASS] MP4 1920x1080 H.264 yuv420p 30 fps
+[PASS] MP4 AAC audio, full length -- 31.10 s, 933 frames
+[PASS] loudness about -14 LUFS, no clipping -- -14.5 LUFS, peak -2.1 dBFS
+[PASS] fills the 16:9 frame edge to edge (no black bars) -- 12 frames sampled
+
+OVERALL: SOME CHECKS FAILED

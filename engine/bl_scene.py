@@ -337,7 +337,7 @@ def write_continuity(arm, roots, cam, perf_log):
     carried = {}                                                  # what he is holding at the end, and in which hand
     for name in {a["target"] for a in PF.holds(P)}:
         ha = PF.active_hold(P, name, t_end)
-        if ha is not None and PF.hold_weight(ha, t_end) > 0.5:
+        if ha is not None and ha.get("hand") != "none" and PF.hold_weight(ha, t_end) > 0.5:
             carried[name] = ha.get("hand", "R")
     stream_cam = None
     if "webcam" in roots:                                         # Rule 2: where the stream camera is
@@ -560,7 +560,7 @@ def animate(sc, arm, roots, objs, puffs, cam):
             roots[name].matrix_basis = Mh
             roots[name].keyframe_insert("location", frame=f); roots[name].keyframe_insert("rotation_quaternion", frame=f)
             w_h = PF.hold_weight(ha, t)
-            if w_h > 0:
+            if w_h > 0 and ha.get("hand") != "none":           # "hand": "none" -- a keyed path no hand of his grips
                 hold_hand[ha.get("hand", "R")] = (Mh @ Vector(ha.get("grip", (0, 0, 0))), w_h)
         sw_off = 0.06 * a_walk * math.sin(cyc)
         TR = S_R + Vector((0.01, -0.05 - sw_off, -0.405))

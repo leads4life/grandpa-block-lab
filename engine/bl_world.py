@@ -4,7 +4,9 @@ Story:  "world": {"ground": "grass", "time": "sunset", "weather": "clouds", "ani
 Everything is voxels. Every loop (rain, snow, birds, wings, cat tail) is cyclic F-curve animation, so any frame
 renders the same whatever order the frames are rendered in (resumable renders stay seamless).
 """
+import json
 import math
+import os
 import random
 
 import bpy
@@ -683,6 +685,15 @@ def build_world(sc, P):
     for c in W.get("critters", []):
         if c["kind"] == "rabbit":
             build_rabbit(sc, c, fps, P["nf"])
+        elif c["kind"] in ("boar", "tobias"):                        # the cast beyond Grandpa (bl_cast)
+            import bl_cast
+            if c["kind"] == "boar":
+                bl_cast.build_boar_actor(sc, c, fps, P["nf"])
+            else:
+                import bl_common as Cm
+                dlg = os.path.join(Cm.BUILD, "dialogue.json")
+                mouths = json.load(open(dlg)).get("mouths", {}) if os.path.exists(dlg) else {}
+                bl_cast.build_tobias_actor(sc, c, fps, P["nf"], mouths.get("tobias"))
     if W["weather"] in ("clouds", "rain", "snow"):
         build_clouds(sc, P["nf"], dark=W["weather"] == "rain")
     if W["weather"] in ("rain", "snow"):

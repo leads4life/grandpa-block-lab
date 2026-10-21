@@ -206,6 +206,13 @@ def sfx(kind):
         f = 260 + 120 * np.sin(2 * np.pi * 1.3 * t) + 60 * np.sin(2 * np.pi * 7 * t)
         sq = np.sin(2 * np.pi * np.cumsum(f) / SR) * bp(rng.standard_normal(len(t)), 300, 3500) * 0.6 + np.sin(2 * np.pi * np.cumsum(f) / SR) * 0.35
         return sq * np.hanning(len(t)) ** 0.6
+    if kind == "kick":           # a boot kicking a wooden prop out: a knock and the prop clattering away
+        return mix(block_sound("wood", 0.85), thunk(1.1, 0.08) * 0.6, np.pad(sfx("clatter") * 0.5, (int(0.12 * SR), 0)))
+    if kind == "wedge":          # a wooden stick jammed under the hammer arm
+        return mix(block_sound("oldwood", 0.9), np.pad(block_sound("wood", 1.05) * 0.6, (int(0.09 * SR), 0)))
+    if kind == "rustle":         # something big pushing through the bushes
+        t = tt(1.2)
+        return bp(n(1.2), 600, 6000) * np.hanning(len(t)) * (0.5 + 0.5 * (np.sin(2 * np.pi * 5.5 * t) > 0.3)) * 0.8
     if kind == "settle":         # settling into the chair / cloth rustle
         t = tt(0.4)
         return bp(n(0.4), 500, 3500) * np.hanning(len(t)) * 0.5
@@ -464,8 +471,60 @@ if W.get("terrain") == "forest_west" and W.get("interior") == "cabin":
     stems["ambience"][:N] += amb_now
 else:
     stems["ambience"][:N] += ambience()
-for c in W.get("critters", []):                                 # a rabbit's soft thumps on the grass, as heard at grandpa
-    for tl in C.critter_landings(c):
+def heard(t, x, y, k=0.5, lo=0.08, hi=0.6):                    # a sound at (x, y), heard at grandpa (his webcam is the mic)
+    f = min(len(fpath) - 1, max(0, int(t * FPS)))
+    return float(np.clip(k / (float(np.hypot(fpath[f, 0] - x, fpath[f, 1] - y)) + 0.4), lo, hi))
+
+
+def huff():                       # a wild boar's warning: an explosive blast of breath through the nose, a grunt under it
+    t = tt(0.42)
+    blast = bp(rng.standard_normal(len(t)), 250, 3200) * np.exp(-t * 9) * (1 - np.exp(-t * 400))
+    grunt = np.sin(2 * np.pi * np.cumsum(95 * (1 - 0.3 * t)) / SR) * np.exp(-t * 11) * (0.6 + 0.4 * (rng.random(len(t)) > 0.5))
+    return lp(blast * 1.0 + lp(grunt, 700) * 0.5, 4500)
+
+
+def tusk_clack():                 # tusks and teeth snapping together, twice
+    out = np.zeros(int(0.3 * SR))
+    for dt in (0.0, 0.13):
+        x = tt(0.05); c = modes(x, rng.uniform(0.95, 1.05), ((1900, 1.0, 120), (3300, 0.6, 160), (5200, 0.3, 220)))
+        c = (c + bp(rng.standard_normal(len(x)), 2000, 8000) * np.exp(-x * 500) * 0.6) * (1 - np.exp(-x * 5000))
+        j = int(dt * SR); out[j:j + len(c)] += c[:len(out) - j]
+    return out * 0.6
+
+
+def hoof_stomp():                 # a hard hoof slammed on the earth: a low thud and a scatter of dirt
+    x = tt(0.35)
+    thud = lp(thunk(0.55, 0.3), 500) * 1.2
+    dirt = bp(rng.standard_normal(len(x)), 900, 5000) * np.exp(-x * 14) * 0.25
+    return np.pad(thud, (0, len(x) - len(thud))) + dirt
+
+
+def squeal():                     # startled: a short rising squeal
+    x = tt(0.38)
+    f = 520 + 900 * np.sin(np.pi * x / x[-1])
+    v = np.sin(2 * np.pi * np.cumsum(f) / SR) + 0.4 * np.sin(4 * np.pi * np.cumsum(f) / SR)
+    return bp(v + bp(rng.standard_normal(len(x)), 800, 4000) * 0.3, 300, 5000) * np.hanning(len(x)) * 0.5
+
+
+for c in W.get("critters", []):
+    if c["kind"] == "boar":                                     # trotting hooves, huffs, tusk clacks, stomps, a squeal
+        for ts in C.actor_steps(c):
+            x, y = C.critter_state(dict(c, hop=0.0), ts)[:2]
+            place(stems["build"], ts, lp(thunk(0.9, 0.06), 1200) * 0.7, heard(ts, x, y, 0.4))
+        for key, snd, g in (("huffs", huff, 0.9), ("clacks", tusk_clack, 0.7), ("stomps", hoof_stomp, 1.0)):
+            for ts in c.get(key, []):
+                x, y = C.critter_state(dict(c, hop=0.0), ts)[:2]
+                place(stems["fx"], ts, snd(), g * heard(ts, x, y, 0.8, 0.15, 1.0))
+        if c.get("startle") is not None:
+            x, y = C.critter_state(dict(c, hop=0.0), c["startle"])[:2]
+            place(stems["fx"], c["startle"] + 0.03, squeal(), heard(c["startle"], x, y, 0.8, 0.15, 1.0))
+        continue
+    if c["kind"] == "tobias":                                   # a kid's light footsteps on the grass
+        for ts in C.actor_steps(dict(c, stride=c.get("stride", 0.16))):
+            x, y = C.critter_state(dict(c, hop=0.0), ts)[:2]
+            place(stems["build"], ts, step() * 0.6, heard(ts, x, y, 0.4))
+        continue
+    for tl in C.critter_landings(c):                            # a rabbit's soft thumps on the grass, as heard at grandpa
         f = min(len(fpath) - 1, int(tl * FPS))
         x, y = C.critter_state(c, tl)[:2]
         d = float(np.hypot(fpath[f, 0] - x, fpath[f, 1] - y))

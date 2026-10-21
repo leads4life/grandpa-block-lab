@@ -190,3 +190,15 @@ builds it, talking chat through it.
 - **Grandpa solo**: Tobias exits gracefully before the build, so the focus is Grandpa, the build and his commentary.
 - **Animals are never hurt.** Deterrents are humane (gates, fences that give a short harmless jolt).
 - **Kids watch**: Grandpa never touches live wires, and nothing in a build is unsafe to copy.
+
+## Added for Scene 006 (all reusable; older scenes rebuild bit-identical)
+- **Flashback kit**: a `"dream"` card ripples and softens the picture. A `memory_cloud` critter puts a puffy cloud over
+  his head, with a mini agitated boar on its ledge; its `face` turns the ledge toward the camera.
+  - `"echo|<frozen slug>|<line id>|<repeats>"` sfx replays an earlier scene's frozen line, fainter and slower each time.
+    `send_to_pool` copies that frozen voice into the queue package, and the render notebook puts it in place.
+  - A line's `fx.aecho` gives a dreamy murmur.
+- **3D blueprint**: a `hologram` critter, a glowing blue wireframe that lifts off the page and turns. Use `size` to fit it
+  to the book.
+- The **LIVE badge** shows "-1" when the count drops.
+- Structure `extras` draw ink on paper (the blueprint grid and drawings).
+- New materials `paper`, `leather` and `glass`; new sfx `buzz` (tablet) and `page` (page turn).

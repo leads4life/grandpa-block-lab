@@ -94,3 +94,9 @@ Only established facts. "Engine" = what the renderer can actually do today.
   him, replaying the "You kinda bussin'!" moment. It always comes at the worst moment.
 - It's played for warm laughs. The real point is a feelings beat in his own voice: being scared is normal, and building
   something helps.
+
+## Scene 006 (preview)
+- Alone after Tobias leaves, his worry speaks first: "Alone. In the woods. Where the boar... lives." That sets off the memory
+  cloud: the real "You kinda bussin'!" echoes three times, and he dreamily murmurs it along with it. Then "Nope. Nope nope nope."
+- He learns he designed the trip hammer years ago: "I built that? ...I built that! Why'd I ever stop?" Tobias: "You stopped
+  building. So I started."

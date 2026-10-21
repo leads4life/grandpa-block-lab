@@ -46,6 +46,9 @@ PALETTE = {                                    # (dark, light) texel colours
     "darkiron": ((0.15, 0.15, 0.17), (0.30, 0.30, 0.33)),      # hammer heads, tools
     "soil": ((0.24, 0.15, 0.08), (0.38, 0.25, 0.14)),          # tilled garden earth
     "sprout": ((0.24, 0.56, 0.12), (0.46, 0.80, 0.24)),        # young garden plants
+    "paper": ((0.80, 0.77, 0.66), (0.96, 0.93, 0.84)),         # old book pages
+    "leather": ((0.27, 0.12, 0.07), (0.44, 0.22, 0.12)),       # book covers
+    "glass": ((0.55, 0.66, 0.62), (0.78, 0.88, 0.84)),         # jars (opaque voxel glass)
 }
 GLOW = {"screen": ((0.62, 0.80, 1.0), 2.2), "led": ((1.0, 0.12, 0.08), 8.0)}   # emissive extras
 

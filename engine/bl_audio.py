@@ -228,6 +228,18 @@ def sfx(kind):
             y = reverb(y, 0.9 + 0.35 * k, 0.35 + 0.15 * k) * 0.72 ** k
             j = int(1.25 * k * SR); out[j:j + len(y)] += y[:len(out) - j]
         return lp(out, 6500)
+    if kind == "buzz":           # a tablet buzzing: two short vibrations
+        out = np.zeros(int(0.7 * SR))
+        for t0 in (0.0, 0.35):
+            x = tt(0.22)
+            v = np.sign(np.sin(2 * np.pi * 150 * x)) * 0.5 + bp(rng.standard_normal(len(x)), 120, 900) * 0.3
+            j = int(t0 * SR); out[j:j + len(x)] += lp(v, 1500) * np.hanning(len(x)) ** 0.3 * 0.6
+        return out
+    if kind == "page":           # a page turning: a papery swish and a soft flap
+        x = tt(0.45)
+        sw = bp(rng.standard_normal(len(x)), 1500, 9000) * np.sin(np.pi * x / x[-1]) ** 2 * 0.5
+        flap = np.pad(bp(rng.standard_normal(int(0.05 * SR)), 300, 3000) * np.exp(-np.arange(int(0.05 * SR)) / SR * 60) * 0.8, (int(0.36 * SR), 0))
+        return mix(sw, flap)
     if kind == "settle":         # settling into the chair / cloth rustle
         t = tt(0.4)
         return bp(n(0.4), 500, 3500) * np.hanning(len(t)) * 0.5

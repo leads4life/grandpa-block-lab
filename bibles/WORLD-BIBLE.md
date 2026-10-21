@@ -101,3 +101,14 @@ Only established facts. All coordinates are in metres: x is right and y is away 
     It's a comic theory the show never confirms. The real answer is left open; it could later be touching (young Grandpa,
     or Tobias) or stay a running gag.
 - **Saved for later**: Grandpa asking an AI assistant on his laptop at the cabin. Always an unbranded, made-up assistant.
+
+## Scene 006 additions ("Page Twelve"; preview, not yet approved)
+- **Tobias's lean-to workshop**, just south of his garden and tucked under the oak at (-6.39, 0.9). It is open to the south.
+  - Four wooden posts at x -6.45 / -5.85 and y 1.3 / 1.8, with a flat plank roof at 1.4–1.5 m.
+  - A kid's plank bench along the back, top at 0.50 m.
+  - On the bench: the **blueprint book** (open; a faint grid where one square = one block; the trip hammer on the left
+    page, the lever gate on the right; torn stubs along the edge), a **glass grub jar** with a wooden lid ("For science."),
+    and, from this scene on, **the webcam** on the bench's west end, pointed at Grandpa (Rule 2).
+- **Tobias leaves** north past the garden for homework (school night). The LIVE count drops **4 → 3** with a "-1":
+  he really was the 4th viewer.
+- **Page twelve**: a garden gate with a lever. Pages after it are torn out.

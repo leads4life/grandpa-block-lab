@@ -103,9 +103,10 @@ def card(d, ov, c, t, f):
             return
         vs = c.get("viewers", [[c["t0"], 0]])
         n, since = vs[0][1], vs[0][0]
+        was = n
         for tv, nv in vs:
             if t >= tv:
-                n, since = nv, tv
+                was, n, since = n, nv, tv
         sz = 30 if WIDE else 34
         s_ = "LIVE \u00b7 %d VIEWER%s" % (n, "" if n == 1 else "S")
         fnt = F("bold", sz)
@@ -120,6 +121,9 @@ def card(d, ov, c, t, f):
         if since > c["t0"] and t - since < 1.2 and n > vs[0][1]:   # "+1" floats up when someone joins
             u = (t - since) / 1.2
             outlined(d, (x0 + 50 + tw * 0.75, y0 + 92 - 40 * u), "+1", F("bold", 40), COL["green"], 1 - smooth((u - 0.6) / 0.4), stroke=5)
+        elif since > c["t0"] and t - since < 1.4 and n < was:      # "-1" sinks away when someone leaves
+            u = (t - since) / 1.4
+            outlined(d, (x0 + 50 + tw * 0.75, y0 + 82 + 30 * u), "-1", F("bold", 40), (200, 200, 205), 1 - smooth((u - 0.6) / 0.4), stroke=5)
         return
     a = env(t, c["t0"], c["t1"], fi=0.2 if style != "impact" else 0.06, fo=0.25 if style != "impact" else 0.35)
     if a <= 0.01:

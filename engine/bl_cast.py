@@ -283,10 +283,10 @@ def build_memory_cloud(sc, c, fps, nf):
 # ------------------------------------------------------------------------------------------------- 3D blueprint
 def build_hologram(sc, c, fps, nf):
     """A blueprint drawing lifting off the page as a glowing blue 3D wireframe that turns slowly, then settles back.
-    {"kind": "hologram", "model": "lever_gate", "at": [x, y, z], "visible": [t_in, t_out]}"""
+    {"kind": "hologram", "model": "lever_gate", "at": [x, y, z], "visible": [t_in, t_out], "size": scale (1.4)}"""
     root = bpy.data.objects.new("Hologram", None)
     sc.collection.objects.link(root)
-    glow = VK.emission_material("Holo_line", (0.35, 0.75, 1.0), 4.0)
+    glow = VK.emission_material("Holo_line", (0.18, 0.55, 1.0), 1.6)
     e = 0.008                                                       # line thickness
     def frame_box(cx, cy, cz, sx, sy, sz):                          # the 12 edges of a box
         out = []
@@ -318,6 +318,6 @@ def build_hologram(sc, c, fps, nf):
         root.location = (x0, y0, z0 + 0.12 * k)                     # lifts off the page...
         root.rotation_euler = (0, 0, math.radians(c.get("yaw", 0.0)) + 0.9 * max(0.0, t - vis[0]))   # ...turning slowly
         s_ = max(k, 1e-3) if k > 0 else 0.0
-        root.scale = (s_ * 1.4, s_ * 1.4, s_ * 1.4)
+        root.scale = (s_ * c.get("size", 1.4),) * 3
         _key(root, "location", "rotation_euler", "scale", f=f)
     return root

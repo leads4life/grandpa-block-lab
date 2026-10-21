@@ -2778,7 +2778,7 @@
   },
   {
    "style": "panel",
-   "y": 170,
+   "y": "top",
    "border": "cyan",
    "when": 22.315,
    "until": 26.105,

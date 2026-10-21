@@ -6,7 +6,7 @@
  "format": "wide",
  "channel_tag": "GRANDPA'S BLOCK LAB",
  "start": 0.4,
- "tail": 1.4813,
+ "tail": 1.4713,
  "seed": 23,
  "blink": true,
  "target_duration": 14,
@@ -49,7 +49,7 @@
     ],
     "visible": [
      2.314,
-     8.153
+     9.762
     ],
     "face": 158,
     "yaw": 180.0,
@@ -79,8 +79,8 @@
      0.45
     ],
     "visible": [
-     10.468,
-     13.468
+     12.078,
+     15.078
     ],
     "yaw": 158
    }
@@ -90,13 +90,13 @@
   {
    "id": "me",
    "text": "...Just me, then.",
-   "pause": 2.4
+   "pause": 3.5
   },
   {
    "id": "murmur",
-   "text": "Mmm... kinda... bussin'...",
+   "text": "You kinda bussin'... you kinda bussin'...",
    "pause": 1.0,
-   "speed": 0.78,
+   "speed": 0.8,
    "fx": {
     "aecho": "0.8:0.7:180|360:0.35|0.22"
    }
@@ -1473,8 +1473,8 @@
    ],
    "at": [
     0.0,
-    0.3185,
-    1.4655
+    0.0,
+    0.0
    ],
    "centered": false,
    "material": "oldwood",
@@ -1526,8 +1526,8 @@
    ],
    "at": [
     0.0,
-    0.3185,
-    1.4655
+    0.0,
+    0.0
    ],
    "centered": false,
    "material": "wood",
@@ -1549,8 +1549,8 @@
    ],
    "at": [
     0.0,
-    0.3185,
-    1.4655
+    0.0,
+    0.0
    ],
    "centered": false,
    "material": "wood",
@@ -1575,8 +1575,8 @@
    ],
    "at": [
     0.0,
-    0.2924,
-    1.4454
+    0.0,
+    0.0
    ],
    "centered": false,
    "material": "wood",
@@ -2835,14 +2835,14 @@
    "type": "spin",
    "target": "wheel",
    "axis": "x",
-   "degrees": -3042.251,
+   "degrees": -3216.796,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -12.687,
-   "until": 15.2,
+   "until": 16.8,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -2850,14 +2850,14 @@
    "type": "spin",
    "target": "axle",
    "axis": "x",
-   "degrees": -3042.251,
+   "degrees": -3216.796,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -12.687,
-   "until": 15.2,
+   "until": 16.8,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -2865,14 +2865,14 @@
    "type": "spin",
    "target": "cam1",
    "axis": "x",
-   "degrees": -3042.251,
+   "degrees": -3216.796,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -12.687,
-   "until": 15.2,
+   "until": 16.8,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -2880,14 +2880,14 @@
    "type": "spin",
    "target": "cam2",
    "axis": "x",
-   "degrees": -3042.251,
+   "degrees": -3216.796,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -12.137,
-   "until": 15.2,
+   "until": 16.8,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -2910,7 +2910,7 @@
    "rise": 0.45,
    "drop": 0.07,
    "when": -10.0,
-   "until": 15.2
+   "until": 16.8
   },
   {
    "type": "trip",
@@ -2931,7 +2931,7 @@
    "rise": 0.45,
    "drop": 0.07,
    "when": -10.0,
-   "until": 15.2,
+   "until": 16.8,
    "sound_at": [
     -4.4,
     1.95,
@@ -2959,7 +2959,7 @@
    "target": "webcam",
    "hand": "R",
    "when": -1.0,
-   "until": 15.2,
+   "until": 16.8,
    "reach": 0.3,
    "grip": [
     0.0,
@@ -2983,7 +2983,7 @@
      ]
     },
     {
-     "t": 15.2,
+     "t": 16.8,
      "at": {
       "char": [
        -0.17,
@@ -3004,7 +3004,7 @@
    "target": "cam_cap",
    "hand": "R",
    "when": -1.0,
-   "until": 15.2,
+   "until": 16.8,
    "reach": 0.3,
    "grip": [
     0.0,
@@ -3028,7 +3028,7 @@
      ]
     },
     {
-     "t": 15.2,
+     "t": 16.8,
      "at": {
       "char": [
        -0.17,
@@ -3049,7 +3049,7 @@
    "target": "prop",
    "hand": "none",
    "when": -1.0,
-   "until": 15.2,
+   "until": 16.8,
    "reach": 0.05,
    "keys": [
     {
@@ -3066,7 +3066,7 @@
      ]
     },
     {
-     "t": 15.2,
+     "t": 16.8,
      "at": [
       -4.0,
       2.33,
@@ -3083,7 +3083,7 @@
   {
    "type": "face_camera",
    "when": 0.0,
-   "until": 15.2
+   "until": 16.8
   },
   {
    "type": "face",
@@ -3095,14 +3095,14 @@
    "type": "pose",
    "pose": "dreamy",
    "when": 2.214,
-   "until": 8.253,
+   "until": 9.862,
    "ease": 0.5
   },
   {
    "type": "face",
    "expr": "content",
    "when": 2.214,
-   "until": 8.253,
+   "until": 9.862,
    "set": {
     "lid": 0.45,
     "smile": 0.45
@@ -3117,19 +3117,19 @@
   {
    "type": "face",
    "expr": "alert",
-   "when": 8.153,
-   "until": 10.368
+   "when": 9.762,
+   "until": 11.978
   },
   {
    "type": "pose",
    "pose": "head_shake",
-   "when": 8.203,
-   "until": 9.968
+   "when": 9.812,
+   "until": 11.578
   },
   {
    "type": "look",
-   "when": 10.068,
-   "until": 13.868,
+   "when": 11.678,
+   "until": 15.478,
    "body": false,
    "pos": [
     -5.744,
@@ -3140,15 +3140,15 @@
   {
    "type": "pose",
    "pose": "peer_down",
-   "when": 10.168,
-   "until": 13.668,
+   "when": 11.778,
+   "until": 15.278,
    "ease": 0.4
   },
   {
    "type": "face",
    "expr": "raised",
-   "when": 11.168,
-   "until": 13.302,
+   "when": 12.778,
+   "until": 14.912,
    "set": {
     "smile": 0.5
    }
@@ -3178,7 +3178,7 @@
    "dist": 2.4
   },
   {
-   "at": 7.653,
+   "at": 9.262,
    "target": [
     -5.43,
     2.42,
@@ -3189,7 +3189,7 @@
    "dist": 2.15
   },
   {
-   "at": 8.453,
+   "at": 10.062,
    "target": [
     -5.43,
     2.42,
@@ -3200,7 +3200,7 @@
    "dist": 2.4
   },
   {
-   "at": 9.868,
+   "at": 11.478,
    "target": [
     -5.43,
     2.42,
@@ -3211,7 +3211,7 @@
    "dist": 2.4
   },
   {
-   "at": 11.268,
+   "at": 12.878,
    "target": [
     -5.587,
     2.591,
@@ -3237,7 +3237,7 @@
   {
    "style": "dream",
    "when": 2.014,
-   "until": 8.253
+   "until": 9.862
   }
  ],
  "qa": {

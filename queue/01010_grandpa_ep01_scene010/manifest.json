@@ -1,0 +1,28 @@
+{
+ "slug": "grandpa_ep01_scene010",
+ "title": "Night Shift",
+ "episode": 1,
+ "scene": 10,
+ "film": 55.86666666666667,
+ "engine_commit": "24055c38f31f7605d259b8f88edc5e89cefef643",
+ "engine_files": [
+  "bl_audio.py",
+  "bl_cast.py",
+  "bl_common.py",
+  "bl_overlay.py",
+  "bl_perform.py",
+  "bl_scene.py",
+  "bl_verify.py",
+  "bl_voice.py",
+  "bl_world.py",
+  "render.py",
+  "voxelchars.py",
+  "voxelkit.py"
+ ],
+ "engine_sha": "82455556bea3",
+ "accepted_fails": [
+  "grandpa stays in the picture",
+  "nothing hides grandpa"
+ ],
+ "approved": "2026-10-22 20:26"
+}

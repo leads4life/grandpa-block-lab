@@ -217,3 +217,25 @@ builds it, talking chat through it.
   look that covers frame 0. Otherwise his body drifts back toward facing south in every gap between looks.
 - Check a still of every talking line before the full render.
 
+## The Goodnight Ritual: how every episode ends (user, 2026-10-22; first built in Scene 011)
+Same beats, same order, every episode; only the recap and the sting change. Calm pace, no slang.
+1. Home: in the cabin door with the webcam (Rule 2) and the lantern; the lamp clicks on. Webcam back on the laptop, lantern on the table.
+2. He sits: "Ahh. That's better."
+3. "Today we learned..." -- the recap card builds a line at a time (one line per lesson of the episode).
+4. One sincere line about the episode's heart (no slang).
+5. The signature line, word for word: "You don't have to know everything. You just have to keep building." (provisional; user may change it)
+6. Chat says goodnight, always in this order: GardenGranny, lurker_77, BoarFan2009, TobiasBuilds (last).
+7. "Goodnight, chat." Click: the lamp goes off; only the lantern glows.
+8. The after-dark sting: the episode's mystery hook (kids learn to wait for it). Then he blows out the lantern.
+9. End card (room for YouTube's end screen): show title, episode title, "Next time: ...", subscribe.
+A matching Morning Ritual opens episodes from Episode 2 (hook first, then "Is this thing on?", coffee, regulars log in, greeting).
+
+## Engine features for these (2026-10-22)
+- look "pos": "camera" -- his head looks into whichever camera is live (use for every line to chat).
+- grandpa "hold_heading": true -- his body keeps its heading between looks (no drift while seated); "face": [x, y] sets frame 0.
+- world "lantern": [{"at", "energy", "on": t, "off": t}, ...] -- outdoor lanterns and lamps that click on/off.
+- qa "seated_from": t -- he sits down partway through (seat check starts then).
+- cards: "word" (Word Card), "panel" rows that build a line at a time (recap), "end" (end card).
+- sfx: switch, blow, drone, owl, snore, spark, zip, fizzle; boar: sniffs, grunts, roots.
+- Seated reach: his shoulders sit ~0.22 m behind his feet -- hold props about 0.1-0.15 m in front of the feet ({"char"}), not further.
+

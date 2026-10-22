@@ -409,6 +409,8 @@ def animate(sc, arm, roots, objs, puffs, cam):
             (focus_acts[i + 1]["t0"] if i + 1 < len(focus_acts) else P["film"])
     yaw_prev = 0.0
     look_point = lambda a: Vector(a["pos"]) if a.get("pos") else roots[a["obj"]].matrix_world @ Vector(a.get("off", (0, 0, 0)))
+    G_ = P.get("grandpa", {})                           # "hold_heading": true -- his body keeps its heading between looks
+    hold_heading, face0 = G_.get("hold_heading", False), G_.get("face")       # "face": [x, y] -- his heading on frame 0
     blink_times = PF.blinks(P)
     face_rest = {n: arm.data.bones[n].matrix_local.copy() for n in VK.FACE_ORDER}
     perf_log = []
@@ -481,7 +483,12 @@ def animate(sc, arm, roots, objs, puffs, cam):
         active = [a for a in focus_acts if a["t0"] <= t <= a["_t1"]]
         fa = active[-1] if active else None
         eye_now = Vector(cam_at(t)[0])
-        if fa is None:
+        lpt = lambda a: eye_now if a.get("pos") == "camera" else look_point(a)     # "pos": "camera" -- into the live lens
+        if fa is None and f == 0 and face0:
+            focus = Vector((face0[0], face0[1], 0))
+        elif fa is None and hold_heading:
+            focus = Vector((x, y, 0)) + rz(yaw_prev) @ Vector((0, -1, 0))
+        elif fa is None:
             focus = Vector((x, y - 1, 0))
         elif fa["type"] == "face_camera":
             focus = eye_now
@@ -490,7 +497,7 @@ def animate(sc, arm, roots, objs, puffs, cam):
         elif fa["type"] == "point":
             focus = Vector(fa["pos"]) if fa.get("pos") else Vector(roots[fa["target"]].location)
         elif fa["type"] == "look":                              # body: false -> only the head turns (e.g. seated)
-            focus = look_point(fa) if fa.get("body", True) else Vector((x, y, 0)) + rz(yaw_prev) @ Vector((0, -1, 0))
+            focus = lpt(fa) if fa.get("body", True) else Vector((x, y, 0)) + rz(yaw_prev) @ Vector((0, -1, 0))
         else:
             focus = Vector(roots[fa["target"]].location)
         walking = [a for a in acts("move") if a.get("face") == "path" and a["t0"] <= t <= a["t1"]]
@@ -542,7 +549,7 @@ def animate(sc, arm, roots, objs, puffs, cam):
         elif fa is not None and fa["type"] == "face_camera":
             look = eye_now
         elif fa is not None and fa["type"] == "look":
-            look = look_point(fa)
+            look = lpt(fa)
         else:
             look = focus + Vector((0, 0, 0.3))
         lc = to_char(look) - (neck + Qs @ Vector((0, 0, 0.12)))

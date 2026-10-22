@@ -240,6 +240,17 @@ def sfx(kind):
             v = np.sign(np.sin(2 * np.pi * 150 * x)) * 0.5 + bp(rng.standard_normal(len(x)), 120, 900) * 0.3
             j = int(t0 * SR); out[j:j + len(x)] += lp(v, 1500) * np.hanning(len(x)) ** 0.3 * 0.6
         return out
+    if kind == "switch":         # a lamp's pull-switch: a small, bright click-clack
+        out = np.zeros(int(0.12 * SR))
+        for t0, f in ((0.0, 3200), (0.045, 2400)):
+            x = tt(0.02); j = int(t0 * SR)
+            out[j:j + len(x)] += (np.sin(2 * np.pi * f * x) + bp(rng.standard_normal(len(x)), 2000, 9000) * 0.6) * np.exp(-x * 400)
+        return out * 0.5
+    if kind == "blow":           # blowing out a lantern: a soft breath, then the flame's little gutter
+        x = tt(0.7)
+        breath = bp(rng.standard_normal(len(x)), 400, 3000) * np.sin(np.pi * np.clip(x / 0.45, 0, 1)) ** 2 * 0.5
+        gutter = lp(rng.standard_normal(len(x)), 300) * np.exp(-np.clip(x - 0.4, 0, None) * 12) * (x > 0.4) * 0.6
+        return breath + gutter
     if kind == "drone":          # tension: a low, slow swell (two soft low tones and a hush), 4.5 s
         x = tt(4.5)
         sw = np.sin(np.pi * np.clip(x / 3.6, 0, 1) / 2) ** 2 * np.clip((4.5 - x) / 0.9, 0, 1)

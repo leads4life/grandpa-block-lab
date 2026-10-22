@@ -5,7 +5,8 @@ Story actions:
   {"type": "pose", "pose": "lean_in", "when": t0, "until": t1, "ease": 0.3}     a body pose
         ("ease_in" / "ease_out" override "ease"; start before 0 to be in the pose from the first frame) (POSES, or story "poses")
   {"type": "face", "expr": "squint", "when": t0, "until": t1, "ease": 0.2}      a facial expression (EXPR)
-  {"type": "look", "pos": [x, y, z], "when": t0, "until": t1, "body": false, "rate": 0.15}
+  {"type": "look", "pos": [x, y, z] | "camera", "when": t0, "until": t1, "body": false, "rate": 0.15}
+        ("camera": into the lens of whichever camera is live -- use it whenever he talks to chat)
         look at a point (or "obj": a structure, "off": [x, y, z] in its frame -- follows it); body: false turns only
         the head (seated), rate = how fast the body turns (0..1 per frame).  A "move" with "face": "path" turns his body
         the way he walks while the head keeps looking where the "look" says.

@@ -293,7 +293,8 @@ for obj, under in QA.get("rests_on", []):                          # props end t
 if QA.get("seat") and perf:                                        # sitting on the seat, not sinking into it or hovering
     seat_top = max(world_box(o)[1].z for o in blocks_of(QA["seat"]))
     until = C.Clock(P["lines"], P["film"])(QA.get("seated_until", 0))
-    gaps = [perf[f]["hips"][2] - seat_top for f in range(0, min(NF, int(until * FPS)))]
+    since = C.Clock(P["lines"], P["film"])(QA.get("seated_from", 0))      # "seated_from": he sits down partway through
+    gaps = [perf[f]["hips"][2] - seat_top for f in range(int(since * FPS), min(NF, int(until * FPS)))]
     check("seated on the %s (hip joint 4.5-8 cm above the seat)" % QA["seat"], gaps and all(0.045 <= g <= 0.08 for g in gaps),
           "%.1f-%.1f cm" % (min(gaps) * 100, max(gaps) * 100) if gaps else "no seated frames")
 if QA.get("solid"):                                                # grandpa's mesh never sinks into furniture

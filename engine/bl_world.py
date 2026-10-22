@@ -79,6 +79,7 @@ def _no_shadow(o):
 
 # ------------------------------------------------------------------ ground + props
 EXTEND = [False]
+FPS_W = [30]                                        # the story's frame rate (set by build_world)
 FOREST_C, FOREST_R = (-6.0, 0.8), (4.6, 4.4)                 # the forest: an ellipse of land west of the cabin
 STREAM_X = lambda y: -5.2 + 0.25 * math.sin(y * 0.7)          # stream centre line (runs north-south), 0.7 m wide
 
@@ -361,6 +362,15 @@ def build_sky(sc, time, weather, lantern=None):
                 lamp = bpy.data.lights.new("Lantern%d" % k, "POINT"); lamp.color = (1.0, 0.76, 0.48)
                 o = bpy.data.objects.new("Lantern%d" % k, lamp); sc.collection.objects.link(o)
             o.location, lamp.energy, lamp.shadow_soft_size = tuple(ln["at"]), ln.get("energy", 75), 0.05
+            e_on = lamp.energy
+            if ln.get("on") is not None:                            # "on": t -- dark until then, clicked on
+                fn = max(1, round(ln["on"] * FPS_W[0]))
+                lamp.energy = 0.0; lamp.keyframe_insert("energy", frame=0); lamp.keyframe_insert("energy", frame=fn - 1)
+                lamp.energy = e_on; lamp.keyframe_insert("energy", frame=fn + 1)
+            if ln.get("off") is not None:                           # "off": t -- clicked off (a quick dim over 2 frames)
+                fo = max(1, round(ln["off"] * FPS_W[0]))
+                lamp.energy = e_on; lamp.keyframe_insert("energy", frame=fo - 1)
+                lamp.energy = 0.0; lamp.keyframe_insert("energy", frame=fo + 1)
         if weather not in OVERCAST:
             star = VK.emission_material("Stars", (1.0, 0.97, 0.9), 6.0)
             boxes = []
@@ -671,6 +681,7 @@ def build_world(sc, P):
     """Ground, props, sky, light, weather and animals for P['world']. Returns the view exposure to use."""
     W = P["world"]
     fps = P["fps"]
+    FPS_W[0] = fps
     EXTEND[0] = W.get("terrain") == "forest_west"
     build_ground(sc, W["ground"])
     exposure = build_sky(sc, W["time"], W["weather"], W.get("lantern"))

@@ -202,6 +202,7 @@ face("surprised", U0 + 0.2, U0 + 1.2, set=dict(brow=1.0))
 look(U0 + 0.4, U0 + 3.0, pos=(-3.1, 1.4, 1.2), body=False)            # watching it rise
 s, e = say("rizz", 0.0, at=U0 + 1.4)
 face("smile", s, e + 0.4, set=dict(smile=1.0))
+act(type="face_camera", when=round(s - 0.2, 3), until=round(e + 0.3, 3))
 D0 = e + 0.4                                                         # ...lets go: it drifts back down
 for name in ("gate_arm", "stub_rock"):
     act(type="spin", target=name, axis="y", degrees=-OPEN, pivot=PIVOT, when=round(D0, 3), until=round(D0 + 2.0, 3))
@@ -328,6 +329,9 @@ SHOTS = [
     # (the lesson plays on the oops framing: his face, the arm and the stub)
     # the fix: rock on, the gate swings up and back down -- the whole gate in frame
     cut(F0 + 0.2, gp(*G_ROCK) + gp(*G_LIFT)[1:] + GATE_PTS, (-2.95, 1.3, 0.6), 50, 28, 3.0, AIR, los=LG),
+    # "rizz": from his side of the gate -- his face, the gate up behind him; it settles shut behind him
+    cut(U0 + 1.1, [(G_LIFT[0], G_LIFT[1], 0.75), (G_LIFT[0], G_LIFT[1], 1.12), (-3.3, 1.4, 1.25), (-3.25, 1.4, 0.1)], (-3.2, 1.25, 0.75), -140, 16, 2.6,
+        AIR, los=make_los([((-2.84, 1.36, 0.0), (-2.76, 1.44, 0.8))])),
     # "A boar-proof garden": wide, the whole fence and gate
     cut(LS["flip"] - 0.3, gp(*G_BACK) + [(-3.8, 3.0, 0.5), (-2.3, 1.5, 0.05), (-2.3, 3.0, 0.5)], (-3.0, 1.9, 0.5), -180, 28, 3.6, AIR,    # high, from the west: the whole fence and gate, and him
         los=LG),
@@ -345,7 +349,7 @@ for shot in SHOTS:
         CLOUD["face"] = cam[-1]["az"] + 90
 cam, PATCHED = fix_path(cam, AIR, who_at, path_clear=PATH)
 CHAT = [(LE["lift"] + 0.3, "BoarFan2009", "rude"),
-        (LE["giving"] + 0.3, "GardenGranny", "read the page dear"),
+        (LS["giving"] + 0.3, "GardenGranny", "read the page dear"),   # (before the lesson card takes the top)
         (LE["shuts"] + 0.2, "lurker_77", "ok thats cool"),
         (TOO_LATE, "TobiasBuilds", "too late")]
 cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C7["overlay"]["live_viewers"]]]),
@@ -357,7 +361,7 @@ cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C7["overlay"][
 W8 = {k: v for k, v in S7["world"].items() if k != "critters"}
 W8["critters"] = [CLOUD]
 story = dict(title="Leverage", slug="grandpa_ep01_scene008", voice="am_santa", speed=0.95, format="wide",
-             channel_tag="GRANDPA'S BLOCK LAB", start=LS["fine"], tail=round(tail, 4), seed=37, blink=True, target_duration=50,
+             channel_tag="GRANDPA'S BLOCK LAB", start=LS["fine"], tail=round(tail, 4), seed=37, blink=True, target_duration=60,
              engine_rev=3, scene=dict(episode=1, scene=8, name="Leverage", previous="ep01_scene007", next="ep01_scene009"),
              world=W8, lines=lines, grandpa=dict(start=list(G0), outfit=S7["grandpa"]["outfit"]),
              poses=dict(S7["poses"], **POSES), structures=S, actions=sorted(A, key=lambda a: a["when"]), camera=cam, cards=cards,

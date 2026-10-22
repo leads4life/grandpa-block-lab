@@ -240,6 +240,11 @@ def sfx(kind):
             v = np.sign(np.sin(2 * np.pi * 150 * x)) * 0.5 + bp(rng.standard_normal(len(x)), 120, 900) * 0.3
             j = int(t0 * SR); out[j:j + len(x)] += lp(v, 1500) * np.hanning(len(x)) ** 0.3 * 0.6
         return out
+    if kind == "drone":          # tension: a low, slow swell (two soft low tones and a hush), 4.5 s
+        x = tt(4.5)
+        sw = np.sin(np.pi * np.clip(x / 3.6, 0, 1) / 2) ** 2 * np.clip((4.5 - x) / 0.9, 0, 1)
+        v = np.sin(2 * np.pi * 55 * x) + 0.6 * np.sin(2 * np.pi * 82.4 * x) + lp(rng.standard_normal(len(x)), 200) * 0.4
+        return v * sw * 0.35
     if kind == "owl":            # a tawny owl, soft and far: hoo... hoo-hoo
         out = np.zeros(int(1.6 * SR))
         for t0, d, f in ((0.0, 0.32, 420), (0.75, 0.16, 400), (0.98, 0.42, 410)):

@@ -10,7 +10,7 @@ Pass 1 synthesises the voice; pass 2 (--fit) re-times everything to the measured
 import json, math, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE); sys.path.insert(0, "/home/user/blocklab")
-from storykit import orbit, auto_frame, fix_path
+from storykit import orbit, auto_frame, fix_path, eye_of
 from forest_camkit import clear_air, solid_free, both
 from forest_camkit import make_los as _make_los
 FPS = 30
@@ -97,6 +97,9 @@ def face(e, t0, t1, **kw): act(type="face", expr=e, when=t0, until=t1, **kw)
 def look(t0, t1, pos, body=False, **kw):
     act(type="look", when=t0, until=t1, body=body, pos=[round(v, 3) for v in pos], **kw)
 def sfx(sound, t, gain=1.0): act(type="sfx", sound=sound, when=t, gain=gain)
+CAMLOOK = []
+def camlook(t0, t1):                                                # talking to chat: he looks into the lens (resolved once the cameras exist)
+    CAMLOOK.append((round(t0, 3), round(t1, 3)))
 
 POSES = {
     "doze": dict(head=(0.0, -0.32, 0.12), lean=0.06, elbows=0.3),
@@ -122,15 +125,17 @@ act(type="hold", target="thermos", hand="R", when=-1.0, until=99.0, reach=0.05, 
 
 # 1. the stakeout: whispering; the hammer's off; STAKEOUT (Word Card); "wear a hat dear"
 s, e = say("stake", 0.0, at=1.0)
-look(0.0, e + 0.2, WEBCAM)
+camlook(0.3, e + 0.2)
 face("side_eye", s + 0.2, s + 1.8)
 face("content", s + 1.8, e + 0.3)
 s, e = say("stakeout", 0.4)
+camlook(s - 0.2, e + 0.2)
 WORD0 = s + 0.5
 pose("lean_watch", s - 0.1, e + 0.4, ease=0.3)
 face("smirk", s, e + 0.4)
 HAT_CHAT = e + 0.3
 s, e = say("hat", 1.5)
+camlook(s - 0.4, e + 0.3)
 face("raised", s - 0.1, e + 0.4, set=dict(brow=0.9))
 pose("nod", s + 0.3, e + 0.1, ease=0.15)
 SIP0 = e + 0.7; SIP1 = SIP0 + 0.8
@@ -154,14 +159,16 @@ sfx("settle", JOLT, 0.6)
 face("surprised", JOLT, JOLT + 0.5, set=dict(brow=1.2))
 s, e = say("awake", 0.0, at=JOLT + 0.35)
 face("squint", s + 1.4, e + 0.3)                                    # eyes like an eagle
-look(JOLT, e + 0.2, WEBCAM)
+camlook(JOLT + 0.3, e + 0.2)
 s, e = say("medium", 1.0)
+camlook(s - 0.2, e + 0.1)
 face("worried", s, e + 0.3)
 pose("shrug", s + 0.9, s + 1.8, ease=0.2)
 
 # 3. a rustle... a huff, close: the boar comes over the stepping stones -- "NO CAP, CHAT!"
 RUSTLE = e + 0.3
 sfx("rustle", RUSTLE, 0.7)
+sfx("drone", RUSTLE - 0.6, 0.5)                                     # tension: a low swell until the boar shows
 BOAR_IN = (-5.6, 4.7)                                               # out of the forest to the north-west (the land ends east of x -3)
 APPROACH = (-3.3, 3.95)
 NOSE_STOP = (-3.05, 3.5)                                            # the boar's centre when its nose meets the north wire (y 3.06)
@@ -183,12 +190,13 @@ act(type="hold", target="pulse", hand="none", when=-1.0, until=99.0, reach=0.05,
           dict(t=round(ZAP, 3), at=[NOSE[0], NOSE[1], NOSE[2] - 0.05], rot=[0, 0, 0]),
           dict(t=round(ZAP + 0.13, 3), at=[NOSE[0], NOSE[1], NOSE[2] - 0.05], rot=[0, 0, 0]),
           dict(t=round(ZAP + 0.15, 3), at=HIDE, rot=[0, 0, 0]), dict(t=99.0, at=HIDE, rot=[0, 0, 0])])
-sfx("spark", ZAP, 0.9)
+sfx("spark", ZAP, 1.4)
 BACK = (-3.15, 3.88)
 look(B_ARR - 0.8, ZAP + 1.2, (NOSE_STOP[0], NOSE_STOP[1] - 0.3, 0.25), rate=0.25)
 pose("lean_watch", ZAP - 0.6, ZAP + 0.1, ease=0.2)
 face("worried", ZAP - 0.2, ZAP + 0.8)
 s, e = say("sorry", 0.0, at=ZAP + 1.3)
+look(ZAP + 1.2, e + 0.3, (BACK[0], BACK[1], 0.3), rate=0.3)
 face("worried", s, e + 0.6, set=dict(tilt=0.9, smile=-0.1))
 SORRY_E = e
 # 5. it doesn't leave: it trots round to the soft ground outside the fence and roots there
@@ -197,9 +205,11 @@ LEAVE0 = ZAP + 2.6
 ROOT0 = LEAVE0 + 1.4
 look(LEAVE0, ROOT0 + 0.5, (ROOT_AT[0], ROOT_AT[1], 0.2), rate=0.2)
 s, e = say("seedlings", 0.0, at=max(SORRY_E + 1.6, ROOT0 + 0.9))
+look(ROOT0 + 0.5, e + 0.3, (ROOT_AT[0], ROOT_AT[1], 0.2), rate=0.2)
 face("confused", s, e + 0.4)
 pose("lean_watch", s - 0.2, e + 0.3, ease=0.3)
 s, e = say("grubs", 0.8)
+camlook(s + 1.0, e + 0.4)                                           # (a look at the boar, then to us: he gets it)
 face("raised", s, s + 1.2, set=dict(brow=0.8))
 face("warm", s + 1.2, e + 0.8)                                      # sincere: he gets it
 ROOT1 = e + 0.8
@@ -209,7 +219,7 @@ OUT1 = OUT0 + 3.4
 look(ROOT1, OUT0 + 1.5, (-4.8, 4.4, 0.25), rate=0.2)
 # 6. "...our neighbour." chat; "...His own spot."
 s, e = say("neighbour", 0.0, at=OUT0 + 0.9)
-look(s - 0.3, e + 0.3, WEBCAM)
+camlook(s - 0.3, e + 0.3)
 face("smile", s, e + 0.6, set=dict(smile=0.7))
 CHAT_END = e
 s, e = say("spot", 0.0, at=e + 3.0)
@@ -279,17 +289,23 @@ def cut(t, *a, **kw):
     return lambda: ([dict(cam[-1], at=round(tc - 1.0 / FPS, 4))] if cam else []) + [auto_frame(tc, *a, **kw)]
 SHOTS = [
     # open: the lantern-lit stakeout, him on his stump, the garden behind him
-    cut(0.0, SP + [LANT], (-3.4, 1.2, 0.6), 190, 10, 2.4, AIR, los=LG),
+    cut(0.0, SP + [LANT], (-3.45, 1.15, 0.6), 160, 12, 1.9, AIR, los=LG),
     # the nap: closer
     cut(DOZE - 0.3, SP[1:], (G_SIT[0], G_SIT[1], 0.85), 170, 12, 1.5, AIR, los=LG),
     # "medium-key nervous", then the rustle: wide to the stream -- the boar on the stepping stones
-    cut(RUSTLE - 0.2, SP[1:] + [bp_(APPROACH, 0.2), bp_(NOSE_STOP, 0.2)], (-3.0, 2.6, 0.4), -100, 18, 3.5, AIR,
+    # the rustle: hold on his face -- he freezes
+    cut(RUSTLE - 0.2, SP[1:], (G_SIT[0], G_SIT[1], 0.9), 150, 8, 1.25, AIR, los=LG),
+    # the huff: wide -- the boar out of the forest; "NO CAP, CHAT!"
+    cut(HUFF1 + 0.15, SP[1:] + [bp_(APPROACH, 0.2), bp_(NOSE_STOP, 0.2)], (-3.0, 2.6, 0.4), -100, 18, 3.5, AIR,
         los=make_los([GBOX])),
     # the fence: the boar's nose meets the wire; Grandpa beyond
     cut(B_ARR - 0.6, [bp_(NOSE_STOP, 0.05), bp_(NOSE_STOP, 0.35), NOSE, (BACK[0], BACK[1], 0.3)],
         (-3.0, 3.55, 0.3), 0, 14, 1.9, AIR, los=make_los([boar_box(NOSE_STOP)])),
+    # punch in, low: the nose meets the wire -- SNAP
+    cut(ZAP - 0.35, [NOSE, (NOSE[0], NOSE[1] + 0.25, 0.3), (NOSE[0], NOSE[1], 0.2)], (NOSE[0], NOSE[1] + 0.1, 0.28), 10, 5, 1.0, AIR,
+        los=make_los([boar_box(NOSE_STOP)]), margin=0.7),
     # "...Sorry, buddy.": on him
-    cut(LS["sorry"] - 0.3, SP[1:], (G_SIT[0], G_SIT[1], 0.85), 145, 8, 1.6, AIR, los=LG),
+    cut(LS["sorry"] - 0.3, SP[1:], (G_SIT[0], G_SIT[1], 0.85), 100, 8, 1.6, AIR, los=LG),   # (from the boar's side: we see his face)
     # rooting outside the fence; him watching
     cut(ROOT0 + 0.3, SP[1:] + [bp_(ROOT_AT, 0.05), bp_(ROOT_AT, 0.35)], (-3.4, 2.5, 0.4), 60, 22, 3.4, AIR,
         los=make_los([boar_box(ROOT_AT)])),
@@ -304,6 +320,9 @@ for shot in SHOTS:
     cam += shot()
 who_at = lambda t: SP
 cam, PATCHED = fix_path(cam, AIR, who_at, path_clear=PATH)
+for t0, t1 in CAMLOOK:                                              # into the lens of whichever camera is live then
+    k = [c for c in cam if c["at"] <= t0 + 0.4][-1]
+    look(t0, t1, eye_of(k["target"], k["az"], k["el"], k["dist"]), rate=0.3)
 CHAT = [(HAT_CHAT, "GardenGranny", "wear a hat dear, its cold"),
         (DOZE + 1.6, "lurker_77", "zzz"),
         (NOCAP + 1.0, "BoarFan2009", "HES HERE!!!"),

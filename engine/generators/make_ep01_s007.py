@@ -1,16 +1,15 @@
-"""Grandpa's Block Lab, Episode 1, Scene 007 -- "Leverage" (16:9, ~60 s). Approved beat sheet (2026-10-21).
-Blueprint Build, Grandpa solo (Tobias is an occasional visitor, not in 007-010). Starts from Scene 006's end at the bench.
-Rule 2: he takes the webcam (and the book) to the build spot and sets them down. The ritual: find, build, oops, why, fix,
-button. He builds the lever gate on the garden's north side: two guide posts, a plank panel, a beam over it on a stone
-fulcrum, a counterweight. Oops: the fulcrum is by his hands -- the push does nothing. Why: the page draws it by the gate
-(lesson: LEVER). Fix: he slides it over; one finger lifts the gate. Feelings beat (no slang). Hook: a bottle drifts down
-the stream -- page thirteen? Slang woven in where the moment calls, always a bit wrong.
+"""Grandpa's Block Lab, Episode 1, Scene 007 -- "The Fence" (16:9, ~45 s). Approved (2026-10-21): the split's first half.
+Grandpa solo. Starts from Scene 006's end at Tobias's bench. Tobias's garden is in the boar's woods, so Grandpa builds him a
+safe one out in the open meadow by the cabin (seedlings move in later). Rule 2: the webcam (and the book) come along; the
+webcam goes back on the Scene 003 bank stone (Rule 1). Across the stepping stones ("My knees remember this."), page twelve,
+then the fence, side by side ("Post. Rail. Post. Rail. Chat, this is my cardio."). A rustle in the woods across the stream:
+"...Nope. Faster." -- the last two sides go up twice as fast. Cliffhanger: "Chat... gate. NOW." (Scene 008 builds the gate.)
 Pass 1 synthesises the voice; pass 2 (--fit) re-times everything to the measured lines."""
 import json, math, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE); sys.path.insert(0, "/home/user/blocklab")
 from storykit import orbit, auto_frame, gp, fix_path
-from forest_camkit import clear_air, solid_free, facing, both
+from forest_camkit import clear_air, solid_free, both
 from forest_camkit import make_los as _make_los
 FPS = 30
 S6 = json.load(open("/home/user/blocklab/stories/grandpa_ep01_scene006.json"))
@@ -27,63 +26,50 @@ for name, st in S6["structures"].items():
         continue
     S[name] = json.loads(json.dumps(st))
 PROP_OUT = root_of("prop")[0]
-CAM0, CAM0_YAW = root_of("webcam")                                  # on the bench's west end
+CAM0, CAM0_YAW = root_of("webcam")
 BOOK0 = root_of("book")[0]; PAGES0 = root_of("pages")[0]
 for name in ("webcam", "cam_cap", "book", "pages"):                 # the holds place them
     S[name]["at"] = [0.0, 0.0, 0.0]; S[name]["yaw"] = 0.0
-# two flat stones by the build spot: one for the webcam, one to prop the book open on
-S["cam_stone"] = dict(cells=[[-61, 40, 0], [-60, 40, 0], [-61, 41, 0], [-60, 41, 0]], at=[0.0, 0.0, 0.0], centered=False, material="stone",
-                      block_shape=[1, 1, 0.8], expect_blocks=4, prebuilt=True)
-S["book_stone"] = dict(cells=[[-58, 45, 0], [-57, 45, 0], [-58, 46, 0], [-57, 46, 0]], at=[0.0, 0.0, 0.0], centered=False, material="stone",
-                       block_shape=[1, 1, 0.8], expect_blocks=4, prebuilt=True)
-STONE_TOP = 0.08
-# the lever gate (built on camera): at the garden's north opening (y 2.9)
-S["gate_posts"] = dict(cells=[[x, 29, z] for x in (-62, -57) for z in range(7)], at=[0.0, 0.0, 0.0], centered=False, material="wood",
-                       block_shape=[0.6, 0.6, 1], expect_blocks=14, stand="front")
-S["gate"] = dict(cells=[[x, 29, z] for x in range(-61, -57) for z in range(4)], at=[0.0, 0.0, 0.0], centered=False, material="planks",
-                 block_shape=[1, 0.35, 1], expect_blocks=16,
-                 extras=[dict(c=[-6.0, 2.9, 0.45], s=[0.01, 0.01, 0.1], m="wood")])      # the rope up to the beam
-S["beam"] = dict(cells=[[-60, y, 5] for y in range(29, 40)], at=[0.0, 0.0, 0.0], centered=False, material="planks",
-                 block_shape=[0.5, 1, 1], expect_blocks=11)
-S["fulcrum"] = dict(cells=[[-60, 37, z] for z in range(5)], at=[0.0, 0.0, 0.0], centered=False, material="stone",
-                    block_shape=[0.8, 0.8, 1], expect_blocks=5)
-S["weight"] = dict(cells=[[-60, 38, 6]], at=[0.0, 0.0, 0.0], centered=False, material="stone", block_shape=[0.9, 0.9, 1], expect_blocks=1)
-PIVOT = [-60, 32, 4.5]                                              # the fulcrum's top, once it is slid under y 3.2
-SWING = -28.0                                                       # his end goes down, the gate end comes up
-LIFT = round(0.3 * math.sin(math.radians(-SWING)), 3)               # load arm 0.3 m
-# the bottle (hook): drifts down the stream with a rolled page inside
-S["bottle"] = dict(cells=[[0, 0, 0]], at=[0.0, 0.0, 0.0], centered=False, material="glass", block_shape=[0.9, 2.2, 0.9], expect_blocks=1,
-                   extras=[dict(c=[0.0, 0.118, 0.055], s=[0.045, 0.03, 0.045], m="wood"),                    # cork
-                           dict(c=[0.0, 0.0, 0.056], s=[0.05, 0.16, 0.05], m="paper")])                    # the rolled page
-STREAM_X = lambda y: -5.2 + 0.25 * math.sin(0.7 * y)
+ROCK_TOP = 0.10                                                     # the Scene 003 bank stone, (-3.75, 1.25)
+# ---------------------------------------------------------------- the fence: a 1.5 m square in the meadow (x -3.8..-2.3, y 1.5..3.0)
+PX, PY = (-38, -33, -28, -23), (15, 20, 25, 30)                     # post lines (cells); the gate gap: south side, x -33..-28
+GAP = range(-32, -28)
+def posts(cells): return dict(cells=[[x, y, z] for x, y in cells for z in range(5)], at=[0.0, 0.0, 0.0], centered=False,
+                              material="wood", block_shape=[0.6, 0.6, 1], expect_blocks=5 * len(cells))
+def rails(cells, along):
+    return dict(cells=[[x, y, z] for x, y in cells for z in (1, 3)], at=[0.0, 0.0, 0.0], centered=False, material="planks",
+                block_shape=[1, 0.35, 0.5] if along == "x" else [0.35, 1, 0.5], expect_blocks=2 * len(cells))
+SIDES = {
+    "s": ([(x, 15) for x in PX], [(x, 15) for x in range(-37, -23) if x not in PX and x not in GAP], "x"),
+    "w": ([(-38, y) for y in PY[1:]], [(-38, y) for y in range(16, 30) if y not in PY], "y"),
+    "n": ([(x, 30) for x in PX[1:]], [(x, 30) for x in range(-37, -23) if x not in PX], "x"),
+    "e": ([(-23, y) for y in PY[1:-1]], [(-23, y) for y in range(16, 30) if y not in PY], "y"),
+}
+for k, (pc, rc, along) in SIDES.items():
+    S["fence_posts_" + k] = posts(pc)
+    S["fence_rails_" + k] = rails(rc, along)
+FENCE_BOXES = [((-3.84, 1.46, 0.0), (-2.26, 1.54, 0.5)), ((-3.84, 1.46, 0.0), (-3.76, 3.04, 0.5)),
+               ((-3.84, 2.96, 0.0), (-2.26, 3.04, 0.5)), ((-2.34, 1.46, 0.0), (-2.26, 3.04, 0.5))]
 MACHINE = [((-4.45, 0.95, 0.70), (-4.35, 1.85, 0.80)), ((-4.55, 1.75, 0.0), (-4.25, 2.15, 0.5)), ((-4.55, 1.85, 0.5), (-4.25, 2.05, 0.7)),
            ((-5.05, 0.42, -0.05), (-4.95, 1.58, 1.2)), ((-4.55, 1.25, 0.0), (-4.45, 1.35, 0.8))]
 LEAN_BOXES = [((-6.57, 1.13, 1.39), (-5.73, 1.97, 1.51)), ((-6.53, 1.27, 0.0), (-6.47, 1.33, 1.5)), ((-5.83, 1.27, 0.0), (-5.77, 1.33, 1.5)),
               ((-6.53, 1.77, 0.0), (-6.47, 1.83, 1.5)), ((-5.83, 1.77, 0.0), (-5.77, 1.83, 1.5)), ((-6.4, 1.55, 0.0), (-5.9, 1.75, 0.5))]
-GATE_BOXES = [((-6.24, 2.87, 0.0), (-6.16, 2.93, 0.7)), ((-5.74, 2.87, 0.0), (-5.66, 2.93, 0.7)), ((-6.15, 2.88, 0.0), (-5.75, 2.92, 0.4)),
-              ((-6.03, 2.85, 0.5), (-5.97, 3.95, 0.6))]
 make_los = lambda cast, **kw: _make_los(list(cast) + MACHINE + LEAN_BOXES, **kw)
-def lean_free(eye):
-    return not any(all(lo[i] - 0.08 <= eye[i] <= hi[i] + 0.08 for i in range(3)) for lo, hi in LEAN_BOXES + GATE_BOXES)
-AIR = both(clear_air, lean_free)
-PATH = both(solid_free, lean_free)
+def boxes_free(eye):
+    return not any(all(lo[i] - 0.08 <= eye[i] <= hi[i] + 0.08 for i in range(3)) for lo, hi in LEAN_BOXES + FENCE_BOXES)
+AIR = both(clear_air, boxes_free)
+PATH = both(solid_free, boxes_free)
 
 # ---------------------------------------------------------------- lines
-LINES = [("field", "Chat, we're going on a field trip. Ten feet. Very exciting.", None),
-         ("page", "Page twelve. A gate. With a lever. How hard can it be?", None),
-         ("dont", "...Don't answer that.", None),
-         ("squares", "Three squares... three blocks.", None),
-         ("vibes", "And a rock. For... vibes.", None),
-         ("giving", "This gate is NOT... giving.", None),
-         ("drawn", "Wait. The pivot's drawn way over here. By the gate.", None),
-         ("lesson", "The farther you push from the pivot, the less push you need.", None),
-         ("archi", "Old Archimedes said, give him a long enough lever and he'd move the world. I just want to move a gate.", None),
-         ("rizz", "Ohhh. Now THAT'S got... rizz.", None),
-         ("scared", "Being scared's normal. Building something... helps.", 0.88),
-         ("tobias", "Don't tell Tobias I said that.", None),
-         ("bottle", "...Is that... page thirteen?", None)]
-GUESS = dict(field=3.4, page=3.4, dont=1.2, squares=1.9, vibes=1.8, giving=2.0, drawn=3.0, lesson=3.4, archi=5.6, rizz=2.2,
-             scared=3.4, tobias=1.6, bottle=1.9)
+LINES = [("plan", "Chat, Tobias's garden is right where the boar lives. So... we're building him a safe one. Out in the open, by my cabin.", None,
+          "Chat, Tobias's garden is right where the boar livs. So... we're building him a safe one. Out in the open, by my cabin."),
+         ("seed", "Then we move his seedlings in. The ones the boar left.", None, None),
+         ("knees", "My knees remember this.", None, None),
+         ("page", "A garden fence. With a lever gate.", None, None),
+         ("cardio", "Post. Rail. Post. Rail. Chat, this is my cardio.", None, None),
+         ("faster", "...Nope. Faster.", 1.0, None),
+         ("now", "Chat... gate. NOW.", None, None)]
+GUESS = dict(plan=7.9, seed=3.5, knees=1.6, page=2.5, cardio=3.9, faster=1.3, now=1.8)
 dur_file = os.path.join(HERE, "ep01_s007_durations.json")
 D = dict(GUESS, **(json.load(open(dur_file)) if "--fit" in sys.argv and os.path.exists(dur_file) else {}))
 LS, LE, cursor = {}, {}, [0.0]
@@ -103,186 +89,125 @@ def look(t0, t1, pos=None, body=False, **kw):
 def sfx(sound, t, gain=1.0): act(type="sfx", sound=sound, when=t, gain=gain)
 def walk(t0, t1, to, via=()):
     act(type="move", to=[to[0], to[1], 0.0], via=[[v[0], v[1], 0.0] for v in via], when=t0, until=t1, face="path")
-def build(name, t0, t1, at, order="z"):
+def build(name, t0, t1, at, order):
     act(type="build", target=name, when=t0, until=t1, stand_at=[at[0], at[1], 0.0], order=order)
 
-BEAM_END = (-6.0, 3.86, 0.62)
-DOWN_END = (-6.0, 3.2 + 0.66 * math.cos(math.radians(SWING)), 0.55 + 0.66 * math.sin(math.radians(SWING)) + 0.06)
 POSES = {
     "pick_up": dict(lean=0.25),
-    "set_down": dict(lean=0.5, hips=[0.0, 0.0, -0.06]),
-    "strain": dict(lean=0.42, hips=[0.0, 0.0, -0.04], shrug=0.4, hand_R={"world": list(BEAM_END)}, hand_L={"world": [BEAM_END[0] + 0.1, BEAM_END[1], BEAM_END[2]]}),
-    "strain_b": dict(lean=0.5, hips=[0.0, 0.0, -0.06], shrug=0.6, hand_R={"world": list(BEAM_END)}, hand_L={"world": [BEAM_END[0] + 0.1, BEAM_END[1], BEAM_END[2]]}),
-    "peer_down": dict(lean=0.35, head=(0.0, -0.22, 0.0)),
-    "push_low": dict(lean=0.55, hips=[0.0, 0.0, -0.12], hand_R={"char": [-0.16, -0.06, 0.32]}, hand_L={"char": [-0.05, -0.12, 0.32]}),
-    "finger_top": dict(lean=0.2, hand_R={"world": list(BEAM_END)}),
-    "finger_dn": dict(lean=0.38, hand_R={"world": [round(v, 3) for v in DOWN_END]}),
-    "proud": dict(lean=-0.08, hand_L={"char": [0.18, -0.08, 0.6]}),           # hands on hips-ish
-    "dreamy": dict(head=(0.0, 0.12, 0.08), lean=-0.03),
+    "set_down": dict(lean=0.55, hips=[0.0, 0.0, -0.06]),
+    "wobble_a": dict(hand_L=dict(char=(0.46, -0.04, 0.92)), twist=0.14, lean=-0.06),
+    "wobble_b": dict(hand_L=dict(char=(0.42, 0.02, 1.02)), twist=-0.14, lean=0.04),
+    "peer_down": dict(lean=0.18, head=(0.0, -0.22, 0.0)),
+    "freeze": dict(shrug=0.5, elbows=0.2, lean=-0.05),
+    "pant": dict(lean=0.22, hips=[0.0, 0.0, -0.03], hand_R={"char": [-0.15, -0.1, 0.52]}),    # a hand on his knee (the book's in the other)
 }
-CARRY = {"char": [-0.17, -0.18, 0.40]}                             # the webcam, as in Scenes 002-006
-BOOK_CARRY_B = {"char": [0.21, -0.06, 0.43]}                         # the book, tucked under his left arm
-BOOK_CARRY_P = {"char": [0.21, -0.06, 0.44]}
+CARRY = {"char": [-0.17, -0.18, 0.40]}
+BOOK_CARRY_B = {"char": [0.17, -0.2, 0.80]}                          # the book held open in front (left hand)
+BOOK_CARRY_P = {"char": [0.17, -0.2, 0.81]}
 G0 = C6["grandpa"]["root"][:2]                                      # (-6.15, 1.33) at the bench
-G_SET = (-5.74, 4.16)                                               # between the two stones
-G_BUILD = (-5.62, 3.35)
-G_PUSH = (-5.78, 4.14)                                              # at the beam's end, facing the gate (south)
-G_BOOK = G_PUSH                                                     # (the book is just behind him: he turns round)
-G_SLIDE0, G_SLIDE1 = (-5.8, 3.72), (-5.8, 3.24)                      # beside the fulcrum, sliding it toward the gate
-OUT_VIA = [(-6.02, 0.98), (-5.58, 0.98), (-5.4, 1.45), (-5.41, 1.95), (-5.42, 2.6), (-5.48, 3.3), (-5.6, 3.9)]
-CUBE = (-6.05, 4.05)
-CAM_YAW = round(math.degrees(math.atan2(-5.85 - CUBE[0], -(3.4 - CUBE[1]))), 2)   # lens (local -y) at the build
+G_PICK = (-6.22, 1.42)
+OUT_VIA = [(-6.16, 1.08), (-5.58, 0.98), (-5.4, 1.45), (-5.41, 1.95), (-5.43, 2.42)]
+STONES = [(-5.18, 2.45), (-4.98, 2.45), (-4.7, 2.45)]
+ACROSS = [(-4.4, 2.45), (-3.9, 2.6), (-3.25, 2.0), (-3.25, 0.88)]   # off the stones, north of the machine, through the empty plot
+P_SET = (-3.74, 0.93)                                               # Scene 003's spot: the bank stone just ahead
+CUBE = (-3.75, 1.25)
+CAM_YAW = round(math.degrees(math.atan2(-3.05 - CUBE[0], -(2.25 - CUBE[1]))), 2)   # lens (local -y) into the plot
 rotz = lambda v, a: (v[0] * math.cos(math.radians(a)) - v[1] * math.sin(math.radians(a)), v[0] * math.sin(math.radians(a)) + v[1] * math.cos(math.radians(a)))
 _o = rotz((0.0, -0.1), CAM_YAW)
-CAM_ROOT = [round(CUBE[0] - _o[0], 4), round(CUBE[1] - _o[1], 4), round(STONE_TOP - 0.30, 3)]
-BOOK_AT = (-5.75, 4.55)                                             # propped open on the book stone
-BOOK_ROOT = [BOOK_AT[0], BOOK_AT[1], round(STONE_TOP - 0.085, 3)]
-PAGES_ROOT = [BOOK_AT[0], BOOK_AT[1], round(STONE_TOP - 0.075, 3)]
+CAM_ROOT = [round(CUBE[0] - _o[0], 4), round(CUBE[1] - _o[1], 4), round(ROCK_TOP - 0.30, 3)]
+STAND = {"s": (-3.05, 1.16), "w": (-4.09, 2.6), "n": (-3.05, 3.36), "e": (-1.98, 2.25)}   # outside each side, facing it
 face("smile", -5.0, 0.4, set=dict(C6["grandpa"]["face"]))
 act(type="face_camera", when=-5.0, until=0.3)
 
-# 1. pack up (Rule 2): the webcam and the book come along
-PICK = 0.9
+# 1. the plan -- and Rule 2: the webcam and the book come along
+walk(0.05, 0.6, G_PICK)
+PICK = 1.1
 pose("pick_up", PICK - 0.5, PICK + 0.4, ease=0.3)
+cam_holds, book_holds = [], []
 for name in ("webcam", "cam_cap"):
+    cam_holds.append(len(A))
     act(type="hold", target=name, hand="R", when=round(PICK - 0.3, 3), until=99.0, reach=0.3, grip=[0.0, -0.1, 0.48],
         keys=[dict(t=-1.0, at=CAM0, rot=[0, 0, CAM0_YAW]), dict(t=PICK, at=CAM0, rot=[0, 0, CAM0_YAW]), dict(t=round(PICK + 0.6, 3), at=CARRY, rot=[0, 0, 0])])
 for name, r0, carry in (("book", BOOK0, BOOK_CARRY_B), ("pages", PAGES0, BOOK_CARRY_P)):
-    act(type="hold", target=name, hand="L", when=round(PICK - 0.2, 3), until=99.0, reach=0.3, grip=[0.11, 0.0, 0.1],
+    book_holds.append(len(A))
+    act(type="hold", target=name, hand="L", when=round(PICK - 0.2, 3), until=99.0, reach=0.3, grip=[0.0, -0.07, 0.09],
         keys=[dict(t=-1.0, at=r0, rot=[0, 0, 0]), dict(t=round(PICK + 0.1, 3), at=r0, rot=[0, 0, 0]), dict(t=round(PICK + 0.7, 3), at=carry, rot=[0, 0, 0])])
 look(PICK - 0.6, PICK + 0.4, pos=(-6.25, 1.68, 0.55), body=False)
-s, e = say("field", 0.0, at=PICK + 0.5)
-act(type="face_camera", when=round(s - 0.1, 3), until=round(s + 1.4, 3))
-face("smirk", s, e + 0.2)
-WALK0 = s + 1.5
-WALK1 = WALK0 + 5.6
-walk(WALK0, WALK1, G_SET, via=OUT_VIA)
-# 2. find the spot: set the webcam and the book down
-SET_T = WALK1 + 0.55
-SET_B = SET_T                                                       # the book, on the stone ahead of him
-SET_T = SET_B + 1.1                                                 # then the webcam, on the stone to his left
-look(WALK1 - 0.4, SET_B + 0.3, pos=(BOOK_AT[0], BOOK_AT[1], 0.1), body=True, rate=0.18)
-look(SET_B + 0.3, SET_T + 0.5, pos=(CUBE[0], CUBE[1], 0.1), body=True, rate=0.18)
-pose("set_down", SET_B - 0.55, SET_B + 0.35, ease=0.3)
+s, e = say("plan", 0.0, at=PICK + 0.6)
+act(type="face_camera", when=round(s - 0.1, 3), until=round(s + 4.0, 3))
+face("worried", s + 0.3, s + 2.4, set=dict(brow=0.8))
+face("smile", s + 2.6, e + 0.3)
+WALK0 = s + 4.2
+WALK1 = WALK0 + 4.4
+walk(WALK0, WALK1, OUT_VIA[-1], via=OUT_VIA[:-1])
+s, e = say("seed", 0.4)
+face("warm", s, e + 0.3)
+# 2. back over the stepping stones (wobbling); round the machine to the bank stone
+ST0 = WALK1
+ST1 = ST0 + 2.0
+walk(ST0, ST1, STONES[-1], via=STONES[:-1])
+for k in range(int((ST1 - ST0) / 0.35)):
+    pose("wobble_a" if k % 2 == 0 else "wobble_b", ST0 + 0.35 * k, ST0 + 0.35 * (k + 1) + 0.15, ease=0.12)
+s, e = say("knees", 0.0, at=ST0 + 0.3)
+face("worried", s - 0.2, e + 0.3)
+AC0 = ST1 + 0.05
+AC1 = AC0 + 2.6
+walk(AC0, AC1, P_SET, via=ACROSS)
+# 3. the webcam goes back on the bank stone (Rule 2); the book stays open in his left hand -- he builds from the plan
+SET_T = AC1 + 0.55
+look(AC1 - 0.4, SET_T + 0.3, pos=(CUBE[0], CUBE[1], 0.1), body=True, rate=0.18)
 pose("set_down", SET_T - 0.55, SET_T + 0.45, ease=0.3)
-for i, a in enumerate(A):
-    if a["type"] == "hold":
-        if a["target"] in ("webcam", "cam_cap"):
-            a["until"] = round(SET_T, 3)
-            a["keys"] += [dict(t=round(SET_T - 0.5, 3), at=CARRY, rot=[0, 0, 0]), dict(t=round(SET_T, 3), at=CAM_ROOT, rot=[0, 0, CAM_YAW])]
-        elif a["target"] in ("book", "pages"):
-            a["until"] = round(SET_B, 3)
-            a["keys"] += [dict(t=round(SET_B - 0.5, 3), at=BOOK_CARRY_B if a["target"] == "book" else BOOK_CARRY_P, rot=[0, 0, 0]),
-                          dict(t=round(SET_B, 3), at=BOOK_ROOT if a["target"] == "book" else PAGES_ROOT, rot=[0, 0, 0])]
-sfx("settle", SET_B - 0.05, 0.3)
+for i in cam_holds:
+    A[i]["until"] = round(SET_T, 3)
+    A[i]["keys"] += [dict(t=round(SET_T - 0.5, 3), at=CARRY, rot=[0, 0, 0]), dict(t=round(SET_T, 3), at=CAM_ROOT, rot=[0, 0, CAM_YAW])]
 sfx("settle", SET_T - 0.05, 0.4)
-s, e = say("page", 0.35, at=SET_T + 0.5)
-look(s - 0.2, s + 1.4, pos=(BOOK_AT[0], BOOK_AT[1], 0.1), body=False)
-face("raised", s + 1.4, e + 0.2, set=dict(smile=0.5))
-s, e = say("dont", 0.4)
-act(type="face_camera", when=round(s - 0.3, 3), until=round(e + 0.3, 3))
-face("side_eye", s - 0.2, e + 0.3)
-# 3. build: posts, gate, beam (counting squares), the fulcrum (in the wrong place), the counterweight
-B0 = e + 0.5
-walk(B0, B0 + 0.9, G_BUILD, via=[(-5.55, 3.8)])
-T = B0 + 0.9
-build("gate_posts", T, T + 1.3, G_BUILD); T += 1.35
-build("gate", T, T + 1.2, G_BUILD); T += 1.25
-s, e = say("squares", 0.0, at=T + 0.1)
-build("beam", T, T + 1.6, G_BUILD, order="y"); T += 1.65
-build("fulcrum", T, T + 0.9, G_BUILD); T += 0.95
-s, e = say("vibes", 0.3, at=T)
-build("weight", s + 0.4, s + 0.8, G_BUILD)
-face("smirk", s + 0.6, e + 0.3)
-BUILT = max(e, s + 0.8)
-# 4. oops: he pushes -- nothing moves
-walk(BUILT + 0.3, BUILT + 1.6, G_PUSH, via=[(-5.55, 3.85)])
-LOOK_PUSH = len(A); look(BUILT + 1.3, 99.0, pos=(-6.0, 3.0, 0.4), body=True, rate=0.15)
-P0 = BUILT + 1.8
-pose("strain", P0, P0 + 1.0, ease=0.3)
-pose("strain_b", P0 + 0.9, P0 + 2.2, ease=0.25)
-act(type="swing", target="beam", axis="x", degrees=0.6, period=0.18, pivot=[-60, 37, 4.5], when=round(P0 + 0.6, 3), until=round(P0 + 2.0, 3))
-face("wince", P0 + 0.3, P0 + 2.3)
-sfx("creak", P0 + 1.6, 0.7)                                         # his back files a complaint
-s, e = say("giving", 0.3, at=P0 + 2.0)
-face("worried", s, e + 0.3)
-# 5. why: the page draws the pivot by the gate (lesson card)
-W0 = e + 0.3
-A[LOOK_PUSH]["until"] = round(W0, 3)
-LOOK_BOOK = len(A); look(W0, 99.0, pos=(BOOK_AT[0], BOOK_AT[1], 0.1), body=True, rate=0.18)      # he turns round to the page
-pose("peer_down", W0 + 1.0, W0 + 3.4, ease=0.3)
-s, e = say("drawn", 0.0, at=W0 + 1.2)
-face("squint", s, s + 1.2)
-face("raised", s + 1.2, e + 0.3)
-s, e = say("lesson", 0.35)
-LESSON0 = s
-act(type="face_camera", when=round(s - 0.2, 3), until=round(e + 0.2, 3))
-face("raised", s, e, set=dict(smile=0.3))
-# 6. fix: slide the fulcrum over (Archimedes on the way), then one finger
-F0 = e + 0.35
-A[LOOK_BOOK]["until"] = round(F0, 3)
-walk(F0, F0 + 0.9, G_SLIDE0)
-SL0 = F0 + 1.1
-SL1 = SL0 + 1.4
-pose("push_low", SL0 - 0.3, SL1 + 0.2, ease=0.3)
-walk(SL0, SL1, G_SLIDE1)
-act(type="slide", target="fulcrum", by=[0.0, -0.5, 0.0], when=round(SL0, 3), until=round(SL1, 3), sound="scrape", gain=0.6)
-act(type="look", when=round(SL0 - 0.3, 3), until=round(SL1 + 0.2, 3), body=False, pos=[-6.0, 3.45, 0.2])
-s, e = say("archi", 0.2, at=SL1 + 0.3)
-LESSON1 = e
-walk(s + 0.4, s + 1.9, G_PUSH)
-look(s + 1.7, 99.0, pos=(-6.0, 3.0, 0.4), body=True, rate=0.15)
-face("smirk", e - 1.6, e + 0.3)
-U0 = max(e + 0.4, s + 2.2)                                          # one finger...
-pose("finger_top", U0 - 0.5, U0 + 0.1, ease=0.3)
-pose("finger_dn", U0, U0 + 2.6, ease=1.0)
-for name in ("beam", "weight"):
-    act(type="spin", target=name, axis="x", degrees=SWING, pivot=PIVOT, when=round(U0 + 0.05, 3), until=round(U0 + 1.05, 3))
-act(type="slide", target="gate", by=[0.0, 0.0, LIFT], when=round(U0 + 0.1, 3), until=round(U0 + 1.1, 3), sound="none")
-sfx("creak", U0 + 0.2, 0.35)
-face("surprised", U0 + 0.4, U0 + 1.3, set=dict(brow=1.0))
-s, e = say("rizz", 0.0, at=U0 + 1.3)
-pose("proud", s + 0.3, e + 0.6, ease=0.3)
-act(type="face_camera", when=round(s, 3), until=round(e + 0.5, 3))
-face("smile", s, e + 0.5, set=dict(smile=1.0))
-# 7. the feelings beat: a little memory cloud tries to puff up... he looks at the gate; it pops (no slang)
-CL0 = e + 0.5
-CL1 = CL0 + 2.4
-look(CL0 + 0.1, CL0 + 1.0, pos=(-5.7, 3.4, 1.4), body=False)        # glances up at it
-look(CL0 + 1.0, CL1 + 0.2, pos=(-5.95, 2.9, 0.5), body=False)       # ...then at the gate: pop
-face("worried", CL0 + 0.1, CL0 + 1.1)
-face("content", CL0 + 1.1, CL1 + 0.5)
-CLOUD = dict(kind="memory_cloud", at=[G_PUSH[0] + 0.2, G_PUSH[1], 1.45], visible=[round(CL0, 3), round(CL1, 3)], yaw=180.0, size=0.6,
-             boar=dict(huffs=[round(CL0 + 0.6, 3)], stomps=[], clacks=[]))
-s, e = say("scared", 0.4, at=CL1 + 0.2)
-act(type="face_camera", when=round(s - 0.4, 3), until=round(e + 0.2, 3))
-face("warm", s, e + 0.2)
-s, e = say("tobias", 0.3)
-act(type="face_camera", when=round(s - 0.2, 3), until=round(e + 0.4, 3))
-face("side_eye", s, e + 0.4, set=dict(smile=0.4))
-# 8. the hook: a bottle comes down the stream
-H0 = e + 0.4
-BOT_Y0, BOT_Y1 = 5.0, 3.55
-BOT_T0, BOT_T1 = H0 - 2.6, H0 + 2.8
-keys, n = [], 12
-for k in range(n + 1):
-    u = k / n; t = BOT_T0 + (BOT_T1 - BOT_T0) * u; y = BOT_Y0 + (BOT_Y1 - BOT_Y0) * u
-    keys.append(dict(t=round(t, 3), at=[round(STREAM_X(y) - 0.12, 4), round(y, 4), round(-0.065 + 0.008 * math.sin(5 * t), 4)],
-                     rot=[round(6 * math.sin(3 * t), 2), 0, round(10 + 8 * math.sin(1.3 * t), 2)]))
-keys = [dict(keys[0], t=-1.0)] + keys + [dict(keys[-1], t=99.0)]
-act(type="hold", target="bottle", hand="none", when=-1.0, until=99.0, reach=0.05, keys=keys)
-look(H0 - 0.3, 99.0, pos=(STREAM_X(3.8) - 0.12, 3.8, 0.05), body=True, rate=0.2)
-s, e = say("bottle", 0.0, at=H0 + 0.4)
-face("surprised", s - 0.3, 99.0, set=dict(brow=1.2, smile=0.0))
-sfx("clink", s - 0.6, 0.25)
-END = e + 0.9
+sfx("page", SET_T + 0.7, 0.6)
+s, e = say("page", 0.3, at=SET_T + 0.9)
+look(s - 0.3, e + 0.2, obj="book", body=False)
+pose("peer_down", s - 0.2, e, ease=0.3)
+face("raised", s + 0.6, e + 0.3, set=dict(smile=0.5))
+# 4. the fence: south side, then west -- "Post. Rail. Post. Rail."
+B0 = e + 0.4
+walk(B0, B0 + 0.9, STAND["s"], via=[(-3.4, 1.05)])
+T = B0 + 1.0
+look(T - 0.2, T + 4.2, pos=(-3.05, 1.5, 0.25), body=True, rate=0.2)
+build("fence_posts_s", T, T + 1.8, STAND["s"], "x"); build("fence_rails_s", T + 1.85, T + 3.6, STAND["s"], "x"); T += 3.65
+s, e = say("cardio", 0.0, at=B0 + 1.4)
+face("smirk", s + 2.0, e + 0.3)
+walk(T, T + 1.8, STAND["w"], via=[(-3.3, 0.82), (-4.12, 0.85), (-4.06, 1.45), (-3.98, 1.75), (-3.98, 2.25)])   # round the bank stone, past the anvil
+T += 1.9
+look(T - 0.2, T + 3.0, pos=(-3.8, 2.25, 0.25), body=True, rate=0.2)
+build("fence_posts_w", T, T + 1.3, STAND["w"], "y"); build("fence_rails_w", T + 1.35, T + 2.8, STAND["w"], "y"); T += 2.85
+# 5. a rustle across the stream. He freezes. "...Nope. Faster."
+RUSTLE = T + 0.2
+sfx("rustle", RUSTLE, 0.8)
+look(RUSTLE + 0.15, RUSTLE + 1.9, pos=(-6.3, 3.4, 0.6), body=False, rate=0.4)
+pose("freeze", RUSTLE + 0.1, RUSTLE + 2.0, ease=0.12)
+face("surprised", RUSTLE + 0.15, RUSTLE + 1.9, set=dict(brow=1.2, smile=0.0))
+s, e = say("faster", 0.0, at=RUSTLE + 1.3)
+face("alert", s, e + 0.4, set=dict(brow=-0.3))
+T = e + 0.15                                                        # twice as fast now: north, then east
+walk(T, T + 1.2, STAND["n"], via=[(-4.35, 2.75), (-4.35, 3.35), (-3.9, 3.42)])   # round the oak
+T += 1.25
+look(T - 0.2, T + 1.6, pos=(-3.05, 3.0, 0.25), body=True, rate=0.3)
+build("fence_posts_n", T, T + 0.7, STAND["n"], "x"); build("fence_rails_n", T + 0.72, T + 1.5, STAND["n"], "x"); T += 1.55
+walk(T, T + 0.8, STAND["e"], via=[(-2.0, 3.48)])
+T += 0.85
+look(T - 0.2, T + 1.6, pos=(-2.3, 2.25, 0.25), body=True, rate=0.3)
+build("fence_posts_e", T, T + 0.6, STAND["e"], "y"); build("fence_rails_e", T + 0.62, T + 1.3, STAND["e"], "y"); T += 1.35
+# 6. the gap where the gate goes -- cliffhanger
+G_GAP = (-3.05, 1.05)
+walk(T, T + 1.0, G_GAP, via=[(-1.98, 1.2), (-2.6, 1.02)])
+pose("pant", T + 1.0, T + 2.0, ease=0.25)
+look(T + 0.9, T + 2.0, pos=(-3.05, 1.5, 0.3), body=True, rate=0.25)
+act(type="face_camera", when=round(T + 2.0, 3), until=99.0)
+s, e = say("now", 0.0, at=T + 2.1)
+face("alert", s - 0.2, 99.0, set=dict(brow=-0.4, smile=0.0))
+END = e + 0.8
 FILM = math.ceil(END * FPS) / FPS
 for a in A:
     if a.get("until") == 99.0:
         a["until"] = round(FILM + 1.0, 3)
-    for k in a.get("keys", []):
-        if k["t"] == 99.0:
-            k["t"] = round(FILM + 1.0, 3)
 
 # the machine keeps its clock; the prop stays put
 PERIOD, CAM_GAP = 3.3, 0.55
@@ -301,13 +226,14 @@ act(type="hold", target="prop", hand="none", when=-1.0, until=round(FILM + 1.0, 
     keys=[dict(t=-1.0, at=PROP_OUT, rot=[0, 90, 0]), dict(t=round(FILM + 1.0, 3), at=PROP_OUT, rot=[0, 90, 0])])
 
 lines = []
-for i, (lid, text, speed) in enumerate(LINES):
+for i, (lid, text, speed, speak) in enumerate(LINES):
     ln = dict(id=lid, text=text, pause=0.0)
     if speed: ln["speed"] = speed
+    if speak: ln["speak"] = speak
     lines.append(ln)
     if i:
         lines[i - 1]["pause"] = round(LS[lid] - LE[LINES[i - 1][0]], 3)
-tail = FILM - LE["bottle"] - 0.5 / FPS
+tail = FILM - LE["now"] - 0.5 / FPS
 if "--fit" not in sys.argv:
     tail = max(tail, 2.0)
 
@@ -340,70 +266,49 @@ def g_at(t):
 who_at = lambda t: gp(*g_at(t))
 def box_at(p, r=0.17, h=1.2):
     return ((p[0] - r, p[1] - r, 0.0), (p[0] + r, p[1] + r, h))
-LOS = make_los([])
-GATE_PTS = [(-6.2, 2.9, 0.05), (-5.7, 2.9, 0.7), (-6.0, 3.9, 0.6)]
+FENCE_PTS = [(-3.8, 1.5, 0.05), (-2.3, 1.5, 0.5), (-3.8, 3.0, 0.5), (-2.3, 3.0, 0.05)]
 last = C6["camera"]["last_key"]
 cam = [orbit(0.0, last["target"], last["az"], last["el"], last["dist"])]
-CUT_INS = None
 SHOTS = [
-    # the walk to the garden's north side, along the bank: seen from across the stream
-    lambda: auto_frame(WALK0 + 1.4, gp(*OUT_VIA[3]) + gp(*G_SET)[1:], (-5.6, 2.8, 0.6), -35, 12, 4.0, AIR, prev=cam, path_clear=PATH, los=LOS, who=who_at),
-    # setting down: the webcam, the book; "How hard can it be?"
-    lambda: auto_frame(SET_T - 0.3, gp(*G_SET) + [(CUBE[0], CUBE[1], 0.1), (BOOK_AT[0], BOOK_AT[1], 0.1)], (-5.85, 4.25, 0.5), 20, 12, 3.2,
-                       AIR, prev=cam, path_clear=PATH, los=make_los([box_at(G_SET)]), who=who_at),
-    # the build: a side view of the whole gate
-    lambda: auto_frame(B0 + 1.0, gp(*G_BUILD) + GATE_PTS, (-5.85, 3.35, 0.5), 0, 16, 3.2, AIR, prev=cam, path_clear=PATH,
-                       los=make_los([box_at(G_BUILD)]), who=who_at),
-    # the oops: his straining face, the beam that won't budge
-    lambda: auto_frame(P0 + 0.2, gp(*G_PUSH) + [(-6.0, 3.0, 0.4), BEAM_END], (-5.85, 3.7, 0.65), 20, 12, 2.6,
-                       AIR, prev=cam, path_clear=PATH, los=make_los([box_at(G_PUSH)]), who=who_at),
-    # why: the page (insert, a hard cut)
-    lambda: [dict(cam[-1], at=round(math.ceil((LS["drawn"] + 0.6) * FPS - 1e-6) / FPS - 1.0 / FPS, 4)),
-             auto_frame(math.ceil((LS["drawn"] + 0.6) * FPS - 1e-6) / FPS, [(BOOK_AT[0] - 0.11, BOOK_AT[1] - 0.07, STONE_TOP), (BOOK_AT[0] + 0.11, BOOK_AT[1] + 0.07, STONE_TOP)],
-                        (BOOK_AT[0], BOOK_AT[1], STONE_TOP), 100, 32, 0.7, AIR, los=LOS)],   # from beyond the book: he's behind it
-    # the lesson to chat
-    lambda: [dict(cam[-1], at=round(math.ceil(LS["lesson"] * FPS - 1e-6) / FPS - 1.0 / FPS, 4)),
-             auto_frame(math.ceil(LS["lesson"] * FPS - 1e-6) / FPS, [(G_BOOK[0], G_BOOK[1], 0.75), (G_BOOK[0], G_BOOK[1], 1.12)], (G_BOOK[0], G_BOOK[1], 0.9), 40, 10, 2.2, AIR,
-                        los=make_los([box_at(G_BOOK)]))],
-    # the fix: slide the fulcrum, Archimedes, one finger, the gate goes up
-    lambda: auto_frame(SL0 + 0.2, gp(*G_SLIDE0)[1:] + GATE_PTS, (-5.85, 3.4, 0.5), 0, 12, 3.2, AIR, prev=cam, path_clear=PATH,
-                       los=make_los([box_at(G_SLIDE0)]), who=who_at),
-    lambda: auto_frame(U0 - 0.2, gp(*G_PUSH) + GATE_PTS[:2] + [(-6.0, 2.9, 0.62)], (-5.9, 3.5, 0.6), 10, 12, 2.8,
-                       AIR, prev=cam, path_clear=PATH, los=make_los([box_at(G_PUSH)]), who=who_at),
-    # the feelings beat: close, the little cloud
-    lambda: auto_frame(CL0 + 0.1, gp(*G_PUSH)[1:] + [(CLOUD["at"][0], CLOUD["at"][1], 1.75)], (G_PUSH[0] + 0.05, G_PUSH[1], 1.15), 40, 8, 2.4,
-                       AIR, prev=cam, path_clear=PATH, los=make_los([box_at(G_PUSH)]), who=who_at),
-    # the hook: the bottle and him
-    lambda: auto_frame(H0 + 0.2, gp(*G_PUSH)[1:] + [(STREAM_X(3.8) - 0.12, 3.8, 0.03), (STREAM_X(4.4) - 0.12, 4.4, 0.03)],
-                       (-5.45, 3.95, 0.45), 20, 14, 2.4, AIR, prev=cam, path_clear=PATH, los=make_los([box_at(G_PUSH)]), who=who_at),
+    # leaving the workshop, along the bank: he walks toward us
+    lambda: auto_frame(WALK0 + 1.2, gp(*OUT_VIA[3]), (-5.5, 2.8, 0.6), 80, 8, 2.6, AIR, prev=cam, path_clear=PATH, los=make_los([]), who=who_at),
+    # the stepping stones
+    lambda: auto_frame(ST0 + 0.3, gp(*STONES[1]) + gp(*STONES[-1])[1:], (-4.95, 2.45, 0.55), 70, 8, 3.4, AIR, prev=cam, path_clear=PATH,
+                       los=make_los([]), who=who_at),
+    # the bank stone and the stump; page twelve
+    lambda: auto_frame(AC0 + 1.2, gp(*P_SET) + [(CUBE[0], CUBE[1], 0.1)], (-3.7, 1.1, 0.55), 90, 8, 3.0,
+                       AIR, prev=cam, path_clear=PATH, los=make_los([box_at(P_SET)]), who=who_at),
+    # the fence going up: the whole meadow plot
+    lambda: auto_frame(B0 + 1.2, gp(*STAND["s"]) + FENCE_PTS, (-3.05, 2.2, 0.4), 100, 8, 3.4, AIR, prev=cam, path_clear=PATH,
+                       los=make_los([]), who=who_at),
+    lambda: auto_frame(RUSTLE + 0.3, gp(*STAND["w"])[1:] + [(-3.8, 1.6, 0.4), (-3.8, 2.9, 0.4)], (-3.95, 2.45, 0.8), 50, 8, 2.4, AIR,
+                       prev=cam, path_clear=PATH, los=make_los([box_at(STAND["w"])]), who=who_at),     # the freeze: his face
+    lambda: [dict(cam[-1], at=round(math.ceil((LE["faster"] + 0.1) * FPS - 1e-6) / FPS - 1.0 / FPS, 4)),      # a hard cut: the race is on
+             auto_frame(math.ceil((LE["faster"] + 0.1) * FPS - 1e-6) / FPS, gp(*STAND["n"]) + gp(*STAND["e"]) + FENCE_PTS, (-3.0, 2.25, 0.4),
+                        110, 8, 4.0, AIR, los=make_los([]))],
+    # the gap -- "Chat... gate. NOW."
+    lambda: auto_frame(LS["now"] - 0.4, gp(*G_GAP) + [(-3.3, 1.5, 0.45), (-2.8, 1.5, 0.45)], (-3.05, 1.3, 0.75), 90, 8, 2.8, AIR,
+                       prev=cam, path_clear=PATH, los=make_los([box_at(G_GAP)]), who=who_at),
 ]
 for shot in SHOTS:
     k = shot()
     cam += k if isinstance(k, list) else [k]
-    if CLOUD.get("face") is None and cam[-1]["at"] >= CL0 - 0.5:
-        CLOUD["face"] = cam[-1]["az"] + 90
-cam.sort(key=lambda k: k["at"])
 cam, PATCHED = fix_path(cam, AIR, who_at, path_clear=PATH)
-INS0 = math.ceil((LS["drawn"] + 0.6) * FPS - 1e-6) / FPS
-cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C6["overlay"]["live_viewers"]]]),
-         dict(style="panel", y="top", border="amber", when=round(LESSON0, 3), until=round(LESSON1 + 0.3, 3), rows=[
-             dict(text="LEVER", color="white", at=round(LESSON0 + 0.1, 3), size=40),
-             dict(text="long arm + pivot near the load = easy lift", color="cyan", at=round(LESSON0 + 1.4, 3), size=30)])]
+cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C6["overlay"]["live_viewers"]]])]
 W7 = {k: v for k, v in S6["world"].items() if k != "critters"}
-W7["critters"] = [CLOUD]
-story = dict(title="Leverage", slug="grandpa_ep01_scene007", voice="am_santa", speed=0.95, format="wide",
-             channel_tag="GRANDPA'S BLOCK LAB", start=LS["field"], tail=round(tail, 4), seed=31, blink=True, target_duration=60,
-             engine_rev=3, scene=dict(episode=1, scene=7, name="Leverage", previous="ep01_scene006", next="ep01_scene008"),
+W7["critters"] = []
+story = dict(title="The Fence", slug="grandpa_ep01_scene007", voice="am_santa", speed=0.95, format="wide",
+             channel_tag="GRANDPA'S BLOCK LAB", start=LS["plan"], tail=round(tail, 4), seed=31, blink=True, target_duration=45,
+             engine_rev=3, scene=dict(episode=1, scene=7, name="The Fence", previous="ep01_scene006", next="ep01_scene008"),
              world=W7, lines=lines, grandpa=dict(start=list(G0), outfit=S6["grandpa"]["outfit"]),
              poses=dict(S6["poses"], **POSES), structures=S, actions=sorted(A, key=lambda a: a["when"]), camera=cam, cards=cards,
-             qa=dict(rests_on=[["mug", "table_top"], ["post2", "footing"], ["jar", "bench"], ["webcam", "cam_stone"], ["book", "book_stone"]],
+             qa=dict(rests_on=[["mug", "table_top"], ["post2", "footing"], ["jar", "bench"], ["webcam", "rock"]],
                      frame_points=["hat", "face", "chest"],
-                     solid=["wheel", "anvil", "pivot_frame", "head", "new_post", "footing", "post2", "rock", "helve", "lean_posts", "bench_legs",
-                            "gate_posts", "fulcrum"],
-                     cutaways=[[round(INS0, 3), round(math.ceil(LS["lesson"] * FPS - 1e-6) / FPS, 3)]]))
+                     solid=["wheel", "anvil", "pivot_frame", "head", "new_post", "footing", "post2", "rock", "helve", "lean_posts", "bench_legs"]
+                           + ["fence_posts_" + k for k in SIDES]))
 json.dump(story, open("/home/user/blocklab/stories/grandpa_ep01_scene007.json", "w"), indent=1)
 print("film %.2f s" % FILM)
 for lid, *_ in LINES:
-    print("  %-8s %6.2f-%6.2f" % (lid, LS[lid], LE[lid]))
-print("set %.2f build %.2f-%.2f push %.2f slide %.2f-%.2f lift %.2f (%.3f m) cloud %.2f-%.2f bottle %.2f" % (SET_T, B0, BUILT, P0, SL0, SL1, U0, LIFT, CL0, CL1, H0))
+    print("  %-7s %6.2f-%6.2f" % (lid, LS[lid], LE[lid]))
+print("walk %.2f-%.2f stones %.2f-%.2f set %.2f fence %.2f rustle %.2f" % (WALK0, WALK1, ST0, ST1, SET_T, B0, RUSTLE))
 print("camera keys", [(k["at"], k["az"], k["el"], k["dist"]) for k in cam], "patched", PATCHED)

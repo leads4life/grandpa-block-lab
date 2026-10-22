@@ -1,20 +1,20 @@
 {
- "title": "Leverage",
+ "title": "The Fence",
  "slug": "grandpa_ep01_scene007",
  "voice": "am_santa",
  "speed": 0.95,
  "format": "wide",
  "channel_tag": "GRANDPA'S BLOCK LAB",
- "start": 1.4,
- "tail": 0.904,
+ "start": 1.7,
+ "tail": 0.806,
  "seed": 31,
  "blink": true,
- "target_duration": 60,
+ "target_duration": 45,
  "engine_rev": 3,
  "scene": {
   "episode": 1,
   "scene": 7,
-  "name": "Leverage",
+  "name": "The Fence",
   "previous": "ep01_scene006",
   "next": "ep01_scene008"
  },
@@ -39,96 +39,44 @@
    -1.0,
    125.0
   ],
-  "critters": [
-   {
-    "kind": "memory_cloud",
-    "at": [
-     -5.58,
-     4.14,
-     1.45
-    ],
-    "visible": [
-     53.761,
-     56.161
-    ],
-    "yaw": 180.0,
-    "size": 0.6,
-    "boar": {
-     "huffs": [
-      54.361
-     ],
-     "stomps": [],
-     "clacks": []
-    },
-    "face": 130
-   }
-  ]
+  "critters": []
  },
  "lines": [
   {
-   "id": "field",
-   "text": "Chat, we're going on a field trip. Ten feet. Very exciting.",
-   "pause": 5.023
+   "id": "plan",
+   "text": "Chat, Tobias's garden is right where the boar lives. So... we're building him a safe one. Out in the open, by my cabin.",
+   "pause": 0.4,
+   "speak": "Chat, Tobias's garden is right where the boar livs. So... we're building him a safe one. Out in the open, by my cabin."
+  },
+  {
+   "id": "seed",
+   "text": "Then we move his seedlings in. The ones the boar left.",
+   "pause": 0.0
+  },
+  {
+   "id": "knees",
+   "text": "My knees remember this.",
+   "pause": 1.251
   },
   {
    "id": "page",
-   "text": "Page twelve. A gate. With a lever. How hard can it be?",
-   "pause": 0.4
+   "text": "A garden fence. With a lever gate.",
+   "pause": 1.8
   },
   {
-   "id": "dont",
-   "text": "...Don't answer that.",
-   "pause": 4.1
+   "id": "cardio",
+   "text": "Post. Rail. Post. Rail. Chat, this is my cardio.",
+   "pause": 5.576
   },
   {
-   "id": "squares",
-   "text": "Three squares... three blocks.",
-   "pause": 0.336
+   "id": "faster",
+   "text": "...Nope. Faster.",
+   "pause": 7.25,
+   "speed": 1.0
   },
   {
-   "id": "vibes",
-   "text": "And a rock. For... vibes.",
-   "pause": 3.8
-  },
-  {
-   "id": "giving",
-   "text": "This gate is NOT... giving.",
-   "pause": 1.5
-  },
-  {
-   "id": "drawn",
-   "text": "Wait. The pivot's drawn way over here. By the gate.",
-   "pause": 0.35
-  },
-  {
-   "id": "lesson",
-   "text": "The farther you push from the pivot, the less push you need.",
-   "pause": 3.15
-  },
-  {
-   "id": "archi",
-   "text": "Old Archimedes said, give him a long enough lever and he'd move the world. I just want to move a gate.",
-   "pause": 1.7
-  },
-  {
-   "id": "rizz",
-   "text": "Ohhh. Now THAT'S got... rizz.",
-   "pause": 3.1
-  },
-  {
-   "id": "scared",
-   "text": "Being scared's normal. Building something... helps.",
-   "pause": 0.3,
-   "speed": 0.88
-  },
-  {
-   "id": "tobias",
-   "text": "Don't tell Tobias I said that.",
-   "pause": 0.8
-  },
-  {
-   "id": "bottle",
-   "text": "...Is that... page thirteen?",
+   "id": "now",
+   "text": "Chat... gate. NOW.",
    "pause": 0.0
   }
  ],
@@ -286,7 +234,7 @@
    "lean": 0.05
   },
   "set_down": {
-   "lean": 0.5,
+   "lean": 0.55,
    "hips": [
     0.0,
     0.0,
@@ -321,7 +269,7 @@
    "lean": 0.3
   },
   "peer_down": {
-   "lean": 0.35,
+   "lean": 0.18,
    "head": [
     0.0,
     -0.22,
@@ -349,26 +297,9 @@
    "lean": -0.05
   },
   "freeze": {
-   "hand_R": {
-    "char": [
-     -0.34,
-     -0.06,
-     1.08
-    ]
-   },
-   "hand_L": {
-    "char": [
-     0.34,
-     -0.06,
-     1.08
-    ]
-   },
-   "lean": -0.22,
-   "head": [
-    0.0,
-    0.05,
-    0.0
-   ]
+   "shrug": 0.5,
+   "elbows": 0.2,
+   "lean": -0.05
   },
   "admire": {
    "lean": 0.16,
@@ -476,10 +407,10 @@
   "dreamy": {
    "head": [
     0.0,
-    0.12,
-    0.08
+    0.16,
+    0.1
    ],
-   "lean": -0.03
+   "lean": -0.04
   },
   "batten": {
    "lean": 0.06,
@@ -494,101 +425,18 @@
   "pick_up": {
    "lean": 0.25
   },
-  "strain": {
-   "lean": 0.42,
+  "pant": {
+   "lean": 0.22,
    "hips": [
     0.0,
     0.0,
-    -0.04
-   ],
-   "shrug": 0.4,
-   "hand_R": {
-    "world": [
-     -6.0,
-     3.86,
-     0.62
-    ]
-   },
-   "hand_L": {
-    "world": [
-     -5.9,
-     3.86,
-     0.62
-    ]
-   }
-  },
-  "strain_b": {
-   "lean": 0.5,
-   "hips": [
-    0.0,
-    0.0,
-    -0.06
-   ],
-   "shrug": 0.6,
-   "hand_R": {
-    "world": [
-     -6.0,
-     3.86,
-     0.62
-    ]
-   },
-   "hand_L": {
-    "world": [
-     -5.9,
-     3.86,
-     0.62
-    ]
-   }
-  },
-  "push_low": {
-   "lean": 0.55,
-   "hips": [
-    0.0,
-    0.0,
-    -0.12
+    -0.03
    ],
    "hand_R": {
     "char": [
-     -0.16,
-     -0.06,
-     0.32
-    ]
-   },
-   "hand_L": {
-    "char": [
-     -0.05,
-     -0.12,
-     0.32
-    ]
-   }
-  },
-  "finger_top": {
-   "lean": 0.2,
-   "hand_R": {
-    "world": [
-     -6.0,
-     3.86,
-     0.62
-    ]
-   }
-  },
-  "finger_dn": {
-   "lean": 0.38,
-   "hand_R": {
-    "world": [
-     -6.0,
-     3.783,
-     0.3
-    ]
-   }
-  },
-  "proud": {
-   "lean": -0.08,
-   "hand_L": {
-    "char": [
-     0.18,
-     -0.08,
-     0.6
+     -0.15,
+     -0.1,
+     0.52
     ]
    }
   }
@@ -4494,153 +4342,107 @@
    "expect_blocks": 1,
    "prebuilt": true
   },
-  "cam_stone": {
+  "fence_posts_s": {
    "cells": [
     [
-     -61,
-     40,
+     -38,
+     15,
      0
     ],
     [
-     -60,
-     40,
-     0
-    ],
-    [
-     -61,
-     41,
-     0
-    ],
-    [
-     -60,
-     41,
-     0
-    ]
-   ],
-   "at": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "centered": false,
-   "material": "stone",
-   "block_shape": [
-    1,
-    1,
-    0.8
-   ],
-   "expect_blocks": 4,
-   "prebuilt": true
-  },
-  "book_stone": {
-   "cells": [
-    [
-     -58,
-     45,
-     0
-    ],
-    [
-     -57,
-     45,
-     0
-    ],
-    [
-     -58,
-     46,
-     0
-    ],
-    [
-     -57,
-     46,
-     0
-    ]
-   ],
-   "at": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "centered": false,
-   "material": "stone",
-   "block_shape": [
-    1,
-    1,
-    0.8
-   ],
-   "expect_blocks": 4,
-   "prebuilt": true
-  },
-  "gate_posts": {
-   "cells": [
-    [
-     -62,
-     29,
-     0
-    ],
-    [
-     -62,
-     29,
+     -38,
+     15,
      1
     ],
     [
-     -62,
-     29,
+     -38,
+     15,
      2
     ],
     [
-     -62,
-     29,
+     -38,
+     15,
      3
     ],
     [
-     -62,
-     29,
+     -38,
+     15,
      4
     ],
     [
-     -62,
-     29,
-     5
-    ],
-    [
-     -62,
-     29,
-     6
-    ],
-    [
-     -57,
-     29,
+     -33,
+     15,
      0
     ],
     [
-     -57,
-     29,
+     -33,
+     15,
      1
     ],
     [
-     -57,
-     29,
+     -33,
+     15,
      2
     ],
     [
-     -57,
-     29,
+     -33,
+     15,
      3
     ],
     [
-     -57,
-     29,
+     -33,
+     15,
      4
     ],
     [
-     -57,
-     29,
-     5
+     -28,
+     15,
+     0
     ],
     [
-     -57,
-     29,
-     6
+     -28,
+     15,
+     1
+    ],
+    [
+     -28,
+     15,
+     2
+    ],
+    [
+     -28,
+     15,
+     3
+    ],
+    [
+     -28,
+     15,
+     4
+    ],
+    [
+     -23,
+     15,
+     0
+    ],
+    [
+     -23,
+     15,
+     1
+    ],
+    [
+     -23,
+     15,
+     2
+    ],
+    [
+     -23,
+     15,
+     3
+    ],
+    [
+     -23,
+     15,
+     4
     ]
    ],
    "at": [
@@ -4655,89 +4457,88 @@
     0.6,
     1
    ],
-   "expect_blocks": 14,
-   "stand": "front"
+   "expect_blocks": 20
   },
-  "gate": {
+  "fence_rails_s": {
    "cells": [
     [
-     -61,
-     29,
-     0
-    ],
-    [
-     -61,
-     29,
+     -37,
+     15,
      1
     ],
     [
-     -61,
-     29,
-     2
-    ],
-    [
-     -61,
-     29,
+     -37,
+     15,
      3
     ],
     [
-     -60,
-     29,
-     0
-    ],
-    [
-     -60,
-     29,
+     -36,
+     15,
      1
     ],
     [
-     -60,
-     29,
-     2
-    ],
-    [
-     -60,
-     29,
+     -36,
+     15,
      3
     ],
     [
-     -59,
-     29,
-     0
-    ],
-    [
-     -59,
-     29,
+     -35,
+     15,
      1
     ],
     [
-     -59,
-     29,
-     2
-    ],
-    [
-     -59,
-     29,
+     -35,
+     15,
      3
     ],
     [
-     -58,
-     29,
-     0
-    ],
-    [
-     -58,
-     29,
+     -34,
+     15,
      1
     ],
     [
-     -58,
-     29,
-     2
+     -34,
+     15,
+     3
     ],
     [
-     -58,
-     29,
+     -27,
+     15,
+     1
+    ],
+    [
+     -27,
+     15,
+     3
+    ],
+    [
+     -26,
+     15,
+     1
+    ],
+    [
+     -26,
+     15,
+     3
+    ],
+    [
+     -25,
+     15,
+     1
+    ],
+    [
+     -25,
+     15,
+     3
+    ],
+    [
+     -24,
+     15,
+     1
+    ],
+    [
+     -24,
+     15,
      3
     ]
    ],
@@ -4751,81 +4552,223 @@
    "block_shape": [
     1,
     0.35,
-    1
+    0.5
    ],
-   "expect_blocks": 16,
-   "extras": [
-    {
-     "c": [
-      -6.0,
-      2.9,
-      0.45
-     ],
-     "s": [
-      0.01,
-      0.01,
-      0.1
-     ],
-     "m": "wood"
-    }
-   ]
+   "expect_blocks": 16
   },
-  "beam": {
+  "fence_posts_w": {
    "cells": [
     [
-     -60,
-     29,
-     5
+     -38,
+     20,
+     0
     ],
     [
-     -60,
+     -38,
+     20,
+     1
+    ],
+    [
+     -38,
+     20,
+     2
+    ],
+    [
+     -38,
+     20,
+     3
+    ],
+    [
+     -38,
+     20,
+     4
+    ],
+    [
+     -38,
+     25,
+     0
+    ],
+    [
+     -38,
+     25,
+     1
+    ],
+    [
+     -38,
+     25,
+     2
+    ],
+    [
+     -38,
+     25,
+     3
+    ],
+    [
+     -38,
+     25,
+     4
+    ],
+    [
+     -38,
      30,
-     5
+     0
     ],
     [
-     -60,
-     31,
-     5
+     -38,
+     30,
+     1
     ],
     [
-     -60,
-     32,
-     5
+     -38,
+     30,
+     2
     ],
     [
-     -60,
-     33,
-     5
+     -38,
+     30,
+     3
     ],
     [
-     -60,
-     34,
-     5
+     -38,
+     30,
+     4
+    ]
+   ],
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "centered": false,
+   "material": "wood",
+   "block_shape": [
+    0.6,
+    0.6,
+    1
+   ],
+   "expect_blocks": 15
+  },
+  "fence_rails_w": {
+   "cells": [
+    [
+     -38,
+     16,
+     1
     ],
     [
-     -60,
-     35,
-     5
+     -38,
+     16,
+     3
     ],
     [
-     -60,
-     36,
-     5
+     -38,
+     17,
+     1
     ],
     [
-     -60,
-     37,
-     5
+     -38,
+     17,
+     3
     ],
     [
-     -60,
-     38,
-     5
+     -38,
+     18,
+     1
     ],
     [
-     -60,
-     39,
-     5
+     -38,
+     18,
+     3
+    ],
+    [
+     -38,
+     19,
+     1
+    ],
+    [
+     -38,
+     19,
+     3
+    ],
+    [
+     -38,
+     21,
+     1
+    ],
+    [
+     -38,
+     21,
+     3
+    ],
+    [
+     -38,
+     22,
+     1
+    ],
+    [
+     -38,
+     22,
+     3
+    ],
+    [
+     -38,
+     23,
+     1
+    ],
+    [
+     -38,
+     23,
+     3
+    ],
+    [
+     -38,
+     24,
+     1
+    ],
+    [
+     -38,
+     24,
+     3
+    ],
+    [
+     -38,
+     26,
+     1
+    ],
+    [
+     -38,
+     26,
+     3
+    ],
+    [
+     -38,
+     27,
+     1
+    ],
+    [
+     -38,
+     27,
+     3
+    ],
+    [
+     -38,
+     28,
+     1
+    ],
+    [
+     -38,
+     28,
+     3
+    ],
+    [
+     -38,
+     29,
+     1
+    ],
+    [
+     -38,
+     29,
+     3
     ]
    ],
    "at": [
@@ -4836,37 +4779,87 @@
    "centered": false,
    "material": "planks",
    "block_shape": [
-    0.5,
+    0.35,
     1,
-    1
+    0.5
    ],
-   "expect_blocks": 11
+   "expect_blocks": 24
   },
-  "fulcrum": {
+  "fence_posts_n": {
    "cells": [
     [
-     -60,
-     37,
+     -33,
+     30,
      0
     ],
     [
-     -60,
-     37,
+     -33,
+     30,
      1
     ],
     [
-     -60,
-     37,
+     -33,
+     30,
      2
     ],
     [
-     -60,
-     37,
+     -33,
+     30,
      3
     ],
     [
-     -60,
-     37,
+     -33,
+     30,
+     4
+    ],
+    [
+     -28,
+     30,
+     0
+    ],
+    [
+     -28,
+     30,
+     1
+    ],
+    [
+     -28,
+     30,
+     2
+    ],
+    [
+     -28,
+     30,
+     3
+    ],
+    [
+     -28,
+     30,
+     4
+    ],
+    [
+     -23,
+     30,
+     0
+    ],
+    [
+     -23,
+     30,
+     1
+    ],
+    [
+     -23,
+     30,
+     2
+    ],
+    [
+     -23,
+     30,
+     3
+    ],
+    [
+     -23,
+     30,
      4
     ]
    ],
@@ -4876,20 +4869,135 @@
     0.0
    ],
    "centered": false,
-   "material": "stone",
+   "material": "wood",
    "block_shape": [
-    0.8,
-    0.8,
+    0.6,
+    0.6,
     1
    ],
-   "expect_blocks": 5
+   "expect_blocks": 15
   },
-  "weight": {
+  "fence_rails_n": {
    "cells": [
     [
-     -60,
-     38,
-     6
+     -37,
+     30,
+     1
+    ],
+    [
+     -37,
+     30,
+     3
+    ],
+    [
+     -36,
+     30,
+     1
+    ],
+    [
+     -36,
+     30,
+     3
+    ],
+    [
+     -35,
+     30,
+     1
+    ],
+    [
+     -35,
+     30,
+     3
+    ],
+    [
+     -34,
+     30,
+     1
+    ],
+    [
+     -34,
+     30,
+     3
+    ],
+    [
+     -32,
+     30,
+     1
+    ],
+    [
+     -32,
+     30,
+     3
+    ],
+    [
+     -31,
+     30,
+     1
+    ],
+    [
+     -31,
+     30,
+     3
+    ],
+    [
+     -30,
+     30,
+     1
+    ],
+    [
+     -30,
+     30,
+     3
+    ],
+    [
+     -29,
+     30,
+     1
+    ],
+    [
+     -29,
+     30,
+     3
+    ],
+    [
+     -27,
+     30,
+     1
+    ],
+    [
+     -27,
+     30,
+     3
+    ],
+    [
+     -26,
+     30,
+     1
+    ],
+    [
+     -26,
+     30,
+     3
+    ],
+    [
+     -25,
+     30,
+     1
+    ],
+    [
+     -25,
+     30,
+     3
+    ],
+    [
+     -24,
+     30,
+     1
+    ],
+    [
+     -24,
+     30,
+     3
     ]
    ],
    "at": [
@@ -4898,20 +5006,65 @@
     0.0
    ],
    "centered": false,
-   "material": "stone",
+   "material": "planks",
    "block_shape": [
-    0.9,
-    0.9,
-    1
+    1,
+    0.35,
+    0.5
    ],
-   "expect_blocks": 1
+   "expect_blocks": 24
   },
-  "bottle": {
+  "fence_posts_e": {
    "cells": [
     [
-     0,
-     0,
+     -23,
+     20,
      0
+    ],
+    [
+     -23,
+     20,
+     1
+    ],
+    [
+     -23,
+     20,
+     2
+    ],
+    [
+     -23,
+     20,
+     3
+    ],
+    [
+     -23,
+     20,
+     4
+    ],
+    [
+     -23,
+     25,
+     0
+    ],
+    [
+     -23,
+     25,
+     1
+    ],
+    [
+     -23,
+     25,
+     2
+    ],
+    [
+     -23,
+     25,
+     3
+    ],
+    [
+     -23,
+     25,
+     4
     ]
    ],
    "at": [
@@ -4920,41 +5073,150 @@
     0.0
    ],
    "centered": false,
-   "material": "glass",
+   "material": "wood",
    "block_shape": [
-    0.9,
-    2.2,
-    0.9
+    0.6,
+    0.6,
+    1
    ],
-   "expect_blocks": 1,
-   "extras": [
-    {
-     "c": [
-      0.0,
-      0.118,
-      0.055
-     ],
-     "s": [
-      0.045,
-      0.03,
-      0.045
-     ],
-     "m": "wood"
-    },
-    {
-     "c": [
-      0.0,
-      0.0,
-      0.056
-     ],
-     "s": [
-      0.05,
-      0.16,
-      0.05
-     ],
-     "m": "paper"
-    }
-   ]
+   "expect_blocks": 10
+  },
+  "fence_rails_e": {
+   "cells": [
+    [
+     -23,
+     16,
+     1
+    ],
+    [
+     -23,
+     16,
+     3
+    ],
+    [
+     -23,
+     17,
+     1
+    ],
+    [
+     -23,
+     17,
+     3
+    ],
+    [
+     -23,
+     18,
+     1
+    ],
+    [
+     -23,
+     18,
+     3
+    ],
+    [
+     -23,
+     19,
+     1
+    ],
+    [
+     -23,
+     19,
+     3
+    ],
+    [
+     -23,
+     21,
+     1
+    ],
+    [
+     -23,
+     21,
+     3
+    ],
+    [
+     -23,
+     22,
+     1
+    ],
+    [
+     -23,
+     22,
+     3
+    ],
+    [
+     -23,
+     23,
+     1
+    ],
+    [
+     -23,
+     23,
+     3
+    ],
+    [
+     -23,
+     24,
+     1
+    ],
+    [
+     -23,
+     24,
+     3
+    ],
+    [
+     -23,
+     26,
+     1
+    ],
+    [
+     -23,
+     26,
+     3
+    ],
+    [
+     -23,
+     27,
+     1
+    ],
+    [
+     -23,
+     27,
+     3
+    ],
+    [
+     -23,
+     28,
+     1
+    ],
+    [
+     -23,
+     28,
+     3
+    ],
+    [
+     -23,
+     29,
+     1
+    ],
+    [
+     -23,
+     29,
+     3
+    ]
+   ],
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "centered": false,
+   "material": "planks",
+   "block_shape": [
+    0.35,
+    1,
+    0.5
+   ],
+   "expect_blocks": 24
   }
  },
  "actions": [
@@ -4977,7 +5239,7 @@
    "rise": 0.45,
    "drop": 0.07,
    "when": -10.0,
-   "until": 67.367
+   "until": 42.267
   },
   {
    "type": "trip",
@@ -4998,7 +5260,7 @@
    "rise": 0.45,
    "drop": 0.07,
    "when": -10.0,
-   "until": 67.367,
+   "until": 42.267,
    "sound_at": [
     -4.4,
     1.95,
@@ -5009,14 +5271,14 @@
    "type": "spin",
    "target": "wheel",
    "axis": "x",
-   "degrees": -8434.949,
+   "degrees": -5696.767,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -9.954,
-   "until": 67.367,
+   "until": 42.267,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -5024,14 +5286,14 @@
    "type": "spin",
    "target": "axle",
    "axis": "x",
-   "degrees": -8434.949,
+   "degrees": -5696.767,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -9.954,
-   "until": 67.367,
+   "until": 42.267,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -5039,14 +5301,14 @@
    "type": "spin",
    "target": "cam1",
    "axis": "x",
-   "degrees": -8434.949,
+   "degrees": -5696.767,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -9.954,
-   "until": 67.367,
+   "until": 42.267,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -5054,14 +5316,14 @@
    "type": "spin",
    "target": "cam2",
    "axis": "x",
-   "degrees": -8434.949,
+   "degrees": -5696.767,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -9.404,
-   "until": 67.367,
+   "until": 42.267,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -5088,215 +5350,10 @@
   },
   {
    "type": "hold",
-   "target": "bottle",
-   "hand": "none",
-   "when": -1.0,
-   "until": 67.367,
-   "reach": 0.05,
-   "keys": [
-    {
-     "t": -1.0,
-     "at": [
-      -5.4077,
-      5.0,
-      -0.0615
-     ],
-     "rot": [
-      -4.99,
-      0,
-      10.05
-     ]
-    },
-    {
-     "t": 60.41,
-     "at": [
-      -5.4077,
-      5.0,
-      -0.0615
-     ],
-     "rot": [
-      -4.99,
-      0,
-      10.05
-     ]
-    },
-    {
-     "t": 60.86,
-     "at": [
-      -5.3876,
-      4.8792,
-      -0.0616
-     ],
-     "rot": [
-      2.16,
-      0,
-      5.63
-     ]
-    },
-    {
-     "t": 61.31,
-     "at": [
-      -5.367,
-      4.7583,
-      -0.0728
-     ],
-     "rot": [
-      5.94,
-      0,
-      2.66
-     ]
-    },
-    {
-     "t": 61.76,
-     "at": [
-      -5.3461,
-      4.6375,
-      -0.0586
-     ],
-     "rot": [
-      0.44,
-      0,
-      2.13
-     ]
-    },
-    {
-     "t": 62.21,
-     "at": [
-      -5.325,
-      4.5167,
-      -0.0653
-     ],
-     "rot": [
-      -5.74,
-      0,
-      4.21
-     ]
-    },
-    {
-     "t": 62.66,
-     "at": [
-      -5.3039,
-      4.3958,
-      -0.0711
-     ],
-     "rot": [
-      -2.96,
-      0,
-      8.23
-     ]
-    },
-    {
-     "t": 63.11,
-     "at": [
-      -5.2829,
-      4.275,
-      -0.0571
-     ],
-     "rot": [
-      4.45,
-      0,
-      12.83
-     ]
-    },
-    {
-     "t": 63.56,
-     "at": [
-      -5.2621,
-      4.1542,
-      -0.0688
-     ],
-     "rot": [
-      4.91,
-      0,
-      16.49
-     ]
-    },
-    {
-     "t": 64.01,
-     "at": [
-      -5.2418,
-      4.0333,
-      -0.0681
-     ],
-     "rot": [
-      -2.3,
-      0,
-      17.99
-     ]
-    },
-    {
-     "t": 64.46,
-     "at": [
-      -5.222,
-      3.9125,
-      -0.0573
-     ],
-     "rot": [
-      -5.91,
-      0,
-      16.84
-     ]
-    },
-    {
-     "t": 64.91,
-     "at": [
-      -5.2029,
-      3.7917,
-      -0.0716
-     ],
-     "rot": [
-      -0.29,
-      0,
-      13.41
-     ]
-    },
-    {
-     "t": 65.36,
-     "at": [
-      -5.1847,
-      3.6708,
-      -0.0644
-     ],
-     "rot": [
-      5.78,
-      0,
-      8.84
-     ]
-    },
-    {
-     "t": 65.81,
-     "at": [
-      -5.1674,
-      3.55,
-      -0.0592
-     ],
-     "rot": [
-      2.83,
-      0,
-      4.67
-     ]
-    },
-    {
-     "t": 67.367,
-     "at": [
-      -5.1674,
-      3.55,
-      -0.0592
-     ],
-     "rot": [
-      2.83,
-      0,
-      4.67
-     ]
-    }
-   ]
-  },
-  {
-   "type": "hold",
    "target": "prop",
    "hand": "none",
    "when": -1.0,
-   "until": 67.367,
+   "until": 42.267,
    "reach": 0.05,
    "keys": [
     {
@@ -5313,7 +5370,7 @@
      ]
     },
     {
-     "t": 67.367,
+     "t": 42.267,
      "at": [
       -4.0,
       2.33,
@@ -5328,9 +5385,21 @@
    ]
   },
   {
+   "type": "move",
+   "to": [
+    -6.22,
+    1.42,
+    0.0
+   ],
+   "via": [],
+   "when": 0.05,
+   "until": 0.6,
+   "face": "path"
+  },
+  {
    "type": "look",
-   "when": 0.3,
-   "until": 1.3,
+   "when": 0.5,
+   "until": 1.5,
    "body": false,
    "pos": [
     -6.25,
@@ -5341,16 +5410,16 @@
   {
    "type": "pose",
    "pose": "pick_up",
-   "when": 0.4,
-   "until": 1.3,
+   "when": 0.6,
+   "until": 1.5,
    "ease": 0.3
   },
   {
    "type": "hold",
    "target": "webcam",
    "hand": "R",
-   "when": 0.6,
-   "until": 10.15,
+   "when": 0.8,
+   "until": 15.5,
    "reach": 0.3,
    "grip": [
     0.0,
@@ -5372,7 +5441,7 @@
      ]
     },
     {
-     "t": 0.9,
+     "t": 1.1,
      "at": [
       -6.4055,
       1.7132,
@@ -5385,7 +5454,7 @@
      ]
     },
     {
-     "t": 1.5,
+     "t": 1.7,
      "at": {
       "char": [
        -0.17,
@@ -5400,7 +5469,7 @@
      ]
     },
     {
-     "t": 9.65,
+     "t": 15.0,
      "at": {
       "char": [
        -0.17,
@@ -5415,16 +5484,16 @@
      ]
     },
     {
-     "t": 10.15,
+     "t": 15.5,
      "at": [
-      -6.0794,
-      4.1456,
-      -0.22
+      -3.8073,
+      1.1681,
+      -0.2
      ],
      "rot": [
       0,
       0,
-      17.1
+      145.01
      ]
     }
    ]
@@ -5433,8 +5502,8 @@
    "type": "hold",
    "target": "cam_cap",
    "hand": "R",
-   "when": 0.6,
-   "until": 10.15,
+   "when": 0.8,
+   "until": 15.5,
    "reach": 0.3,
    "grip": [
     0.0,
@@ -5456,7 +5525,7 @@
      ]
     },
     {
-     "t": 0.9,
+     "t": 1.1,
      "at": [
       -6.4055,
       1.7132,
@@ -5469,7 +5538,7 @@
      ]
     },
     {
-     "t": 1.5,
+     "t": 1.7,
      "at": {
       "char": [
        -0.17,
@@ -5484,7 +5553,7 @@
      ]
     },
     {
-     "t": 9.65,
+     "t": 15.0,
      "at": {
       "char": [
        -0.17,
@@ -5499,16 +5568,16 @@
      ]
     },
     {
-     "t": 10.15,
+     "t": 15.5,
      "at": [
-      -6.0794,
-      4.1456,
-      -0.22
+      -3.8073,
+      1.1681,
+      -0.2
      ],
      "rot": [
       0,
       0,
-      17.1
+      145.01
      ]
     }
    ]
@@ -5517,13 +5586,13 @@
    "type": "hold",
    "target": "book",
    "hand": "L",
-   "when": 0.7,
-   "until": 9.05,
+   "when": 0.9,
+   "until": 42.267,
    "reach": 0.3,
    "grip": [
-    0.11,
     0.0,
-    0.1
+    -0.07,
+    0.09
    ],
    "keys": [
     {
@@ -5540,7 +5609,7 @@
      ]
     },
     {
-     "t": 1.0,
+     "t": 1.2,
      "at": [
       -6.15,
       1.63,
@@ -5553,42 +5622,14 @@
      ]
     },
     {
-     "t": 1.6,
+     "t": 1.8,
      "at": {
       "char": [
-       0.21,
-       -0.06,
-       0.43
+       0.17,
+       -0.2,
+       0.8
       ]
      },
-     "rot": [
-      0,
-      0,
-      0
-     ]
-    },
-    {
-     "t": 8.55,
-     "at": {
-      "char": [
-       0.21,
-       -0.06,
-       0.43
-      ]
-     },
-     "rot": [
-      0,
-      0,
-      0
-     ]
-    },
-    {
-     "t": 9.05,
-     "at": [
-      -5.75,
-      4.55,
-      -0.005
-     ],
      "rot": [
       0,
       0,
@@ -5601,13 +5642,13 @@
    "type": "hold",
    "target": "pages",
    "hand": "L",
-   "when": 0.7,
-   "until": 9.05,
+   "when": 0.9,
+   "until": 42.267,
    "reach": 0.3,
    "grip": [
-    0.11,
     0.0,
-    0.1
+    -0.07,
+    0.09
    ],
    "keys": [
     {
@@ -5624,7 +5665,7 @@
      ]
     },
     {
-     "t": 1.0,
+     "t": 1.2,
      "at": [
       -6.15,
       1.63,
@@ -5637,42 +5678,14 @@
      ]
     },
     {
-     "t": 1.6,
+     "t": 1.8,
      "at": {
       "char": [
-       0.21,
-       -0.06,
-       0.44
+       0.17,
+       -0.2,
+       0.81
       ]
      },
-     "rot": [
-      0,
-      0,
-      0
-     ]
-    },
-    {
-     "t": 8.55,
-     "at": {
-      "char": [
-       0.21,
-       -0.06,
-       0.44
-      ]
-     },
-     "rot": [
-      0,
-      0,
-      0
-     ]
-    },
-    {
-     "t": 9.05,
-     "at": [
-      -5.75,
-      4.55,
-      0.005
-     ],
      "rot": [
       0,
       0,
@@ -5683,26 +5696,35 @@
   },
   {
    "type": "face_camera",
-   "when": 1.3,
-   "until": 2.8
+   "when": 1.6,
+   "until": 5.7
   },
   {
    "type": "face",
-   "expr": "smirk",
-   "when": 1.4,
-   "until": 5.827
+   "expr": "worried",
+   "when": 2.0,
+   "until": 4.1,
+   "set": {
+    "brow": 0.8
+   }
+  },
+  {
+   "type": "face",
+   "expr": "smile",
+   "when": 4.3,
+   "until": 9.922
   },
   {
    "type": "move",
    "to": [
-    -5.74,
-    4.16,
+    -5.43,
+    2.42,
     0.0
    ],
    "via": [
     [
-     -6.02,
-     0.98,
+     -6.16,
+     1.08,
      0.0
     ],
     [
@@ -5719,572 +5741,521 @@
      -5.41,
      1.95,
      0.0
+    ]
+   ],
+   "when": 5.9,
+   "until": 10.3,
+   "face": "path"
+  },
+  {
+   "type": "face",
+   "expr": "warm",
+   "when": 10.022,
+   "until": 13.833
+  },
+  {
+   "type": "move",
+   "to": [
+    -4.7,
+    2.45,
+    0.0
+   ],
+   "via": [
+    [
+     -5.18,
+     2.45,
+     0.0
     ],
     [
-     -5.42,
+     -4.98,
+     2.45,
+     0.0
+    ]
+   ],
+   "when": 10.3,
+   "until": 12.3,
+   "face": "path"
+  },
+  {
+   "type": "pose",
+   "pose": "wobble_a",
+   "when": 10.3,
+   "until": 10.8,
+   "ease": 0.12
+  },
+  {
+   "type": "pose",
+   "pose": "wobble_b",
+   "when": 10.65,
+   "until": 11.15,
+   "ease": 0.12
+  },
+  {
+   "type": "pose",
+   "pose": "wobble_a",
+   "when": 11.0,
+   "until": 11.5,
+   "ease": 0.12
+  },
+  {
+   "type": "pose",
+   "pose": "wobble_b",
+   "when": 11.35,
+   "until": 11.85,
+   "ease": 0.12
+  },
+  {
+   "type": "pose",
+   "pose": "wobble_a",
+   "when": 11.7,
+   "until": 12.2,
+   "ease": 0.12
+  },
+  {
+   "type": "move",
+   "to": [
+    -3.74,
+    0.93,
+    0.0
+   ],
+   "via": [
+    [
+     -4.4,
+     2.45,
+     0.0
+    ],
+    [
+     -3.9,
      2.6,
      0.0
     ],
     [
-     -5.48,
-     3.3,
+     -3.25,
+     2.0,
      0.0
     ],
     [
-     -5.6,
-     3.9,
+     -3.25,
+     0.88,
      0.0
     ]
    ],
-   "when": 2.9,
-   "until": 8.5,
+   "when": 12.35,
+   "until": 14.95,
    "face": "path"
   },
   {
+   "type": "face",
+   "expr": "worried",
+   "when": 13.333,
+   "until": 15.449
+  },
+  {
    "type": "look",
-   "when": 8.1,
-   "until": 9.35,
+   "when": 14.55,
+   "until": 15.8,
    "body": true,
    "rate": 0.18,
    "pos": [
-    -5.75,
-    4.55,
+    -3.75,
+    1.25,
     0.1
    ]
   },
   {
    "type": "pose",
    "pose": "set_down",
-   "when": 8.5,
-   "until": 9.4,
+   "when": 14.95,
+   "until": 15.95,
    "ease": 0.3
   },
   {
    "type": "sfx",
    "sound": "settle",
-   "when": 9.0,
-   "gain": 0.3
-  },
-  {
-   "type": "look",
-   "when": 9.35,
-   "until": 10.65,
-   "body": true,
-   "rate": 0.18,
-   "pos": [
-    -6.05,
-    4.05,
-    0.1
-   ]
-  },
-  {
-   "type": "pose",
-   "pose": "set_down",
-   "when": 9.6,
-   "until": 10.6,
-   "ease": 0.3
-  },
-  {
-   "type": "sfx",
-   "sound": "settle",
-   "when": 10.1,
+   "when": 15.45,
    "gain": 0.4
   },
   {
    "type": "look",
-   "when": 10.45,
-   "until": 12.05,
+   "when": 16.1,
+   "until": 19.058,
    "body": false,
-   "pos": [
-    -5.75,
-    4.55,
-    0.1
-   ]
+   "obj": "book"
+  },
+  {
+   "type": "sfx",
+   "sound": "page",
+   "when": 16.2,
+   "gain": 0.6
+  },
+  {
+   "type": "pose",
+   "pose": "peer_down",
+   "when": 16.2,
+   "until": 18.858,
+   "ease": 0.3
   },
   {
    "type": "face",
    "expr": "raised",
-   "when": 12.05,
-   "until": 14.919,
+   "when": 17.0,
+   "until": 19.158,
    "set": {
     "smile": 0.5
    }
   },
   {
-   "type": "face_camera",
-   "when": 14.819,
-   "until": 16.476
-  },
-  {
-   "type": "face",
-   "expr": "side_eye",
-   "when": 14.919,
-   "until": 16.476
-  },
-  {
    "type": "move",
    "to": [
-    -5.62,
-    3.35,
+    -3.05,
+    1.16,
     0.0
    ],
    "via": [
     [
-     -5.55,
-     3.8,
+     -3.4,
+     1.05,
      0.0
     ]
    ],
-   "when": 16.676,
-   "until": 17.576,
+   "when": 19.258,
+   "until": 20.158,
    "face": "path"
   },
   {
-   "type": "build",
-   "target": "gate_posts",
-   "when": 17.576,
-   "until": 18.876,
-   "stand_at": [
-    -5.62,
-    3.35,
-    0.0
-   ],
-   "order": "z"
+   "type": "look",
+   "when": 20.058,
+   "until": 24.458,
+   "body": true,
+   "rate": 0.2,
+   "pos": [
+    -3.05,
+    1.5,
+    0.25
+   ]
   },
   {
    "type": "build",
-   "target": "gate",
-   "when": 18.926,
-   "until": 20.126,
+   "target": "fence_posts_s",
+   "when": 20.258,
+   "until": 22.058,
    "stand_at": [
-    -5.62,
-    3.35,
+    -3.05,
+    1.16,
     0.0
    ],
-   "order": "z"
+   "order": "x"
   },
   {
    "type": "build",
-   "target": "beam",
-   "when": 20.176,
-   "until": 21.776,
+   "target": "fence_rails_s",
+   "when": 22.108,
+   "until": 23.858,
    "stand_at": [
-    -5.62,
-    3.35,
+    -3.05,
+    1.16,
+    0.0
+   ],
+   "order": "x"
+  },
+  {
+   "type": "face",
+   "expr": "smirk",
+   "when": 22.658,
+   "until": 24.882
+  },
+  {
+   "type": "move",
+   "to": [
+    -4.09,
+    2.6,
+    0.0
+   ],
+   "via": [
+    [
+     -3.3,
+     0.82,
+     0.0
+    ],
+    [
+     -4.12,
+     0.85,
+     0.0
+    ],
+    [
+     -4.06,
+     1.45,
+     0.0
+    ],
+    [
+     -3.98,
+     1.75,
+     0.0
+    ],
+    [
+     -3.98,
+     2.25,
+     0.0
+    ]
+   ],
+   "when": 23.908,
+   "until": 25.708,
+   "face": "path"
+  },
+  {
+   "type": "look",
+   "when": 25.608,
+   "until": 28.808,
+   "body": true,
+   "rate": 0.2,
+   "pos": [
+    -3.8,
+    2.25,
+    0.25
+   ]
+  },
+  {
+   "type": "build",
+   "target": "fence_posts_w",
+   "when": 25.808,
+   "until": 27.108,
+   "stand_at": [
+    -4.09,
+    2.6,
     0.0
    ],
    "order": "y"
   },
   {
    "type": "build",
-   "target": "fulcrum",
-   "when": 21.826,
-   "until": 22.726,
+   "target": "fence_rails_w",
+   "when": 27.158,
+   "until": 28.608,
    "stand_at": [
-    -5.62,
-    3.35,
+    -4.09,
+    2.6,
     0.0
    ],
-   "order": "z"
-  },
-  {
-   "type": "build",
-   "target": "weight",
-   "when": 23.176,
-   "until": 23.576,
-   "stand_at": [
-    -5.62,
-    3.35,
-    0.0
-   ],
-   "order": "z"
-  },
-  {
-   "type": "face",
-   "expr": "smirk",
-   "when": 23.376,
-   "until": 25.395
-  },
-  {
-   "type": "move",
-   "to": [
-    -5.78,
-    4.14,
-    0.0
-   ],
-   "via": [
-    [
-     -5.55,
-     3.85,
-     0.0
-    ]
-   ],
-   "when": 25.395,
-   "until": 26.695,
-   "face": "path"
-  },
-  {
-   "type": "look",
-   "when": 26.395,
-   "until": 31.33,
-   "body": true,
-   "rate": 0.15,
-   "pos": [
-    -6.0,
-    3.0,
-    0.4
-   ]
-  },
-  {
-   "type": "pose",
-   "pose": "strain",
-   "when": 26.895,
-   "until": 27.895,
-   "ease": 0.3
-  },
-  {
-   "type": "face",
-   "expr": "wince",
-   "when": 27.195,
-   "until": 29.195
-  },
-  {
-   "type": "swing",
-   "target": "beam",
-   "axis": "x",
-   "degrees": 0.6,
-   "period": 0.18,
-   "pivot": [
-    -60,
-    37,
-    4.5
-   ],
-   "when": 27.495,
-   "until": 28.895
-  },
-  {
-   "type": "pose",
-   "pose": "strain_b",
-   "when": 27.795,
-   "until": 29.095,
-   "ease": 0.25
+   "order": "y"
   },
   {
    "type": "sfx",
-   "sound": "creak",
-   "when": 28.495,
-   "gain": 0.7
-  },
-  {
-   "type": "face",
-   "expr": "worried",
-   "when": 28.895,
-   "until": 31.33
-  },
-  {
-   "type": "look",
-   "when": 31.33,
-   "until": 40.122,
-   "body": true,
-   "rate": 0.18,
-   "pos": [
-    -5.75,
-    4.55,
-    0.1
-   ]
+   "sound": "rustle",
+   "when": 28.858,
+   "gain": 0.8
   },
   {
    "type": "pose",
-   "pose": "peer_down",
-   "when": 32.33,
-   "until": 34.73,
-   "ease": 0.3
-  },
-  {
-   "type": "face",
-   "expr": "squint",
-   "when": 32.53,
-   "until": 33.73
-  },
-  {
-   "type": "face",
-   "expr": "raised",
-   "when": 33.73,
-   "until": 36.34
-  },
-  {
-   "type": "face_camera",
-   "when": 36.19,
-   "until": 39.972
-  },
-  {
-   "type": "face",
-   "expr": "raised",
-   "when": 36.39,
-   "until": 39.772,
-   "set": {
-    "smile": 0.3
-   }
-  },
-  {
-   "type": "move",
-   "to": [
-    -5.8,
-    3.72,
-    0.0
-   ],
-   "via": [],
-   "when": 40.122,
-   "until": 41.022,
-   "face": "path"
-  },
-  {
-   "type": "pose",
-   "pose": "push_low",
-   "when": 40.922,
-   "until": 42.822,
-   "ease": 0.3
+   "pose": "freeze",
+   "when": 28.958,
+   "until": 30.858,
+   "ease": 0.12
   },
   {
    "type": "look",
-   "when": 40.922,
-   "until": 42.822,
+   "when": 29.008,
+   "until": 30.758,
    "body": false,
+   "rate": 0.4,
    "pos": [
-    -6.0,
-    3.45,
-    0.2
-   ]
-  },
-  {
-   "type": "move",
-   "to": [
-    -5.8,
-    3.24,
-    0.0
-   ],
-   "via": [],
-   "when": 41.222,
-   "until": 42.622,
-   "face": "path"
-  },
-  {
-   "type": "slide",
-   "target": "fulcrum",
-   "by": [
-    0.0,
-    -0.5,
-    0.0
-   ],
-   "when": 41.222,
-   "until": 42.622,
-   "sound": "scrape",
-   "gain": 0.6
-  },
-  {
-   "type": "move",
-   "to": [
-    -5.78,
-    4.14,
-    0.0
-   ],
-   "via": [],
-   "when": 43.322,
-   "until": 44.822,
-   "face": "path"
-  },
-  {
-   "type": "look",
-   "when": 44.622,
-   "until": 67.367,
-   "body": true,
-   "rate": 0.15,
-   "pos": [
-    -6.0,
-    3.0,
-    0.4
-   ]
-  },
-  {
-   "type": "face",
-   "expr": "smirk",
-   "when": 47.752,
-   "until": 49.652
-  },
-  {
-   "type": "pose",
-   "pose": "finger_top",
-   "when": 49.252,
-   "until": 49.852,
-   "ease": 0.3
-  },
-  {
-   "type": "pose",
-   "pose": "finger_dn",
-   "when": 49.752,
-   "until": 52.352,
-   "ease": 1.0
-  },
-  {
-   "type": "spin",
-   "target": "beam",
-   "axis": "x",
-   "degrees": -28.0,
-   "pivot": [
-    -60,
-    32,
-    4.5
-   ],
-   "when": 49.802,
-   "until": 50.802
-  },
-  {
-   "type": "spin",
-   "target": "weight",
-   "axis": "x",
-   "degrees": -28.0,
-   "pivot": [
-    -60,
-    32,
-    4.5
-   ],
-   "when": 49.802,
-   "until": 50.802
-  },
-  {
-   "type": "slide",
-   "target": "gate",
-   "by": [
-    0.0,
-    0.0,
-    0.141
-   ],
-   "when": 49.852,
-   "until": 50.852,
-   "sound": "none"
-  },
-  {
-   "type": "sfx",
-   "sound": "creak",
-   "when": 49.952,
-   "gain": 0.35
-  },
-  {
-   "type": "face",
-   "expr": "surprised",
-   "when": 50.152,
-   "until": 51.052,
-   "set": {
-    "brow": 1.0
-   }
-  },
-  {
-   "type": "face_camera",
-   "when": 51.052,
-   "until": 53.761
-  },
-  {
-   "type": "face",
-   "expr": "smile",
-   "when": 51.052,
-   "until": 53.761,
-   "set": {
-    "smile": 1.0
-   }
-  },
-  {
-   "type": "pose",
-   "pose": "proud",
-   "when": 51.352,
-   "until": 53.861,
-   "ease": 0.3
-  },
-  {
-   "type": "look",
-   "when": 53.861,
-   "until": 54.761,
-   "body": false,
-   "pos": [
-    -5.7,
+    -6.3,
     3.4,
-    1.4
+    0.6
    ]
-  },
-  {
-   "type": "face",
-   "expr": "worried",
-   "when": 53.861,
-   "until": 54.861
-  },
-  {
-   "type": "look",
-   "when": 54.761,
-   "until": 56.361,
-   "body": false,
-   "pos": [
-    -5.95,
-    2.9,
-    0.5
-   ]
-  },
-  {
-   "type": "face",
-   "expr": "content",
-   "when": 54.861,
-   "until": 56.661
-  },
-  {
-   "type": "face_camera",
-   "when": 55.961,
-   "until": 60.253
-  },
-  {
-   "type": "face",
-   "expr": "warm",
-   "when": 56.361,
-   "until": 60.253
-  },
-  {
-   "type": "face_camera",
-   "when": 60.153,
-   "until": 63.01
-  },
-  {
-   "type": "face",
-   "expr": "side_eye",
-   "when": 60.353,
-   "until": 63.01,
-   "set": {
-    "smile": 0.4
-   }
-  },
-  {
-   "type": "look",
-   "when": 62.71,
-   "until": 67.367,
-   "body": true,
-   "rate": 0.2,
-   "pos": [
-    -5.204,
-    3.8,
-    0.05
-   ]
-  },
-  {
-   "type": "sfx",
-   "sound": "clink",
-   "when": 62.81,
-   "gain": 0.25
   },
   {
    "type": "face",
    "expr": "surprised",
-   "when": 63.11,
-   "until": 67.367,
+   "when": 29.008,
+   "until": 30.758,
    "set": {
     "brow": 1.2,
     "smile": 0.0
    }
+  },
+  {
+   "type": "face",
+   "expr": "alert",
+   "when": 30.158,
+   "until": 31.857,
+   "set": {
+    "brow": -0.3
+   }
+  },
+  {
+   "type": "move",
+   "to": [
+    -3.05,
+    3.36,
+    0.0
+   ],
+   "via": [
+    [
+     -4.35,
+     2.75,
+     0.0
+    ],
+    [
+     -4.35,
+     3.35,
+     0.0
+    ],
+    [
+     -3.9,
+     3.42,
+     0.0
+    ]
+   ],
+   "when": 31.607,
+   "until": 32.807,
+   "face": "path"
+  },
+  {
+   "type": "look",
+   "when": 32.657,
+   "until": 34.457,
+   "body": true,
+   "rate": 0.3,
+   "pos": [
+    -3.05,
+    3.0,
+    0.25
+   ]
+  },
+  {
+   "type": "build",
+   "target": "fence_posts_n",
+   "when": 32.857,
+   "until": 33.557,
+   "stand_at": [
+    -3.05,
+    3.36,
+    0.0
+   ],
+   "order": "x"
+  },
+  {
+   "type": "build",
+   "target": "fence_rails_n",
+   "when": 33.577,
+   "until": 34.357,
+   "stand_at": [
+    -3.05,
+    3.36,
+    0.0
+   ],
+   "order": "x"
+  },
+  {
+   "type": "move",
+   "to": [
+    -1.98,
+    2.25,
+    0.0
+   ],
+   "via": [
+    [
+     -2.0,
+     3.48,
+     0.0
+    ]
+   ],
+   "when": 34.407,
+   "until": 35.207,
+   "face": "path"
+  },
+  {
+   "type": "look",
+   "when": 35.057,
+   "until": 36.857,
+   "body": true,
+   "rate": 0.3,
+   "pos": [
+    -2.3,
+    2.25,
+    0.25
+   ]
+  },
+  {
+   "type": "build",
+   "target": "fence_posts_e",
+   "when": 35.257,
+   "until": 35.857,
+   "stand_at": [
+    -1.98,
+    2.25,
+    0.0
+   ],
+   "order": "y"
+  },
+  {
+   "type": "build",
+   "target": "fence_rails_e",
+   "when": 35.877,
+   "until": 36.557,
+   "stand_at": [
+    -1.98,
+    2.25,
+    0.0
+   ],
+   "order": "y"
+  },
+  {
+   "type": "move",
+   "to": [
+    -3.05,
+    1.05,
+    0.0
+   ],
+   "via": [
+    [
+     -1.98,
+     1.2,
+     0.0
+    ],
+    [
+     -2.6,
+     1.02,
+     0.0
+    ]
+   ],
+   "when": 36.607,
+   "until": 37.607,
+   "face": "path"
+  },
+  {
+   "type": "look",
+   "when": 37.507,
+   "until": 38.607,
+   "body": true,
+   "rate": 0.25,
+   "pos": [
+    -3.05,
+    1.5,
+    0.3
+   ]
+  },
+  {
+   "type": "pose",
+   "pose": "pant",
+   "when": 37.607,
+   "until": 38.607,
+   "ease": 0.25
+  },
+  {
+   "type": "face",
+   "expr": "alert",
+   "when": 38.507,
+   "until": 42.267,
+   "set": {
+    "brow": -0.4,
+    "smile": 0.0
+   }
+  },
+  {
+   "type": "face_camera",
+   "when": 38.607,
+   "until": 42.267
   }
  ],
  "camera": [
@@ -6300,7 +6271,7 @@
    "dist": 1.9
   },
   {
-   "at": 4.2667,
+   "at": 7.0667,
    "target": [
     -6.15,
     1.33,
@@ -6311,169 +6282,147 @@
    "dist": 1.9
   },
   {
-   "at": 4.3,
+   "at": 7.1,
    "target": [
-    -5.6,
+    -5.5,
     2.8,
     0.6
    ],
-   "az": -35,
-   "el": 11,
-   "dist": 4.0
-  },
-  {
-   "at": 9.8333,
-   "target": [
-    -5.6,
-    2.8,
-    0.6
-   ],
-   "az": -35,
-   "el": 11,
-   "dist": 4.0
-  },
-  {
-   "at": 9.8667,
-   "target": [
-    -5.85,
-    4.25,
-    0.5
-   ],
-   "az": 68,
-   "el": 11,
-   "dist": 3.2
-  },
-  {
-   "at": 17.6667,
-   "target": [
-    -5.85,
-    4.25,
-    0.5
-   ],
-   "az": 68,
-   "el": 11,
-   "dist": 3.2
-  },
-  {
-   "at": 17.7,
-   "target": [
-    -5.85,
-    3.35,
-    0.5
-   ],
-   "az": 0,
-   "el": 14,
-   "dist": 3.2
-  },
-  {
-   "at": 27.095,
-   "target": [
-    -5.85,
-    3.7,
-    0.65
-   ],
-   "az": 4,
-   "el": 11,
-   "dist": 3.25
-  },
-  {
-   "at": 33.1,
-   "target": [
-    -5.85,
-    3.7,
-    0.65
-   ],
-   "az": 4,
-   "el": 11,
-   "dist": 3.25
-  },
-  {
-   "at": 33.1333,
-   "target": [
-    -5.75,
-    4.55,
-    0.08
-   ],
-   "az": 100,
-   "el": 32,
-   "dist": 0.7
-  },
-  {
-   "at": 36.3667,
-   "target": [
-    -5.75,
-    4.55,
-    0.08
-   ],
-   "az": 100,
-   "el": 32,
-   "dist": 0.7
-  },
-  {
-   "at": 36.4,
-   "target": [
-    -5.78,
-    4.14,
-    0.9
-   ],
-   "az": 40,
-   "el": 11,
-   "dist": 2.2
-  },
-  {
-   "at": 41.422,
-   "target": [
-    -5.85,
-    3.4,
-    0.5
-   ],
-   "az": 16,
-   "el": 11,
-   "dist": 3.2
-  },
-  {
-   "at": 49.5333,
-   "target": [
-    -5.85,
-    3.4,
-    0.5
-   ],
-   "az": 16,
-   "el": 11,
-   "dist": 3.2
-  },
-  {
-   "at": 49.5667,
-   "target": [
-    -5.9,
-    3.5,
-    0.6
-   ],
-   "az": 10,
-   "el": 11,
-   "dist": 2.8
-  },
-  {
-   "at": 53.861,
-   "target": [
-    -5.73,
-    4.14,
-    1.15
-   ],
-   "az": 40,
+   "az": 80,
    "el": 8,
-   "dist": 2.64
+   "dist": 2.6
   },
   {
-   "at": 63.21,
+   "at": 10.5667,
    "target": [
-    -5.45,
-    3.95,
-    0.45
+    -5.5,
+    2.8,
+    0.6
    ],
-   "az": 20,
-   "el": 14,
-   "dist": 3.36
+   "az": 80,
+   "el": 8,
+   "dist": 2.6
+  },
+  {
+   "at": 10.6,
+   "target": [
+    -4.95,
+    2.45,
+    0.55
+   ],
+   "az": 70,
+   "el": 8,
+   "dist": 3.4
+  },
+  {
+   "at": 13.5333,
+   "target": [
+    -4.95,
+    2.45,
+    0.55
+   ],
+   "az": 70,
+   "el": 8,
+   "dist": 3.4
+  },
+  {
+   "at": 13.5667,
+   "target": [
+    -3.7,
+    1.1,
+    0.55
+   ],
+   "az": 90,
+   "el": 8,
+   "dist": 3.0
+  },
+  {
+   "at": 20.4333,
+   "target": [
+    -3.7,
+    1.1,
+    0.55
+   ],
+   "az": 90,
+   "el": 8,
+   "dist": 3.0
+  },
+  {
+   "at": 20.4667,
+   "target": [
+    -3.05,
+    2.2,
+    0.4
+   ],
+   "az": 100,
+   "el": 8,
+   "dist": 3.4
+  },
+  {
+   "at": 29.1333,
+   "target": [
+    -3.05,
+    2.2,
+    0.4
+   ],
+   "az": 100,
+   "el": 8,
+   "dist": 3.4
+  },
+  {
+   "at": 29.1667,
+   "target": [
+    -3.95,
+    2.45,
+    0.8
+   ],
+   "az": 50,
+   "el": 8,
+   "dist": 2.4
+  },
+  {
+   "at": 31.5333,
+   "target": [
+    -3.95,
+    2.45,
+    0.8
+   ],
+   "az": 50,
+   "el": 8,
+   "dist": 2.4
+  },
+  {
+   "at": 31.5667,
+   "target": [
+    -3.0,
+    2.25,
+    0.4
+   ],
+   "az": 110,
+   "el": 8,
+   "dist": 4.0
+  },
+  {
+   "at": 38.3,
+   "target": [
+    -3.0,
+    2.25,
+    0.4
+   ],
+   "az": 110,
+   "el": 8,
+   "dist": 4.0
+  },
+  {
+   "at": 38.3333,
+   "target": [
+    -3.05,
+    1.3,
+    0.75
+   ],
+   "az": 90,
+   "el": 8,
+   "dist": 2.8
   }
  ],
  "cards": [
@@ -6486,27 +6435,6 @@
      0.0,
      3
     ]
-   ]
-  },
-  {
-   "style": "panel",
-   "y": "top",
-   "border": "amber",
-   "when": 36.39,
-   "until": 49.652,
-   "rows": [
-    {
-     "text": "LEVER",
-     "color": "white",
-     "at": 36.49,
-     "size": 40
-    },
-    {
-     "text": "long arm + pivot near the load = easy lift",
-     "color": "cyan",
-     "at": 37.79,
-     "size": 30
-    }
    ]
   }
  ],
@@ -6526,11 +6454,7 @@
    ],
    [
     "webcam",
-    "cam_stone"
-   ],
-   [
-    "book",
-    "book_stone"
+    "rock"
    ]
   ],
   "frame_points": [
@@ -6550,14 +6474,10 @@
    "helve",
    "lean_posts",
    "bench_legs",
-   "gate_posts",
-   "fulcrum"
-  ],
-  "cutaways": [
-   [
-    33.133,
-    36.4
-   ]
+   "fence_posts_s",
+   "fence_posts_w",
+   "fence_posts_n",
+   "fence_posts_e"
   ]
  }
 }

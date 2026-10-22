@@ -13,13 +13,16 @@ gets its own beat sheet, approved before building.
 | 005 | The 4th Viewer | 30 s | Tobias was the 4th viewer. They visit his garden; the boar has been rooting for grubs. "There's more?" |
 | 006 | Page Twelve | 70 s | Tobias's workshop holds Grandpa's own blueprint book, borrowed "ages ago… when I was a little boy." Grandpa designed the trip hammer. Lesson: scale. Tobias leaves (homework) and the badge drops 4 → 3. Alone, his anxiety triggers the flashback ("You kinda bussin'" × 3). "Nope nope nope." Page twelve: a lever gate. Pages are torn out. "Batten down the hatches!" |
 
-## Planned (draft): Grandpa streams alone; Tobias is an occasional visitor and is not in 007–010 (user, 2026-10-21)
+## Planned: Grandpa streams alone; Tobias is an occasional visitor, not in 007–011 (user, 2026-10-21)
+The old 007 was split in two (user, 2026-10-22), so the later scenes move up one number. Episode 1 is about 9.5 min.
+
 | # | Scene | What happens |
 |---|---|---|
-| 007 | Leverage (~60 s) | Blueprint Build. He carries the webcam to the build spot and sets it down (Rule 2), then builds the lever gate block by block. Oops: the pivot is in the wrong place. Lesson: levers. Fix. Feelings beat: "Being scared's normal. Building something helps." Hook: a bottle drifts down the stream. |
-| 008 | Page Thirteen (~60 s) | The bottle holds page 13: a humane electric fence. Build plus lesson: a tiny pulse that startles, never harms. He never touches the wires. Hook: dusk, and a huff in the woods. |
-| 009 | Night Shift (~60 s) | He streams alone at night. The boar returns, and the gate and fence turn it away gently. The one "NO CAP, CHAT!" of 007–010 is here. He works it out himself, remembering Tobias: "He doesn't want the garden. He wants grubs." |
-| 010 | Grub Diplomacy (~60 s) | Episode finale; pays off Scene 005's "He can have those." He sets out a grub patch outside the fence for the boar, and chat names it. Final hook: a torn page in someone else's handwriting. "Aliens. I KNEW it." |
+| 007 | The Fence (~42 s) | Tobias's garden is right where the boar lives, so Grandpa builds a safe one out in the open meadow by his cabin ("Then we move his seedlings in."). He brings the webcam (back on the Scene 003 bank stone) and the book, which he keeps open in his left hand. He wobbles over the stepping stones ("My knees remember this.") and builds the fence side by side ("Post. Rail. Post. Rail. Chat, this is my cardio."). A rustle across the stream: "…Nope. Faster." The last two sides go up twice as fast. Cliffhanger at the gap: "Chat… gate. NOW." |
+| 008 | Leverage (~45 s) | Blueprint Build: the lift gate. "Boars push gates open… but they can't lift one." "A rock? For… vibes? Nah. Skip." Oops: far too heavy ("NOT… giving."). Why: it's a seesaw. Lesson card: COUNTERWEIGHT. "Drawbridges work the same way." Fix: rock on, one finger ("rizz"); he lets go and it shuts by itself. "A boar-proof garden. Tobias is gonna flip." Feelings beat (no slang), then the Tobias line (wording to settle). Hook: a bottle drifts down the stream. |
+| 009 | Page Thirteen (~60 s) | The bottle holds page 13: a humane electric fence wire for this fence. Build plus lesson: a tiny pulse that startles, never harms. He never touches the wires. Hook: dusk, and a huff in the woods. |
+| 010 | Night Shift (~60 s) | He streams alone at night. The boar comes to the meadow garden; the gate and fence turn it away gently. The one "NO CAP, CHAT!" of 007–011 is here. He works it out himself: "He doesn't want the garden. He wants grubs." |
+| 011 | Grub Diplomacy (~60 s) | Episode finale; pays off Scene 005's "He can have those." A grub patch outside the fence for the boar; chat names it. Final hook: a torn page in someone else's handwriting. "Aliens. I KNEW it." |
 
 ## Threads (keep consistent)
 - **Grandpa the builder**: he learns he used to build, and becomes a builder again.

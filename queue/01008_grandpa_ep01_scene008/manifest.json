@@ -1,0 +1,28 @@
+{
+ "slug": "grandpa_ep01_scene008",
+ "title": "Leverage",
+ "episode": 1,
+ "scene": 8,
+ "film": 57.3,
+ "engine_commit": "4437d057dadcac1269dee9dbd93172bb6fd5bf30",
+ "engine_files": [
+  "bl_audio.py",
+  "bl_cast.py",
+  "bl_common.py",
+  "bl_overlay.py",
+  "bl_perform.py",
+  "bl_scene.py",
+  "bl_verify.py",
+  "bl_voice.py",
+  "bl_world.py",
+  "render.py",
+  "voxelchars.py",
+  "voxelkit.py"
+ ],
+ "engine_sha": "c59d7b0d9231",
+ "accepted_fails": [
+  "nothing hides grandpa",
+  "no clipping into"
+ ],
+ "approved": "2026-10-22 03:12"
+}

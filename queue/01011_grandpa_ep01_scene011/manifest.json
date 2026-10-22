@@ -1,0 +1,29 @@
+{
+ "slug": "grandpa_ep01_scene011",
+ "title": "Goodnight, Chat",
+ "episode": 1,
+ "scene": 11,
+ "film": 56.833333333333336,
+ "engine_commit": "4e53dddcead0748148a146742f898beb3989244b",
+ "engine_files": [
+  "bl_audio.py",
+  "bl_cast.py",
+  "bl_common.py",
+  "bl_overlay.py",
+  "bl_perform.py",
+  "bl_scene.py",
+  "bl_verify.py",
+  "bl_voice.py",
+  "bl_world.py",
+  "render.py",
+  "voxelchars.py",
+  "voxelkit.py"
+ ],
+ "engine_sha": "6d8e25b5d912",
+ "accepted_fails": [
+  "grandpa stays in the picture",
+  "nothing hides grandpa",
+  "no clipping into"
+ ],
+ "approved": "2026-10-22 21:29"
+}

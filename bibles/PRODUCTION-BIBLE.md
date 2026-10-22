@@ -202,3 +202,10 @@ builds it, talking chat through it.
 - The **LIVE badge** shows "-1" when the count drops.
 - Structure `extras` draw ink on paper (the blueprint grid and drawings).
 - New materials `paper`, `leather` and `glass`; new sfx `buzz` (tablet) and `page` (page turn).
+
+## Word Cards: vocabulary micro-lessons (user, 2026-10-22; from Scene 010 on)
+- Only for a word a younger viewer may not know (e.g. STAKEOUT, CARDIO, ALLEGEDLY). A tiny vocabulary lesson, not a caption.
+- Never for slang (he uses it wrong on purpose) or everyday words.
+- At most one per scene. Shown right after he says the word, about 3.5-4 s, top left under the channel tag, green border.
+- The word, its syllables, and a plain meaning of about 8 words a kid understands. Never on screen together with a lesson card.
+- Story JSON: {"style": "word", "word": ..., "say": "stake-out", "meaning": ..., "when": t, "until": t}.

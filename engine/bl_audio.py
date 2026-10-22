@@ -240,6 +240,26 @@ def sfx(kind):
             v = np.sign(np.sin(2 * np.pi * 150 * x)) * 0.5 + bp(rng.standard_normal(len(x)), 120, 900) * 0.3
             j = int(t0 * SR); out[j:j + len(x)] += lp(v, 1500) * np.hanning(len(x)) ** 0.3 * 0.6
         return out
+    if kind == "owl":            # a tawny owl, soft and far: hoo... hoo-hoo
+        out = np.zeros(int(1.6 * SR))
+        for t0, d, f in ((0.0, 0.32, 420), (0.75, 0.16, 400), (0.98, 0.42, 410)):
+            x = tt(d)
+            v = np.sin(2 * np.pi * np.cumsum(f * (1 + 0.02 * np.sin(2 * np.pi * 6 * x))) / SR) * np.sin(np.pi * x / x[-1]) ** 1.5
+            j = int(t0 * SR); out[j:j + len(v)] += v
+        return lp(reverb(out * 0.5, 1.6, 0.6), 2500)
+    if kind == "snore":          # an old man's snore: a rattling in-breath, a whistling out-breath
+        out = np.zeros(int(2.4 * SR))
+        x = tt(1.1)
+        rattle = bp(rng.standard_normal(len(x)), 80, 600) * (0.6 + 0.4 * np.sign(np.sin(2 * np.pi * 28 * x)))
+        out[:len(x)] += rattle * np.sin(np.pi * x / x[-1]) ** 2 * 0.9
+        y = tt(0.9); j = int(1.2 * SR)
+        out[j:j + len(y)] += (np.sin(2 * np.pi * np.cumsum(900 - 300 * y / y[-1]) / SR) * 0.08
+                              + bp(rng.standard_normal(len(y)), 300, 2000) * 0.25) * np.sin(np.pi * y / y[-1]) ** 2
+        return lp(out, 3000)
+    if kind == "spark":          # the fence's tiny pulse meeting a wet nose: a snap and a short crackle
+        x = tt(0.08); y = tt(0.5)
+        crack = bp(rng.standard_normal(len(y)), 2000, 8000) * (rng.random(len(y)) > 0.93) * 2.0 * np.exp(-y * 6)
+        return np.concatenate([bp(rng.standard_normal(len(x)), 3000, 9000) * np.exp(-x * 60) * 1.2, lp(crack, 7000) * 0.5])
     if kind == "zip":            # a little electric pulse setting off: a quick rising tick
         x = tt(0.25)
         return np.sin(2 * np.pi * np.cumsum(900 + 2600 * x / x[-1]) / SR) * np.exp(-x * 9) * 0.35
@@ -545,6 +565,35 @@ def squeal():                     # startled: a short rising squeal
     return bp(v + bp(rng.standard_normal(len(x)), 800, 4000) * 0.3, 300, 5000) * np.hanning(len(x)) * 0.5
 
 
+def sniff():                      # quick sniffs through a snout
+    out = np.zeros(int(0.86 * SR))
+    for k in range(3):
+        x = tt(0.12); j = int(k * 0.22 * SR)
+        out[j:j + len(x)] += bp(rng.standard_normal(len(x)), 1200, 6000) * np.sin(np.pi * x / x[-1]) * 0.5
+    return out
+
+
+def root_dig(d):                  # rooting: the snout shoving through soft earth, with little grunts
+    out, t = np.zeros(int(d * SR)), 0.0
+    while t < d - 0.4:
+        x = tt(0.25); j = int(t * SR)
+        out[j:j + len(x)] += bp(rng.standard_normal(len(x)), 300, 2500) * np.exp(-x * 9) * 0.6
+        if rng.random() < 0.35:
+            g = tt(0.15)
+            out[j:j + len(g)] += lp(np.sin(2 * np.pi * (110 + 30 * rng.random()) * g), 600) * np.hanning(len(g)) * 0.35
+        t += rng.uniform(0.25, 0.5)
+    return out
+
+
+def happy_grunt():                # a pleased little grunt, twice
+    out = np.zeros(int(0.7 * SR))
+    for t0 in (0.0, 0.32):
+        x = tt(0.2); f = 150 + 60 * np.sin(np.pi * x / x[-1])
+        v = np.sin(2 * np.pi * np.cumsum(f) / SR) + 0.5 * np.sin(4 * np.pi * np.cumsum(f) / SR)
+        j = int(t0 * SR); out[j:j + len(v)] += lp(v, 900) * np.hanning(len(v)) * 0.5
+    return out
+
+
 for c in W.get("critters", []):
     if c["kind"] == "boar":                                     # trotting hooves, huffs, tusk clacks, stomps, a squeal
         for ts in C.actor_steps(c):
@@ -557,6 +606,13 @@ for c in W.get("critters", []):
         if c.get("startle") is not None:
             x, y = C.critter_state(dict(c, hop=0.0), c["startle"])[:2]
             place(stems["fx"], c["startle"] + 0.03, squeal(), heard(c["startle"], x, y, 0.8, 0.15, 1.0))
+        for key, snd, g in (("sniffs", sniff, 0.5), ("grunts", happy_grunt, 0.7)):
+            for ts in c.get(key, []):
+                x, y = C.critter_state(dict(c, hop=0.0), ts)[:2]
+                place(stems["fx"], ts, snd(), g * heard(ts, x, y, 0.8, 0.15, 1.0))
+        for r0, r1 in c.get("roots", []):
+            x, y = C.critter_state(dict(c, hop=0.0), r0)[:2]
+            place(stems["fx"], r0 + 0.2, root_dig(r1 - r0 - 0.2), 0.6 * heard(r0, x, y, 0.8, 0.15, 1.0))
         continue
     if c["kind"] == "memory_cloud":                             # the remembered boar: faint, far off, reverberant
         b = c.get("boar", {})

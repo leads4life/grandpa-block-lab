@@ -2,7 +2,8 @@
 voxelchars). Pure keyframes, built after the world, so scenes without them are untouched.
 
 boar:   {"kind": "boar", "path": [[t, x, y], ...], "yaw": [[t, deg], ...], "visible": [t_in, t_out], "stride": m,
-         "mood": [[t, "calm" | "agitated"], ...], "huffs": [t], "clacks": [t], "stomps": [t], "startle": t}
+         "mood": [[t, "calm" | "agitated"], ...], "huffs": [t], "clacks": [t], "stomps": [t], "startle": t,
+         "sniffs": [t], "grunts": [t], "roots": [[t0, t1]]}  (rooting: snout down in the earth, digging; dirt flies)
 tobias: {"kind": "tobias", "path": ..., "yaw": ..., "visible": [t_in, t_out], "rise": [t0, t1] (stands up from a crouch),
          "poses": [[t0, t1, name], ...], "faces": [[t, name], ...], "look": [[t0, t1, [x, y, z]], ...], "blink": true}
 """
@@ -88,6 +89,14 @@ def build_boar_actor(sc, c, fps, nf):
             hp, hy = parts["pitch"], 0.0
             for th in huffs:                                          # the snout jerks up with each huff
                 hp -= math.radians(9) * _env(t, th - 0.05, th + 0.35, 0.12)
+            for ts in c.get("sniffs", []):                            # sniffing: little nods of the snout
+                if ts <= t < ts + 0.7:
+                    hp += math.radians(5) * math.sin(2 * math.pi * (t - ts) / 0.22) * (1 - (t - ts) / 0.7)
+            for tg in c.get("grunts", []):                            # a pleased grunt: the snout lifts
+                hp -= math.radians(7) * _env(t, tg - 0.05, tg + 0.6, 0.15)
+            for r0, r1 in c.get("roots", []):                         # rooting: snout down, shoving through the earth
+                k_ = _env(t, r0, r1, 0.35)
+                hp += math.radians(22) * k_ + math.radians(6) * k_ * math.sin(2 * math.pi * 2.6 * (t - r0))
             for tc in clacks:                                         # tusks clacking: a quick head shake
                 if tc <= t < tc + 0.36:
                     hy = math.radians(7) * math.sin(2 * math.pi * (t - tc) / 0.12) * (1 - (t - tc) / 0.36)
@@ -103,7 +112,7 @@ def build_boar_actor(sc, c, fps, nf):
                 _key(parts["puff"], "scale", f=f)
             if parts["dust"]:
                 s_ = 0.0
-                for ts in stomps:
+                for ts in stomps + [r0 + 0.5 + 0.9 * q for r0, r1 in c.get("roots", []) for q in range(int((r1 - r0 - 0.6) / 0.9))]:
                     if ts <= t < ts + 0.8:
                         u = (t - ts) / 0.8
                         s_ = max(s_, C.smooth(u / 0.08) * (1 - u) ** 0.7 * (1 + 0.5 * u))

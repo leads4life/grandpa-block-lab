@@ -120,12 +120,35 @@ def chat(d, c, t):
         y += h + 8
 
 
+def word(d, c, t):
+    """A Word Card: a bigger word Grandpa just used, its syllables and a plain meaning; top left, under the channel tag."""
+    k = env(t, c["t0"], c["t1"], 0.25, 0.4)
+    if k <= 0:
+        return
+    sz = 30 if WIDE else 34
+    fw, fs, fm = F("bold", sz + 10), F("reg", sz - 4), F("reg", sz)
+    head, syl = c["word"].upper(), "  ·  " + c.get("say", "")
+    lines = wrap(c["meaning"], fm, 560)
+    bw = max(fw.getlength(head) + fs.getlength(syl), max(fm.getlength(s_) for s_ in lines)) + 40
+    x0, y0 = LAY["tag"][0], LAY["tag"][1] + 62 + 14 - (1 - smooth((t - c["t0"]) / 0.25)) * 14
+    h = 22 + sz + 10 + len(lines) * (sz + 8) + 16
+    d.rounded_rectangle((x0, y0, x0 + bw, y0 + h), radius=14, fill=(14, 16, 22, int(185 * k)),
+                        outline=CHAT_COL["green"] + (int(255 * k),), width=3)
+    d.text((x0 + 20, y0 + 16), head, font=fw, fill=COL["white"] + (int(255 * k),))
+    d.text((x0 + 20 + fw.getlength(head), y0 + 16 + 10), syl, font=fs, fill=CHAT_COL["green"] + (int(255 * k),))
+    for i, ln in enumerate(lines):
+        d.text((x0 + 20, y0 + 22 + sz + 14 + i * (sz + 8)), ln, font=fm, fill=(232, 236, 240, int(255 * k)))
+
+
 def card(d, ov, c, t, f):
     style = c.get("style", "title")
     col = COL.get(c.get("color", "white"), COL["white"])
     if style == "chat":
         if c["t0"] <= t <= c["t1"]:
             chat(d, c, t)
+        return
+    if style == "word":                                        # a Word Card: {"word", "say", "meaning", "when", "until"}
+        word(d, c, t)
         return
     if style == "end":
         k = smooth((t - c["t0"]) / 0.4)

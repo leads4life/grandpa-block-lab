@@ -51,7 +51,7 @@ WORLD_OPTIONS = {                                  # story "world": {...}; anyth
     "interior": ("none", "cabin"),                 # "cabin": grandpa's log cabin around the middle of the island
     "terrain": ("island", "forest_west"),          # "forest_west": a forest with a stream joins the island to the west
 }
-WORLD_FREE = ("sun", "exposure", "roof", "door_open", "clouds_pass", "leaves", "critters")   # roof: true (seen from outside only); door_open: [t0, t1, deg]                   # free values: "sun" light travel direction [x,y,z], "exposure" offset
+WORLD_FREE = ("sun", "exposure", "roof", "door_open", "clouds_pass", "leaves", "critters", "lantern")   # roof: true (seen from outside only); door_open: [t0, t1, deg]                   # free values: "sun" light travel direction [x,y,z], "exposure" offset
 OUTFIT_OPTIONS = {                                 # story "grandpa": {"outfit": {...}}
     "hat": ("cap", "hardhat", "santa", "beret", "straw", "beanie", "none"),
     "shirt": ("rust", "red", "blue", "green", "yellow", "purple", "white", "striped"),

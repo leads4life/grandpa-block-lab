@@ -324,7 +324,7 @@ def _props_lamps(sc):
 
 
 # ------------------------------------------------------------------ sky + light
-def build_sky(sc, time, weather):
+def build_sky(sc, time, weather, lantern=None):
     T = dict(TIME[time])
     if weather in OVERCAST:
         k_sun, grey, k = OVERCAST[weather]
@@ -355,6 +355,12 @@ def build_sky(sc, time, weather):
         lamp.energy, lamp.color, lamp.shadow_soft_size = 75, (1.0, 0.76, 0.48), 0.4
         o = bpy.data.objects.new("Lantern", lamp); o.location = (0.0, -0.45, 1.9)
         sc.collection.objects.link(o)
+        lanterns = lantern if isinstance(lantern, list) else [lantern] if lantern else []
+        for k, ln in enumerate(lanterns):                           # "lantern": {"at": [x, y, z], "energy": W} (or a list) -- out of doors
+            if k:
+                lamp = bpy.data.lights.new("Lantern%d" % k, "POINT"); lamp.color = (1.0, 0.76, 0.48)
+                o = bpy.data.objects.new("Lantern%d" % k, lamp); sc.collection.objects.link(o)
+            o.location, lamp.energy, lamp.shadow_soft_size = tuple(ln["at"]), ln.get("energy", 75), 0.05
         if weather not in OVERCAST:
             star = VK.emission_material("Stars", (1.0, 0.97, 0.9), 6.0)
             boxes = []
@@ -667,7 +673,7 @@ def build_world(sc, P):
     fps = P["fps"]
     EXTEND[0] = W.get("terrain") == "forest_west"
     build_ground(sc, W["ground"])
-    exposure = build_sky(sc, W["time"], W["weather"])
+    exposure = build_sky(sc, W["time"], W["weather"], W.get("lantern"))
     if W.get("sun"):                                    # story override: the direction sunlight travels
         sc.objects["Sun"].rotation_quaternion = Vector(W["sun"]).normalized().to_track_quat("-Z", "Y")
     exposure += float(W.get("exposure", 0.0))

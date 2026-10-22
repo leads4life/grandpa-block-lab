@@ -91,7 +91,7 @@ LINES = [("bottle", "Chat... is that a bottle?", None),
          ("relax", "Relax, BoarFan. It doesn't hurt him. It's a tickle... with attitude.", None),
          ("safety", "And kids: never touch one, and never build one without a grown-up who knows how. I'm a grown-up. Allegedly.", None),
          ("spools", "Little spools, so the wire never touches the wood.", None),
-         ("solar", "See this little panel? It drinks up sunshine... and fills a battery inside the box.", None),
+         ("solar", "See this panel? It drinks sunshine.", None),
          ("thanks", "Thank you, sun.", None),
          ("pulse", "Then the box sends out a tiny pulse. Tick... tick... tick.", None),
          ("truth", "Moment of truth...", None),
@@ -101,7 +101,7 @@ LINES = [("bottle", "Chat... is that a bottle?", None),
          ("alive", "It's alive. It's ALIVE!", None),
          ("late", "Chat, it's getting late.", None),
          ("tonight", "...Tonight, then.", 0.9)]
-GUESS = dict(bottle=1.6, solar=5.0, thanks=1.2, pulse=4.0, mail=2.6, page=2.3, relax=4.5, safety=6.5, spools=3.0, truth=1.4, nothing=1.0, loop=7.0, norod=1.4, alive=2.0,
+GUESS = dict(bottle=1.6, solar=2.6, thanks=1.2, pulse=4.0, mail=2.6, page=2.3, relax=4.5, safety=6.5, spools=3.0, truth=1.4, nothing=1.0, loop=7.0, norod=1.4, alive=2.0,
              late=1.6, tonight=1.3)
 dur_file = os.path.join(HERE, "ep01_s009_durations.json")
 D = dict(GUESS, **(json.load(open(dur_file)) if "--fit" in sys.argv and os.path.exists(dur_file) else {}))
@@ -132,7 +132,7 @@ POSES = {
     "push_rod": dict(lean=0.55, hips=[0.0, 0.0, -0.14], hand_R={"world": [-2.4, 1.1, 0.34]}),
     "arms_up": dict(lean=-0.1, hand_R={"char": [-0.24, -0.1, 1.15]}),
     "freeze": dict(shrug=0.6, elbows=0.2, lean=-0.05),
-    "hail_sun": dict(lean=-0.12, hand_R={"char": [-0.26, -0.05, 1.2]}),
+    "hail_sun": dict(lean=-0.18, hand_R={"char": [-0.22, -0.12, 1.42]}),
 }
 BOOK_CARRY_B = {"char": [0.17, -0.2, 0.80]}
 BOOK_CARRY_P = {"char": [0.17, -0.2, 0.81]}
@@ -247,8 +247,8 @@ for k in range(int(30)):                                            # the box ti
 s, e = say("solar", 0.2, at=max(T - 0.3, LE["spools"] + 0.5))     # (the panel lands as he starts)
 SOLAR0, SOLAR1 = s, e
 face("content", s, e + 0.3)
-SUN = (G_BOX[0] + 4 * 0.96, G_BOX[1] + 4 * 0.06, 1.1 + 4 * 0.27)    # where the sun is (the world's sun travels -0.96, -0.06, -0.27)
-s, e = say("thanks", 0.5)
+SUN = (G_BOX[0] + 2.5 * 0.64, G_BOX[1] - 2.5 * 0.77, 2.2)            # up at the sky, south-east (cheated toward the camera so we see his face)
+s, e = say("thanks", 0.3)
 THANKS0 = s
 look(s - 0.5, e + 0.25, pos=SUN, body=True, rate=0.35)
 pose("hail_sun", s - 0.3, e + 0.4, ease=0.25)
@@ -411,10 +411,7 @@ def cut(t, *a, **kw):
 SOLAR_SHOTS = lambda: [
     cut(SOLAR0 + 0.4, [(BOX[0], BOX[1], 0.0), (BOX[0], BOX[1], 0.22), (BOX[0] - 0.09, BOX[1], 0.21), (BOX[0] + 0.09, BOX[1], 0.21)],
         (BOX[0], BOX[1], 0.15), -120, 30, 0.8, AIR, los=make_los([box_at(G_BOX)], clutter_cast=MACHINE)),
-    cut(SOLAR0 + 3.2, gp(*G_BOX)[1:] + [(BOX[0], BOX[1], 0.2)], (-2.4, 1.05, 0.6), -40, 10, 2.0, AIR, los=LG),   # back on him: "...a battery inside the box"
-    cut(THANKS0 - 0.6, [(G_BOX[0], G_BOX[1], 0.75), (G_BOX[0], G_BOX[1], 1.25)], (G_BOX[0], G_BOX[1], 0.95), 200, 4, 1.8, AIR,
-        los=make_los([box_at(G_BOX)], clutter_cast=MACHINE)),
-    cut(LS["pulse"] - 0.2, gp(*G_BOX)[1:] + [(BOX[0], BOX[1], 0.2)], (-2.4, 1.05, 0.6), -40, 10, 2.0, AIR, los=LG)]
+    cut(THANKS0 - 0.6, gp(*G_BOX)[1:] + [(BOX[0], BOX[1], 0.2)], (-2.4, 1.05, 0.6), -40, 10, 2.0, AIR, los=LG)]
 SHOTS = [
     # fishing out the bottle by the wheel
     cut(3.0, gp(*G_FISH)[1:] + [BOT_SNAG], (-4.65, 0.4, 0.45), AZ["fish"][0], AZ["fish"][1], AZ["fish"][2], AIR,
@@ -440,12 +437,6 @@ SHOTS = [
     # wide: the pulse runs out the wire, into the ground... and dies where the rod should be
     cut(PATH_PU[0][0] - 0.3, gp(*G_TEST)[1:] + [p for _, p in PATH_PU] + [(BOX[0], BOX[1], 0.2), TIP], (-2.85, 1.25, 0.3),
         AZ["test"][0], AZ["test"][1], 2.6, AIR, los=LG),
-    # close on the rod: he walks in, CLANG, CLANG, CLANG
-    cut(F0 + 0.05, [(-2.4, 1.1, 0.0), (-2.4, 1.1, 0.32), (-2.4, 1.3, 0.2)], (-2.4, 1.1, 0.2), 90, 25, 1.4, AIR,
-        los=make_los([box_at(G_BOX)], clutter_cast=MACHINE)),
-    # close on the wire: the tester comes in
-    cut(F1 + 0.05, [TIP, (TIP[0], TIP[1], 0.2), (TIP[0] + 0.2, TIP[1], 0.35)], (TIP[0] + 0.05, TIP[1], 0.32), -110, 15, 1.0, AIR,
-        los=make_los([], clutter_cast=MACHINE)),
     # the fix: the rod, the light, "It's ALIVE!"
     cut(LS["alive"] - 0.2, [(G_TEST[0], G_TEST[1], 0.75), (G_TEST[0], G_TEST[1], 1.12), TIP], (-3.5, 1.2, 0.75), AZ["alive"][0], AZ["alive"][1], AZ["alive"][2],
         AIR, los=LG),
@@ -469,9 +460,6 @@ CHAT = [(ZAP, "BoarFan2009", "dont zap him!!"),
 cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C8["overlay"]["live_viewers"]]]),
          dict(style="chat", when=0.0, until="end", msgs=[dict(at=round(t, 3), user=u, text=x) for t, u, x in CHAT],
               colors={"GardenGranny": "pink", "lurker_77": "grey", "BoarFan2009": "amber", "TobiasBuilds": "green"}),
-         dict(style="panel", y="top", border="amber", when=round(SOLAR0 + 0.4, 3), until=round(THANKS0 - 0.2, 3), rows=[
-             dict(text="SOLAR POWER", color="white", at=round(SOLAR0 + 0.5, 3), size=40),
-             dict(text="sunlight → battery → pulse", color="cyan", at=round(SOLAR0 + 1.6, 3), size=30)]),
          dict(style="panel", y="top", border="amber", when=round(LESSON0, 3), until=round(LESSON1 + 0.4, 3), rows=[
              dict(text="CIRCUIT", color="white", at=round(LESSON0 + 0.1, 3), size=40),
              dict(text="electricity needs a complete loop", color="cyan", at=round(LESSON0 + 1.4, 3), size=30)])]

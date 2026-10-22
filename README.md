@@ -8,7 +8,7 @@ grandson **Tobias**. Long-form episodes are built from ~30 s scenes; there are S
 
 | Folder | What |
 |---|---|
-| `bibles/` | **Read first.** Character, World and Production bibles: rules (Rule 1: established elements drive later choices; Rule 2: the stream camera), established facts, approved designs |
+| `bibles/` | **Read first: `AGREED-DECISIONS-AND-LESSONS.md`** (every agreed rule + lesson learned + the pre-flight checklist). Character, World and Production bibles: rules (Rule 1: established elements drive later choices; Rule 2: the stream camera), established facts, approved designs |
 | `engine/` | The engine: `bl_common` (plan), `bl_scene` (Blender scene), `bl_perform` (poses, faces, holds), `bl_world`, `bl_audio`, `bl_voice`, `bl_overlay`, `bl_verify` (automated QA), `render.py`, `voxelkit` (Grandpa), `voxelchars` (Tobias, the boar) |
 | `engine/generators/` | Scene generators `make_ep01_s00N.py` (write the story JSON, timed to the measured voice), `storykit.py` (auto-framing camera with path, line-of-sight and clutter checks), `make_final_nb.py` (builds the Colab notebook) |
 | `engine/tools/` | Check scripts |

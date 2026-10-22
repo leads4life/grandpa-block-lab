@@ -37,3 +37,21 @@ A small chat box under the LIVE badge; Grandpa reacts now and then.
 - **lurker_77**: almost never types; one dry word when they do.
 - **BoarFan2009**: roots for the boar ("team boar"). Pays off in 011 when chat names the boar.
 - **TobiasBuilds**: Tobias, from home, whenever he isn't there in person (the badge goes +1 when he logs in).
+
+---
+
+# EPISODE 2 -- "The Alien Map" (DRAFT outline, not yet approved for building)
+Picks up seconds after Episode 1: the torn red-ink page is, Grandpa decides, an alien map (three marks and an X). Aliens are
+never confirmed: every alien "clue" has a real answer. Lessons lead; a build in every segment.
+
+| Segment | Lesson | Build |
+|---|---|---|
+| Cold open + Morning Ritual | MAP (a small drawing of a big place; callback to SCALE) | a 3D block model of the valley on his table |
+| Stop 1: old log bridge, "alien symbols" (trail blazes) | TRIANGLES make things strong; balance; "brave means going slow" | braces the wobbly bridge with a triangle |
+| Stop 2: Windy Ridge -- valley vista, storm, "UFO" (lightning), CONNECTION LOST | WEATHER: lightning before thunder; sloped roofs shed rain; get off high ground | a quick lean-to shelter |
+| Stop 3: the X, "landing site" (rooting circle) -- mama boar and piglets | GIVING ANIMALS SPACE; camouflage; "she's a mom feeding her family" | a leafy hide to watch from a distance |
+| Home: the main build | DECOMPOSE ("rot is food"; callback to ROT); SLOPE (water runs downhill) | the grub patch: log pile from the old rotten post + a water channel (wrong slope, then fixed) -- "Blocks up!" |
+| Night | FOXFIRE (Word Card) | none (wonder) |
+| Goodnight Ritual | recap: map, triangles, weather, space, slope | sting: a new red-ink page and a pressed flower ("Aliens. With a garden.") |
+Needs: the valley terrain (see ENGINE-ROADMAP). The page writer (proposed): GardenGranny, his childhood building friend.
+

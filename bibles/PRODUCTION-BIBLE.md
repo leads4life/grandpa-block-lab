@@ -239,3 +239,13 @@ A matching Morning Ritual opens episodes from Episode 2 (hook first, then "Is th
 - sfx: switch, blow, drone, owl, snore, spark, zip, fizzle; boar: sniffs, grunts, roots.
 - Seated reach: his shoulders sit ~0.22 m behind his feet -- hold props about 0.1-0.15 m in front of the feet ({"char"}), not further.
 
+## Lessons lead; a build in every segment (user, 2026-10-22)
+- The story serves the lessons, not the other way round. Lessons can be about anything (Mister Rogers): feelings, nature,
+  weather, safety, how things work -- not only engineering.
+- It's Block Lab: every segment teaches its lesson THROUGH a build (small and quick is fine). One main build per episode plus
+  small builds along the way. The Morning and Goodnight Rituals are the only segments without a build.
+- Inspirations (the feel, never their words, songs or trademarks): Dora the Explorer for the journey (a map with three stops,
+  a stress point at each, asking chat/viewers for help); Mister Rogers for the lessons (calm, to camera, feelings named);
+  Bob the Builder for the building (the same routine: plan, tool line-up, "Ready, chat? Blocks up!", build, test, fix, test).
+- Card types: Lesson card (amber), Word Card (green, vocabulary), Slang Check (playful; proposed), recap card (Goodnight).
+

@@ -29,4 +29,4 @@ The old 007 was split in two (user, 2026-10-22), so the later scenes move up one
 - **The missing pages**: one per build, found around the land. Who tore them out is unknown; aliens stays his never-confirmed theory.
 - **The boar**: scary, then understood, then a neighbour. It is never harmed.
 - **Tobias**: an occasional visitor. He appears when his animal knowledge is needed and leaves gracefully.
-- **Rules**: "NO CAP, CHAT!" only at real fear and rarely; one slang gag per scene at most; lessons, not lectures; Rule 2 every time he travels.
+- **Rules**: "NO CAP, CHAT!" only at real fear and rarely; slang woven in where the moment calls, always a bit wrong, never in sincere beats; lessons, not lectures; Rule 2 every time he travels.

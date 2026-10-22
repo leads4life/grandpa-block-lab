@@ -82,9 +82,51 @@ def fill_text(s, f):
     return out
 
 
+CHAT_COL = {"pink": (255, 150, 200), "grey": (185, 188, 198), "amber": (255, 196, 64), "green": (130, 235, 130), "cyan": (110, 225, 255)}
+
+
+def wrap(s, font, width):
+    lines, cur = [], ""
+    for w in s.split():
+        if cur and font.getlength(cur + " " + w) > width:
+            lines.append(cur); cur = w
+        else:
+            cur = (cur + " " + w).strip()
+    return lines + ([cur] if cur else [])
+
+
+def chat(d, c, t):
+    """The stream's chat: a small semi-transparent box under the LIVE badge; each comment pops in, stays, fades (max 3)."""
+    dur, sz = c.get("stay", 4.5), (32 if WIDE else 36)
+    msgs = [m for m in c["msgs"] if m["t"] <= t < m["t"] + dur][-3:]
+    if not msgs:
+        return
+    fn, fb = F("reg", sz), F("bold", sz)
+    x1 = W - LAY["tag"][0]
+    bw = 600 if WIDE else 640
+    x0, y = x1 - bw, LAY["tag"][1] + 62 + 14
+    for m in msgs:
+        a = env(t, m["t"], m["t"] + dur, 0.25, 0.6)
+        slide = (1 - smooth((t - m["t"]) / 0.25)) * 14
+        name = m["user"] + ":"
+        col = CHAT_COL.get(c.get("colors", {}).get(m["user"], "grey"), CHAT_COL["grey"])
+        indent = fb.getlength(name + " ")
+        words = wrap(m["text"], fn, bw - 28 - indent)
+        h = 14 + len(words) * (sz + 8) + 6
+        d.rounded_rectangle((x0, y + slide, x1, y + slide + h), radius=14, fill=(14, 16, 22, int(150 * a)))
+        d.text((x0 + 14, y + slide + 12), name, font=fb, fill=col + (int(255 * a),))
+        for i, ln in enumerate(words):
+            d.text((x0 + 14 + indent, y + slide + 12 + i * (sz + 8)), ln, font=fn, fill=(240, 242, 246, int(255 * a)))
+        y += h + 8
+
+
 def card(d, ov, c, t, f):
     style = c.get("style", "title")
     col = COL.get(c.get("color", "white"), COL["white"])
+    if style == "chat":
+        if c["t0"] <= t <= c["t1"]:
+            chat(d, c, t)
+        return
     if style == "end":
         k = smooth((t - c["t0"]) / 0.4)
         if k <= 0:

@@ -398,8 +398,12 @@ if P.get("loop") and os.path.exists(mp4):                         # a looping Sh
     jump, step = abs(mx[0] - mx[-1]), float(np.abs(np.diff(mx)).mean())
     check("sound flows across the loop (no click)", jump < 4 * step + 1e-4, "jump %.4f vs typical step %.4f" % (jump, step))
 if os.path.exists(mp4):
-    pr = json.loads(subprocess.run(["ffprobe", "-v", "error", "-show_streams", "-show_format", "-of", "json", mp4],
-                                   capture_output=True, text=True).stdout)
+    for _try in range(6):                                            # (a just-finished encode can need a moment to settle)
+        pr = json.loads(subprocess.run(["ffprobe", "-v", "error", "-show_streams", "-show_format", "-of", "json", mp4],
+                                       capture_output=True, text=True).stdout or "{}")
+        if pr.get("streams"):
+            break
+        __import__("time").sleep(2)
     v = [s for s in pr["streams"] if s["codec_type"] == "video"][0]
     a = [s for s in pr["streams"] if s["codec_type"] == "audio"]
     check("MP4 %dx%d H.264 yuv420p 30 fps" % (P["w"], P["h"]), (v["width"], v["height"], v["codec_name"], v["pix_fmt"], v["r_frame_rate"]) ==
@@ -412,8 +416,13 @@ if os.path.exists(mp4):
     if P["w"] > P["h"]:                                            # landscape: picture to every edge, no bars or borders
         edge_bad = []
         for n in np.linspace(0, NF - 1, 12).astype(int):
-            raw = subprocess.run(["ffmpeg", "-v", "error", "-i", mp4, "-vf", "select=eq(n\\,%d)" % n, "-frames:v", "1",
+            raw = b""
+            for _try in range(4):
+                raw = subprocess.run(["ffmpeg", "-v", "error", "-i", mp4, "-vf", "select=eq(n\\,%d)" % n, "-frames:v", "1",
                                   "-f", "rawvideo", "-pix_fmt", "gray", "-"], capture_output=True).stdout
+                if raw:
+                    break
+                __import__("time").sleep(2)
             im = np.frombuffer(raw, np.uint8).reshape(P["h"], P["w"]).astype(float)
             for strip in (im[:6], im[-6:], im[:, :6], im[:, -6:]):
                 if strip.mean() < 12 or strip.std() < 1.0:

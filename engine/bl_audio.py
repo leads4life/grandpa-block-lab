@@ -228,6 +228,11 @@ def sfx(kind):
             y = reverb(y, 0.9 + 0.35 * k, 0.35 + 0.15 * k) * 0.72 ** k
             j = int(1.25 * k * SR); out[j:j + len(y)] += y[:len(out) - j]
         return lp(out, 6500)
+    if kind == "huff_far":       # a boar's huff from across the stream: distant, reverberant (a cliffhanger sting)
+        t = tt(0.42)                                      # (the boar's huff, as below -- sfx() runs before that's defined)
+        blast = bp(rng.standard_normal(len(t)), 250, 3200) * np.exp(-t * 9) * (1 - np.exp(-t * 400))
+        grunt = np.sin(2 * np.pi * np.cumsum(95 * (1 - 0.3 * t)) / SR) * np.exp(-t * 11) * (0.6 + 0.4 * (rng.random(len(t)) > 0.5))
+        return lp(reverb(lp(blast + lp(grunt, 700) * 0.5, 4500), 1.4, 0.6), 2500) * 0.7
     if kind == "buzz":           # a tablet buzzing: two short vibrations
         out = np.zeros(int(0.7 * SR))
         for t0 in (0.0, 0.35):

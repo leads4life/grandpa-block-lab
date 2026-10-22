@@ -6256,6 +6256,34 @@
    "type": "face_camera",
    "when": 38.607,
    "until": 42.267
+  },
+  {
+   "type": "sfx",
+   "sound": "huff_far",
+   "when": 40.624,
+   "gain": 0.9
+  },
+  {
+   "type": "face",
+   "expr": "surprised",
+   "when": 40.724,
+   "until": 42.267,
+   "set": {
+    "brow": 1.3,
+    "smile": 0.0
+   }
+  },
+  {
+   "type": "look",
+   "when": 40.744,
+   "until": 42.267,
+   "body": false,
+   "rate": 0.5,
+   "pos": [
+    -5.8,
+    2.6,
+    0.5
+   ]
   }
  ],
  "camera": [
@@ -6337,48 +6365,26 @@
    "dist": 3.0
   },
   {
-   "at": 20.4333,
+   "at": 20.458,
    "target": [
-    -3.7,
-    1.1,
+    -3.05,
+    1.45,
     0.55
    ],
-   "az": 90,
-   "el": 8,
+   "az": 67,
+   "el": 17,
    "dist": 3.0
   },
   {
-   "at": 20.4667,
-   "target": [
-    -3.05,
-    2.2,
-    0.4
-   ],
-   "az": 100,
-   "el": 8,
-   "dist": 3.4
-  },
-  {
-   "at": 29.1333,
-   "target": [
-    -3.05,
-    2.2,
-    0.4
-   ],
-   "az": 100,
-   "el": 8,
-   "dist": 3.4
-  },
-  {
-   "at": 29.1667,
+   "at": 29.158,
    "target": [
     -3.95,
     2.45,
     0.8
    ],
-   "az": 50,
+   "az": 26,
    "el": 8,
-   "dist": 2.4
+   "dist": 2.16
   },
   {
    "at": 31.5333,
@@ -6387,9 +6393,9 @@
     2.45,
     0.8
    ],
-   "az": 50,
+   "az": 26,
    "el": 8,
-   "dist": 2.4
+   "dist": 2.16
   },
   {
    "at": 31.5667,
@@ -6398,9 +6404,9 @@
     2.25,
     0.4
    ],
-   "az": 110,
-   "el": 8,
-   "dist": 4.0
+   "az": 80,
+   "el": 23,
+   "dist": 4.6
   },
   {
    "at": 38.3,
@@ -6409,9 +6415,9 @@
     2.25,
     0.4
    ],
-   "az": 110,
-   "el": 8,
-   "dist": 4.0
+   "az": 80,
+   "el": 23,
+   "dist": 4.6
   },
   {
    "at": 38.3333,
@@ -6434,8 +6440,55 @@
     [
      0.0,
      3
+    ],
+    [
+     34.457,
+     4
     ]
    ]
+  },
+  {
+   "style": "chat",
+   "when": 0.0,
+   "until": "end",
+   "msgs": [
+    {
+     "at": 6.2,
+     "user": "GardenGranny",
+     "text": "where are we going dear?"
+    },
+    {
+     "at": 14.333,
+     "user": "lurker_77",
+     "text": "his knees lol"
+    },
+    {
+     "at": 22.258,
+     "user": "GardenGranny",
+     "text": "lift with your legs dear!"
+    },
+    {
+     "at": 29.458,
+     "user": "BoarFan2009",
+     "text": "is that HIM??"
+    },
+    {
+     "at": 32.257,
+     "user": "lurker_77",
+     "text": "speedrun"
+    },
+    {
+     "at": 35.457,
+     "user": "TobiasBuilds",
+     "text": "wait is that for my seeds??"
+    }
+   ],
+   "colors": {
+    "GardenGranny": "pink",
+    "lurker_77": "grey",
+    "BoarFan2009": "amber",
+    "TobiasBuilds": "green"
+   }
   }
  ],
  "qa": {

@@ -203,6 +203,9 @@ look(T + 0.9, T + 2.0, pos=(-3.05, 1.5, 0.3), body=True, rate=0.25)
 act(type="face_camera", when=round(T + 2.0, 3), until=99.0)
 s, e = say("now", 0.0, at=T + 2.1)
 face("alert", s - 0.2, 99.0, set=dict(brow=-0.4, smile=0.0))
+sfx("huff_far", e + 0.18, 0.9)                                      # the sting: a huff from across the stream...
+look(e + 0.3, 99.0, pos=(-5.8, 2.6, 0.5), body=False, rate=0.5)     # ...his eyes go wide, his head snaps toward it
+face("surprised", e + 0.28, 99.0, set=dict(brow=1.3, smile=0.0))
 END = e + 0.8
 FILM = math.ceil(END * FPS) / FPS
 for a in A:
@@ -279,13 +282,13 @@ SHOTS = [
     lambda: auto_frame(AC0 + 1.2, gp(*P_SET) + [(CUBE[0], CUBE[1], 0.1)], (-3.7, 1.1, 0.55), 90, 8, 3.0,
                        AIR, prev=cam, path_clear=PATH, los=make_los([box_at(P_SET)]), who=who_at),
     # the fence going up: the whole meadow plot
-    lambda: auto_frame(B0 + 1.2, gp(*STAND["s"]) + FENCE_PTS, (-3.05, 2.2, 0.4), 100, 8, 3.4, AIR, prev=cam, path_clear=PATH,
+    lambda: auto_frame(B0 + 1.2, gp(*STAND["s"]) + [(-3.8, 1.5, 0.05), (-2.3, 1.5, 0.5)], (-3.05, 1.45, 0.55), 95, 16, 3.0, AIR, prev=cam, path_clear=PATH,
                        los=make_los([]), who=who_at),
     lambda: auto_frame(RUSTLE + 0.3, gp(*STAND["w"])[1:] + [(-3.8, 1.6, 0.4), (-3.8, 2.9, 0.4)], (-3.95, 2.45, 0.8), 50, 8, 2.4, AIR,
                        prev=cam, path_clear=PATH, los=make_los([box_at(STAND["w"])]), who=who_at),     # the freeze: his face
     lambda: [dict(cam[-1], at=round(math.ceil((LE["faster"] + 0.1) * FPS - 1e-6) / FPS - 1.0 / FPS, 4)),      # a hard cut: the race is on
              auto_frame(math.ceil((LE["faster"] + 0.1) * FPS - 1e-6) / FPS, gp(*STAND["n"]) + gp(*STAND["e"]) + FENCE_PTS, (-3.0, 2.25, 0.4),
-                        110, 8, 4.0, AIR, los=make_los([]))],
+                        80, 22, 4.6, AIR, los=make_los([]))],   # high and wide: the whole fence going up
     # the gap -- "Chat... gate. NOW."
     lambda: auto_frame(LS["now"] - 0.4, gp(*G_GAP) + [(-3.3, 1.5, 0.45), (-2.8, 1.5, 0.45)], (-3.05, 1.3, 0.75), 90, 8, 2.8, AIR,
                        prev=cam, path_clear=PATH, los=make_los([box_at(G_GAP)]), who=who_at),
@@ -294,7 +297,16 @@ for shot in SHOTS:
     k = shot()
     cam += k if isinstance(k, list) else [k]
 cam, PATCHED = fix_path(cam, AIR, who_at, path_clear=PATH)
-cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C6["overlay"]["live_viewers"]]])]
+T_JOIN = LE["faster"] + 3.0                                         # Tobias logs in (watching from home): 3 -> 4
+CHAT = [(WALK0 + 0.3, "GardenGranny", "where are we going dear?"),
+        (LS["knees"] + 0.8, "lurker_77", "his knees lol"),
+        (LS["cardio"] + 1.6, "GardenGranny", "lift with your legs dear!"),
+        (RUSTLE + 0.6, "BoarFan2009", "is that HIM??"),
+        (LE["faster"] + 0.8, "lurker_77", "speedrun"),
+        (T_JOIN + 1.0, "TobiasBuilds", "wait is that for my seeds??")]
+cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C6["overlay"]["live_viewers"]], [round(T_JOIN, 3), 4]]),
+         dict(style="chat", when=0.0, until="end", msgs=[dict(at=round(t, 3), user=u, text=x) for t, u, x in CHAT],
+              colors={"GardenGranny": "pink", "lurker_77": "grey", "BoarFan2009": "amber", "TobiasBuilds": "green"})]
 W7 = {k: v for k, v in S6["world"].items() if k != "critters"}
 W7["critters"] = []
 story = dict(title="The Fence", slug="grandpa_ep01_scene007", voice="am_santa", speed=0.95, format="wide",

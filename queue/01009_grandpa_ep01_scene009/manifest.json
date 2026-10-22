@@ -1,0 +1,29 @@
+{
+ "slug": "grandpa_ep01_scene009",
+ "title": "Page Thirteen",
+ "episode": 1,
+ "scene": 9,
+ "film": 73.76666666666667,
+ "engine_commit": "047acec7d7872dc012eb53a480a00020a8f0da3b",
+ "engine_files": [
+  "bl_audio.py",
+  "bl_cast.py",
+  "bl_common.py",
+  "bl_overlay.py",
+  "bl_perform.py",
+  "bl_scene.py",
+  "bl_verify.py",
+  "bl_voice.py",
+  "bl_world.py",
+  "render.py",
+  "voxelchars.py",
+  "voxelkit.py"
+ ],
+ "engine_sha": "7bb98e79d9ab",
+ "accepted_fails": [
+  "grandpa stays in the picture",
+  "nothing hides grandpa",
+  "no clipping into"
+ ],
+ "approved": "2026-10-22 17:57"
+}

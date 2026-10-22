@@ -1,0 +1,15 @@
+8140f0425b2ed21248d9fba479f58ce72033c6a9d46748b3dc41a6daa23a27bc  kokoro-q8-timed.onnx
+5aa852822cf613baeac20cd981325b53710d059ca44d85535a7997ac2c2a0604  voices-v1.0.bin
+c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309  wheels/attrs-26.1.0-py3-none-any.whl
+9acb47f6afd73f60dc1df93bb801b472f05ff42fa6c84167d25cb206be1fbf4a  wheels/cloudpickle-3.1.2-py3-none-any.whl
+b32cc18e3ea67c0ca9ca409e5b41eed863bd1363dbc9dd3de90fedf11b61e7bc  wheels/dlinfo-2.0.0-py3-none-any.whl
+08721baf27d13d461f6be6eed9a65277e70d68234ff484fd8b9897b222cdcb6d  wheels/espeakng_loader-0.2.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+7634f50c427838bb021c2d66a3d1168e9d199b0607e6329399f04846d42e20b4  wheels/flatbuffers-25.12.19-py2.py3-none-any.whl
+3dbbf9f6e4b592a2357b854608e980fe6390d131d7a82f011a377ef2ebef7aba  wheels/joblib-1.6.0-py3-none-any.whl
+50c8de4950d601df41428ee5462a48c8a78bef441bf671f2492e070ef44d8a32  wheels/kokoro_onnx-0.6.1-py3-none-any.whl
+a5fa86b80fd24bcd1aff83ad23be44ea323de3f787be8f8b15d4a65621e25321  wheels/numpy-2.5.3-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+e2128f31f449e922c62dbe5d8b6b7b079f0bcaf2d56a102fa203cb6e5bb5ab19  wheels/onnxruntime-1.29.0-cp313-cp313-manylinux_2_28_x86_64.whl
+d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c  wheels/packaging-26.3-py3-none-any.whl
+5ff1215d0efa3606dd1b92449f6d71b5c1741efcc84c6d40c17bfaf64f6ded5f  wheels/phonemizer-3.4.0-py3-none-any.whl
+97198b77e369a0abd8e262b8f6c7266c55ddb796a3a12c76d7b8881188ed83aa  wheels/protobuf-7.36.1-cp310-abi3-manylinux2014_x86_64.whl
+481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8  wheels/typing_extensions-4.16.0-py3-none-any.whl

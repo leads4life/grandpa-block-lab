@@ -13,6 +13,7 @@ grandson **Tobias**. Long-form episodes are built from ~30 s scenes; there are S
 | `engine/generators/` | Scene generators `make_ep01_s00N.py` (write the story JSON, timed to the measured voice), `storykit.py` (auto-framing camera with path, line-of-sight and clutter checks), `make_final_nb.py` (builds the Colab notebook) |
 | `engine/tools/` | Check scripts |
 | `stories/` | Story JSON for every scene and Short |
+| `voice_system/` | **Backup of the voice system** (Kokoro model, all voices, exact Python packages, offline installer): `sh voice_system/setup_voice.sh` |
 | `frozen/` | Approved voice tracks for episode scenes (finals match previews) |
 | `notebooks/` | `grandpa_block_lab_FINAL_colab.ipynb`: renders 1920×1080 finals in Colab (Drive saving on) |
 | `scenes/ep01_sceneNNN/` | **Backup of each scene**: story JSON, generator, approved voice, continuity JSON, previews, QA report |

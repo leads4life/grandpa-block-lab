@@ -1,5 +1,7 @@
 # PRODUCTION BIBLE — Grandpa's Block Lab (engine truths)
 
+> **Read `AGREED-DECISIONS-AND-LESSONS.md` first**: every agreed rule and lesson learned, with the pre-flight checklist.
+
 ## Rule 1: established elements drive later choices
 Once something is on screen or in the soundtrack (a sound, a prop, a line, a rhythm, a number), it constrains every
 later choice, and every reveal has to pay off what was set up, measurably:

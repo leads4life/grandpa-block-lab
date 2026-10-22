@@ -577,16 +577,20 @@ def build_cabin(sc, roof=False):
 
 
 def build_clouds_pass(sc, W, fps):
-    """'clouds_pass': [[t_mid, half_width_s, depth]] -- a cloud slides over the sun: sunlight and sky dim, then recover."""
+    """'clouds_pass': [[t_mid, half_width_s, depth(, sun_rgb)]] -- a cloud slides over the sun: sunlight and sky dim, then recover."""
     sun, bg = sc.objects["Sun"].data, sc.world.node_tree.nodes["Background"].inputs["Strength"]
     e0, s0 = sun.energy, bg.default_value
-    keys = [(0.0, 1.0)]
-    for tm, hw, depth in W["clouds_pass"]:
-        keys += [(tm - hw, 1.0), (tm - hw * 0.4, 1 - depth), (tm + hw * 0.4, 1 - depth), (tm + hw, 1.0)]
-    for t, k in sorted(keys):
+    keys, c0 = [(0.0, 1.0, None)], tuple(sun.color)
+    for tm, hw, depth, *tint in W["clouds_pass"]:                  # optional 4th value: the sun's colour at the dimmest (a dusk)
+        tc = tuple(tint[0]) if tint else None
+        keys += [(tm - hw, 1.0, tc), (tm - hw * 0.4, 1 - depth, tc), (tm + hw * 0.4, 1 - depth, tc), (tm + hw, 1.0, tc)]
+    for t, k, tc in sorted(keys, key=lambda q: q[0]):
         f = max(0, round(t * fps))
         sun.energy = e0 * k; sun.keyframe_insert("energy", frame=f)
         bg.default_value = s0 * (0.55 + 0.45 * k); bg.keyframe_insert("default_value", frame=f)
+        if any(q[2] for q in keys):
+            u = (1 - k) / max(1e-6, max(d for _, _, d, *_ in W["clouds_pass"]))
+            sun.color = [c0[i] + ((tc or c0)[i] - c0[i]) * min(1.0, u) for i in range(3)]; sun.keyframe_insert("color", frame=f)
 
 
 def build_leaves(sc, L, fps, nf):

@@ -240,6 +240,13 @@ def sfx(kind):
             v = np.sign(np.sin(2 * np.pi * 150 * x)) * 0.5 + bp(rng.standard_normal(len(x)), 120, 900) * 0.3
             j = int(t0 * SR); out[j:j + len(x)] += lp(v, 1500) * np.hanning(len(x)) ** 0.3 * 0.6
         return out
+    if kind == "zip":            # a little electric pulse setting off: a quick rising tick
+        x = tt(0.25)
+        return np.sin(2 * np.pi * np.cumsum(900 + 2600 * x / x[-1]) / SR) * np.exp(-x * 9) * 0.35
+    if kind == "fizzle":         # the pulse dies out: a short crackle that fades
+        x = tt(0.6)
+        crack = bp(rng.standard_normal(len(x)), 2000, 8000) * (rng.random(len(x)) > 0.93) * 2.0
+        return lp(crack + bp(rng.standard_normal(len(x)), 300, 3000) * 0.15, 7000) * np.exp(-x * 5)
     if kind == "page":           # a page turning: a papery swish and a soft flap
         x = tt(0.45)
         sw = bp(rng.standard_normal(len(x)), 1500, 9000) * np.sin(np.pi * x / x[-1]) ** 2 * 0.5
@@ -488,7 +495,7 @@ if W.get("terrain") == "forest_west" and W.get("interior") == "cabin":
     Lf = W.get("leaves")
     if Lf:
         gust += 0.9 * np.clip(np.minimum((t_all - Lf["t0"] + 1.0) / 1.0, (Lf["t1"] + 2.5 - t_all) / 1.5), 0, 1)
-    for tm, hw, depth in W.get("clouds_pass", []):
+    for tm, hw, depth, *_ in W.get("clouds_pass", []):
         gust += 0.5 * depth * np.clip(1 - np.abs(t_all - tm) / (hw + 0.5), 0, 1)
     if rich:                                                       # (no random draws otherwise: older scenes sound the same)
         rustle = bp(rng.standard_normal(N), 1800, 7000) * (0.6 + 0.4 * np.sin(2 * np.pi * t_all * 0.23) ** 2)

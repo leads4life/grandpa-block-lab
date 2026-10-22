@@ -61,14 +61,18 @@ for k, (cells, off, shape) in SIDE.items():
                             material="ceramic", block_shape=[0.35, 0.35, 0.3], expect_blocks=2 * len(POSTS[k]))
 BOX = (-2.4, 1.3)
 S["energizer"] = dict(cells=[[-24, 13, 0], [-24, 13, 1]], at=[0.0, 0.0, 0.0], centered=False, material="darkiron", block_shape=[0.9, 0.7, 1],
-                      expect_blocks=2, extras=[dict(c=[-2.4, 1.3, 0.208], s=[0.17, 0.12, 0.012], m="blue"),        # the solar panel
-                                               dict(c=[-2.4, 1.263, 0.15], s=[0.016, 0.006, 0.016], m="led")])     # its own little light
+                      expect_blocks=2)
+S["solar_panel"] = dict(cells=[[0, 0, 0]], at=[0.0, 0.0, 0.0], centered=False, material="darkiron", block_shape=[0.2, 0.2, 0.2], expect_blocks=1,
+                        extras=[dict(c=[0.0, 0.0, 0.208], s=[0.17, 0.12, 0.012], m="blue"),        # the solar panel (lands on the box)
+                                dict(c=[0.0, -0.037, 0.15], s=[0.016, 0.006, 0.016], m="led")])   # its own little light
 S["ground_rod"] = dict(cells=[[-24, 11, z] for z in range(3)], at=[0.0, 0.0, 0.0], centered=False, material="steel", block_shape=[0.25, 0.25, 1],
                        expect_blocks=3)
 S["tester"] = dict(cells=[[0, 0, 0]], at=[0.0, 0.0, 0.0], centered=False, material="red", block_shape=[0.25, 1.3, 0.25], expect_blocks=1,
                    extras=[dict(c=[0.0, 0.07, 0.088], s=[0.006, 0.02, 0.006], m="steel")])     # the probe tip
 S["tester_led"] = dict(cells=[[0, 0, 0]], at=[0.0, 0.0, 0.0], centered=False, material="ceramic", block_shape=[0.12, 0.12, 0.12],
                        expect_blocks=1, extras=[dict(c=[0.0, -0.05, 0.1], s=[0.018, 0.018, 0.012], m="led")])
+S["pulse"] = dict(cells=[[0, 0, 0]], at=[0.0, 0.0, 0.0], centered=False, material="steel", block_shape=[0.2, 0.2, 0.2], expect_blocks=1,
+                  extras=[dict(c=[0.0, 0.0, 0.05], s=[0.035, 0.035, 0.035], m="spark")])     # a glowing pulse: it runs the loop
 STREAM_X = lambda y: -5.2 + 0.25 * math.sin(0.7 * y)
 FENCE_BOXES = [((-3.9, 1.4, 0.0), (-2.2, 1.56, 0.5)), ((-3.9, 1.4, 0.0), (-3.74, 3.1, 0.5)),
                ((-3.9, 2.94, 0.0), (-2.2, 3.1, 0.5)), ((-2.36, 1.4, 0.0), (-2.2, 3.1, 0.5)), ((-3.33, 1.36, 0.0), (-2.57, 1.44, 0.9))]
@@ -81,12 +85,15 @@ AIR = both(clear_air, boxes_free)
 PATH = both(solid_free, boxes_free)
 
 # ---------------------------------------------------------------- lines
-LINES = [("mail", "Chat... somebody's mailing me my own book.", None),
+LINES = [("bottle", "Chat... is that a bottle?", None),
+         ("mail", "Chat... somebody's mailing me my own book.", None),
          ("page", "Page thirteen. An electric fence.", None),
          ("relax", "Relax, BoarFan. It doesn't hurt him. It's a tickle... with attitude.", None),
          ("safety", "And kids: never touch one, and never build one without a grown-up who knows how. I'm a grown-up. Allegedly.", None),
          ("spools", "Little spools, so the wire never touches the wood.", None),
-         ("sun", "The sun charges the box. The box sends a tiny pulse. Tick... tick... tick.", None),
+         ("solar", "See this little panel? It drinks up sunshine... and fills a battery inside the box.", None),
+         ("thanks", "Thank you, sun.", None),
+         ("pulse", "Then the box sends out a tiny pulse. Tick... tick... tick.", None),
          ("truth", "Moment of truth...", None),
          ("nothing", "...Nothing.", None),
          ("loop", "Ohh. Electricity only travels in a loop. Out the wire, through whoever touches it, into the ground... and back to the box.", None),
@@ -94,7 +101,7 @@ LINES = [("mail", "Chat... somebody's mailing me my own book.", None),
          ("alive", "It's alive. It's ALIVE!", None),
          ("late", "Chat, it's getting late.", None),
          ("tonight", "...Tonight, then.", 0.9)]
-GUESS = dict(mail=2.6, page=2.3, relax=4.5, safety=6.5, spools=3.0, sun=5.0, truth=1.4, nothing=1.0, loop=7.0, norod=1.4, alive=2.0,
+GUESS = dict(bottle=1.6, solar=5.0, thanks=1.2, pulse=4.0, mail=2.6, page=2.3, relax=4.5, safety=6.5, spools=3.0, truth=1.4, nothing=1.0, loop=7.0, norod=1.4, alive=2.0,
              late=1.6, tonight=1.3)
 dur_file = os.path.join(HERE, "ep01_s009_durations.json")
 D = dict(GUESS, **(json.load(open(dur_file)) if "--fit" in sys.argv and os.path.exists(dur_file) else {}))
@@ -125,6 +132,7 @@ POSES = {
     "push_rod": dict(lean=0.55, hips=[0.0, 0.0, -0.14], hand_R={"world": [-2.4, 1.1, 0.34]}),
     "arms_up": dict(lean=-0.1, hand_R={"char": [-0.24, -0.1, 1.15]}),
     "freeze": dict(shrug=0.6, elbows=0.2, lean=-0.05),
+    "hail_sun": dict(lean=-0.12, hand_R={"char": [-0.26, -0.05, 1.2]}),
 }
 BOOK_CARRY_B = {"char": [0.17, -0.2, 0.80]}
 BOOK_CARRY_P = {"char": [0.17, -0.2, 0.81]}
@@ -155,6 +163,8 @@ for k in range(1, 11):
     bkeys.append(dict(t=round(t, 3), at=[round(x, 4), round(y, 4), round(-0.065 + 0.008 * math.sin(5 * t), 4)], rot=[round(6 * math.sin(3 * t), 2), 0, round(10 * math.sin(1.3 * t), 2)]))
 walk(0.4, 3.4, G_FISH, via=[(-3.4, 0.6), (-4.0, 0.45)])
 look(0.0, 3.6, pos=(STREAM_X(1.2) + 0.15, 1.2, 0.05), body=False, rate=0.3)
+s, e = say("bottle", 0.0, at=0.8)
+face("raised", s, e + 0.3, set=dict(brow=0.8))
 PICK = 4.4
 pose("crouch_reach", PICK - 0.5, PICK + 0.4, ease=0.3)
 look(3.4, PICK + 0.3, pos=BOT_SNAG, body=True, rate=0.3)
@@ -207,26 +217,44 @@ T = B0 + 1.3
 look(T - 0.2, T + 2.3, pos=(-3.2, 1.45, 0.35), body=True, rate=0.3)
 build("spools_s", T, T + 0.6, STAND["s"], "x"); build("wire_s", T + 0.65, T + 2.0, STAND["s"], "x"); T += 2.05
 s, e = say("spools", 0.0, at=B0 + 1.6)
-walk(T, T + 1.3, STAND["w"], via=[(-3.42, 0.92), (-4.12, 0.9), (-4.06, 1.5)])
+walk(T, T + 1.3, STAND["w"], via=[(-3.42, 0.92), (-4.0, 0.9), (-4.0, 1.5)])
 T += 1.4
 look(T - 0.2, T + 1.6, pos=(-3.86, 2.25, 0.35), body=True, rate=0.3)
 build("spools_w", T, T + 0.4, STAND["w"], "y"); build("wire_w", T + 0.45, T + 1.4, STAND["w"], "y"); T += 1.45
-walk(T, T + 1.2, STAND["n"], via=[(-4.35, 2.75), (-4.35, 3.35), (-3.9, 3.42)])
-T += 1.3
-look(T - 0.2, T + 1.6, pos=(-3.05, 3.06, 0.35), body=True, rate=0.3)
-build("spools_n", T, T + 0.4, STAND["n"], "x"); build("wire_n", T + 0.45, T + 1.4, STAND["n"], "x"); T += 1.45
+INS_A = T                                                           # insert: the south spools, close (time skips behind it)
+walk(T, T + 0.5, STAND["n"], via=[(-4.35, 2.75), (-4.35, 3.35), (-3.9, 3.42)])
+T += 0.6
+look(T - 0.2, T + 1.1, pos=(-3.05, 3.06, 0.35), body=True, rate=0.3)
+build("spools_n", T, T + 0.3, STAND["n"], "x"); build("wire_n", T + 0.35, T + 1.0, STAND["n"], "x"); T += 1.05
+INS_A1 = T + 0.1
 walk(T, T + 0.8, STAND["e"], via=[(-2.0, 3.48)])
 T += 0.9
-look(T - 0.2, T + 1.6, pos=(-2.24, 2.25, 0.35), body=True, rate=0.3)
-build("spools_e", T, T + 0.4, STAND["e"], "y"); build("wire_e", T + 0.45, T + 1.4, STAND["e"], "y"); T += 1.45
+look(T - 0.2, T + 1.1, pos=(-2.24, 2.25, 0.35), body=True, rate=0.3)
+build("spools_e", T, T + 0.3, STAND["e"], "y"); build("wire_e", T + 0.35, T + 1.0, STAND["e"], "y"); T += 1.05
 walk(T, T + 1.0, G_BOX, via=[(-1.98, 1.2), (-2.2, 0.9)])
 T += 1.1
 look(T - 0.2, T + 1.4, pos=(BOX[0], BOX[1], 0.15), body=True, rate=0.3)
-build("energizer", T, T + 0.8, G_BOX); T += 0.85
+build("energizer", T, T + 0.8, G_BOX)
+act(type="hold", target="solar_panel", hand="none", when=-1.0, until=99.0, reach=0.05,     # (its block hides inside the box)
+    keys=[dict(t=-1.0, at=HIDE, rot=[0, 0, 0]), dict(t=round(T + 0.78, 3), at=HIDE, rot=[0, 0, 0]),
+          dict(t=round(T + 0.8, 3), at=[BOX[0], BOX[1], 0.0], rot=[0, 0, 0]), dict(t=99.0, at=[BOX[0], BOX[1], 0.0], rot=[0, 0, 0])])
+build("solar_panel", -0.5, -0.4, G0, quiet=True)
+sfx("clink", T + 0.82, 0.4)
+T += 0.85
 BOX_ON = T
 for k in range(int(30)):                                            # the box ticks, once a second, from now on
     sfx("tap", BOX_ON + 0.3 + k * 1.0, 0.25)
-s, e = say("sun", 0.2, at=max(T, LE["spools"] + 0.5))
+s, e = say("solar", 0.2, at=max(T - 0.3, LE["spools"] + 0.5))     # (the panel lands as he starts)
+SOLAR0, SOLAR1 = s, e
+face("content", s, e + 0.3)
+SUN = (G_BOX[0] + 4 * 0.96, G_BOX[1] + 4 * 0.06, 1.1 + 4 * 0.27)    # where the sun is (the world's sun travels -0.96, -0.06, -0.27)
+s, e = say("thanks", 0.5)
+THANKS0 = s
+look(s - 0.5, e + 0.25, pos=SUN, body=True, rate=0.35)
+pose("hail_sun", s - 0.3, e + 0.4, ease=0.25)
+face("smile", s - 0.3, e + 0.4, set=dict(smile=0.9))
+s, e = say("pulse", 0.4)
+act(type="face_camera", when=round(s - 0.1, 3), until=round(e + 0.1, 3))
 face("content", s, e + 0.3)
 # 4. oops: the tester stays dark
 walk(e + 0.2, e + 1.4, G_TEST, via=[(-2.9, 0.86)])
@@ -251,21 +279,35 @@ look(s - 0.4, s + 1.2, obj="page13", body=False)
 pose("read_both", s - 0.4, s + 1.2, ease=0.25)
 act(type="face_camera", when=round(s + 1.4, 3), until=round(e + 0.2, 3))
 face("raised", s + 0.3, e, set=dict(smile=0.3))
-s, e = say("norod", 0.3)
+L0, L1 = LS["loop"], LE["loop"]
+PU = lambda f: round(L0 + (L1 - L0) * f, 3)
+ROD_SPOT = (-2.4, 1.1, 0.012)
+PATH_PU = [(PU(0.34), (BOX[0], BOX[1], 0.215)), (PU(0.40), (-2.4, 1.44, 0.35)), (PU(0.50), (-2.8, 1.44, 0.35)),
+           (PU(0.68), (-2.8, 1.44, 0.012)), (PU(0.83), (-2.65, 1.25, 0.012)), (PU(0.93), ROD_SPOT)]
+PU_END = PU(0.93) + 0.45
+act(type="hold", target="pulse", hand="none", when=-1.0, until=99.0, reach=0.05,
+    keys=[dict(t=-1.0, at=HIDE, rot=[0, 0, 0]), dict(t=round(PATH_PU[0][0] - 0.02, 3), at=HIDE, rot=[0, 0, 0])]
+         + [dict(t=t, at=[p[0], p[1], round(p[2] - 0.05, 3)], rot=[0, 0, 0]) for t, p in PATH_PU]
+         + [dict(t=round(PU_END, 3), at=[ROD_SPOT[0], ROD_SPOT[1], round(ROD_SPOT[2] - 0.05, 3)], rot=[0, 0, 0]),
+            dict(t=round(PU_END + 0.02, 3), at=HIDE, rot=[0, 0, 0]), dict(t=99.0, at=HIDE, rot=[0, 0, 0])])
+build("pulse", -0.5, -0.4, G0, quiet=True)
+sfx("zip", PATH_PU[0][0], 0.6)
+sfx("fizzle", PU(0.93), 0.9)
+s, e = say("norod", 0.3, at=PU_END + 0.1)
 LESSON1 = e
 face("smirk", s, e + 0.3)
 # 6. fix: the ground rod goes in -- CLANG, CLANG, CLANG -- and the tester lights
 F0 = e + 0.3
-walk(F0, F0 + 1.2, G_BOX, via=[(-2.9, 0.86)])
-build("ground_rod", F0 + 1.3, F0 + 1.7, G_BOX)
+walk(F0, F0 + 0.7, G_BOX, via=[(-2.9, 0.86)])
+build("ground_rod", F0 + 0.8, F0 + 1.2, G_BOX)
 for k in range(3):                                                  # pushed down in three shoves
-    t = F0 + 2.0 + 0.55 * k
+    t = F0 + 1.3 + 0.5 * k
     pose("push_rod", t - 0.25, t + 0.3, ease=0.12)
     act(type="slide", target="ground_rod", by=[0.0, 0.0, -0.07], when=round(t, 3), until=round(t + 0.12, 3), sound="none")
     sfx("clink", t + 0.05, 1.0); sfx("settle", t + 0.07, 0.8)
-F1 = F0 + 3.7
-walk(F1, F1 + 1.2, G_TEST, via=[(-2.9, 0.86)])
-TEST1 = F1 + 1.4
+F1 = F0 + 2.8
+walk(F1, F1 + 0.6, G_TEST, via=[(-2.9, 0.86)])
+TEST1 = F1 + 0.8
 pose("test_low", TEST1 - 0.3, TEST1 + 1.5, ease=0.3)
 look(TEST1 - 0.4, TEST1 + 1.4, pos=TIP, body=True, rate=0.3)
 A[TST]["keys"] += [dict(t=round(TEST1 - 0.4, 3), at=TEST_CARRY, rot=[0, 0, 0]), dict(t=round(TEST1, 3), at=TEST_ROOT, rot=[0, 0, 0]),
@@ -366,6 +408,13 @@ AZ = dict(fish=(100, 22, 3.4), talk=(-40, 8, 1.6), build=(90, 12, 3.4), test=(-1
 def cut(t, *a, **kw):
     tc = math.ceil(t * FPS - 1e-6) / FPS
     return lambda: [dict(cam[-1], at=round(tc - 1.0 / FPS, 4)), auto_frame(tc, *a, **kw)]
+SOLAR_SHOTS = lambda: [
+    cut(SOLAR0 + 0.4, [(BOX[0], BOX[1], 0.0), (BOX[0], BOX[1], 0.22), (BOX[0] - 0.09, BOX[1], 0.21), (BOX[0] + 0.09, BOX[1], 0.21)],
+        (BOX[0], BOX[1], 0.15), -120, 30, 0.8, AIR, los=make_los([box_at(G_BOX)], clutter_cast=MACHINE)),
+    cut(SOLAR0 + 3.2, gp(*G_BOX)[1:] + [(BOX[0], BOX[1], 0.2)], (-2.4, 1.05, 0.6), -40, 10, 2.0, AIR, los=LG),   # back on him: "...a battery inside the box"
+    cut(THANKS0 - 0.6, [(G_BOX[0], G_BOX[1], 0.75), (G_BOX[0], G_BOX[1], 1.25)], (G_BOX[0], G_BOX[1], 0.95), 200, 4, 1.8, AIR,
+        los=make_los([box_at(G_BOX)], clutter_cast=MACHINE)),
+    cut(LS["pulse"] - 0.2, gp(*G_BOX)[1:] + [(BOX[0], BOX[1], 0.2)], (-2.4, 1.05, 0.6), -40, 10, 2.0, AIR, los=LG)]
 SHOTS = [
     # fishing out the bottle by the wheel
     cut(3.0, gp(*G_FISH)[1:] + [BOT_SNAG], (-4.65, 0.4, 0.45), AZ["fish"][0], AZ["fish"][1], AZ["fish"][2], AIR,
@@ -376,15 +425,27 @@ SHOTS = [
         AIR, los=make_los([box_at(G_READ)], clutter_cast=MACHINE)),
     # the build: high and wide, the wire going round the fence
     cut(B0 + 0.2, gp(*STAND["s"]) + FENCE_PTS, (-3.05, 2.2, 0.4), AZ["build"][0], AZ["build"][1], AZ["build"][2], AIR, los=LG),
+    # insert: the south spools and wire, close, while he goes round to the north side
+    cut(INS_A + 0.05, [(-3.3, 1.44, 0.2), (-3.3, 1.44, 0.4), (-3.8, 1.44, 0.3)], (-3.55, 1.44, 0.3), -60, 18, 0.9, AIR,
+        los=make_los([], clutter_cast=MACHINE)),
+    # back wide: the north wire is up, the east goes on
+    cut(INS_A1, gp(*STAND["e"]) + FENCE_PTS, (-3.05, 2.2, 0.4), AZ["build"][0], AZ["build"][1], AZ["build"][2], AIR, los=LG),
+    None,                                                           # (the solar shots go here)
     # the box and the tester
-    cut(BOX_ON - 0.6, gp(*G_BOX)[1:] + gp(*G_TEST)[1:] + [(BOX[0], BOX[1], 0.2), TIP], (-2.95, 1.1, 0.5), AZ["test"][0], AZ["test"][1], AZ["test"][2],
+    cut(LE["pulse"] + 0.1, gp(*G_BOX)[1:] + gp(*G_TEST)[1:] + [(BOX[0], BOX[1], 0.2), TIP], (-2.95, 1.1, 0.5), AZ["test"][0], AZ["test"][1], AZ["test"][2],
         AIR, los=LG),
     # the lesson, to us
-    cut(LS["loop"] + 1.3, [(G_TEST[0], G_TEST[1], 0.75), (G_TEST[0], G_TEST[1], 1.12), TIP], (-3.5, 1.2, 0.75), AZ["alive"][0], AZ["alive"][1], AZ["alive"][2],
+    cut(LS["loop"] + 0.3, [(G_TEST[0], G_TEST[1], 0.75), (G_TEST[0], G_TEST[1], 1.12), TIP], (-3.5, 1.2, 0.75), AZ["alive"][0], AZ["alive"][1], AZ["alive"][2],
         AIR, los=LG),
-    # back wide for the rod going in
-    cut(F0 + 0.9, gp(*G_BOX)[1:] + gp(*G_TEST)[1:] + [(BOX[0], BOX[1], 0.2), TIP], (-2.95, 1.1, 0.5), AZ["test"][0], AZ["test"][1], AZ["test"][2],
-        AIR, los=LG),
+    # wide: the pulse runs out the wire, into the ground... and dies where the rod should be
+    cut(PATH_PU[0][0] - 0.3, gp(*G_TEST)[1:] + [p for _, p in PATH_PU] + [(BOX[0], BOX[1], 0.2), TIP], (-2.85, 1.25, 0.3),
+        AZ["test"][0], AZ["test"][1], 2.6, AIR, los=LG),
+    # close on the rod: he walks in, CLANG, CLANG, CLANG
+    cut(F0 + 0.05, [(-2.4, 1.1, 0.0), (-2.4, 1.1, 0.32), (-2.4, 1.3, 0.2)], (-2.4, 1.1, 0.2), 90, 25, 1.4, AIR,
+        los=make_los([box_at(G_BOX)], clutter_cast=MACHINE)),
+    # close on the wire: the tester comes in
+    cut(F1 + 0.05, [TIP, (TIP[0], TIP[1], 0.2), (TIP[0] + 0.2, TIP[1], 0.35)], (TIP[0] + 0.05, TIP[1], 0.32), -110, 15, 1.0, AIR,
+        los=make_los([], clutter_cast=MACHINE)),
     # the fix: the rod, the light, "It's ALIVE!"
     cut(LS["alive"] - 0.2, [(G_TEST[0], G_TEST[1], 0.75), (G_TEST[0], G_TEST[1], 1.12), TIP], (-3.5, 1.2, 0.75), AZ["alive"][0], AZ["alive"][1], AZ["alive"][2],
         AIR, los=LG),
@@ -392,24 +453,34 @@ SHOTS = [
     cut(LS["late"] - 0.2, gp(*G_TEST) + FENCE_PTS[:2], (-3.4, 1.6, 0.6), AZ["hook"][0], AZ["hook"][1], AZ["hook"][2], AIR, los=LG),
 ]
 for shot in SHOTS:
+    if shot is None:
+        for sh in SOLAR_SHOTS():
+            cam += sh()
+        continue
     k = shot()
     cam += k if isinstance(k, list) else [k]
 cam, PATCHED = fix_path(cam, AIR, who_at, path_clear=PATH)
 CHAT = [(ZAP, "BoarFan2009", "dont zap him!!"),
         (LS["safety"] + 3.0, "GardenGranny", "safety first dear"),
+        (LE["spools"] + 1.8, "BoarFan2009", "team boar is nervous"),
+        (LE["thanks"] + 0.4, "GardenGranny", "the sun says you're welcome dear"),
         (LE["loop"] - 1.5, "TobiasBuilds", "boars learn after one tickle. they never forget"),
         (LE["alive"] + 0.4, "lurker_77", "its alive")]
 cards = [dict(style="live", when=0.0, until="end", viewers=[[0.0, C8["overlay"]["live_viewers"]]]),
          dict(style="chat", when=0.0, until="end", msgs=[dict(at=round(t, 3), user=u, text=x) for t, u, x in CHAT],
               colors={"GardenGranny": "pink", "lurker_77": "grey", "BoarFan2009": "amber", "TobiasBuilds": "green"}),
+         dict(style="panel", y="top", border="amber", when=round(SOLAR0 + 0.4, 3), until=round(THANKS0 - 0.2, 3), rows=[
+             dict(text="SOLAR POWER", color="white", at=round(SOLAR0 + 0.5, 3), size=40),
+             dict(text="sunlight → battery → pulse", color="cyan", at=round(SOLAR0 + 1.6, 3), size=30)]),
          dict(style="panel", y="top", border="amber", when=round(LESSON0, 3), until=round(LESSON1 + 0.4, 3), rows=[
              dict(text="CIRCUIT", color="white", at=round(LESSON0 + 0.1, 3), size=40),
              dict(text="electricity needs a complete loop", color="cyan", at=round(LESSON0 + 1.4, 3), size=30)])]
 W9 = {k: v for k, v in S8["world"].items() if k != "critters"}
 W9["critters"] = []
-W9["clouds_pass"] = [[round(FILM + 2.0, 3), 4.5, 0.45]]             # the light goes golden-dim toward the end ("it's getting late")
+HW = (FILM - (LS["late"] - 1.5)) / 0.6                              # dusk: the light goes golden and dim from "it's getting late"
+W9["clouds_pass"] = [[round(FILM + 0.4 * HW, 3), round(HW, 3), 0.6, [1.0, 0.55, 0.3]]]   # (and stays: Scene 010 is night)
 story = dict(title="Page Thirteen", slug="grandpa_ep01_scene009", voice="am_santa", speed=0.95, format="wide",
-             channel_tag="GRANDPA'S BLOCK LAB", start=LS["mail"], tail=round(tail, 4), seed=41, blink=True, target_duration=70,
+             channel_tag="GRANDPA'S BLOCK LAB", start=LS["bottle"], tail=round(tail, 4), seed=41, blink=True, target_duration=70,
              engine_rev=3, scene=dict(episode=1, scene=9, name="Page Thirteen", previous="ep01_scene008", next="ep01_scene010"),
              world=W9, lines=lines, grandpa=dict(start=list(G0), outfit=S8["grandpa"]["outfit"]),
              poses=dict(S8["poses"], **POSES), structures=S, actions=sorted(A, key=lambda a: a["when"]), camera=cam, cards=cards,

@@ -209,3 +209,11 @@ builds it, talking chat through it.
 - At most one per scene. Shown right after he says the word, about 3.5-4 s, top left under the channel tag, green border.
 - The word, its syllables, and a plain meaning of about 8 words a kid understands. Never on screen together with a lesson card.
 - Story JSON: {"style": "word", "word": ..., "say": "stake-out", "meaning": ..., "when": t, "until": t}.
+
+## Talking to chat = face the lens (user, 2026-10-22; learned in Scene 010)
+- When Grandpa talks to chat, the shot must be square in front of his body and he looks into that camera. A head-only turn
+  toward a side camera still reads as "the side of his head".
+- Seated (or standing still with head-only looks): add one body:false "look" spanning the whole scene, after a body:true
+  look that covers frame 0. Otherwise his body drifts back toward facing south in every gap between looks.
+- Check a still of every talking line before the full render.
+

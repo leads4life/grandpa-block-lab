@@ -39,6 +39,7 @@ S["solar_panel"]["at"] = [0.0, 0.0, 0.0]
 G_SIT = (-3.2, 1.0)
 FACE_AT = (-3.8, 1.9)                                               # he faces north-west: the webcam to his left, the garden ahead-right
 _h = math.atan2(FACE_AT[1] - G_SIT[1], FACE_AT[0] - G_SIT[0])
+FRONT = round(math.degrees(_h))                                     # the talking camera sits square in front of him
 STUMP_C = (G_SIT[0] - 0.25 * math.cos(_h), G_SIT[1] - 0.25 * math.sin(_h))   # right under his hips (they sit back 0.22)
 S["stump"] = dict(cells=[[x, y, z] for x in (0, 1, 2) for y in (0, 1, 2) for z in (-1, 0, 1)],
                   at=[round(STUMP_C[0] - 0.1, 3), round(STUMP_C[1] - 0.1, 3), 0.09],
@@ -117,7 +118,8 @@ act(type="hold", target="prop", hand="none", when=-1.0, until=99.0, reach=0.05,
 act(type="hold", target="solar_panel", hand="none", when=-1.0, until=99.0, reach=0.05,
     keys=[dict(t=-1.0, at=[-2.4, 1.3, 0.0], rot=[0, 0, 0]), dict(t=99.0, at=[-2.4, 1.3, 0.0], rot=[0, 0, 0])])
 pose("seated", -5.0, 99.0)
-look(-5.0, -0.5, (FACE_AT[0], FACE_AT[1], 0.9), body=True, rate=0.5)   # (settled before we cut in)
+look(-5.0, 0.04, (FACE_AT[0], FACE_AT[1], 0.9), body=True, rate=0.5)   # (frame 0 sets his heading: north-west)
+look(0.05, 99.0, (FACE_AT[0], FACE_AT[1], 0.9))                     # underneath it all: seated, his body never drifts (head-only looks)
 face("content", -5.0, 0.6, ease_out=0.4)
 TH = len(A)
 act(type="hold", target="thermos", hand="R", when=-1.0, until=99.0, reach=0.05, grip=[0.0, 0.0, 0.05],
@@ -289,12 +291,16 @@ def cut(t, *a, **kw):
     return lambda: ([dict(cam[-1], at=round(tc - 1.0 / FPS, 4))] if cam else []) + [auto_frame(tc, *a, **kw)]
 SHOTS = [
     # open: the lantern-lit stakeout, him on his stump, the garden behind him
-    cut(0.0, SP + [LANT], (-3.45, 1.15, 0.6), 160, 12, 1.9, AIR, los=LG),
+    cut(0.0, SP[1:], (G_SIT[0], G_SIT[1], 0.8), FRONT, 10, 1.9, AIR, los=LG),
     # the nap: closer
+    # "This is a stakeout.": square on, closer
+    cut(LS["stakeout"] - 0.3, SP[1:], (G_SIT[0], G_SIT[1], 0.85), FRONT, 8, 1.5, AIR, los=LG),
     cut(DOZE - 0.3, SP[1:], (G_SIT[0], G_SIT[1], 0.85), 170, 12, 1.5, AIR, los=LG),
+    # awake: square on to him again ("Totally awake", "medium-key nervous")
+    cut(JOLT + 0.25, SP[1:], (G_SIT[0], G_SIT[1], 0.85), FRONT, 8, 1.5, AIR, los=LG),
     # "medium-key nervous", then the rustle: wide to the stream -- the boar on the stepping stones
     # the rustle: hold on his face -- he freezes
-    cut(RUSTLE - 0.2, SP[1:], (G_SIT[0], G_SIT[1], 0.9), 150, 8, 1.25, AIR, los=LG),
+    cut(RUSTLE - 0.2, SP[1:], (G_SIT[0], G_SIT[1], 0.9), FRONT, 6, 1.1, AIR, los=LG),
     # the huff: wide -- the boar out of the forest; "NO CAP, CHAT!"
     cut(HUFF1 + 0.15, SP[1:] + [bp_(APPROACH, 0.2), bp_(NOSE_STOP, 0.2)], (-3.0, 2.6, 0.4), -100, 18, 3.5, AIR,
         los=make_los([GBOX])),
@@ -310,11 +316,11 @@ SHOTS = [
     cut(ROOT0 + 0.3, SP[1:] + [bp_(ROOT_AT, 0.05), bp_(ROOT_AT, 0.35)], (-3.4, 2.5, 0.4), 60, 22, 3.4, AIR,
         los=make_los([boar_box(ROOT_AT)])),
     # "He wants grubs.": on him (sincere)
-    cut(LS["grubs"] - 0.2, SP[1:], (G_SIT[0], G_SIT[1], 0.85), 140, 6, 1.5, AIR, los=LG),
+    cut(LS["grubs"] - 0.2, SP[1:], (G_SIT[0], G_SIT[1], 0.85), FRONT, 6, 1.3, AIR, los=LG),
     # the grunt, away into the woods; "our neighbour"; "His own spot."
     cut(GRUNT - 0.3, SP[1:] + [bp_(ROOT_AT, 0.3), (-4.6, 4.3, 0.3)], (-3.6, 2.8, 0.4), 60, 22, 3.8, AIR,
         los=make_los([boar_box(ROOT_AT)])),
-    cut(LS["neighbour"] - 0.3, SP[1:], (G_SIT[0], G_SIT[1], 0.85), 155, 10, 2.0, AIR, los=LG),
+    cut(LS["neighbour"] - 0.3, SP[1:], (G_SIT[0], G_SIT[1], 0.85), FRONT, 10, 1.8, AIR, los=LG),
 ]
 for shot in SHOTS:
     cam += shot()

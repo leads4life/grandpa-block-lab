@@ -20,9 +20,10 @@ Renders the whole episode at **native 1920×1080, 30 fps** from the production p
 and the **YouTube master** (4K upscale), and runs the final QA.
 
 **Before the first run**
-1. Put `GBL_EP01_PRODUCTION.zip` in Google Drive at `MyDrive/block_lab/final/`.
-2. *Runtime → Change runtime type →* **T4 GPU**.
-3. *Runtime → Run all.*
+1. *Runtime → Change runtime type →* **T4 GPU**.
+2. *Runtime → Run all.*
+3. Step 1 shows a **Choose Files** button: pick `GBL_EP01_PRODUCTION.zip` from your computer. The notebook saves it
+   in Google Drive (`MyDrive/block_lab/final/`), so later sessions don't ask again.
 
 **It is resumable.** The render is long (the benchmark in step 4 prints the estimate for your GPU). Colab sessions end
 after several hours: when that happens, just open the notebook again and *Run all*. Every finished ~1-minute segment
@@ -56,7 +57,18 @@ if free < 10:
 md("## 1. Unpack and check the production package")
 code("""
 zp = os.path.join(DRIVE_DIR, ZIP_NAME)
-assert os.path.exists(zp), "Put %s in %s first" % (ZIP_NAME, DRIVE_DIR)
+if not os.path.exists(zp):                       # first run: pick the zip on your computer; it is kept in Drive for later sessions
+    from google.colab import files
+    print("Click 'Choose Files' below and pick %s from your computer (157 MB: takes a few minutes)." % ZIP_NAME)
+    up = files.upload()
+    zips = [n for n in up if n.lower().endswith(".zip")]
+    assert zips, "That was not a .zip file -- run this cell again and pick %s" % ZIP_NAME
+    with open(zp + ".partial", "wb") as f:
+        f.write(up[zips[0]])
+    os.replace(zp + ".partial", zp)
+    os.remove(zips[0]) if os.path.exists(zips[0]) else None
+    del up
+    print("saved to Drive:", zp)
 stamp = "%d-%d" % (os.path.getsize(zp), int(os.path.getmtime(zp)))
 if not os.path.exists(PKG + "/.unpacked") or open(PKG + "/.unpacked").read() != stamp:
     shutil.rmtree("/content/pkg", ignore_errors=True)

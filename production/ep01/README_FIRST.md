@@ -3,9 +3,10 @@
 This folder is everything needed to render the final episode. Nothing else has to be downloaded except Blender (the notebook does that).
 
 ## How to run it (Google Colab, T4 GPU)
-1. Upload `GBL_EP01_PRODUCTION.zip` to Google Drive: `MyDrive/block_lab/final/`.
-2. Open `notebook/GBL_EP01_FINAL_RENDER.ipynb` in Colab (File → Upload notebook).
-3. Runtime → Change runtime type → **T4 GPU**. Runtime → **Run all**.
+1. Open `GBL_EP01_FINAL_RENDER.ipynb` in Colab (File → Upload notebook).
+2. Runtime → Change runtime type → **T4 GPU**. Runtime → **Run all**.
+3. Step 1 shows a **Choose Files** button: pick `GBL_EP01_PRODUCTION.zip` from your computer. The notebook keeps it in
+   Google Drive (`MyDrive/block_lab/final/`), so later sessions don't ask again.
 4. When a session ends (Colab limits), open it again and **Run all**. It carries on where it stopped.
 5. When step 8 says **RESULT: PASS**, upload `masters/GBL_EP01_The_Boar_Next_Door_YOUTUBE_4K_UPSCALED_from1080p.mp4` to YouTube.
 

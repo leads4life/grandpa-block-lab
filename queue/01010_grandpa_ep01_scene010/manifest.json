@@ -4,7 +4,7 @@
  "episode": 1,
  "scene": 10,
  "film": 55.86666666666667,
- "engine_commit": "24055c38f31f7605d259b8f88edc5e89cefef643",
+ "engine_commit": "4e53dddcead0748148a146742f898beb3989244b",
  "engine_files": [
   "bl_audio.py",
   "bl_cast.py",
@@ -19,10 +19,15 @@
   "voxelchars.py",
   "voxelkit.py"
  ],
- "engine_sha": "82455556bea3",
+ "engine_sha": "6d8e25b5d912",
  "accepted_fails": [
   "grandpa stays in the picture",
   "nothing hides grandpa"
  ],
- "approved": "2026-10-22 20:26"
+ "approved": "2026-10-23 03:20",
+ "revision": {
+  "previous_engine_commit": "24055c38f31f7605d259b8f88edc5e89cefef643",
+  "previous_approved": "2026-10-22 20:26",
+  "change": "final polish 2026-10-23: borderline cut at 27.6 s smoothed"
+ }
 }

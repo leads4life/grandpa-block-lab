@@ -4,7 +4,7 @@
  "episode": 1,
  "scene": 2,
  "film": 31.766666666666666,
- "engine_commit": "9363d18acb4a9513d4fec6371c03899ddbb4e30c",
+ "engine_commit": "4e53dddcead0748148a146742f898beb3989244b",
  "engine_files": [
   "bl_audio.py",
   "bl_cast.py",
@@ -19,9 +19,14 @@
   "voxelchars.py",
   "voxelkit.py"
  ],
- "engine_sha": "346069586436",
+ "engine_sha": "6d8e25b5d912",
  "accepted_fails": [
   "no clipping into"
  ],
- "approved": "2026-10-21 15:01"
+ "approved": "2026-10-23 03:20",
+ "revision": {
+  "previous_engine_commit": "9363d18acb4a9513d4fec6371c03899ddbb4e30c",
+  "previous_approved": "2026-10-21 15:01",
+  "change": "final polish 2026-10-23: face-the-lens: again, count, how, broken"
+ }
 }

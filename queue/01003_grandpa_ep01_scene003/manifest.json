@@ -4,7 +4,7 @@
  "episode": 1,
  "scene": 3,
  "film": 32.86666666666667,
- "engine_commit": "f82ca997fb4754a9af035b067a7433b77a662bd8",
+ "engine_commit": "4e53dddcead0748148a146742f898beb3989244b",
  "engine_files": [
   "bl_audio.py",
   "bl_cast.py",
@@ -19,7 +19,12 @@
   "voxelchars.py",
   "voxelkit.py"
  ],
- "engine_sha": "17d8dc68933e",
+ "engine_sha": "6d8e25b5d912",
  "accepted_fails": [],
- "approved": "2026-10-21 16:20"
+ "approved": "2026-10-23 03:45",
+ "revision": {
+  "previous_engine_commit": "f82ca997fb4754a9af035b067a7433b77a662bd8",
+  "previous_approved": "2026-10-21 16:20",
+  "change": "final polish 2026-10-23: face-the-lens: rot, stone (prints keeps its original camera)"
+ }
 }

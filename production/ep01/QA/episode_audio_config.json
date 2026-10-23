@@ -1,0 +1,82 @@
+{
+ "fps": 30,
+ "scenes": [
+  {
+   "id": "01001",
+   "build_dir": "perf/01001_grandpa_ep01_scene001",
+   "frames": 990,
+   "environment": "cabin_day"
+  },
+  {
+   "id": "01002",
+   "build_dir": "patch/01002_grandpa_ep01_scene002/work",
+   "frames": 953,
+   "environment": "cabin_to_forest"
+  },
+  {
+   "id": "01003",
+   "build_dir": "patch/01003_grandpa_ep01_scene003/work",
+   "frames": 986,
+   "environment": "forest_day"
+  },
+  {
+   "id": "01004",
+   "build_dir": "perf/01004_grandpa_ep01_scene004",
+   "frames": 933,
+   "environment": "forest_day"
+  },
+  {
+   "id": "01005",
+   "build_dir": "perf/01005_grandpa_ep01_scene005",
+   "frames": 913,
+   "environment": "forest_day"
+  },
+  {
+   "id": "01006",
+   "build_dir": "patch/01006_grandpa_ep01_scene006/work",
+   "frames": 2096,
+   "environment": "forest_day"
+  },
+  {
+   "id": "01007",
+   "build_dir": "perf/01007_grandpa_ep01_scene007",
+   "frames": 1238,
+   "environment": "forest_day"
+  },
+  {
+   "id": "01008",
+   "build_dir": "perf/01008_grandpa_ep01_scene008",
+   "frames": 1719,
+   "environment": "forest_day"
+  },
+  {
+   "id": "01009",
+   "build_dir": "patch/01009_grandpa_ep01_scene009/work",
+   "frames": 2213,
+   "environment": "forest_day"
+  },
+  {
+   "id": "01010",
+   "build_dir": "patch/01010_grandpa_ep01_scene010/work",
+   "frames": 1676,
+   "environment": "forest_night"
+  },
+  {
+   "id": "01011",
+   "build_dir": "patch/01011_grandpa_ep01_scene011/work",
+   "frames": 1705,
+   "environment": "cabin_night"
+  }
+ ],
+ "joins": {
+  "01010": {
+   "crossfade_s": 1.5
+  },
+  "01011": {
+   "crossfade_s": 1.5
+  },
+  "01006": {
+   "crossfade_s": 2.0
+  }
+ }
+}

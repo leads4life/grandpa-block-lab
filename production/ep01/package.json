@@ -1,0 +1,49 @@
+{
+ "package_name": "GBL_EP01_PRODUCTION",
+ "scenes": ["01001", "01002", "01003", "01004", "01005", "01006", "01007", "01008", "01009", "01010", "01011"],
+ "episode": {
+  "title": "Grandpa's Block Lab - Episode 1: The Boar Next Door",
+  "file_tag": "GBL_EP01_The_Boar_Next_Door",
+  "fps": 30,
+  "transitions": [
+   {"after": "01009", "before": "01010", "fade_out_frames": 18, "fade_in_frames": 18,
+    "card": {"text": "Later that night...", "from": 0, "to": 30, "y": 0.3},
+    "why": "time skip (dusk -> night stakeout)"},
+   {"after": "01010", "before": "01011", "fade_out_frames": 18, "fade_in_frames": 18,
+    "card": {"text": "Later that night...", "from": 0, "to": 30, "y": 0.3},
+    "why": "time skip (stakeout -> home at bedtime)"}
+  ],
+  "benchmark_frames": [["01006", 0.5], ["01010", 0.5], ["01011", 0.3]]
+ },
+ "render_settings": {
+  "width": 1920, "height": 1080,
+  "samples": 16, "adaptive_threshold": 0.05,
+  "denoising_quality": "HIGH", "denoising_prefilter": "ACCURATE",
+  "png_compression": 15, "gpu": true,
+  "segment_frames": 1800, "max_attempts": 3,
+  "segment_video": {"codec": "libx264", "pix_fmt": "yuv444p", "crf": 12, "preset": "slow"},
+  "youtube": {"width": 3840, "height": 2160, "nvenc_cq": 19, "bitrate": "40M", "maxrate": "60M", "bufsize": "120M",
+              "x264_preset": "medium", "x264_crf": 16, "audio": "aac 384k 48 kHz stereo"},
+  "why": "Native 1080p at the approved look; 16 samples + adaptive + OIDN high quality is clean for this flat voxel style (1440p test, 2026-10-23). Segments are visually lossless 4:4:4 Rec.709; the YouTube file is a lanczos 4K upscale so YouTube serves its higher-quality codec."
+ },
+ "dependencies": {
+  "blender": "5.2.2 (5.2 LTS series) linux-x64 from download.blender.org",
+  "blender_python_packages": ["scipy"],
+  "system_python_packages": ["numpy", "pillow"],
+  "ffmpeg": "any recent build (Colab's is fine); h264_nvenc used for the 4K file when the GPU offers it, libx264 otherwise",
+  "gpu": "NVIDIA T4 or better (OptiX, falls back to CUDA, then CPU)",
+  "colab_disk": "about 10 GB free on Google Drive during the render; the notebook checks"
+ },
+ "fonts_from": "/usr/local/lib/python3.13/dist-packages/matplotlib/mpl-data/fonts/ttf",
+ "copy": [
+  ["production/tools/gbl_final.py", "tools/gbl_final.py"],
+  ["production/tools/gbl_blender_render.py", "tools/gbl_blender_render.py"],
+  ["production/tools/gbl_compose.py", "tools/gbl_compose.py"],
+  ["production/tools/build_package.py", "tools/build_package.py"],
+  ["engine/tools/episode_audio.py", "tools/episode_audio.py"],
+  ["production/ep01/package.json", "config/package.json"],
+  ["production/ep01/README_FIRST.md", "README_FIRST.md"],
+  ["production/ep01/GBL_EP01_FINAL_RENDER.ipynb", "notebook/GBL_EP01_FINAL_RENDER.ipynb"],
+  ["production/ep01/QA", "QA/audit"]
+ ]
+}

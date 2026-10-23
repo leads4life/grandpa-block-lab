@@ -107,3 +107,21 @@ Settled = settled: change an item only when the user asks. Details live in the o
 - Piano themes: parked. Explainer-engine spin-off: handoff prompt in `handoff/`, a separate project.
 - Open: Slang Check card (Episode 2 on?); signature line wording; Episode 2 outline approval; who writes the pages
   (proposed: GardenGranny, his childhood building friend).
+
+## 11. Final production decisions (user, 2026-10-23)
+- Final render: **native 1920x1080**, 30 fps, Cycles ~16 samples + adaptive + OpenImageDenoise (high quality); a 4K
+  (upscaled, labelled as such) H.264 file for the YouTube upload; an archival master at native 1080p.
+- Every scene renders on the exact engine version it was approved on (the per-scene pin), so finals match the previews.
+- Episode-level fixes (no re-approval): fade through black + "Later that night..." at 009->010 and 010->011; one continuous
+  ambience bed with crossfades at every join; loudness set once for the whole episode (-14 LUFS, -1 dBTP, 48 kHz/24-bit).
+- Scene fixes (each comes back as a preview): face-the-lens for chat lines in 002, 003, 005, 009; jump-cut fixes in 006, 010, 011.
+- Music: none (parked); the music stem is documented as intentionally empty.
+- Render in ~1-minute (1800-frame) segments on one global timeline, with checkpoint/resume on Google Drive (T4).
+
+- Final renderer (`production/`, 2026-10-23): one package ZIP (`GBL_EP01_PRODUCTION.zip`) + Colab notebook. Scenes render on
+  their pinned engines; 1800-frame segments with a checkpoint manifest (PENDING/RENDERING/VALIDATING/COMPLETE/FAILED/
+  NEEDS_REBUILD) on Drive; frames and segment files are staged (`.partial` -> verified -> renamed); damaged frames are
+  detected and re-rendered. Segments: H.264 4:4:4 CRF 12 Rec.709. Masters: archival MKV (1080p, 24-bit PCM) + YouTube MP4
+  (4K lanczos upscale, AAC 384k). The time-skip card sits in the upper third (not over Grandpa's face).
+- Scene 003 "prints" line keeps its original camera: a front camera there puts the trip-hammer helve across his chin
+  (he works facing the machine). Face-the-lens is for lines TO chat, not discovery beats looking at the ground.

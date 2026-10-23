@@ -1,0 +1,1056 @@
+{
+ "01001": {
+  "lines": [
+   {
+    "id": "hello",
+    "t": 0.5,
+    "text": "Hello? Can anybody hear me?",
+    "median_deg": 23,
+    "verdict": "face-on"
+   },
+   {
+    "id": "on",
+    "t": 2.75,
+    "text": "Is this thing on?",
+    "median_deg": 21,
+    "verdict": "face-on"
+   },
+   {
+    "id": "box",
+    "t": 4.26,
+    "text": "An old man talking to a box.",
+    "median_deg": 37,
+    "verdict": "face-on"
+   },
+   {
+    "id": "committed",
+    "t": 6.66,
+    "text": "My grandfather would've had me committed.",
+    "median_deg": 37,
+    "verdict": "face-on"
+   },
+   {
+    "id": "viewers",
+    "t": 9.36,
+    "text": "Three viewers?",
+    "median_deg": 38,
+    "verdict": "face-on"
+   },
+   {
+    "id": "pharmacy",
+    "t": 10.66,
+    "text": "I get more attention at the pharmacy blood press",
+    "median_deg": 37,
+    "verdict": "face-on"
+   },
+   {
+    "id": "welcome",
+    "t": 14.7,
+    "text": "Anyway, welcome to Grandpa's Block Lab.",
+    "median_deg": 26,
+    "verdict": "face-on"
+   },
+   {
+    "id": "creator",
+    "t": 17.89,
+    "text": "Apparently I'm a content creator now.",
+    "median_deg": 31,
+    "verdict": "face-on"
+   },
+   {
+    "id": "coffee",
+    "t": 20.85,
+    "text": "Ah, coffee.",
+    "median_deg": 46,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "reliable",
+    "t": 22.82,
+    "text": "The one reliable thing in my life.",
+    "median_deg": 46,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "spill",
+    "t": 25.25,
+    "text": "Until I spill it.",
+    "median_deg": 45,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "up",
+    "t": 26.89,
+    "text": "All right, up we go.",
+    "median_deg": 43,
+    "verdict": "face-on"
+   },
+   {
+    "id": "back",
+    "t": 28.39,
+    "text": "Oh! My back just filed a complaint.",
+    "median_deg": 16,
+    "verdict": "face-on"
+   },
+   {
+    "id": "what",
+    "t": 31.58,
+    "text": "...What was that?",
+    "median_deg": 67,
+    "verdict": "three-quarter"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01002": {
+  "lines": [
+   {
+    "id": "again",
+    "t": 2.03,
+    "text": "There it is again.",
+    "median_deg": 85,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "chat",
+    "t": 4.51,
+    "text": "Chat, I'm going AFK. That's away from keyboard. ",
+    "median_deg": 30,
+    "verdict": "face-on"
+   },
+   {
+    "id": "avenge",
+    "t": 9.81,
+    "text": "If something eats me... at least it's good conte",
+    "median_deg": 112,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "count",
+    "t": 14.72,
+    "text": "Hear that? Clunk, clunk... then a rest.",
+    "median_deg": 95,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "trip",
+    "t": 18.63,
+    "text": "Ha! A trip hammer!",
+    "median_deg": 60,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "how",
+    "t": 20.32,
+    "text": "Water turns the wheel... and two bumps, called c",
+    "median_deg": 81,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "broken",
+    "t": 25.8,
+    "text": "This thing's been broken for years...",
+    "median_deg": 96,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "who",
+    "t": 28.16,
+    "text": "These blocks are brand new... so who fixed it?",
+    "median_deg": 79,
+    "verdict": "three-quarter"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01003": {
+  "lines": [
+   {
+    "id": "hands",
+    "t": 0.35,
+    "text": "Hang on, chat... Grandpa needs both hands.",
+    "median_deg": 123,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "notice",
+    "t": 3.81,
+    "text": "Someone fixed that post... but not this one.",
+    "median_deg": 133,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "mush",
+    "t": 7.3,
+    "text": "Oh! It's mush!",
+    "median_deg": 152,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "rot",
+    "t": 8.88,
+    "text": "Wet wood rots: tiny fungi eat it, and by a strea",
+    "median_deg": 119,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "stone",
+    "t": 14.26,
+    "text": "So we start with stone. Stone doesn't rot.",
+    "median_deg": 103,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "back",
+    "t": 19.91,
+    "text": "There! Clunk, clunk... rest.",
+    "median_deg": 39,
+    "verdict": "face-on"
+   },
+   {
+    "id": "morning",
+    "t": 22.18,
+    "text": "Morning!",
+    "median_deg": 26,
+    "verdict": "face-on"
+   },
+   {
+    "id": "subscribe",
+    "t": 23.56,
+    "text": "Hey! Don't forget to subscribe... bruh.",
+    "median_deg": 52,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "prints",
+    "t": 26.52,
+    "text": "Wait... those aren't my footprints. And they're ",
+    "median_deg": 136,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "rabbits",
+    "t": 29.82,
+    "text": "...No. Rabbits don't fix machines.",
+    "median_deg": 13,
+    "verdict": "face-on"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01004": {
+  "lines": [
+   {
+    "id": "bussin",
+    "t": 7.0,
+    "text": "You kinda bussin'!",
+    "median_deg": 64,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "nocap",
+    "t": 10.33,
+    "text": "NO CAP, CHAT!",
+    "median_deg": 48,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "aura",
+    "t": 24.74,
+    "text": "Tobias... you just gained a thousand aura points",
+    "median_deg": 65,
+    "verdict": "three-quarter"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01005": {
+  "lines": [
+   {
+    "id": "saw",
+    "t": 2.2,
+    "text": "Chat... you all saw that, right?",
+    "median_deg": 17,
+    "verdict": "face-on"
+   },
+   {
+    "id": "fourth",
+    "t": 7.5,
+    "text": "...You're my fourth viewer?",
+    "median_deg": 73,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "dayone",
+    "t": 9.23,
+    "text": "So you're my... day one!",
+    "median_deg": 81,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "knees",
+    "t": 16.39,
+    "text": "Whoa... my knees did not agree to this.",
+    "median_deg": 170,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "grubs",
+    "t": 23.94,
+    "text": "Grubs? ...He can have those.",
+    "median_deg": 91,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "more",
+    "t": 28.84,
+    "text": "...There's more?",
+    "median_deg": 3,
+    "verdict": "face-on"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "garden_soil",
+    "holes"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01006": {
+  "lines": [
+   {
+    "id": "have",
+    "t": 2.6,
+    "text": "You have a WORKSHOP?",
+    "median_deg": 121,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "grubs",
+    "t": 5.85,
+    "text": "...Is that a jar of grubs?",
+    "median_deg": 9,
+    "verdict": "face-on"
+   },
+   {
+    "id": "hand",
+    "t": 11.56,
+    "text": "Wait. That's... MY handwriting.",
+    "median_deg": 26,
+    "verdict": "face-on"
+   },
+   {
+    "id": "where",
+    "t": 18.69,
+    "text": "...So THAT's where it went.",
+    "median_deg": 26,
+    "verdict": "face-on"
+   },
+   {
+    "id": "built",
+    "t": 20.44,
+    "text": "I built that? ...I built that! Why'd I ever stop",
+    "median_deg": 26,
+    "verdict": "face-on"
+   },
+   {
+    "id": "scale",
+    "t": 26.69,
+    "text": "Look, chat. One square on the page... is one blo",
+    "median_deg": 15,
+    "verdict": "face-on"
+   },
+   {
+    "id": "justme",
+    "t": 41.49,
+    "text": "...Just me, then.",
+    "median_deg": 11,
+    "verdict": "face-on"
+   },
+   {
+    "id": "alone",
+    "t": 43.05,
+    "text": "Alone. In the woods. Where the boar... lives.",
+    "median_deg": 82,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "murmur",
+    "t": 49.49,
+    "text": "You kinda bussin'... you kinda bussin'...",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "nope",
+    "t": 54.13,
+    "text": "Nope. Nope nope nope.",
+    "median_deg": 79,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "page",
+    "t": 57.75,
+    "text": "Page twelve...",
+    "median_deg": 15,
+    "verdict": "face-on"
+   },
+   {
+    "id": "fancy",
+    "t": 59.97,
+    "text": "Ooh. Fancy. A garden gate... with a lever.",
+    "median_deg": 26,
+    "verdict": "face-on"
+   },
+   {
+    "id": "torn",
+    "t": 63.59,
+    "text": "Chat... somebody's been tearing pages out of my ",
+    "median_deg": 2,
+    "verdict": "face-on"
+   },
+   {
+    "id": "hatches",
+    "t": 67.12,
+    "text": "Chat... batten down the hatches!",
+    "median_deg": 0,
+    "verdict": "face-on"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "garden_soil",
+    "holes"
+   ],
+   [
+    "jar",
+    "jar_lid"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01007": {
+  "lines": [
+   {
+    "id": "plan",
+    "t": 1.7,
+    "text": "Chat, Tobias's garden is right where the boar li",
+    "median_deg": 3,
+    "verdict": "face-on"
+   },
+   {
+    "id": "seed",
+    "t": 10.02,
+    "text": "Then we move his seedlings in. The ones the boar",
+    "median_deg": 70,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "knees",
+    "t": 13.53,
+    "text": "My knees remember this.",
+    "median_deg": 137,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "page",
+    "t": 16.4,
+    "text": "A garden fence. With a lever gate.",
+    "median_deg": 41,
+    "verdict": "face-on"
+   },
+   {
+    "id": "cardio",
+    "t": 20.66,
+    "text": "Post. Rail. Post. Rail. Chat, this is my cardio.",
+    "median_deg": 89,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "faster",
+    "t": 30.16,
+    "text": "...Nope. Faster.",
+    "median_deg": 46,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "now",
+    "t": 38.71,
+    "text": "Chat... gate. NOW.",
+    "median_deg": 0,
+    "verdict": "face-on"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "garden_soil",
+    "holes"
+   ],
+   [
+    "jar",
+    "jar_lid"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01008": {
+  "lines": [
+   {
+    "id": "fine",
+    "t": 0.5,
+    "text": "...It's fine. It's FINE. Gate.",
+    "median_deg": 35,
+    "verdict": "face-on"
+   },
+   {
+    "id": "lift",
+    "t": 3.98,
+    "text": "A lift gate. Boars push gates open... but they c",
+    "median_deg": 79,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "vibes",
+    "t": 8.72,
+    "text": "A rock? For... vibes? Nah. Skip.",
+    "median_deg": 71,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "giving",
+    "t": 14.32,
+    "text": "This gate is NOT... giving.",
+    "median_deg": 38,
+    "verdict": "face-on"
+   },
+   {
+    "id": "seesaw",
+    "t": 17.06,
+    "text": "Ohh. It's a seesaw.",
+    "median_deg": 38,
+    "verdict": "face-on"
+   },
+   {
+    "id": "cousin",
+    "t": 19.14,
+    "text": "Put your big cousin on the short end, and the li",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "draw",
+    "t": 24.14,
+    "text": "Drawbridges work the same way.",
+    "median_deg": 60,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "rizz",
+    "t": 31.71,
+    "text": "Now THAT'S got... rizz.",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "shuts",
+    "t": 36.19,
+    "text": "And it shuts by itself.",
+    "median_deg": 143,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "flip",
+    "t": 38.98,
+    "text": "A boar-proof garden. Tobias is gonna flip.",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "scared",
+    "t": 45.26,
+    "text": "Being scared's normal. Building something... hel",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "tobias",
+    "t": 49.3,
+    "text": "Don't tell Tobias I said that.",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "bottle",
+    "t": 54.36,
+    "text": "...Is that... page thirteen?",
+    "median_deg": 79,
+    "verdict": "three-quarter"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "garden_soil",
+    "holes"
+   ],
+   [
+    "jar",
+    "jar_lid"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01009": {
+  "lines": [
+   {
+    "id": "bottle",
+    "t": 0.8,
+    "text": "Chat... is that a bottle?",
+    "median_deg": 34,
+    "verdict": "face-on"
+   },
+   {
+    "id": "mail",
+    "t": 5.8,
+    "text": "Chat... somebody's mailing me my own book.",
+    "median_deg": 94,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "page",
+    "t": 8.63,
+    "text": "Page thirteen. An electric fence.",
+    "median_deg": 62,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "relax",
+    "t": 12.34,
+    "text": "Relax, BoarFan. It doesn't hurt him. It's a tick",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "safety",
+    "t": 17.86,
+    "text": "And kids: never touch one, and never build one w",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "spools",
+    "t": 27.16,
+    "text": "Little spools, so the wire never touches the woo",
+    "median_deg": 94,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "solar",
+    "t": 37.01,
+    "text": "See this panel? It drinks sunshine.",
+    "median_deg": 143,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "thanks",
+    "t": 39.81,
+    "text": "Thank you, sun.",
+    "median_deg": 25,
+    "verdict": "face-on"
+   },
+   {
+    "id": "pulse",
+    "t": 41.2,
+    "text": "Then the box sends out a tiny pulse. Tick... tic",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "truth",
+    "t": 47.12,
+    "text": "Moment of truth...",
+    "median_deg": 123,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "nothing",
+    "t": 48.93,
+    "text": "...Nothing.",
+    "median_deg": 123,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "loop",
+    "t": 50.1,
+    "text": "Ohh. Electricity only travels in a loop. Out the",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "norod",
+    "t": 58.37,
+    "text": "No rod, no loop.",
+    "median_deg": 135,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "alive",
+    "t": 65.25,
+    "text": "It's alive. It's ALIVE!",
+    "median_deg": 1,
+    "verdict": "face-on"
+   },
+   {
+    "id": "late",
+    "t": 68.06,
+    "text": "Chat, it's getting late.",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "tonight",
+    "t": 71.47,
+    "text": "...Tonight, then.",
+    "median_deg": 1,
+    "verdict": "face-on"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "garden_soil",
+    "holes"
+   ],
+   [
+    "jar",
+    "jar_lid"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01010": {
+  "lines": [
+   {
+    "id": "stake",
+    "t": 1.0,
+    "text": "Chat... we're whispering now. Hammer's off. Toni",
+    "median_deg": 16,
+    "verdict": "face-on"
+   },
+   {
+    "id": "stakeout",
+    "t": 6.79,
+    "text": "This is a stakeout.",
+    "median_deg": 4,
+    "verdict": "face-on"
+   },
+   {
+    "id": "hat",
+    "t": 9.78,
+    "text": "I AM wearing a hat.",
+    "median_deg": 4,
+    "verdict": "face-on"
+   },
+   {
+    "id": "awake",
+    "t": 19.39,
+    "text": "Awake! Totally awake. Eyes like an eagle.",
+    "median_deg": 4,
+    "verdict": "face-on"
+   },
+   {
+    "id": "medium",
+    "t": 23.7,
+    "text": "Chat, I'm not scared. I'm... medium-key nervous.",
+    "median_deg": 4,
+    "verdict": "face-on"
+   },
+   {
+    "id": "nocap",
+    "t": 29.22,
+    "text": "NO CAP, CHAT!",
+    "median_deg": 91,
+    "verdict": "SIDE/BACK"
+   },
+   {
+    "id": "sorry",
+    "t": 34.62,
+    "text": "...Sorry, buddy.",
+    "median_deg": 36,
+    "verdict": "face-on"
+   },
+   {
+    "id": "seedlings",
+    "t": 38.22,
+    "text": "He's not even looking at the seedlings...",
+    "median_deg": 59,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "grubs",
+    "t": 41.28,
+    "text": "He doesn't want the garden. He wants grubs.",
+    "median_deg": 0,
+    "verdict": "face-on"
+   },
+   {
+    "id": "neighbour",
+    "t": 46.99,
+    "text": "Chat... I think we just met our neighbour.",
+    "median_deg": 16,
+    "verdict": "face-on"
+   },
+   {
+    "id": "spot",
+    "t": 52.34,
+    "text": "...His own spot.",
+    "median_deg": 16,
+    "verdict": "face-on"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "garden_soil",
+    "holes"
+   ],
+   [
+    "jar",
+    "jar_lid"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ },
+ "01011": {
+  "lines": [
+   {
+    "id": "home",
+    "t": 1.4,
+    "text": "Home sweet home. Chat... we made it.",
+    "median_deg": 49,
+    "verdict": "three-quarter"
+   },
+   {
+    "id": "better",
+    "t": 5.6,
+    "text": "Ahh. That's better.",
+    "median_deg": 12,
+    "verdict": "face-on"
+   },
+   {
+    "id": "learned",
+    "t": 7.77,
+    "text": "So. Today we learned...",
+    "median_deg": 12,
+    "verdict": "face-on"
+   },
+   {
+    "id": "cams",
+    "t": 9.96,
+    "text": "Cams turn spinning into lifting.",
+    "median_deg": 12,
+    "verdict": "face-on"
+   },
+   {
+    "id": "rot",
+    "t": 12.65,
+    "text": "Wet wood, plus fungi, makes rot.",
+    "median_deg": 12,
+    "verdict": "face-on"
+   },
+   {
+    "id": "scale",
+    "t": 15.41,
+    "text": "A small drawing can make a big build.",
+    "median_deg": 12,
+    "verdict": "face-on"
+   },
+   {
+    "id": "counter",
+    "t": 18.32,
+    "text": "A counterweight does the heavy lifting.",
+    "median_deg": 12,
+    "verdict": "face-on"
+   },
+   {
+    "id": "circuit",
+    "t": 20.95,
+    "text": "And electricity needs a loop.",
+    "median_deg": 12,
+    "verdict": "face-on"
+   },
+   {
+    "id": "sun",
+    "t": 23.73,
+    "text": "Oh, and... thank you, sun.",
+    "median_deg": 12,
+    "verdict": "face-on"
+   },
+   {
+    "id": "hungry",
+    "t": 26.76,
+    "text": "And the scariest thing in the woods... was just ",
+    "median_deg": 14,
+    "verdict": "face-on"
+   },
+   {
+    "id": "signature",
+    "t": 31.36,
+    "text": "You don't have to know everything. You just have",
+    "median_deg": 14,
+    "verdict": "face-on"
+   },
+   {
+    "id": "night",
+    "t": 39.35,
+    "text": "Goodnight, chat.",
+    "median_deg": 2,
+    "verdict": "face-on"
+   },
+   {
+    "id": "hand",
+    "t": 44.92,
+    "text": "...Huh. That's not my handwriting.",
+    "median_deg": 6,
+    "verdict": "face-on"
+   },
+   {
+    "id": "aliens",
+    "t": 47.79,
+    "text": "...Aliens. I KNEW it.",
+    "median_deg": 6,
+    "verdict": "face-on"
+   }
+  ],
+  "overlapping_structures": [
+   [
+    "chair_back",
+    "chair_legs"
+   ],
+   [
+    "chair_legs",
+    "seat"
+   ],
+   [
+    "garden_soil",
+    "holes"
+   ],
+   [
+    "jar",
+    "jar_lid"
+   ],
+   [
+    "table_legs",
+    "table_top"
+   ]
+  ]
+ }
+}

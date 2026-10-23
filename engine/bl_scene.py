@@ -344,6 +344,8 @@ def write_continuity(arm, roots, cam, perf_log):
         ha = PF.active_hold(P, name, t_end)
         if ha is not None and ha.get("hand") != "none" and PF.hold_weight(ha, t_end) > 0.5:
             carried[name] = ha.get("hand", "R")
+    pocketed = sorted(name for name in {a["target"] for a in PF.holds(P)}         # put away in his back pocket at the end
+                      if (PF.active_hold(P, name, t_end) or {}).get("pocket"))
     stream_cam = None
     if "webcam" in roots:                                         # Rule 2: where the stream camera is
         w = roots["webcam"].matrix_basis.translation
@@ -357,6 +359,7 @@ def write_continuity(arm, roots, cam, perf_log):
                structures=st, camera=dict(eye=[round(v, 4) for v in cam.location],
                                           last_key={k: v for k, v in P["camera"][-1].items() if k != "t"} if P["camera"] else None),
                holding=carried, stream_cam=stream_cam,
+               **({"pocketed": pocketed} if pocketed else {}),
                overlay=dict(live_viewers=live[-1]["viewers"][-1][1] if live and live[-1].get("viewers") else None),
                audio=dict(ambience=P["world"].get("interior", "none"), last_line=P["lines"][-1]["id"] if P["lines"] else None))
     json.dump(out, open(os.path.join(C.BUILD, "continuity.json"), "w"), indent=1)
@@ -569,8 +572,13 @@ def animate(sc, arm, roots, objs, puffs, cam):
             carried = (isinstance(a0, dict)) * (1 - u) + (isinstance(a1, dict)) * u      # char keys turn with his body
             Mh = (Matrix.Translation(where(a0).lerp(where(a1), u) + Vector(off)) @ Matrix.Rotation(yaw * carried, 4, "Z")
                   @ Euler([math.radians(v) for v in rot], "XYZ").to_matrix().to_4x4())
+            scaled = any("scale" in k_ for k_ in ha["keys"])         # folding a map / page smaller (only when keyed)
+            if scaled:
+                Mh = Mh @ Matrix.Scale(PF.hold_scale(ha, t), 4)
             roots[name].matrix_basis = Mh
             roots[name].keyframe_insert("location", frame=f); roots[name].keyframe_insert("rotation_quaternion", frame=f)
+            if scaled:
+                roots[name].keyframe_insert("scale", frame=f)
             w_h = PF.hold_weight(ha, t)
             if w_h > 0 and ha.get("hand") != "none":           # "hand": "none" -- a keyed path no hand of his grips
                 hold_hand[ha.get("hand", "R")] = (Mh @ Vector(ha.get("grip", (0, 0, 0))), w_h)

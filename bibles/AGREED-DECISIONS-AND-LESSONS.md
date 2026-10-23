@@ -9,12 +9,14 @@ Settled = settled: change an item only when the user asks. Details live in the o
 2. Story checked against STORY-OUTLINE and the bibles (Rule 1: established elements drive choices).
 3. Every line to chat: Grandpa is square to the lens (see 4). Check a still of EVERY talking line.
 4. Voice pass 1, then `--fit` pass 2. Quick geometric verify (bl_scene + bl_verify) before rendering.
-5. Test stills of every shot before the full render (walls, trees, machine, island edge, props in front of his face).
-6. Preview -> ask "Send this to the workflow pool?" (Rule 3). Back up to GitHub (Rule 4).
+5. Hands free: no map/page/webcam in his hand while he walks or works (pocket + inventory; webcam on the strap).
+6. Test stills of every shot before the full render (walls, trees, machine, island edge, props in front of his face).
+7. Preview -> ask "Send this to the workflow pool?" (Rule 3). Back up to GitHub (Rule 4).
 
 ## 1. Workflow and approvals
 - **Rule 1:** established elements drive later choices.
-- **Rule 2:** Grandpa carries the webcam whenever he travels and sets it down to work (bank stone outdoors, laptop at home).
+- **Rule 2 (revised 2026-10-23, Episode 2 on):** hands free -- the webcam rides clipped to his overall strap and shows
+  LIVE in the inventory hotbar's first slot. (Episode 1: he carried it and set it down to work.)
 - **Rule 3:** after each preview ask "Send this to the workflow pool?". Yes = freeze the voice, queue it, verify in the
   sandbox (plan, story and mix byte-identical to the approved preview), publish the queue entry to main. No = ask what to change.
 - **Rule 4:** back up to GitHub every run, to the working branch (`ep01-scene005`), never main. Only queue entries go to main.
@@ -86,6 +88,9 @@ Settled = settled: change an item only when the user asks. Details live in the o
 - Standing at a table: stand a step back, then shuffle in as he sits (his legs clip the table edge otherwise).
 - Never carry a spinning part's matrix across scenes (wheel, axle, cams); continue the spin from the machine's clock.
 - Extras ride on their structure's root: hide a built-later prop's extras with a hold (the solar panel floated from frame 0).
+
+- **Hands free (2026-10-23):** never walk or work with a map/page in hand. Show it to chat (Page Card), fold it, back
+  pocket, inventory hotbar; take it out only when needed (`propkit`). The webcam rides on his strap.
 
 ## 8. Sound and music
 - Each scene normalised to -14 LUFS. Scene sound design uses the engine's own procedural sounds.

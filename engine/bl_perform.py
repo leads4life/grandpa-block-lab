@@ -13,6 +13,9 @@ Story actions:
   {"type": "hold", "target": "mug", "hand": "R", "when": t0, "until": t1, "reach": 0.35, "grip": [x, y, z],
    "keys": [{"t": t, "at": [x, y, z] | "mouth" | {"char": [x, y, z]}, "off": [x, y, z], "rot": [rx, ry, rz]}, ...]}
         ({"char": ...} = a point in his own space, e.g. carried in front of him while he walks; it turns with him)
+        a key's optional "scale" (1 = full size) folds a map or page smaller as he puts it away; after the last key the
+        object stays there -- a last key at his back pocket ({"char": [-0.10, 0.13, 0.50]}) rides along with him.
+        "pocket": true on the hold records it as pocketed in the continuity file (see propkit.show_and_pocket)
         the hand reaches the grip (offset in the object's own frame) during [t0 - reach, t0], the object then follows
         the keyed path (root position, or grandpa's mouth + off) and stays at the last key; the hand lets go after t1
   {"type": "sfx", "sound": "clink", "when": t, "gain": 1.0}                    a one-off sound (see bl_audio.SFX)
@@ -152,6 +155,18 @@ def hold_key(a, t):
     rot = tuple(r0 + (r1 - r0) * u for r0, r1 in zip(k0.get("rot", (0, 0, 0)), k1.get("rot", (0, 0, 0))))
     off = tuple(o0 + (o1 - o0) * u for o0, o1 in zip(k0.get("off", (0, 0, 0)), k1.get("off", (0, 0, 0))))
     return k0["at"], k1["at"], u, off, rot
+
+
+def hold_scale(a, t):
+    """Uniform scale of the held object at time t from the keys' "scale" (1.0 when no key has one)."""
+    ks = a["keys"]
+    sc = lambda k: k.get("scale", 1.0)
+    if t <= ks[0]["t"]:
+        return sc(ks[0])
+    for k0, k1 in zip(ks, ks[1:]):
+        if t <= k1["t"]:
+            return sc(k0) + (sc(k1) - sc(k0)) * smoother((t - k0["t"]) / max(1e-6, k1["t"] - k0["t"]))
+    return sc(ks[-1])
 
 
 def hold_weight(a, t):

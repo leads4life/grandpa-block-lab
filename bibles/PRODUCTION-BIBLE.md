@@ -11,6 +11,11 @@ later choice, and every reveal has to pay off what was set up, measurably:
 - **Story options are proposed together with how they pay off what's established.** Prefer the option that pays off most.
 
 ## Rule 2: the stream camera (Grandpa's block webcam)
+- **REVISED (user, 2026-10-23; Episode 2 on -- Episode 1 stays as approved):** hands free. Travelling, the webcam rides
+  **clipped to his right overall strap** (`propkit.clip_webcam`), and the inventory hotbar's first slot shows it **LIVE**
+  (selected slot, pulsing red dot). He no longer walks with it in his hand. He may still set it down on a stump/rock
+  for a steady wide view of a build, then clip it back on to leave.
+- *(Episode 1 rule, kept for reference:)*
 - **Traveling**: he carries it (`hold` with a `{"char": ...}` key, right hand) and talks to chat.
 - **Working** (building, repairing, taking apart, any two-handed job): he first **sets it down** on something nearby, such as a stump, rock or post, pointed at himself and the work, with a line ("Hang on, chat... Grandpa needs both hands."). Then both hands are free.
 - **Leaving**: when he leaves, he picks it back up (or deliberately leaves it, as a gag).
@@ -251,3 +256,19 @@ A matching Morning Ritual opens episodes from Episode 2 (hook first, then "Is th
   Bob the Builder for the building (the same routine: plan, tool line-up, "Ready, chat? Blocks up!", build, test, fix, test).
 - Card types: Lesson card (amber), Word Card (green, vocabulary), Slang Check (playful; proposed), recap card (Goodnight).
 
+
+## Hands free: maps, pages and the inventory (user, 2026-10-23; Episode 2 on)
+- **He never walks or works with a map, page or note in his hand** (he needs both hands). The move is always:
+  pick it up -> **hold it up to chat** -> the **Page Card** shows it big on screen -> he **folds it** and tucks it in his
+  **back pocket** (it rides along with him) -> it **pops into the inventory hotbar**. When he needs it again he
+  **takes it out of the pocket** (`propkit.take_out`), uses it, and puts it back.
+- **Page Card** (`"style": "page"`): parchment with a fold crease, slides up beside him (right by default), slightly
+  tilted; a title, text lines, or a **map** (dashed red route, stops with names, an X, a star, ticks on stops done,
+  a bobbing green "you are here" arrow). Never on screen with a Lesson or Word card.
+- **Inventory hotbar** (`"style": "inventory"`, Minecraft-style, bottom right, clear of the captions): items pop in
+  with their name shown above for a moment; taking one out flashes the slot and lifts it out. Slot 1 = the webcam,
+  LIVE. Icons: map, page, webcam, hammer, key, lantern, or a block colour. The build routine's **tool line-up** can
+  be items popping into the hotbar. Show it only while he carries things; keep it out of sit-down scenes.
+- Engine: a hold key's `"scale"` folds a prop; `"pocket": true` on a hold records it in the continuity file
+  (`"pocketed"`), so the next scene starts with it in his pocket. Helpers: `engine/generators/propkit.py`
+  (`show_and_pocket`, `take_out`, `clip_webcam`).

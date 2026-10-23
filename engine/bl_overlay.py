@@ -140,6 +140,170 @@ def word(d, c, t):
         d.text((x0 + 20, y0 + 22 + sz + 14 + i * (sz + 8)), ln, font=fm, fill=(232, 236, 240, int(255 * k)))
 
 
+PAPER, PAPER_EDGE, INK_BROWN, INK_RED = (238, 224, 190), (150, 118, 78), (70, 52, 34), (190, 52, 40)
+
+
+def page(ov, c, t):
+    """A Page Card: the map / book page / note Grandpa is holding, shown big so viewers can read it, then away.
+    {"style": "page", "when", "until", "title", "side": "auto"|"right"|"left"|"center", "tilt": deg,
+     "map": {"route": [[u, v], ...], "stops": [{"at": [u, v], "name", "mark": "dot"|"x"|"star"}], "here": i, "done": [i]},
+     "lines": ["...", ...], "ink": "brown"|"red"}       (u, v from 0 to 1 across / down the page)"""
+    k = env(t, c["t0"], c["t1"], 0.35, 0.35)
+    if k <= 0:
+        return
+    ph0 = int(H * (0.62 if WIDE else 0.36)); pw = int(ph0 * 1.25)
+    ph = ph0
+    if not c.get("map"):                                     # text only: as tall as the words need
+        fl_ = F("reg", ph0 * 0.06)
+        n_ = sum(len(wrap(ln, fl_, pw * 0.84)) for ln in c.get("lines", []))
+        ph = int(min(ph0, max(ph0 * 0.4, 36 + (ph0 * 0.085 + 18 if c.get("title") else 0) + n_ * fl_.size * 1.35 + 34)))
+    pg = Image.new("RGBA", (pw + 40, ph + 40))
+    d = ImageDraw.Draw(pg)
+    d.rounded_rectangle((26, 30, pw + 26, ph + 30), radius=10, fill=(0, 0, 0, 90))                  # shadow
+    d.rounded_rectangle((14, 14, pw + 14, ph + 14), radius=10, fill=PAPER + (255,), outline=PAPER_EDGE + (255,), width=4)
+    for fx_ in (0.5,):                                                                               # fold creases
+        d.line((14 + pw * fx_, 18, 14 + pw * fx_, ph + 10), fill=PAPER_EDGE + (70,), width=2)
+    d.line((18, 14 + ph * 0.5, pw + 10, 14 + ph * 0.5), fill=PAPER_EDGE + (70,), width=2)
+    ink = INK_RED if c.get("ink") == "red" else INK_BROWN
+    y = 14 + 22
+    if c.get("title"):
+        ft = F("bold", ph0 * 0.085)
+        d.text((14 + pw / 2, y + ft.size / 2), c["title"], font=ft, fill=ink + (255,), anchor="mm")
+        y += ft.size + 18
+    m = c.get("map")
+    if m:
+        x0, y0, x1, y1 = 14 + pw * 0.08, y + 10, 14 + pw * 0.92, 14 + ph * 0.94
+        P_ = lambda uv: (x0 + (x1 - x0) * uv[0], y0 + (y1 - y0) * uv[1])
+        pts = [P_(q) for q in m.get("route", [])]
+        for a_, b_ in zip(pts, pts[1:]):                                                            # dashed route
+            n = max(1, int(math.dist(a_, b_) / 18))
+            for i in range(0, n, 2):
+                u0, u1 = i / n, min(1.0, (i + 1) / n)
+                d.line((a_[0] + (b_[0] - a_[0]) * u0, a_[1] + (b_[1] - a_[1]) * u0,
+                        a_[0] + (b_[0] - a_[0]) * u1, a_[1] + (b_[1] - a_[1]) * u1), fill=INK_RED + (230,), width=5)
+        fs = F("bold", ph0 * 0.055)
+        for i, st in enumerate(m.get("stops", [])):
+            x, y_ = P_(st["at"])
+            mk, r = st.get("mark", "dot"), ph * 0.035
+            if mk == "x":
+                d.line((x - r, y_ - r, x + r, y_ + r), fill=INK_RED + (255,), width=7)
+                d.line((x - r, y_ + r, x + r, y_ - r), fill=INK_RED + (255,), width=7)
+            elif mk == "star":
+                pts_ = [(x + r * 1.3 * math.cos(math.pi / 2 + j * math.pi / 5) * (1 if j % 2 == 0 else 0.45),
+                         y_ - r * 1.3 * math.sin(math.pi / 2 + j * math.pi / 5) * (1 if j % 2 == 0 else 0.45)) for j in range(10)]
+                d.polygon(pts_, fill=COL["amber"] + (255,), outline=ink + (255,))
+            else:
+                d.ellipse((x - r, y_ - r, x + r, y_ + r), fill=PAPER + (255,), outline=ink + (255,), width=5)
+                if i in m.get("done", []):
+                    d.line((x - r * 0.6, y_, x - r * 0.1, y_ + r * 0.5, x + r * 0.7, y_ - r * 0.6), fill=(40, 130, 60, 255), width=5)
+            if st.get("name"):
+                d.text((x, y_ + r + 8), st["name"], font=fs, fill=ink + (255,), anchor="ma")
+        if m.get("here") is not None:                                                               # "you are here"
+            x, y_ = P_(m["stops"][m["here"]]["at"]) if isinstance(m["here"], int) else P_(m["here"])
+            bob = 6 * math.sin(2 * math.pi * 1.2 * t)
+            d.polygon([(x, y_ - ph * 0.05 + bob), (x - 14, y_ - ph * 0.10 + bob), (x + 14, y_ - ph * 0.10 + bob)],
+                      fill=COL["green"] + (255,), outline=INK + (255,))
+    fl = F("reg", ph0 * 0.06)
+    for ln in c.get("lines", []):
+        for w_ in wrap(ln, fl, pw * 0.84):
+            d.text((14 + pw * 0.08, y), w_, font=fl, fill=ink + (255,))
+            y += fl.size * 1.35
+    if c.get("tilt", -2.5):
+        pg = pg.rotate(c.get("tilt", -2.5), resample=Image.BICUBIC, expand=True)
+    side = c.get("side", "auto")
+    if side == "auto":                                      # the side of the screen he isn't on (where he is as it opens)
+        g = ANCH[str(min(int(c["t0"] * FPS), NF - 1))].get("grandpa")
+        side = "left" if g and g[2] and g[0] > W / 2 else "right"
+    cx = {"left": W * 0.27, "center": W * 0.5, "right": W * 0.73}[side] if WIDE else W * 0.5
+    cy = H * 0.52 + (1 - smooth((t - c["t0"]) / 0.35)) * H * 0.35 + smooth((t - (c["t1"] - 0.35)) / 0.35) * H * 0.35
+    if k < 1:
+        a_ = pg.getchannel("A").point(lambda v: int(v * k))
+        pg.putalpha(a_)
+    ov.alpha_composite(pg, (int(cx - pg.width / 2), int(cy - pg.height / 2)))
+
+
+def icon(d, kind, x, y, s, a):
+    """A little pixel-art item icon (Minecraft-style) centred at (x, y), s pixels across."""
+    u = s / 8.0
+    A = lambda col: col + (int(255 * a),)
+    px = lambda i, j, col, w=1, h=1: d.rectangle((x - 4 * u + i * u, y - 4 * u + j * u, x - 4 * u + (i + w) * u - 1,
+                                                   y - 4 * u + (j + h) * u - 1), fill=A(col))
+    if kind in ("map", "page"):
+        px(1, 1, PAPER_EDGE, 6, 6)
+        px(1.5, 1.5, PAPER, 5, 5)
+        if kind == "map":
+            for i, j in ((2, 5), (3, 4), (4, 4)):
+                px(i, j, INK_RED)
+            px(5, 2, INK_RED); px(4.5, 2.5, INK_RED); px(5.5, 2.5, INK_RED); px(5, 3, INK_RED)
+        else:
+            for j in (2.5, 3.5, 4.5):
+                px(2, j, INK_BROWN, 4, 0.5)
+    elif kind == "webcam":
+        px(1, 2, (60, 64, 72), 6, 4); px(3, 3, (20, 22, 26), 2, 2); px(3.5, 3.5, (110, 225, 255)); px(3, 6, (60, 64, 72), 2, 1)
+    elif kind == "hammer":
+        px(2, 1, (150, 155, 165), 5, 2); px(4, 3, (140, 96, 52), 1, 4)
+    elif kind == "key":
+        px(1, 2, (230, 190, 70), 3, 3); px(1.8, 2.8, (40, 40, 40), 1.4, 1.4); px(4, 3, (230, 190, 70), 3, 1); px(6, 4, (230, 190, 70)); px(5, 4, (230, 190, 70))
+    elif kind == "lantern":
+        px(3, 1, (60, 60, 60), 2, 1); px(2, 2, (60, 60, 60), 4, 5); px(2.5, 2.5, (255, 200, 90), 3, 4)
+    else:                                                   # a plain block in the item's colour
+        col = tuple(kind) if isinstance(kind, (list, tuple)) else (150, 110, 70)
+        px(1, 1, col, 6, 6); px(1, 1, tuple(min(255, v + 40) for v in col), 6, 1); px(1, 1, tuple(min(255, v + 20) for v in col), 1, 6)
+
+
+def inventory(d, c, t):
+    """A Minecraft-style hotbar (bottom right): an item pops into the next slot when he puts it away (its name shows
+    above it for a moment) and the slot lights up and empties when he takes it out.
+    {"style": "inventory", "when", "until", "slots": 5, "items": [{"icon": "map", "name": "Map", "in": t, "out": t}]}"""
+    k = env(t, c["t0"], c["t1"], 0.3, 0.3)
+    if k <= 0:
+        return
+    n = c.get("slots", 5)
+    sz = 64 if WIDE else 76
+    x1 = W - LAY["tag"][0]
+    y1 = H - (40 if WIDE else 260)
+    x0 = x1 - n * sz - 8
+    d.rectangle((x0, y1 - sz - 8, x1, y1), fill=(20, 20, 24, int(170 * k)), outline=(10, 10, 12, int(230 * k)), width=3)
+    slot = {}
+    for it in sorted(c["items"], key=lambda i: i["t_in"]):    # each item takes the first free slot when it goes in
+        if t < it["t_in"] - 0.6:
+            continue
+        busy = {s_ for s_, j in slot.items() if j["t_out"] is None or t < j["t_out"] + 0.5}
+        free = [i for i in range(n) if i not in busy]
+        if free:
+            slot[free[0]] = it
+    for i in range(n):
+        sx = x0 + 4 + i * sz
+        d.rectangle((sx + 3, y1 - sz - 1, sx + sz - 3, y1 - 7), outline=(120, 120, 128, int(200 * k)), width=2)
+        it = slot.get(i)
+        if not it:
+            continue
+        cx_, cy_ = sx + sz / 2, y1 - 4 - sz / 2
+        if t < it["t_in"]:                                  # flying in from above
+            u = smooth((t - (it["t_in"] - 0.6)) / 0.6)
+            icon(d, it.get("icon", "map"), cx_, cy_ - (1 - u) * 160, sz * 0.62 * (0.6 + 0.4 * u), k * u)
+            continue
+        out = it["t_out"] is not None and t >= it["t_out"]
+        if out:                                             # lifted out: slot flashes, icon rises and fades
+            u = (t - it["t_out"]) / 0.5
+            if u >= 1:
+                continue
+            d.rectangle((sx + 3, y1 - sz - 1, sx + sz - 3, y1 - 7), outline=(255, 255, 255, int(255 * k * (1 - u))), width=4)
+            icon(d, it.get("icon", "map"), cx_, cy_ - u * 60, sz * 0.62, k * (1 - u))
+            continue
+        if it.get("live"):                                  # the stream webcam: the selected slot, with a REC dot
+            d.rectangle((sx + 1, y1 - sz - 3, sx + sz - 1, y1 - 5), outline=(255, 255, 255, int(235 * k)), width=4)
+            pulse = 0.6 + 0.4 * math.sin(2 * math.pi * t / 1.6) ** 2
+            d.ellipse((sx + sz - 22, y1 - sz + 4, sx + sz - 10, y1 - sz + 16), fill=(230, 40, 40, int(255 * k * pulse)))
+        bump = 1 + 0.25 * math.sin(math.pi * min(1.0, (t - it["t_in"]) / 0.25))
+        if t - it["t_in"] < 0.5:
+            d.rectangle((sx + 3, y1 - sz - 1, sx + sz - 3, y1 - 7), outline=(255, 255, 255, int(255 * k)), width=4)
+        icon(d, it.get("icon", "map"), cx_, cy_, sz * 0.62 * bump, k)
+        if it.get("name") and t - it["t_in"] < 2.0:          # the item's name above the bar, like Minecraft
+            a_ = k * (1 - smooth((t - it["t_in"] - 1.4) / 0.6))
+            outlined(d, (cx_, y1 - sz - 34), it["name"], F("bold", 30), COL["white"], a_, stroke=4)
+
+
 def card(d, ov, c, t, f):
     style = c.get("style", "title")
     col = COL.get(c.get("color", "white"), COL["white"])
@@ -149,6 +313,12 @@ def card(d, ov, c, t, f):
         return
     if style == "word":                                        # a Word Card: {"word", "say", "meaning", "when", "until"}
         word(d, c, t)
+        return
+    if style == "page":                                        # a Page Card: the map / page he holds up, shown big
+        page(ov, c, t)
+        return
+    if style == "inventory":                                   # a Minecraft-style hotbar of what he has put away
+        inventory(d, c, t)
         return
     if style == "end":
         k = smooth((t - c["t0"]) / 0.4)

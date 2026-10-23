@@ -424,6 +424,8 @@ def _resolve_card(c, T):
         c["viewers"] = [[T(tv), n] for tv, n in c["viewers"]]
     if "rows" in c:
         c["rows"] = [dict(r, t=T(r.get("at", c.get("when", 0.0)))) for r in c["rows"]]
+    if "items" in c:                                         # "inventory": items going in / coming out [{"in", "out"}]
+        c["items"] = [dict(i, t_in=T(i["in"]), t_out=T(i["out"]) if i.get("out") is not None else None) for i in c["items"]]
     if "msgs" in c:                                          # "chat": viewer comments [{"at", "user", "text"}]
         c["msgs"] = [dict(m, t=T(m["at"])) for m in c["msgs"]]
     return c

@@ -131,11 +131,46 @@ else:
 md("""
 ## 4. Render (the long step, resumable)
 Each worker claims the next free ~1-minute segment: frames → overlay graphics → a visually lossless segment file,
-checked and then moved into `work/segments/`. Stops cleanly after `HOURS_THIS_SESSION`. **If the session ends, Run all
-again** (same letter): it carries on with its own unfinished segment.
+checked and then moved into `work/segments/`. Stops cleanly after `HOURS_THIS_SESSION`.
+* **"Reconnecting..." and it comes back:** the render kept running on the Colab machine -- just *Run all* again; this
+  cell re-attaches to it (it never starts a second one).
+* **"Runtime disconnected" / a new machine:** *Run all* again with the same letter -- it carries on from Drive.
+* Keep this browser tab open and the computer awake (Colab Pro stops when the tab closes).
 """)
 code("""
-gbl("render", *W_ARGS, "--hours", str(HOURS_THIS_SESSION))
+# The render runs in the background on this Colab machine; this cell only shows its progress. If the browser loses the
+# connection and comes back to the SAME machine, Run all again just re-attaches here -- it never starts a second render.
+import time
+LOG = "/content/render_worker_%s.log" % WORKER
+PIDF = "/content/render_worker_%s.pid" % WORKER
+def render_running():                             # the render this machine started (its process id is remembered)
+    try:
+        pid = int(open(PIDF).read())
+        return "gbl_final.py" in open("/proc/%d/cmdline" % pid).read() and \\
+            open("/proc/%d/stat" % pid).read().split(")")[-1].split()[0] != "Z"
+    except (OSError, ValueError):
+        return False
+if render_running():
+    print("a render is already running on this machine -- showing its progress (recent lines first)")
+    pos = max(0, os.path.getsize(LOG) - 4000) if os.path.exists(LOG) else 0
+else:
+    pos = os.path.getsize(LOG) if os.path.exists(LOG) else 0
+    proc = subprocess.Popen(TOOL + ["render", *W_ARGS, "--hours", str(HOURS_THIS_SESSION)], stdout=open(LOG, "a"),
+                            stderr=subprocess.STDOUT, start_new_session=True)
+    open(PIDF, "w").write(str(proc.pid))
+    print("render started in the background -- worker", WORKER, "| progress below (also in", LOG + ")")
+    time.sleep(5)
+while True:
+    with open(LOG, errors="replace") as f:
+        f.seek(pos)
+        chunk = f.read()
+        pos = f.tell()
+    if chunk:
+        print(chunk, end="", flush=True)
+    if not render_running():
+        break
+    time.sleep(15)
+print("\\nrender process finished for this session")
 """)
 
 md("## 5. Status")

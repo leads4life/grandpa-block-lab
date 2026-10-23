@@ -151,7 +151,8 @@ def page(ov, c, t):
     k = env(t, c["t0"], c["t1"], 0.35, 0.35)
     if k <= 0:
         return
-    ph0 = int(H * (0.62 if WIDE else 0.36)); pw = int(ph0 * 1.25)
+    ph0 = int(H * (0.62 if WIDE else 0.36))
+    pw = int(min(ph0 * 1.25, W * (0.40 if c.get("map") else 0.33))) if WIDE else int(ph0 * 1.25)   # stays to one side of him
     ph = ph0
     if not c.get("map"):                                     # text only: as tall as the words need
         fl_ = F("reg", ph0 * 0.06)
@@ -214,7 +215,8 @@ def page(ov, c, t):
     if side == "auto":                                      # the side of the screen he isn't on (where he is as it opens)
         g = ANCH[str(min(int(c["t0"] * FPS), NF - 1))].get("grandpa")
         side = "left" if g and g[2] and g[0] > W / 2 else "right"
-    cx = {"left": W * 0.27, "center": W * 0.5, "right": W * 0.73}[side] if WIDE else W * 0.5
+    edge = LAY["tag"][0] + pg.width / 2 - 10                                 # pinned to the screen edge, clear of him
+    cx = {"left": edge, "center": W * 0.5, "right": W - edge}[side] if WIDE else W * 0.5
     cy = H * 0.52 + (1 - smooth((t - c["t0"]) / 0.35)) * H * 0.35 + smooth((t - (c["t1"] - 0.35)) / 0.35) * H * 0.35
     if k < 1:
         a_ = pg.getchannel("A").point(lambda v: int(v * k))

@@ -93,6 +93,10 @@ Settled = settled: change an item only when the user asks. Details live in the o
   pocket, inventory hotbar; take it out only when needed (`propkit`). The webcam rides on his strap.
 
 ## 8. Sound and music
+- **Music: SHELVED (user, 2026-10-23)** until the channel shows monetization potential. No music in any episode for now.
+  Tested and kept on file: ElevenLabs Music v2.5 (free-credit test: morning theme x2, tension sting; free-tier output is
+  not cleared for commercial use -- a paid plan would be needed) and ACE-Step 1.5 (open source, commercial use OK, runs on
+  Colab) as the free route. MusicGen is out (non-commercial weights).
 - Each scene normalised to -14 LUFS. Scene sound design uses the engine's own procedural sounds.
 - Music: **parked** (user, 2026-10-22). Original piano themes exist (`devtools/piano_parked/`); never copy real songs or their
   exact chords (copyright / Content ID). If used: Salamander Grand Piano needs a CC BY credit in the description.

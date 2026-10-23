@@ -39,7 +39,7 @@ Episode 1 stays as approved (it renders on its pinned engines). All of this is f
    built in (the `face_patch` logic as the default), and a bl_verify check that fails any chat line seen side-on/back.
 2. **Fix at the source, not "accepted fails"**: collision-aware holds and staging so hand grazes and props in front of
    his face don't happen; accepted_fails should be empty by default and need a written reason.
-3. **Music**: original score per scene -- a theme under the Morning/Goodnight rituals, light tension stings at the
+3. **Music -- SHELVED (user, 2026-10-23): no music until the channel shows monetization potential.** When revived: original score per scene -- a theme under the Morning/Goodnight rituals, light tension stings at the
    stress points, quiet beds under builds; mixed under dialogue (ducked), never over a lesson line. Source: see
    music decision (ElevenLabs Music / Video-to-Music, or an open model on Colab). The piano experiment did not land.
 4. **Less talk, more show**: fewer lines per scene; reaction shots, hands-on building, silences where the picture tells it.

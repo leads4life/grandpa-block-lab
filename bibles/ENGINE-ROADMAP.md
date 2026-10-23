@@ -32,3 +32,18 @@ Goal: build the show's format into the engine, so every episode follows it by de
 ## 6. Already in (rev 3, 2026-10-22)
 look "camera"; grandpa hold_heading/face; outdoor lanterns and lamps on/off; Word Cards; recap panel rows; end card;
 qa seated_from; boar sniffs/grunts/roots; sfx owl/snore/spark/drone/switch/blow/zip/fizzle.
+
+## Rev 4 additions: "bake it all in" (user, 2026-10-23, after Episode 1)
+Episode 1 stays as approved (it renders on its pinned engines). All of this is for Episode 2 on.
+1. **Automatic face-the-lens**: every line addressed to chat gets a camera in front of his body + a look into the lens,
+   built in (the `face_patch` logic as the default), and a bl_verify check that fails any chat line seen side-on/back.
+2. **Fix at the source, not "accepted fails"**: collision-aware holds and staging so hand grazes and props in front of
+   his face don't happen; accepted_fails should be empty by default and need a written reason.
+3. **Music**: original score per scene -- a theme under the Morning/Goodnight rituals, light tension stings at the
+   stress points, quiet beds under builds; mixed under dialogue (ducked), never over a lesson line. Source: see
+   music decision (ElevenLabs Music / Video-to-Music, or an open model on Colab). The piano experiment did not land.
+4. **Less talk, more show**: fewer lines per scene; reaction shots, hands-on building, silences where the picture tells it.
+5. **Bigger world**: open landscape beyond the island edge for Episode 2's journey (distance, new places, the map's stops).
+6. **Approve before preview**: a contact sheet of every talking line + the camera plan for the user, before any preview render.
+7. **YouTube package**: hook in the first 5-8 s, chapters, thumbnail, end screen to the next episode.
+Done already (2026-10-23): hands free -- Page Card, inventory hotbar, fold-and-pocket, webcam on the strap.

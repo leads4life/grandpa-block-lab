@@ -20,28 +20,37 @@ Renders the whole episode at **native 1920×1080, 30 fps** from the production p
 and the **YouTube master** (4K upscale), and runs the final QA.
 
 **Before the first run**
-1. *Runtime → Change runtime type →* **T4 GPU**.
+1. *Runtime → Change runtime type →* **A100 GPU** (or L4; T4 works but is slow).
 2. *Runtime → Run all.*
-3. Step 1 shows a **Choose Files** button: pick `GBL_EP01_PRODUCTION.zip` from your computer. The notebook saves it
+3. Step 1 shows a **Choose Files** button: pick `GBL_EP01_PRODUCTION_v2.zip` from your computer. The notebook saves it
    in Google Drive (`MyDrive/block_lab/final/`), so later sessions don't ask again.
 
-**It is resumable.** The render is long (the benchmark in step 4 prints the estimate for your GPU). Colab sessions end
+**It is resumable.** The render is long (the benchmark in step 3 prints the estimate for your GPU). Colab sessions end
 after several hours: when that happens, just open the notebook again and *Run all*. Every finished ~1-minute segment
 and every finished frame is kept in Drive; nothing is rendered twice.
 
+**Several workers (optional, faster).** Make a copy of this notebook (*File → Save a copy in Drive*), open the copy,
+set `WORKER = "B"` in its first cell, choose a GPU and *Run all*. The workers share the segments out by themselves
+through the files in `work/` and never do the same one twice; if one session dies, another takes over its segment
+after 15 minutes. Each copy needs a **different letter** (A, B, C...). Close any older version of this notebook first.
+
 **Where things go** (`MyDrive/block_lab/final/`)
-* `work/`: the checkpoint (`manifest.json`), prepared scenes, the segment in progress, finished segments
+* `RENDER_STATUS.txt`: a small file to check from the Drive app -- which segments are COMPLETE, who is on what
+* `work/`: the checkpoint (`manifest.json` + `claims/`, `done/`), prepared scenes, frames in progress, finished segments
 * `masters/`: the archival master, the YouTube master, `AUDIO/` (final mix + stems, 48 kHz / 24-bit WAV), `QA/`
 """)
 
 code("""
 # ---- settings ----
 DRIVE_DIR = "/content/drive/MyDrive/block_lab/final"
-ZIP_NAME = "GBL_EP01_PRODUCTION.zip"
-HOURS_THIS_SESSION = 10.5    # stop cleanly before Colab ends the session (free tier: ~12 h max; Pro: raise it)
-RUN_BENCHMARK = True         # renders 3 heavy frames first and prints the time estimate (2-3 minutes)
+ZIP_NAME = "GBL_EP01_PRODUCTION_v2.zip"   # v2: several workers + RENDER_STATUS.txt
+WORKER = "A"                 # this session's letter: "A" here; a second copy of the notebook uses "B", a third "C"...
+HOURS_THIS_SESSION = 20      # stop cleanly before Colab ends the session (Colab Pro: up to ~24 h)
+RUN_BENCHMARK = True         # worker A only: renders 3 heavy frames first and prints the time estimate (2-3 minutes)
 
-import os, json, glob, shutil, subprocess, hashlib, sys
+import os, json, glob, shutil, subprocess, hashlib, sys, uuid
+SESSION = uuid.uuid4().hex[:8]                    # this notebook session (tells the workers' files apart)
+print("worker", WORKER, "| session", SESSION)
 from google.colab import drive
 drive.mount("/content/drive")
 WORK, OUT, PKG = DRIVE_DIR + "/work", DRIVE_DIR + "/masters", "/content/pkg/GBL_EP01_PRODUCTION"
@@ -59,7 +68,7 @@ code("""
 zp = os.path.join(DRIVE_DIR, ZIP_NAME)
 if not os.path.exists(zp):                       # first run: pick the zip on your computer; it is kept in Drive for later sessions
     from google.colab import files
-    print("Click 'Choose Files' below and pick %s from your computer (157 MB: takes a few minutes)." % ZIP_NAME)
+    print("Click 'Choose Files' below and pick %s from your computer (about 158 MB: takes a few minutes)." % ZIP_NAME)
     up = files.upload()
     zips = [n for n in up if n.lower().endswith(".zip")]
     assert zips, "That was not a .zip file -- run this cell again and pick %s" % ZIP_NAME
@@ -107,63 +116,65 @@ BPY = sorted(glob.glob(os.path.join(os.path.dirname(BLENDER), "*", "python", "bi
 """)
 
 md("""
-## 3. Prepare the 11 scenes
-Each scene gets the **exact engine it was approved on**, its approved story and its frozen voice, and is built in
-Blender. The plan is checked against the approved one. Prepared scenes are kept in Drive (fast on later runs).
+## 3. Benchmark (optional): how long will the render take on this GPU?
+Each scene is prepared when a worker first needs it: it gets the **exact engine it was approved on**, its approved
+story and its frozen voice, and is built in Blender (the plan is checked against the approved one).
 """)
 code("""
-gbl("prepare", "--pkg", PKG, "--work", WORK, "--blender", BLENDER)
-""")
-
-md("## 4. Benchmark (optional): how long will the render take on this GPU?")
-code("""
-if RUN_BENCHMARK and not os.path.exists(WORK + "/manifest.json"):
-    gbl("benchmark", "--pkg", PKG, "--work", WORK, "--blender", BLENDER)
+W_ARGS = ["--pkg", PKG, "--work", WORK, "--blender", BLENDER, "--worker", WORKER, "--session", SESSION]
+if RUN_BENCHMARK and WORKER == "A" and not os.path.exists(WORK + "/plan.json") and not os.path.exists(WORK + "/manifest.json"):
+    gbl("benchmark", *W_ARGS)
 else:
-    print("skipped (already rendering, or RUN_BENCHMARK = False)")
+    print("skipped (already rendering, another worker, or RUN_BENCHMARK = False)")
 """)
 
 md("""
-## 5. Render (the long step, resumable)
-Renders ~1-minute segments in order: frames → overlay graphics → a visually lossless segment file, checked and then
-moved into `work/segments/`. Stops cleanly after `HOURS_THIS_SESSION`. **If the session ends, Run all again.**
+## 4. Render (the long step, resumable)
+Each worker claims the next free ~1-minute segment: frames → overlay graphics → a visually lossless segment file,
+checked and then moved into `work/segments/`. Stops cleanly after `HOURS_THIS_SESSION`. **If the session ends, Run all
+again** (same letter): it carries on with its own unfinished segment.
 """)
 code("""
-gbl("render", "--pkg", PKG, "--work", WORK, "--blender", BLENDER, "--hours", str(HOURS_THIS_SESSION))
+gbl("render", *W_ARGS, "--hours", str(HOURS_THIS_SESSION))
 """)
 
-md("## 6. Status")
+md("## 5. Status")
 code("""
-gbl("status", "--pkg", PKG, "--work", WORK)
+gbl("status", *W_ARGS)
 m = json.load(open(WORK + "/manifest.json"))
 ALL_DONE = all(x["state"] == "COMPLETE" for x in m["segments"])
-print("\\nready to assemble" if ALL_DONE else "\\nnot finished yet: Run all again (in a new session if this one is ending)")
+print("\\nready to assemble" if ALL_DONE else "\\nnot finished yet: the other workers are still on it, or Run all again (a new session if this one is ending)")
 """)
 
 md("""
-## 7. Masters
+## 6. Masters
 * **Archival master**: the segments joined without re-encoding (1080p, 4:4:4, Rec.709) + 24-bit PCM audio (.mkv)
 * **YouTube master**: 4K (3840×2160) lanczos upscale of the 1080p render (labelled as upscaled), H.264 High,
   AAC-LC 384 kb/s, Rec.709, fast start. The 4K upload makes YouTube serve its higher-quality stream.
 """)
 code("""
+MINE = False
 if ALL_DONE:
-    gbl("assemble", "--pkg", PKG, "--work", WORK, "--out", OUT)
+    gbl("assemble", *W_ARGS, "--out", OUT)            # with several workers, only one builds the masters
+    asm = json.load(open(OUT + "/ASSEMBLY.json")) if os.path.exists(OUT + "/ASSEMBLY.json") else {}
+    MINE = asm.get("session") == SESSION
+    if not MINE:
+        print("another worker is building the masters -- its notebook runs the QA step")
 """)
 
-md("## 8. Final QA")
+md("## 7. Final QA")
 code("""
-if ALL_DONE:
-    gbl("qa", "--pkg", PKG, "--work", WORK, "--out", OUT)
+if ALL_DONE and MINE:
+    gbl("qa", *W_ARGS, "--out", OUT)
     rep = json.load(open(OUT + "/QA/final_qa_report.json"))
     print("\\nRESULT:", rep["result"])
     print("Upload this file to YouTube:", OUT + "/" + rep["youtube"])
 """)
 
-md("## 9. Look at a moment (720p clip, 20 s)")
+md("## 8. Look at a moment (720p clip, 20 s)")
 code("""
 START = "8:30"   # m:ss into the episode
-if ALL_DONE:
+if ALL_DONE and MINE:
     rep = json.load(open(OUT + "/QA/final_qa_report.json"))
     !ffmpeg -v error -y -ss {START} -t 20 -i "{OUT}/{rep['youtube']}" -vf scale=1280:-2 -c:v libx264 -crf 20 -c:a aac /content/look.mp4
     from IPython.display import Video

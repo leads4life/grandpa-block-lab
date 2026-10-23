@@ -4,14 +4,22 @@ This folder is everything needed to render the final episode. Nothing else has t
 
 ## How to run it (Google Colab, T4 GPU)
 1. Open `GBL_EP01_FINAL_RENDER.ipynb` in Colab (File → Upload notebook).
-2. Runtime → Change runtime type → **T4 GPU**. Runtime → **Run all**.
-3. Step 1 shows a **Choose Files** button: pick `GBL_EP01_PRODUCTION.zip` from your computer. The notebook keeps it in
+2. Runtime → Change runtime type → **A100 GPU** (or L4). Runtime → **Run all**.
+3. Step 1 shows a **Choose Files** button: pick `GBL_EP01_PRODUCTION_v2.zip` from your computer. The notebook keeps it in
    Google Drive (`MyDrive/block_lab/final/`), so later sessions don't ask again.
 4. When a session ends (Colab limits), open it again and **Run all**. It carries on where it stopped.
 5. When step 8 says **RESULT: PASS**, upload `masters/GBL_EP01_The_Boar_Next_Door_YOUTUBE_4K_UPSCALED_from1080p.mp4` to YouTube.
 
 Expect a total render time of roughly 10–18 hours on a T4 (step 4 measures your GPU and prints its own estimate). The time
 is spread over a few sessions. Google Drive needs about 10 GB free while rendering.
+
+## Several workers (optional, faster)
+Make a copy of the notebook (*File → Save a copy in Drive*), open the copy, set `WORKER = "B"` in its first cell, pick a
+GPU and *Run all*. A third copy would be `"C"`. The workers share the segments out by themselves through the files in
+`work/` (each claims the next free segment and keeps a heartbeat; a segment whose worker stops answering for 15 minutes is
+taken over by another). Whoever sees every segment COMPLETE builds the masters and runs QA.
+Check progress any time in **`MyDrive/block_lab/final/RENDER_STATUS.txt`** (open it in the Drive app). Nothing is ever
+downloaded to your computer automatically.
 
 ## What comes out (`MyDrive/block_lab/final/masters/`)
 | File | What it is |

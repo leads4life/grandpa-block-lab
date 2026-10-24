@@ -36,6 +36,7 @@ Settled = settled: change an item only when the user asks. Details live in the o
 - Hook at second 0 in the middle of the action; no setup, no countdown, no stage-building (builds: time-lapse <= 2 s).
 - Something new every 2-3 s; a cutaway or graphic for every comparison; don't repeat a demo that already proved it.
 - End with a playful debate prompt, no end card, no trailing pause; the last line loops into the first frame.
+- Pick a world that fits the topic (not the default desert); vary it Short to Short; cutaways on the island, clear of trees.
 - A/B: keep A, post B as its own Short; compare "viewed vs swiped away" + "average % viewed" after 48-72 h.
 
 ## 3. Story, lessons and episode format

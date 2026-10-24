@@ -290,6 +290,10 @@ Shorts follow these on top of the bibles (Grandpa, kindness, kid safety, honest 
    (e.g. "An elephant with an ant-sized parachute... what happens?"). Comments keep people on the video.
 6. **Seamless loop.** No end card and no trailing pause in a Short; the last line runs straight into the first frame
    (last line "...and that's exactly why, when you drop an ant..." -> first frame: the drop). Rewatches count.
-7. **A/B testing.** Keep the original (A) up; post the new cut (B) as its own Short with its own title; after 48-72 h
+7. **A world that fits the topic, varied from Short to Short** (the default is the desert because a story without a
+   "world" gets it): ants -> grass meadow; snow science -> snow; water/tides -> beach; city topics -> paris/stone;
+   and a time of day / weather that suits it. Cutaway props go on the island (radius ~2.7 m), clear of its trees
+   (grass: (-2.0, 0.9), (1.9, -1.2), (-1.6, -1.7)) and out of the main shots' view; hide them after their shot.
+8. **A/B testing.** Keep the original (A) up; post the new cut (B) as its own Short with its own title; after 48-72 h
    compare "Viewed vs. swiped away" and "Average percentage viewed" in YouTube Studio, and keep what wins as the
    template. (YouTube's built-in Test & Compare only tests titles/thumbnails, not the video itself.)

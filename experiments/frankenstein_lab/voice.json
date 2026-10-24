@@ -1,0 +1,35 @@
+{
+ "parts": [
+  {
+   "id": "night",
+   "text": "It was on a dreary night of November that I beheld the accomplishment of my toils.",
+   "start": 1.2,
+   "end": 7.085
+  },
+  {
+   "id": "spark",
+   "text": "With an anxiety that almost amounted to agony, I collected the instruments of life around me, that I might infuse a spark of being into the lifeless thing that lay at my feet.",
+   "start": 7.685,
+   "end": 19.728
+  },
+  {
+   "id": "candle",
+   "text": "It was already one in the morning; the rain pattered dismally against the panes, and my candle was nearly burnt out,",
+   "start": 20.428,
+   "end": 27.988
+  },
+  {
+   "id": "eye",
+   "text": "when, by the glimmer of the half-extinguished light, I saw the dull yellow eye of the creature open;",
+   "start": 28.338,
+   "end": 35.096
+  },
+  {
+   "id": "limbs",
+   "text": "it breathed hard, and a convulsive motion agitated its limbs.",
+   "start": 35.596,
+   "end": 40.328
+  }
+ ],
+ "total": 43.528
+}

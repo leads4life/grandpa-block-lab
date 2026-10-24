@@ -32,6 +32,12 @@ Settled = settled: change an item only when the user asks. Details live in the o
 - 16:9 1920x1080, 30 fps, -14 LUFS.
 - Episode 1 = scenes 001-011, ~8.5 min. Episode 2 onward: lessons lead, a build in every segment (see 3).
 
+## 2b. Shorts (user, 2026-10-24) -- see PRODUCTION-BIBLE "Shorts: built to be watched..."
+- Hook at second 0 in the middle of the action; no setup, no countdown, no stage-building (builds: time-lapse <= 2 s).
+- Something new every 2-3 s; a cutaway or graphic for every comparison; don't repeat a demo that already proved it.
+- End with a playful debate prompt, no end card, no trailing pause; the last line loops into the first frame.
+- A/B: keep A, post B as its own Short; compare "viewed vs swiped away" + "average % viewed" after 48-72 h.
+
 ## 3. Story, lessons and episode format
 - **Lessons lead; the story serves them.** Lessons can be about anything (Mister Rogers): feelings, nature, weather, safety,
   how things work. **Every segment teaches through a build** (it's Block Lab); one main build + small builds. Rituals excepted.

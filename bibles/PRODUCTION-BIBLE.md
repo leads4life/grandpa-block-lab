@@ -272,3 +272,24 @@ A matching Morning Ritual opens episodes from Episode 2 (hook first, then "Is th
 - Engine: a hold key's `"scale"` folds a prop; `"pocket": true` on a hold records it in the continuity file
   (`"pocketed"`), so the next scene starts with it in his pocket. Helpers: `engine/generators/propkit.py`
   (`show_and_pocket`, `take_out`, `clip_webcam`).
+
+## Shorts: built to be watched, rewatched and shared (user, 2026-10-24; from YouTube's feedback on the ant Short)
+Shorts follow these on top of the bibles (Grandpa, kindness, kid safety, honest science, face the lens).
+1. **Hook in the first 2 seconds, in the middle of the action.** Open on the payoff moment (the drop, the crack, the
+   splash) at second 0, then ask "Wait, what? Why did that just happen?". A counterintuitive line beats a question
+   setup ("Drop an ant from a plane... nothing happens."). No intro, no title card, no walking into position.
+2. **Relentless pacing.** Cut the setup: no countdowns, no building the stage, no getting into position. Every 2-3 s
+   something new: a new camera angle, a cutaway, a pop-up graphic, a new fact. Hold on Grandpa only while he says
+   something that needs his face. Don't repeat a demo that proved the point already (the ant Short's parachute test).
+   Builds in a Short are fast (time-lapse, <= 2 s) or already done; the long-form keeps the full Bob-the-Builder routine.
+3. **Show every comparison.** Never leave numbers on a static shot: a quick cutaway or graphic for each one
+   (a walking shoe for "walking speed", a block car for "car speed", a falling silhouette for a person).
+4. **Shareable utility.** Pick questions people have wondered about but never looked up; explain it so a viewer could
+   repeat it at dinner (one idea, one plain sentence, one picture).
+5. **A friendly debate prompt at the end** instead of "subscribe": a playful hypothetical on screen
+   (e.g. "An elephant with an ant-sized parachute... what happens?"). Comments keep people on the video.
+6. **Seamless loop.** No end card and no trailing pause in a Short; the last line runs straight into the first frame
+   (last line "...and that's exactly why, when you drop an ant..." -> first frame: the drop). Rewatches count.
+7. **A/B testing.** Keep the original (A) up; post the new cut (B) as its own Short with its own title; after 48-72 h
+   compare "Viewed vs. swiped away" and "Average percentage viewed" in YouTube Studio, and keep what wins as the
+   template. (YouTube's built-in Test & Compare only tests titles/thumbnails, not the video itself.)

@@ -69,7 +69,7 @@ wav.write(os.path.join(HERE, "mix.wav"), SR, (stereo * 32767).astype(np.int16))
 # ---- captions: each passage split into short phrases, timed by their share of words
 FD = "/usr/share/fonts/truetype/dejavu"
 fcap, ftag, ftitle, fsub = (ImageFont.truetype(os.path.join(FD, n), s) for n, s in
-                            (("DejaVuSans-Bold.ttf", 52), ("DejaVuSans-Bold.ttf", 30), ("DejaVuSerif-Bold.ttf", 120), ("DejaVuSerif.ttf", 40)))
+                            (("DejaVuSans-Bold.ttf", 52), ("DejaVuSans-Bold.ttf", 30), ("DejaVuSerif-Bold.ttf", 92), ("DejaVuSerif.ttf", 40)))
 caps = []
 for p in V["parts"]:
     words = p["text"].split()

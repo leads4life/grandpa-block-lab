@@ -3,7 +3,7 @@ frames/
 *.blend1
 mix.wav
 *.mp4
-render.log
+*.log
 sheet.png
 face.png
 preview/

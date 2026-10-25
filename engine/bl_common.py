@@ -397,6 +397,8 @@ def make_plan(story=None):
                 engine_rev=int(story.get("engine_rev", 1)),     # 2: fixes that would change already-approved scenes
                 target_duration=story.get("target_duration"), qa=story.get("qa", {}), scene=story.get("scene", {}),
                 cards=[_resolve_card(c, T) for c in story.get("cards", [])])
+    if "captions" in story:                                     # "srt": no captions in the picture, a .srt file for YouTube
+        plan["captions"] = story["captions"]                    # (left out when unset, so older plans stay byte-identical)
     return plan
 
 

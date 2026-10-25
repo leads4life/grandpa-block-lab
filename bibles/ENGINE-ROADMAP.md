@@ -46,4 +46,6 @@ Episode 1 stays as approved (it renders on its pinned engines). All of this is f
 5. **Bigger world**: open landscape beyond the island edge for Episode 2's journey (distance, new places, the map's stops).
 6. **Approve before preview**: a contact sheet of every talking line + the camera plan for the user, before any preview render.
 7. **YouTube package**: hook in the first 5-8 s, chapters, thumbnail, end screen to the next episode.
+8. **Captions as a YouTube file, not in the picture (episodes)** -- DONE 2026-10-25: `"captions": "srt"` -> no burned
+   captions + `<slug>.srt` for Studio. Shorts keep burned captions. (PRODUCTION-BIBLE, "Captions: one set only".)
 Done already (2026-10-23): hands free -- Page Card, inventory hotbar, fold-and-pocket, webcam on the strap.

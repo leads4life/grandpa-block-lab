@@ -429,6 +429,20 @@ def captions(d, t):
                 t0 += dur
 
 
+def write_srt(path):
+    """The lines as a YouTube caption file: exact text and timings, Grandpa's words spelled right (no auto-captions)."""
+    def ts(x):
+        ms = int(round(x * 1000))
+        return "%02d:%02d:%02d,%03d" % (ms // 3600000, ms // 60000 % 60, ms // 1000 % 60, ms % 1000)
+    rows = []
+    for i, ln in enumerate(P["lines"], 1):
+        who = ln.get("who")
+        rows.append("%d\n%s --> %s\n%s%s\n" % (i, ts(ln["start"]), ts(ln["end"] + 0.2), (who.upper() + ": ") if who else "",
+                                                 ln["text"].replace("...", "…")))
+    open(path, "w", encoding="utf-8").write("\n".join(rows))
+    print("wrote", path)
+
+
 def dream(base, c, t):
     """The TV dream / flashback look: the picture ripples, softens and glows, with hazy edges -- fading in and out."""
     import numpy as np
@@ -475,7 +489,7 @@ def compose(args):
             continue
         card(d, ov, c, t, f)
         d = ImageDraw.Draw(ov)
-    if t < end_t:
+    if t < end_t and P.get("captions", "burned") == "burned":         # "srt": YouTube shows them instead (write_srt)
         captions(d, t)
     img.alpha_composite(ov)
     return img.convert("RGB").tobytes()
@@ -501,6 +515,8 @@ def main():
             ff.stdin.write(buf)
     ff.stdin.close(); ff.wait()
     print("wrote", out)
+    if P.get("captions") == "srt":
+        write_srt(os.path.splitext(out)[0] + ".srt")
 
 
 if __name__ == "__main__":

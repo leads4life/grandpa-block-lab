@@ -297,3 +297,14 @@ Shorts follow these on top of the bibles (Grandpa, kindness, kid safety, honest 
 8. **A/B testing.** Keep the original (A) up; post the new cut (B) as its own Short with its own title; after 48-72 h
    compare "Viewed vs. swiped away" and "Average percentage viewed" in YouTube Studio, and keep what wins as the
    template. (YouTube's built-in Test & Compare only tests titles/thumbnails, not the video itself.)
+
+## Captions: one set only (user, 2026-10-25; new builds from the raccoon episode on)
+- **Long episodes (16:9): no captions burned into the picture.** The story sets `"captions": "srt"`; `bl_overlay.py` then
+  draws none and writes `<slug>.srt` beside the MP4 (exact text and timings from the voice, names spelled right, other
+  speakers labelled e.g. `TOBIAS:`). Upload that file in YouTube Studio → Subtitles. It beats auto-captions (words like
+  "dexterous" come out right), viewers can turn it on or off, and it never collides with the Word Cards, Page Card,
+  chat or hotbar. Only one caption set ever shows.
+- **Shorts (9:16): keep burned-in captions** (unset, or `"captions": "burned"`). Most Shorts are watched muted, and the
+  big captions hold attention. Do not upload an .srt for a Short (that would make two sets).
+- Unset means `"burned"`, so every older scene rebuilds byte-identical.
+- Episode 1 is already rendered with burned-in captions: upload no caption file for it.

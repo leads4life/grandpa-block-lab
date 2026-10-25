@@ -222,6 +222,8 @@ def sfx(kind):
     if kind == "gush":           # water rushing out of a gate: a full, rushing hiss
         t = tt(1.0)
         return (lp(n(1.0), 2500) * 0.7 + bp(n(1.0), 300, 1200) * 0.4) * np.minimum(1.0, t / 0.05) * np.exp(-np.maximum(0, t - 0.7) * 8)
+    if kind == "chitter_far":    # a raccoon's chitter from deep in the woods: faint and reverberant (a hook sting)
+        return lp(reverb(chitter(), 1.0, 0.55), 3500) * 0.6
     if kind == "clap":           # one hand clap: a sharp, bright slap
         t = tt(0.12)
         return bp(n(0.12), 900, 6000) * np.exp(-t * 55) * 1.2

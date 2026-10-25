@@ -7,10 +7,10 @@
  "captions": "srt",
  "channel_tag": "GRANDPA'S BLOCK LAB",
  "start": 0.5,
- "tail": 2.0,
+ "tail": 1.1987,
  "seed": 104,
  "blink": true,
- "target_duration": 56,
+ "target_duration": 55,
  "engine_rev": 4,
  "scene": {
   "episode": "raccoon_lift",
@@ -56,8 +56,8 @@
       0.8999999999999999
      ],
      "visible": [
-      25.079999999999995,
-      57.5
+      24.607999999999993,
+      55.63333333333333
      ]
     },
     {
@@ -73,8 +73,8 @@
       0.8999999999999999
      ],
      "visible": [
-      25.079999999999995,
-      57.5
+      24.607999999999993,
+      55.63333333333333
      ]
     },
     {
@@ -90,8 +90,8 @@
       2.33
      ],
      "visible": [
-      25.079999999999995,
-      57.5
+      24.607999999999993,
+      55.63333333333333
      ]
     }
    ]
@@ -121,7 +121,7 @@
   {
    "id": "heavy",
    "text": "Heavy side goes down. The other side goes up.",
-   "pause": 4.45
+   "pause": 4.712
   },
   {
    "id": "seesaw",
@@ -8138,7 +8138,7 @@
    "rise": 0.45,
    "drop": 0.07,
    "when": -10.0,
-   "until": 57.5
+   "until": 55.633
   },
   {
    "type": "trip",
@@ -8159,7 +8159,7 @@
    "rise": 0.45,
    "drop": 0.07,
    "when": -10.0,
-   "until": 57.5,
+   "until": 55.633,
    "sound_at": [
     -4.4,
     1.95,
@@ -8170,14 +8170,14 @@
    "type": "spin",
    "target": "wheel",
    "axis": "x",
-   "degrees": -7254.545,
+   "degrees": -7050.909,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -9.0,
-   "until": 57.5,
+   "until": 55.633,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -8185,14 +8185,14 @@
    "type": "spin",
    "target": "axle",
    "axis": "x",
-   "degrees": -7254.545,
+   "degrees": -7050.909,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -9.0,
-   "until": 57.5,
+   "until": 55.633,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -8200,14 +8200,14 @@
    "type": "spin",
    "target": "cam1",
    "axis": "x",
-   "degrees": -7254.545,
+   "degrees": -7050.909,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -9.0,
-   "until": 57.5,
+   "until": 55.633,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -8215,14 +8215,14 @@
    "type": "spin",
    "target": "cam2",
    "axis": "x",
-   "degrees": -7254.545,
+   "degrees": -7050.909,
    "pivot": [
     -50,
     10,
     5
    ],
    "when": -8.45,
-   "until": 57.5,
+   "until": 55.633,
    "ease": false,
    "ticks_per_turn": 0
   },
@@ -8231,7 +8231,7 @@
    "target": "webcam",
    "hand": "none",
    "when": -1.0,
-   "until": 57.5,
+   "until": 55.633,
    "reach": 0.05,
    "keys": [
     {
@@ -8250,7 +8250,7 @@
      ]
     },
     {
-     "t": 57.5,
+     "t": 55.633,
      "at": {
       "char": [
        -0.09,
@@ -8271,7 +8271,7 @@
    "target": "cam_cap",
    "hand": "none",
    "when": -1.0,
-   "until": 57.5,
+   "until": 55.633,
    "reach": 0.05,
    "keys": [
     {
@@ -8290,7 +8290,7 @@
      ]
     },
     {
-     "t": 57.5,
+     "t": 55.633,
      "at": {
       "char": [
        -0.09,
@@ -8309,7 +8309,7 @@
   {
    "type": "face_camera",
    "when": -1.0,
-   "until": 4.9
+   "until": 4.733
   },
   {
    "type": "hold",
@@ -8436,7 +8436,7 @@
    "type": "face",
    "expr": "smile",
    "when": 0.5,
-   "until": 5.0,
+   "until": 4.833,
    "set": {
     "smile": 0.6
    }
@@ -8452,7 +8452,7 @@
    "target": "blueprint",
    "hand": "R",
    "when": 1.2,
-   "until": 16.8,
+   "until": 16.35,
    "reach": 0.35,
    "grip": [
     0.0,
@@ -8494,7 +8494,7 @@
      "scale": 1.0
     },
     {
-     "t": 15.9,
+     "t": 15.45,
      "at": {
       "char": [
        -0.1,
@@ -8510,7 +8510,7 @@
      "scale": 1.0
     },
     {
-     "t": 16.3,
+     "t": 15.85,
      "at": {
       "char": [
        -0.1,
@@ -8526,7 +8526,7 @@
      "scale": 0.35
     },
     {
-     "t": 16.8,
+     "t": 16.35,
      "at": {
       "char": [
        -0.1,
@@ -8551,19 +8551,19 @@
   },
   {
    "type": "face_camera",
-   "when": 5.0,
-   "until": 9.8
+   "when": 4.833,
+   "until": 9.661
   },
   {
    "type": "face_camera",
-   "when": 9.8,
-   "until": 16.4
+   "when": 9.661,
+   "until": 15.95
   },
   {
    "type": "face",
    "expr": "raised",
-   "when": 10.0,
-   "until": 16.2,
+   "when": 9.861,
+   "until": 15.75,
    "set": {
     "brow": 0.7
    }
@@ -8571,19 +8571,19 @@
   {
    "type": "sfx",
    "sound": "page",
-   "when": 16.0,
+   "when": 15.55,
    "gain": 0.6
   },
   {
    "type": "face_camera",
-   "when": 16.5,
-   "until": 19.1
+   "when": 16.05,
+   "until": 18.628
   },
   {
    "type": "face",
    "expr": "smile",
-   "when": 16.8,
-   "until": 19.2,
+   "when": 16.35,
+   "until": 18.728,
    "set": {
     "smile": 1.0
    }
@@ -8591,14 +8591,14 @@
   {
    "type": "pose",
    "pose": "blocks_up",
-   "when": 17.4,
-   "until": 19.3,
+   "when": 16.95,
+   "until": 18.828,
    "ease": 0.2
   },
   {
    "type": "look",
-   "when": 19.2,
-   "until": 26.78,
+   "when": 18.728,
+   "until": 26.308,
    "body": true,
    "rate": 0.3,
    "pos": [
@@ -8610,8 +8610,8 @@
   {
    "type": "remove",
    "target": "foodbox",
-   "when": 19.3,
-   "until": 19.7,
+   "when": 18.828,
+   "until": 19.228,
    "stand_at": [
     -3.6,
     0.3,
@@ -8621,8 +8621,8 @@
   {
    "type": "remove",
    "target": "platform",
-   "when": 19.75,
-   "until": 20.15,
+   "when": 19.278,
+   "until": 19.678,
    "stand_at": [
     -3.6,
     0.3,
@@ -8632,8 +8632,8 @@
   {
    "type": "remove",
    "target": "braces",
-   "when": 20.2,
-   "until": 20.7,
+   "when": 19.728,
+   "until": 20.228,
    "stand_at": [
     -3.6,
     0.3,
@@ -8643,8 +8643,8 @@
   {
    "type": "remove",
    "target": "posts",
-   "when": 20.75,
-   "until": 21.55,
+   "when": 20.278,
+   "until": 21.078,
    "stand_at": [
     -3.6,
     0.3,
@@ -8654,8 +8654,8 @@
   {
    "type": "build",
    "target": "frame_posts",
-   "when": 21.6,
-   "until": 23.4,
+   "when": 21.128,
+   "until": 22.928,
    "stand_at": [
     -3.6,
     0.3,
@@ -8666,8 +8666,8 @@
   {
    "type": "build",
    "target": "beam",
-   "when": 23.48,
-   "until": 24.28,
+   "when": 23.008,
+   "until": 23.808,
    "stand_at": [
     -3.6,
     0.3,
@@ -8678,8 +8678,8 @@
   {
    "type": "build",
    "target": "pulley_box",
-   "when": 24.36,
-   "until": 24.61,
+   "when": 23.888,
+   "until": 24.138,
    "stand_at": [
     -3.6,
     0.3,
@@ -8690,8 +8690,8 @@
   {
    "type": "build",
    "target": "pulley_bkt",
-   "when": 24.69,
-   "until": 24.94,
+   "when": 24.218,
+   "until": 24.468,
    "stand_at": [
     -3.6,
     0.3,
@@ -8702,8 +8702,8 @@
   {
    "type": "build",
    "target": "liftbox",
-   "when": 25.02,
-   "until": 26.02,
+   "when": 24.548,
+   "until": 25.548,
    "stand_at": [
     -3.6,
     0.3,
@@ -8714,8 +8714,8 @@
   {
    "type": "build",
    "target": "bucket",
-   "when": 26.1,
-   "until": 26.7,
+   "when": 25.628,
+   "until": 26.228,
    "stand_at": [
     -3.6,
     0.3,
@@ -8731,14 +8731,14 @@
     0.0
    ],
    "via": [],
-   "when": 26.88,
-   "until": 27.53,
+   "when": 26.408,
+   "until": 27.058,
    "face": "path"
   },
   {
    "type": "look",
-   "when": 27.08,
-   "until": 27.98,
+   "when": 26.608,
+   "until": 27.508,
    "body": true,
    "rate": 0.3,
    "pos": [
@@ -8750,16 +8750,16 @@
   {
    "type": "pose",
    "pose": "pick_low",
-   "when": 27.33,
-   "until": 27.93,
+   "when": 26.858,
+   "until": 27.458,
    "ease": 0.2
   },
   {
    "type": "hold",
    "target": "stone_w",
    "hand": "R",
-   "when": 27.68,
-   "until": 29.58,
+   "when": 27.208,
+   "until": 29.108,
    "reach": 0.3,
    "grip": [
     0.0,
@@ -8768,7 +8768,7 @@
    ],
    "keys": [
     {
-     "t": 27.68,
+     "t": 27.208,
      "at": [
       -3.3,
       0.15,
@@ -8781,7 +8781,7 @@
      ]
     },
     {
-     "t": 28.08,
+     "t": 27.608,
      "at": {
       "char": [
        -0.14,
@@ -8796,7 +8796,7 @@
      ]
     },
     {
-     "t": 29.18,
+     "t": 28.708,
      "at": {
       "char": [
        -0.14,
@@ -8811,7 +8811,7 @@
      ]
     },
     {
-     "t": 29.58,
+     "t": 29.108,
      "at": [
       -4.45,
       0.7,
@@ -8833,14 +8833,14 @@
     0.0
    ],
    "via": [],
-   "when": 27.98,
-   "until": 29.18,
+   "when": 27.508,
+   "until": 28.708,
    "face": "path"
   },
   {
    "type": "look",
-   "when": 28.98,
-   "until": 31.58,
+   "when": 28.508,
+   "until": 31.108,
    "body": true,
    "rate": 0.3,
    "pos": [
@@ -8852,20 +8852,20 @@
   {
    "type": "pose",
    "pose": "drop_in",
-   "when": 29.13,
-   "until": 29.78,
+   "when": 28.658,
+   "until": 29.308,
    "ease": 0.2
   },
   {
    "type": "hold",
    "target": "stone_w",
    "hand": "none",
-   "when": 29.63,
-   "until": 35.78,
+   "when": 29.158,
+   "until": 35.308,
    "reach": 0.05,
    "keys": [
     {
-     "t": 29.63,
+     "t": 29.158,
      "at": [
       -4.45,
       0.7,
@@ -8878,7 +8878,7 @@
      ]
     },
     {
-     "t": 29.73,
+     "t": 29.258,
      "at": [
       -4.45,
       0.7,
@@ -8891,7 +8891,7 @@
      ]
     },
     {
-     "t": 29.972,
+     "t": 29.5,
      "at": [
       -4.45,
       0.7,
@@ -8904,7 +8904,7 @@
      ]
     },
     {
-     "t": 30.213,
+     "t": 29.741,
      "at": [
       -4.45,
       0.7,
@@ -8917,7 +8917,7 @@
      ]
     },
     {
-     "t": 30.455,
+     "t": 29.983,
      "at": [
       -4.45,
       0.7,
@@ -8930,7 +8930,7 @@
      ]
     },
     {
-     "t": 30.697,
+     "t": 30.225,
      "at": [
       -4.45,
       0.7,
@@ -8943,7 +8943,7 @@
      ]
     },
     {
-     "t": 30.938,
+     "t": 30.466,
      "at": [
       -4.45,
       0.7,
@@ -8956,7 +8956,7 @@
      ]
     },
     {
-     "t": 31.18,
+     "t": 30.708,
      "at": [
       -4.45,
       0.7,
@@ -8969,7 +8969,7 @@
      ]
     },
     {
-     "t": 35.78,
+     "t": 35.308,
      "at": [
       -4.45,
       0.7,
@@ -8986,7 +8986,7 @@
   {
    "type": "sfx",
    "sound": "clink",
-   "when": 29.63,
+   "when": 29.158,
    "gain": 0.6
   },
   {
@@ -8997,8 +8997,8 @@
     0.0,
     -0.5
    ],
-   "when": 29.73,
-   "until": 31.18
+   "when": 29.258,
+   "until": 30.708
   },
   {
    "type": "slide",
@@ -9008,8 +9008,8 @@
     0.0,
     0.5
    ],
-   "when": 29.73,
-   "until": 31.18
+   "when": 29.258,
+   "until": 30.708
   },
   {
    "type": "spin",
@@ -9021,8 +9021,8 @@
     7,
     22
    ],
-   "when": 29.73,
-   "until": 31.18
+   "when": 29.258,
+   "until": 30.708
   },
   {
    "type": "spin",
@@ -9034,42 +9034,42 @@
     7,
     22
    ],
-   "when": 29.73,
-   "until": 31.18
+   "when": 29.258,
+   "until": 30.708
   },
   {
    "type": "sfx",
    "sound": "creak",
-   "when": 29.83,
+   "when": 29.358,
    "gain": 0.4
   },
   {
    "type": "face",
    "expr": "smile",
-   "when": 30.03,
-   "until": 33.93,
+   "when": 29.558,
+   "until": 33.196,
    "set": {
     "smile": 0.8
    }
   },
   {
    "type": "face_camera",
-   "when": 31.23,
-   "until": 33.83
+   "when": 30.758,
+   "until": 33.096
   },
   {
    "type": "pose",
    "pose": "reach_out",
-   "when": 35.38,
-   "until": 36.08,
+   "when": 34.908,
+   "until": 35.608,
    "ease": 0.2
   },
   {
    "type": "hold",
    "target": "stone_w",
    "hand": "R",
-   "when": 35.78,
-   "until": 37.38,
+   "when": 35.308,
+   "until": 36.908,
    "reach": 0.3,
    "grip": [
     0.0,
@@ -9078,7 +9078,7 @@
    ],
    "keys": [
     {
-     "t": 35.78,
+     "t": 35.308,
      "at": [
       -4.45,
       0.7,
@@ -9091,7 +9091,7 @@
      ]
     },
     {
-     "t": 36.28,
+     "t": 35.808,
      "at": {
       "char": [
        -0.14,
@@ -9106,7 +9106,7 @@
      ]
     },
     {
-     "t": 36.98,
+     "t": 36.508,
      "at": {
       "char": [
        -0.2,
@@ -9121,7 +9121,7 @@
      ]
     },
     {
-     "t": 37.38,
+     "t": 36.908,
      "at": [
       -4.25,
       0.25,
@@ -9143,8 +9143,8 @@
     0.0,
     0.5
    ],
-   "when": 36.03,
-   "until": 37.48
+   "when": 35.558,
+   "until": 37.008
   },
   {
    "type": "slide",
@@ -9154,8 +9154,8 @@
     0.0,
     -0.5
    ],
-   "when": 36.03,
-   "until": 37.48
+   "when": 35.558,
+   "until": 37.008
   },
   {
    "type": "spin",
@@ -9167,8 +9167,8 @@
     7,
     22
    ],
-   "when": 36.03,
-   "until": 37.48
+   "when": 35.558,
+   "until": 37.008
   },
   {
    "type": "spin",
@@ -9180,25 +9180,25 @@
     7,
     22
    ],
-   "when": 36.03,
-   "until": 37.48
+   "when": 35.558,
+   "until": 37.008
   },
   {
    "type": "sfx",
    "sound": "creak",
-   "when": 36.13,
+   "when": 35.658,
    "gain": 0.35
   },
   {
    "type": "hold",
    "target": "stone_w",
    "hand": "none",
-   "when": 37.43,
-   "until": 57.5,
+   "when": 36.958,
+   "until": 55.633,
    "reach": 0.05,
    "keys": [
     {
-     "t": 37.43,
+     "t": 36.958,
      "at": [
       -4.25,
       0.25,
@@ -9211,7 +9211,7 @@
      ]
     },
     {
-     "t": 57.5,
+     "t": 55.633,
      "at": [
       -4.25,
       0.25,
@@ -9227,14 +9227,14 @@
   },
   {
    "type": "face_camera",
-   "when": 37.78,
-   "until": 41.88
+   "when": 37.308,
+   "until": 41.134
   },
   {
    "type": "face",
    "expr": "content",
-   "when": 38.08,
-   "until": 41.98
+   "when": 37.608,
+   "until": 41.234
   },
   {
    "type": "move",
@@ -9244,14 +9244,14 @@
     0.0
    ],
    "via": [],
-   "when": 41.88,
-   "until": 42.58,
+   "when": 41.134,
+   "until": 41.834,
    "face": "path"
   },
   {
    "type": "look",
-   "when": 42.08,
-   "until": 43.88,
+   "when": 41.334,
+   "until": 43.134,
    "body": false,
    "rate": 0.3,
    "pos": [
@@ -9263,28 +9263,28 @@
   {
    "type": "pose",
    "pose": "point_up",
-   "when": 42.28,
-   "until": 43.88,
+   "when": 41.534,
+   "until": 43.134,
    "ease": 0.25
   },
   {
    "type": "face",
    "expr": "raised",
-   "when": 42.28,
-   "until": 47.18,
+   "when": 41.534,
+   "until": 46.087,
    "set": {
     "brow": 0.8
    }
   },
   {
    "type": "face_camera",
-   "when": 43.88,
-   "until": 47.08
+   "when": 43.134,
+   "until": 45.987
   },
   {
    "type": "look",
-   "when": 47.88,
-   "until": 49.48,
+   "when": 46.787,
+   "until": 48.387,
    "body": true,
    "rate": 0.25,
    "pos": [
@@ -9296,27 +9296,27 @@
   {
    "type": "face",
    "expr": "smile",
-   "when": 48.48,
-   "until": 51.78,
+   "when": 47.387,
+   "until": 50.506,
    "set": {
     "smile": 0.6
    }
   },
   {
    "type": "face_camera",
-   "when": 49.48,
-   "until": 51.68
+   "when": 48.387,
+   "until": 50.406
   },
   {
    "type": "face_camera",
-   "when": 51.78,
-   "until": 57.5
+   "when": 50.506,
+   "until": 55.633
   },
   {
    "type": "face",
    "expr": "smirk",
-   "when": 52.08,
-   "until": 57.5
+   "when": 50.806,
+   "until": 55.633
   }
  ],
  "camera": [
@@ -9332,7 +9332,7 @@
    "dist": 1.6
   },
   {
-   "at": 17.7667,
+   "at": 17.3333,
    "target": [
     -3.6,
     0.3,
@@ -9343,29 +9343,29 @@
    "dist": 1.6
   },
   {
-   "at": 17.8,
+   "at": 17.3667,
    "target": [
-    -4.15,
-    0.55,
-    1.2
+    -4.1,
+    0.6,
+    1.3
    ],
-   "az": 110,
-   "el": 23,
-   "dist": 5.85
+   "az": 108,
+   "el": 17,
+   "dist": 5.75
   },
   {
-   "at": 27.0667,
+   "at": 26.6,
    "target": [
-    -4.15,
-    0.55,
-    1.2
+    -4.1,
+    0.6,
+    1.3
    ],
-   "az": 110,
-   "el": 23,
-   "dist": 5.85
+   "az": 108,
+   "el": 17,
+   "dist": 5.75
   },
   {
-   "at": 27.1,
+   "at": 26.6333,
    "target": [
     -4.1,
     0.5,
@@ -9376,7 +9376,7 @@
    "dist": 3.36
   },
   {
-   "at": 37.7667,
+   "at": 37.3,
    "target": [
     -4.1,
     0.5,
@@ -9387,7 +9387,7 @@
    "dist": 3.36
   },
   {
-   "at": 37.8,
+   "at": 37.3333,
    "target": [
     -4.45,
     0.3,
@@ -9398,7 +9398,7 @@
    "dist": 1.6
   },
   {
-   "at": 41.9667,
+   "at": 41.2333,
    "target": [
     -4.45,
     0.3,
@@ -9409,7 +9409,7 @@
    "dist": 1.6
   },
   {
-   "at": 42.0,
+   "at": 41.2667,
    "target": [
     -4.1,
     0.4,
@@ -9420,7 +9420,7 @@
    "dist": 2.42
   },
   {
-   "at": 48.1667,
+   "at": 47.0667,
    "target": [
     -4.1,
     0.4,
@@ -9431,7 +9431,7 @@
    "dist": 2.42
   },
   {
-   "at": 48.2,
+   "at": 47.1,
    "target": [
     -4.2,
     0.15,
@@ -9460,17 +9460,17 @@
    "until": "end",
    "msgs": [
     {
-     "at": 37.58,
+     "at": 37.108,
      "user": "TobiasBuilds",
      "text": "like a seesaw on a rope"
     },
     {
-     "at": 47.28,
+     "at": 46.187,
      "user": "GardenGranny",
      "text": "where does the water come from dear?"
     },
     {
-     "at": 54.48,
+     "at": 52.618,
      "user": "BoarFan2009",
      "text": "RIVER POWER"
     }
@@ -9502,7 +9502,7 @@
     {
      "icon": "map",
      "name": "Blueprint",
-     "in": 16.8
+     "in": 16.35
     }
    ]
   },
@@ -9510,19 +9510,19 @@
    "style": "panel",
    "y": "top",
    "border": "amber",
-   "when": 38.08,
-   "until": 42.08,
+   "when": 37.608,
+   "until": 41.334,
    "rows": [
     {
      "text": "COUNTERWEIGHT",
      "color": "white",
-     "at": 38.18,
+     "at": 37.708,
      "size": 40
     },
     {
      "text": "the heavy side goes down, the other side goes up",
      "color": "cyan",
-     "at": 39.28,
+     "at": 38.808,
      "size": 28
     }
    ]
@@ -9625,7 +9625,7 @@
    },
    "style": "page",
    "when": 1.9,
-   "until": 16.0
+   "until": 15.55
   }
  ],
  "qa": {

@@ -11,6 +11,7 @@ sys.path.insert(0, HERE); sys.path.insert(0, "/home/user/blocklab")
 from storykit import orbit, auto_frame, gp, fix_path
 from forest_camkit import clear_air, solid_free, both, make_los
 from propkit import STRAP
+from raccoon_camkit import BLOCKERS as SIGHT_BLOCKERS
 FPS = 30
 SLUG = "raccoon_lift_scene03"
 S2 = json.load(open("/home/user/blocklab/stories/raccoon_lift_scene02.json"))
@@ -238,7 +239,7 @@ TOWER_BOX = ((-4.75, 0.25, 0.0), (-4.25, 0.75, 1.8))
 TOWER_FREE = lambda eye: not all(TOWER_BOX[0][i] - 0.15 <= eye[i] <= TOWER_BOX[1][i] + 0.15 for i in range(3))
 AIR = both(clear_air, WALL_FREE, TOWER_FREE)
 PATH = both(solid_free, WALL_FREE, TOWER_FREE)
-LOS = make_los([TOWER_BOX])
+LOS = make_los([TOWER_BOX] + SIGHT_BLOCKERS)
 cam = []
 def framed(t, must, tgt, az, el, d, *a, **kw):
     for dk, dz in ((1.0, 0), (1.0, 35), (1.0, -35), (1.3, 0), (1.3, 35), (1.3, -35), (1.3, 70), (1.3, -70)):

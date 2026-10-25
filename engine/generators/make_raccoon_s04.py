@@ -12,6 +12,7 @@ sys.path.insert(0, HERE); sys.path.insert(0, "/home/user/blocklab")
 from storykit import orbit, auto_frame, gp, fix_path
 from forest_camkit import clear_air, solid_free, both, make_los
 from propkit import STRAP, SHOW_R, take_out, show_and_pocket
+from raccoon_camkit import BLOCKERS as SIGHT_BLOCKERS
 FPS = 30
 SLUG = "raccoon_lift_scene04"
 S3 = json.load(open("/home/user/blocklab/stories/raccoon_lift_scene03.json"))
@@ -265,7 +266,7 @@ FRAME_BOX = ((-4.8, 0.6, 0.0), (-3.6, 0.8, 2.6))
 FRAME_FREE = lambda eye: not all(FRAME_BOX[0][i] - 0.2 <= eye[i] <= FRAME_BOX[1][i] + 0.2 for i in range(3))
 AIR = both(clear_air, WALL_FREE, FRAME_FREE)
 PATH = both(solid_free, WALL_FREE, FRAME_FREE)
-LOS = make_los([])
+LOS = make_los(SIGHT_BLOCKERS)
 cam = []
 def framed(t, must, tgt, az, el, d, *a, **kw):
     for dk, dz in ((1.0, 0), (1.0, 35), (1.0, -35), (1.3, 0), (1.3, 35), (1.3, -35), (1.3, 70), (1.3, -70)):
@@ -282,7 +283,7 @@ def cut(t, *a, **kw):
 LIFT_PTS = [(-4.7, 0.7, 0.02), (-3.7, 0.7, 0.02), (-4.7, 0.7, 2.5), (-3.7, 0.7, 2.5)]
 SHOTS = [
     (0.0, (gp(*G0)[1:], (G0[0], G0[1], 0.85), -25, 8, 1.6)),
-    (LS["ready"] + 1.0, (gp(*G0) + LIFT_PTS, (-4.15, 0.55, 1.2), -20, 8, 3.6)),
+    (LS["ready"] + 1.0, (gp(*G0)[1:] + [(-4.7, 0.7, 2.5), (-3.7, 0.7, 2.5), (BX, 0.7, Z0), (KX, 0.7, Z0)], (-4.1, 0.6, 1.3), 80, 17, 4.6)),
     (PICK - 0.6, (gp(*G_BKT) + [(KX, 0.7, Z0), (BX, 0.7, Z0 + 0.3 + TRAVEL), STONE0], (-4.1, 0.5, 0.7), -30, 10, 2.4)),
     (LS["seesaw"] - 0.3, (gp(*G_BKT)[1:], (G_BKT[0], G_BKT[1], 0.85), -15, 8, 1.6)),
     (LS["under"] - 0.3, (gp(G_BKT[0] + 0.25, 0.15) + [(BX, 0.7, Z0 + 0.3)], (-4.1, 0.4, 0.8), -20, 10, 2.2)),

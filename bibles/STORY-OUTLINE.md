@@ -55,3 +55,22 @@ never confirmed: every alien "clue" has a real answer. Lessons lead; a build in 
 | Goodnight Ritual | recap: map, triangles, weather, space, slope | sting: a new red-ink page and a pressed flower ("Aliens. With a garden.") |
 Needs: the valley terrain (see ENGINE-ROADMAP). The page writer (proposed): GardenGranny, his childhood building friend.
 
+
+---
+
+# STANDALONE (unnumbered): "Grandpa vs. the Raccoon Bandits: The Water-Balance Lift" (beat sheet APPROVED 2026-10-25)
+Corrections baked in: an "old-time water-balance lift" (not "ancient"); no feeding (the raccoons go to the stream for
+crayfish); Grandpa rides the platform only about 1 m up, as a safety beat ("Never ride a load lift"). Files: `raccoon_lift_sceneNN`.
+
+| # | Scene | Beat |
+|---|---|---|
+| 01 | The Raid | Cold open + Morning Ritual; tracks like tiny hands; rebuild the crate, stone lid; eyes under the cabin. Script: `scenes/raccoon_lift/scene01_script.md` |
+| 02 | Locks Don't Work | Word Card DEXTEROUS; the test latch is opened by tiny hands |
+| 03 | Up High, But... | Tower + platform (raccoons climb) |
+| 04 | The Big Idea | Counterweight; pulley + rope; blueprint on the Page Card |
+| 05 | Test 1: Cabbage Launch | A sluice gate fills the bucket too fast |
+| 06 | Test 2: Stuck Halfway | ~1 m ride; "Never ride a load lift"; a stone-weight scale |
+| 07 | Calibration Montage | Block and tackle; mechanical advantage; Word Card PULLEY |
+| 08 | The Brake | Drain valve; egg test; smooth metal baffles |
+| 09 | Night Showdown | 3 raccoons climb, slide, try a raccoon tower ("NO CAP, CHAT!") |
+| 10 | Goodnight, Chat | Tea; no feeding; the raccoons go to the stream for crayfish; Goodnight Ritual |

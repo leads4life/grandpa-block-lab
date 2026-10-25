@@ -45,7 +45,7 @@ STUMP_TOP = 0.5
 VENT = (-1.728, -0.3)
 
 # ---------------------------------------------------------------- the raccoons: a mama and two kits
-G_FAR = (-3.2, 0.78)                                                # where he watches from that evening (well back)
+G_FAR = (-3.3, 0.72)                                                # where he watches from that evening (well back)
 
 # ---------------------------------------------------------------- lines
 LINES = [("moved", "They moved the STONE?!", dict(lens=False, why="shouted at the mess, like Scene 01's cold open")),
@@ -119,7 +119,7 @@ face("smile", s, e + 0.3, set=dict(smile=1.0))
 B0 = e + 0.4
 act(type="remove", target="lid", when=round(B0 + 0.7, 3), until=round(B0 + 1.5, 3), stand_at=[G_LID[0], G_LID[1], 0.0])
 act(type="remove", target="leaves", when=round(B0 + 1.9, 3), until=round(B0 + 2.4, 3), stand_at=[G1[0], G1[1], 0.0])
-act(type="build", target="lid2", when=round(B0 + 2.5, 3), until=round(B0 + 4.3, 3), stand_at=[G1[0], G1[1], 0.0], order="x")
+act(type="build", target="lid2", when=round(B0 + 2.5, 3), until=round(B0 + 4.3, 3), stand_at=[G1[0], G1[1] + 0.07, 0.0], order="x")
 act(type="build", target="hook", when=round(B0 + 4.4, 3), until=round(B0 + 4.7, 3), stand_at=[G1[0], G1[1], 0.0], order="z")
 sfx("clink", B0 + 4.65, 0.7)
 look(B0 + 0.4, B0 + 4.9, pos=(CRATE_C[0], CRATE_C[1], 0.3), body=True, rate=0.3)
@@ -134,7 +134,7 @@ face("smirk", s, e + 0.4)
 
 # 3. that evening: the light goes golden; he watches from far back
 TC = e + 1.0                                                        # "THAT EVENING..." card (the cut lands here)
-walk(TC - 0.2, TC + 1.4, G_FAR, via=[(-2.9, 0.55)])
+walk(TC - 0.2, TC + 1.4, G_FAR, via=[(-3.0, 0.45)])
 pose("crouch_watch", TC + 1.5, 99.0, ease=0.4)
 MAMA_IN = TC + 1.9
 ARRIVE = MAMA_IN + 2.0
@@ -150,6 +150,7 @@ act(type="spin", target="lid2", axis="y", degrees=100.0, pivot=HINGE, when=round
 sfx("door_creak", OPEN + 0.2, 0.25)
 face("surprised", OPEN, OPEN + 0.9, set=dict(brow=1.3))
 s, e = say("three", 0.4, at=OPEN + 1.0)
+to_lens(s - 0.3, e + 0.2)
 face("worried", s, e + 0.3)
 WORD0 = None
 s, e = say("dext", 0.4)
@@ -289,17 +290,23 @@ for t, (must, tgt, az, el, d) in SHOTS:
 INS = (FID0 - 0.2, OPEN + 1.0)                                      # insert: the little hands at the hook (a cutaway)
 tc = math.ceil(INS[0] * FPS - 1e-6) / FPS
 tc1 = math.ceil(INS[1] * FPS - 1e-6) / FPS
-cam += [dict(cam[-1], at=round(tc - 1.0 / FPS, 4)), orbit(tc, (CRATE_W - 0.05, 0.0, 0.26), 160, 14, 0.85),
-        orbit(tc1 - 1.0 / FPS, (CRATE_W - 0.05, 0.0, 0.28), 166, 16, 0.8)]
+cam += [dict(cam[-1], at=round(tc - 1.0 / FPS, 4)), orbit(tc, (CRATE_W - 0.05, 0.0, 0.26), 215, 18, 0.7),
+        orbit(tc1 - 1.0 / FPS, (CRATE_W - 0.05, 0.0, 0.28), 210, 18, 0.68)]
 SHOTS2 = [
     (INS[1], (gp(*G_FAR)[1:], (G_FAR[0], G_FAR[1], 0.75), 200, 8, 1.6)),
-    # the clap: wide -- him, the crate, the corner she runs to, the vent
-    (CLAP - 0.4, (gp(*G_FAR)[1:] + CRATE_PTS + [(M_CORNER[0], M_CORNER[1], 0.05), (VENT[0] - 0.07, VENT[1], 0.08)], (-2.55, 0.1, 0.45), 150, 20, 2.6)),
     (LS["bandit"] - 0.3, (gp(*G_FAR)[1:], (G_FAR[0], G_FAR[1], 0.75), 200, 8, 1.6)),
     (LS["up"] - 0.3, (gp(*G_FAR) + [(G_FAR[0], G_FAR[1], 1.3)], (G_FAR[0], G_FAR[1], 0.8), 205, 6, 1.9)),
 ]
 for t, (must, tgt, az, el, d) in SHOTS2:
+    if t > RUN0:
+        break
     cam += cut(t, must, tgt, az, el, d, AIR, los=LOS)
+RUNSHOT = (RUN0 + 0.35, LS["bandit"] - 0.3)                         # cutaway: she runs to the corner, the kits peek out
+cam += cut(RUNSHOT[0], CRATE_PTS + [(M_CORNER[0], M_CORNER[1], 0.05), (M_CORNER[0], M_CORNER[1], 0.25), (VENT[0] - 0.07, VENT[1], 0.08)],
+           (-2.2, -0.3, 0.2), 180, 12, 1.7, AIR, los=LOS)
+for t, (must, tgt, az, el, d) in SHOTS2:
+    if t > RUN0:
+        cam += cut(t, must, tgt, az, el, d, AIR, los=LOS)
 cam, PATCHED = fix_path(cam, AIR, who_at, path_clear=PATH)
 
 CHAT += [(LE["three"] + 0.3, "GardenGranny", "clever girl"), (LE["mama"] + 0.4, "TobiasBuilds", "raccoon moms raise kits alone. thats a lot of mouths"),
@@ -315,12 +322,13 @@ W = {k: v for k, v in S1["world"].items() if k not in ("clouds_pass", "critters"
 W.update(time="morning", door_open=[-2.0, -1.0, 125.0], critters=[mama] + kits,
          clouds_pass=[[round(TC + 1.6, 3), 2.0, 0.55, [1.0, 0.62, 0.32], True]])   # evening falls during the card, and stays
 story = dict(title="Locks Don't Work", slug=SLUG, voice="am_santa", speed=0.95, format="wide", captions="srt",
-             channel_tag="GRANDPA'S BLOCK LAB", start=LS["moved"], tail=round(tail, 4), seed=102, blink=True, target_duration=65,
+             channel_tag="GRANDPA'S BLOCK LAB", start=LS["moved"], tail=round(tail, 4), seed=102, blink=True, target_duration=round(FILM),
              engine_rev=4, scene=dict(episode="raccoon_lift", scene=2, name="Locks Don't Work", previous="raccoon_lift_scene01",
                                       next="raccoon_lift_scene03"),
              world=W, lines=lines, grandpa=dict(start=list(G_IN), outfit=S1["grandpa"]["outfit"]),
              poses=dict(S1["poses"], **POSES), structures=S, actions=sorted(A, key=lambda a: a["when"]), camera=cam, cards=cards,
-             qa=dict(frame_points=["hat", "face", "chest"], cutaways=[[math.floor(tc * 1000) / 1000 - 0.001, math.ceil(tc1 * 1000) / 1000 + 0.001]],
+             qa=dict(frame_points=["hat", "face", "chest"], cutaways=[[math.floor(tc * 1000) / 1000 - 0.001, math.ceil(tc1 * 1000) / 1000 + 0.001],
+                                                                 [math.floor(RUNSHOT[0] * FPS) / FPS - 0.001, math.ceil(RUNSHOT[1] * FPS) / FPS + 0.001]],
                      solid=["crate", "lid2", "stump", "wheel", "anvil", "pivot_frame", "head"]))
 json.dump(story, open("/home/user/blocklab/stories/%s.json" % SLUG, "w"), indent=1)
 print("film %.2f s" % FILM)

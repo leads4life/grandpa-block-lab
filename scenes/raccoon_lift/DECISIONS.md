@@ -13,3 +13,7 @@
 | 06 | "Stuck halfway" is explained by the leaking plug (in = out, so the weight stays the same) | Honest physics for the stop, and it makes BALANCED a real lesson |
 | 06 | The ride lasts ~1 m and ends by draining him back down; then the plain safety line | The agreed correction; no peril played for laughs beyond "I may have made a mistake" |
 | 06 | The bucket becomes a barrel, under a platform | A bucket of water could never lift him; a barrel can (honest scale) |
+| 07 | Block and tackle reversed (moving pulley on the barrel): the box rises twice as far as the barrel drops | Solves the "only as high as the barrel falls" limit honestly, and teaches the trade |
+| 08 | The brake is a water valve; baffles are smooth metal collars | Real-world solutions; the egg test makes "gentle" visible |
+| 09 | No "NO CAP, CHAT!" | The bible keeps it for genuine fear; he is delighted, not scared |
+| 10 | The sting is a little hand on the window | Ends warm and funny; she is outside, he stays inside (no contact) |

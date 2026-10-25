@@ -210,6 +210,18 @@ def sfx(kind):
         return mix(block_sound("wood", 0.85), thunk(1.1, 0.08) * 0.6, np.pad(sfx("clatter") * 0.5, (int(0.12 * SR), 0)))
     if kind == "thud":           # a heavy stone slab dropped on a wooden crate: a deep thunk and a stony knock
         return mix(thunk(0.45, 0.3) * 1.2, block_sound("stone", 0.7) * 0.9, np.pad(block_sound("planks", 0.8) * 0.4, (int(0.03 * SR), 0)))
+    if kind == "splash":         # something landing in the stream: a watery plop, then droplets
+        t = tt(0.7)
+        plop = np.sin(2 * np.pi * np.cumsum(420 + 900 * np.exp(-t * 18)) / SR) * np.exp(-t * 14) * 0.6
+        spray = bp(n(0.7), 1500, 7000) * np.exp(-t * 7) * 0.35
+        drops = np.zeros(len(t))
+        for dt in (0.18, 0.27, 0.36, 0.5):
+            x = tt(0.05); j = int(dt * SR); g = np.sin(2 * np.pi * (1800 + 900 * rng.random()) * x) * np.exp(-x * 90) * 0.15
+            drops[j:j + len(g)] += g[:len(t) - j]
+        return plop + spray + drops
+    if kind == "gush":           # water rushing out of a gate: a full, rushing hiss
+        t = tt(1.0)
+        return (lp(n(1.0), 2500) * 0.7 + bp(n(1.0), 300, 1200) * 0.4) * np.minimum(1.0, t / 0.05) * np.exp(-np.maximum(0, t - 0.7) * 8)
     if kind == "clap":           # one hand clap: a sharp, bright slap
         t = tt(0.12)
         return bp(n(0.12), 900, 6000) * np.exp(-t * 55) * 1.2

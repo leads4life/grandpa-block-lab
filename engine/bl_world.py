@@ -617,7 +617,7 @@ def build_rigging(sc, P, R, fps):
     """'rigging' (Raccoon Lift): ropes, water filling a bucket, and pouring water -- each follows its structure's slides.
     {"ropes": [{"top": [x, y, z], "follow": name, "at": [x, y, z], "width": m}],     # a rope from a fixed pulley down to
      "fills": [{"follow": name, "at": [x, y, z], "size": [w, d, h], "level": [[t, 0..1], ...]}],   # water in a bucket
-     "pours": [{"from": [x, y, z], "follow": name, "at": [x, y, z], "on": [[t0, t1], ...], "width": m}]}
+     "pours": [{"from": [x, y, z], "follow": name, "at": [x, y, z], "on": [[t0, t1], ...], "width": m, "from_follow": name}]}
     Every "at" is the world point with the structure at rest (before its slides)."""
     import bl_common as Cm
     rope_m = VK.pixel_material("Rope", (0.50, 0.40, 0.24), (0.70, 0.58, 0.38), 0.004, bump=0.3)
@@ -664,7 +664,10 @@ def build_rigging(sc, P, R, fps):
             t = f / fps
             if any(t0 <= t <= t1 for t0, t1 in e["on"]):
                 wob = 0.003 * math.sin(2 * math.pi * 7.0 * t)
-                place(o, e["from"], [at(e, t)[0] + wob, at(e, t)[1], at(e, t)[2]], e.get("width", 0.03), f)
+                src = e["from"]                                     # "from_follow": the source moves too (a bucket's drain)
+                if e.get("from_follow"):
+                    src = [src[j] + Cm.slide_offset(P, e["from_follow"], t)[j] for j in range(3)]
+                place(o, src, [at(e, t)[0] + wob, at(e, t)[1], at(e, t)[2]], e.get("width", 0.03), f)
             else:
                 o.scale = (0, 0, 0); o.keyframe_insert("scale", frame=f)
 

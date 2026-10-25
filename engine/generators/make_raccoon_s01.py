@@ -116,7 +116,7 @@ POSES = {
     "point_low": dict(lean=0.2, hand_R={"char": [-0.12, -0.42, 0.55]}),
     "dust_hands": dict(hand_R={"char": [-0.05, -0.28, 0.72]}, hand_L={"char": [0.05, -0.28, 0.74]}),
     "blocks_up": dict(lean=-0.1, hand_R={"char": [-0.22, -0.1, 1.3]}),
-    "reach_mug": dict(lean=0.05, hand_L=dict(obj="mug", off=[0.095, 0.0, 0.09])),   # hand on the handle (Episode 1)
+    "reach_mug": dict(lean=0.05, hand_L=dict(obj="mug", off=[0.095, 0.0, 0.13]), hand_R={"char": [-0.22, -0.02, 0.5]}),   # hand on the handle (Episode 1)
 }
 G_IN = (-1.45, 0.66)                                                # just inside the open door
 G1 = (-2.35, 0.52)                                                 # at the wreck (north of it): the crate's build spot too

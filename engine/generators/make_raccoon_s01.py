@@ -171,7 +171,7 @@ s, e = say("hot", 0.0, at=SIP + 1.3)
 to_lens(s - 0.2, e + 0.2)
 face("smile", e - 0.7, e + 0.5, set=dict(smile=0.9))
 CHAT0 = e + 0.4
-REG = [("GardenGranny", "good morning dear ☕"), ("lurker_77", "👀"), ("BoarFan2009", "WAS IT THE BOAR??"), ("TobiasBuilds", "morning grandpa")]
+REG = [("GardenGranny", "good morning dear ☕"), ("lurker_77", "*lurking*"), ("BoarFan2009", "WAS IT THE BOAR??"), ("TobiasBuilds", "morning grandpa")]
 CHAT = [(CHAT0 + 0.9 * k, u, x) for k, (u, x) in enumerate(REG)]
 VIEWERS = [[0.0, 0]] + [[round(CHAT0 - 0.3 + 0.9 * k, 3), k + 1] for k in range(4)]
 face("content", CHAT0, CHAT0 + 3.6)

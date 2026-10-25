@@ -141,3 +141,10 @@ Settled = settled: change an item only when the user asks. Details live in the o
   (4K lanczos upscale, AAC 384k). The time-skip card sits in the upper third (not over Grandpa's face).
 - Scene 003 "prints" line keeps its original camera: a front camera there puts the trip-hammer helve across his chin
   (he works facing the machine). Face-the-lens is for lines TO chat, not discovery beats looking at the ground.
+
+## Lessons from Raccoon Lift Scene 01 (2026-10-25)
+- Overlay font (DejaVu) has no colour emoji: 👀 shows as an empty box. Simple symbols (☕) work. Chat uses words (*lurking*).
+- Blocks sit ~5 cm higher than a structure's `at` z; flat decals (extras) go at local z ≈ world + 0.046 (Scene 009's page ink).
+- Props set down for him to pick up: waist-high (0.5 m), handle toward the hand that takes it, he stands ~0.4 m back,
+  the free hand kept at his side (a swinging forearm clips). Fixed in engine rev 4: no extra spin on pick-up.
+- Contact sheet before preview caught: invisible prints, mug not in hand, a prop blocking the lens. Keep it.

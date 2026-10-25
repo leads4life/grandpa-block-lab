@@ -37,6 +37,7 @@ qa seated_from; boar sniffs/grunts/roots; sfx owl/snore/spark/drone/switch/blow/
 Episode 1 stays as approved (it renders on its pinned engines). All of this is for Episode 2 on.
 1. **Automatic face-the-lens**: every line addressed to chat gets a camera in front of his body + a look into the lens,
    built in (the `face_patch` logic as the default), and a bl_verify check that fails any chat line seen side-on/back.
+   -- DONE 2026-10-25: `bl_lens.py` + bl_verify check (engine_rev 4).
 2. **Fix at the source, not "accepted fails"**: collision-aware holds and staging so hand grazes and props in front of
    his face don't happen; accepted_fails should be empty by default and need a written reason.
 3. **Music -- SHELVED (user, 2026-10-23): no music until the channel shows monetization potential.** When revived: original score per scene -- a theme under the Morning/Goodnight rituals, light tension stings at the

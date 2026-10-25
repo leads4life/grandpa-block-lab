@@ -308,3 +308,13 @@ Shorts follow these on top of the bibles (Grandpa, kindness, kid safety, honest 
   big captions hold attention. Do not upload an .srt for a Short (that would make two sets).
 - Unset means `"burned"`, so every older scene rebuilds byte-identical.
 - Episode 1 is already rendered with burned-in captions: upload no caption file for it.
+
+## Face the lens, automatically (rev 4, 2026-10-25)
+- Pipeline step after `bl_scene.py`: `bl_lens.py --fix`, then `bl_common.py` + `bl_scene.py` again, then `bl_lens.py`.
+  It measures, frame by frame, the angle between where his face points and the lens on every chat line (limit 45 deg
+  median). For each side-on line it adds a camera square in front of his body (clear air by ray tests, his framing
+  points in the picture, nothing between lens and face) and a look into the lens. Report: `build/lens.json`.
+- A line is a chat line unless it has `"who"`, `"to": "<name>"` (talking to someone in the scene) or `"lens": false`
+  with a `"why"`. `bl_verify` (engine_rev >= 4) fails every side-on chat line and every `"lens": false` with no reason.
+- When it says **restage**, rewrite the moment: he stops walking to say the line, or turns to chat first. Lines he says
+  while walking into a wall can't be shot face-on (first tested on Ep 1 Scene 002: 3/8 face-on became 7/8 in one pass).

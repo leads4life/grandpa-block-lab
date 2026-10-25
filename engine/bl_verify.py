@@ -371,6 +371,15 @@ for who in sorted({l["who"] for l in P["lines"] if l.get("who")}):  # e.g. Tobia
         check("%s's mouth moves on: \"%s\"" % (who, ln["text"][:38]), max(ang[f] for f in fs) > 4.0)
     check("%s's mouth closed between his lines" % who, max(ang[f] for f in range(NF) if f not in mine) < 0.5)
 
+if P.get("engine_rev", 1) >= 4:                                   # rev 4: every line to chat is said into the lens
+    import bl_lens as LZ
+    st_ = C.load_story(os.path.join(C.BUILD, "story.json"))
+    for r in LZ.measure(sc, arm, P, st_):
+        check("faces the lens on: \"%s\"" % r["text"][:44], r["ok"],
+              "voice-over (his face is not in the picture)" if r["median_deg"] is None else "%s, median %.0f deg (limit %.0f)" % (
+                  r["verdict"], r["median_deg"], LZ.LIMIT))
+    told = [l for l in st_["lines"] if l.get("lens") is False and not l.get("why")]
+    check("every line kept off the lens says why", not told, ", ".join(l["id"] for l in told))
 sr, x = wav.read(os.path.join(C.BUILD, "audio", "stem_build.wav"))
 x = x.astype(float)
 e = np.convolve(x ** 2, np.ones(48) / 48, mode="same")

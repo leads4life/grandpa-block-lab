@@ -8,3 +8,5 @@
 | 02 | Mama comes from the woods; the kits peek from the vent | The vent (Scene 01, 22 x 10 cm) is kit-sized; a grown raccoon would not fit |
 | 03 | The tower stands by the stream, clear of the pines | The lift needs water (the stream, Rule 1) and raccoons jump from branches, so no tree within reach |
 | 03 | The food box is built on top by Block Lab "magic"; he mentions the ladder rule instead of climbing | Keeps Grandpa off a ladder on screen; "Never ride a load lift" is saved for Scene 06 |
+| 05 | The flume comes from upstream on trestles; the stream itself stays level in the picture | Water must run downhill to fill a bucket that hangs 1.6 m up; the upstream end is out of frame (honest: mill races and flumes start upstream) |
+| 05 | The launched cabbage lands in the stream and is fished out | No food left lying around for the raccoons (no feeding) |

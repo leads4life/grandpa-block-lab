@@ -593,12 +593,16 @@ def build_cabin(sc, roof=False):
 
 
 def build_clouds_pass(sc, W, fps):
-    """'clouds_pass': [[t_mid, half_width_s, depth(, sun_rgb)]] -- a cloud slides over the sun: sunlight and sky dim, then recover."""
+    """'clouds_pass': [[t_mid, half_width_s, depth(, sun_rgb(, hold))]] -- a cloud slides over the sun: sunlight and sky dim,
+    then recover. With hold true the light dims from t_mid - half_width to t_mid and stays (evening falls)."""
     sun, bg = sc.objects["Sun"].data, sc.world.node_tree.nodes["Background"].inputs["Strength"]
     e0, s0 = sun.energy, bg.default_value
     keys, c0 = [(0.0, 1.0, None)], tuple(sun.color)
     for tm, hw, depth, *tint in W["clouds_pass"]:                  # optional 4th value: the sun's colour at the dimmest (a dusk)
         tc = tuple(tint[0]) if tint else None
+        if len(tint) > 1 and tint[1]:                              # optional 5th value true: evening falls and stays
+            keys += [(tm - hw, 1.0, tc), (tm, 1 - depth, tc)]       # (from tm - hw to tm, then held to the end)
+            continue
         keys += [(tm - hw, 1.0, tc), (tm - hw * 0.4, 1 - depth, tc), (tm + hw * 0.4, 1 - depth, tc), (tm + hw, 1.0, tc)]
     for t, k, tc in sorted(keys, key=lambda q: q[0]):
         f = max(0, round(t * fps))

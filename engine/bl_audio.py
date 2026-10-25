@@ -210,6 +210,9 @@ def sfx(kind):
         return mix(block_sound("wood", 0.85), thunk(1.1, 0.08) * 0.6, np.pad(sfx("clatter") * 0.5, (int(0.12 * SR), 0)))
     if kind == "thud":           # a heavy stone slab dropped on a wooden crate: a deep thunk and a stony knock
         return mix(thunk(0.45, 0.3) * 1.2, block_sound("stone", 0.7) * 0.9, np.pad(block_sound("planks", 0.8) * 0.4, (int(0.03 * SR), 0)))
+    if kind == "clap":           # one hand clap: a sharp, bright slap
+        t = tt(0.12)
+        return bp(n(0.12), 900, 6000) * np.exp(-t * 55) * 1.2
     if kind == "wedge":          # a wooden stick jammed under the hammer arm
         return mix(block_sound("oldwood", 0.9), np.pad(block_sound("wood", 1.05) * 0.6, (int(0.09 * SR), 0)))
     if kind == "rustle":         # something big pushing through the bushes

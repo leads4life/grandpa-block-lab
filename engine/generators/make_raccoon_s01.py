@@ -66,7 +66,7 @@ for px, py, hd in PRINTS:
         x, y = rot(u, v)
         paw.append(dict(c=[round(x, 4), round(y, 4), 0.0], s=[su, sv, 0.004], m="coffee"))
 S["mud"] = dict(cells=[[0, 0, 0]], at=[-1.95, -0.1, -0.046], centered=True, material="mud", block_shape=[4.6, 5.8, 0.05],
-                expect_blocks=1, prebuilt=True, extras=[dict(e, c=[round(e["c"][0] + 1.95, 4), round(e["c"][1] + 0.1, 4), 0.0545]) for e in paw])
+                expect_blocks=1, prebuilt=True, extras=[dict(e, c=[round(e["c"][0] + 1.95, 4), round(e["c"][1] + 0.1, 4), 0.1018]) for e in paw])
 VENT = (-1.728, -0.3)                                               # a dark vent under the cabin floor, west wall
 S["vent"] = dict(cells=[[0, 0, 0]], at=[VENT[0], VENT[1], 0.015], centered=True, material="rubber", block_shape=[0.2, 2.4, 1.0],
                  expect_blocks=1, prebuilt=True)
@@ -116,14 +116,15 @@ POSES = {
     "point_low": dict(lean=0.2, hand_R={"char": [-0.12, -0.42, 0.55]}),
     "dust_hands": dict(hand_R={"char": [-0.05, -0.28, 0.72]}, hand_L={"char": [0.05, -0.28, 0.74]}),
     "blocks_up": dict(lean=-0.1, hand_R={"char": [-0.22, -0.1, 1.3]}),
+    "reach_mug": dict(lean=0.18, hand_L=dict(obj="mug", off=[0.095, 0.0, 0.09])),   # hand on the handle (Episode 1)
 }
 G_IN = (-1.45, 0.66)                                                # just inside the open door
-G1 = (-2.35, 0.47)                                                 # at the wreck (north of it): the crate's build spot too
+G1 = (-2.35, 0.52)                                                 # at the wreck (north of it): the crate's build spot too
 G_PR = (-2.05, 0.4)                                                # where he points at the prints
 MUG_GRIP = [0.095, 0.0, 0.09]                                      # wrist just outside the handle (Episode 1)
 MUG_CARRY = {"char": [0.06, -0.27, 0.6]}
 MUG_SIP = "mouth"
-MUG_DOWN = [STUMP[0], STUMP[1], round(STUMP_TOP - 0.02, 3)]          # (the mug root sits 2 cm below its base)
+MUG_DOWN = [STUMP[0], STUMP[1] - 0.04, round(STUMP_TOP - 0.02, 3)]          # (the mug root sits 2 cm below its base)
 for name in ("webcam", "cam_cap"):                                  # Rule 2: on the strap, hands free, all scene
     act(type="hold", target=name, hand="none", when=-1.0, until=99.0, reach=0.05,
         keys=[dict(t=-1.0, at={"char": STRAP}, rot=[0, 0, 0]), dict(t=99.0, at={"char": STRAP}, rot=[0, 0, 0])])
@@ -203,11 +204,12 @@ to_lens(s - 0.3, e + 0.2)
 face("content", s, e + 0.3)                                         # sincere: no slang, calm
 
 # 4. the build: mug on the stump, "Blocks up!", the crate back up, cabbages in, the stone lid
-walk(e + 0.3, e + 1.3, (STUMP[0], STUMP[1] - 0.27))
+walk(e + 0.3, e + 1.3, (STUMP[0], STUMP[1] - 0.33))
 DOWN = e + 1.5
 look(e + 1.1, DOWN + 0.4, pos=MUG_DOWN, body=True, rate=0.3)
 A[MUG]["keys"] += [dict(t=round(DOWN - 0.3, 3), at=MUG_CARRY, rot=[0, 0, 0]), dict(t=round(DOWN, 3), at=MUG_DOWN, rot=[0, 0, 0])]
 A[MUG]["until"] = round(DOWN, 3)
+pose("reach_mug", DOWN - 0.35, DOWN + 0.35, ease=0.15)             # the hand stays on it as it lets go
 sfx("clink", DOWN, 0.4)
 MUG_REST = len(A)
 act(type="hold", target="mug", hand="none", when=round(DOWN + 0.05, 3), until=99.0, reach=0.05,
@@ -234,12 +236,14 @@ pose("dust_hands", s - 0.2, e + 0.3, ease=0.2)
 face("smirk", s, e + 0.4)
 
 # 5. the hook: coffee again, so pleased with himself... two eyes blink in the vent
-walk(e + 0.4, e + 1.4, (STUMP[0], STUMP[1] - 0.27))
+walk(e + 0.4, e + 1.4, (STUMP[0], STUMP[1] - 0.33))
 UP = e + 1.6
 look(e + 1.2, UP + 0.3, pos=MUG_DOWN, body=True, rate=0.3)
 A[MUG_REST]["until"] = round(UP, 3)
+pose("reach_mug", UP - 0.45, UP + 0.3, ease=0.2)                  # the hand gets there first
 act(type="hold", target="mug", hand="L", when=round(UP, 3), until=99.0, reach=0.3, grip=MUG_GRIP,
-    keys=[dict(t=round(UP, 3), at=MUG_DOWN, rot=[0, 0, 0]), dict(t=round(UP + 0.4, 3), at=MUG_CARRY, rot=[0, 0, 0]),
+    keys=[dict(t=round(UP, 3), at=MUG_DOWN, rot=[0, 0, 0]), dict(t=round(UP + 0.15, 3), at=MUG_DOWN, rot=[0, 0, 0]),
+          dict(t=round(UP + 0.5, 3), at=MUG_CARRY, rot=[0, 0, 0]),
           dict(t=round(UP + 0.7, 3), at=MUG_CARRY, rot=[0, 0, 0]), dict(t=round(UP + 1.1, 3), at=MUG_SIP, off=[0.035, -0.07, -0.095], rot=[-22, 0, 0]),
           dict(t=round(UP + 1.7, 3), at=MUG_SIP, off=[0.035, -0.07, -0.095], rot=[-22, 0, 0]), dict(t=round(UP + 2.1, 3), at=MUG_CARRY, rot=[0, 0, 0])])
 s, e = say("nothing", 0.0, at=UP + 2.2)
@@ -353,11 +357,11 @@ cam += [orbit(tc1 - 1.0 / FPS, (-1.95, -0.08, 0.0), 204, 50, 0.7)]
 SHOTS2 = [
     (INSERT[1], (gp(*G_PR)[1:], (G_PR[0], G_PR[1], 0.85), 180, 8, 1.5)),
     # the build, wide: the stump, the crate going back up
-    (LS["ready"] - 0.3, (gp(*G1) + gp(STUMP[0], STUMP[1] - 0.27) + [(CRATE_C[0], CRATE_C[1], 0.4)], (-2.55, 0.3, 0.55), 185, 16, 2.6)),
+    (LS["ready"] - 0.3, (gp(*G1) + gp(STUMP[0], STUMP[1] - 0.33) + [(CRATE_C[0], CRATE_C[1], 0.4)], (-2.55, 0.3, 0.55), 185, 16, 2.6)),
     # "Stone lid. Raccoon-proof.": on him by the finished crate
     (LS["stone"] - 0.3, (gp(*G1)[1:] + [(CRATE_C[0], CRATE_C[1], 0.36)], (-2.4, 0.2, 0.65), 180, 10, 1.7)),
     # the hook: wide, him with his coffee in front, the vent behind
-    (LE["stone"] + 0.5, (gp(STUMP[0], STUMP[1] - 0.27) + [VENT_PT, (VENT_PT[0], VENT[1] - 0.15, 0.3), (CRATE_C[0], CRATE_C[1], 0.36)],
+    (LE["stone"] + 0.5, (gp(STUMP[0], STUMP[1] - 0.33) + [VENT_PT, (VENT_PT[0], VENT[1] - 0.15, 0.3), (CRATE_C[0], CRATE_C[1], 0.36)],
                          (-2.3, 0.15, 0.5), 190, 9, 2.4)),
 ]
 for t, (must, tgt, az, el, d) in SHOTS2:
@@ -378,7 +382,7 @@ story = dict(title="The Raid", slug=SLUG, voice="am_santa", speed=0.95, format="
              engine_rev=4, scene=dict(episode="raccoon_lift", scene=1, name="The Raid", previous=None, next="raccoon_lift_scene02"),
              world=W, lines=lines, grandpa=dict(start=list(G_IN), outfit=S9["grandpa"]["outfit"]),
              poses=dict(S9["poses"], **POSES), structures=S, actions=sorted(A, key=lambda a: a["when"]), camera=cam, cards=cards,
-             qa=dict(frame_points=["hat", "face", "chest"], cutaways=[[round(tc, 3), round(tc1, 3)]],
+             qa=dict(frame_points=["hat", "face", "chest"], cutaways=[[math.floor(tc * 1000) / 1000 - 0.001, math.ceil(tc1 * 1000) / 1000 + 0.001]],
                      solid=["crate", "lid", "stump", "wheel", "anvil", "pivot_frame", "head"]))
 json.dump(story, open("/home/user/blocklab/stories/%s.json" % SLUG, "w"), indent=1)
 print("film %.2f s" % FILM)

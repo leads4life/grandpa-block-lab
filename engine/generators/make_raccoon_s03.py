@@ -85,7 +85,7 @@ POSES = {
     "aghast": dict(lean=-0.08, shrug=0.5, elbows=0.5),
 }
 G0 = (-3.75, 0.48)                                                  # at the end of the path, east of the tower
-G_FAR = (-3.25, 0.95)                                               # that evening: well back, by the garden
+G_FAR = (-3.3, 0.72)                                                # that evening: well back on the path (as in Scene 02)
 for name in ("webcam", "cam_cap"):                                  # Rule 2: on the strap, hands free, all scene
     act(type="hold", target=name, hand="none", when=-1.0, until=99.0, reach=0.05,
         keys=[dict(t=-1.0, at={"char": STRAP}, rot=[0, 0, 0]), dict(t=99.0, at={"char": STRAP}, rot=[0, 0, 0])])
@@ -256,7 +256,7 @@ def cut(t, *a, **kw):
 TOWER_PTS = [(-4.7, 0.3, 0.02), (-4.3, 0.3, 0.02), (-4.3, 0.3, 1.62), (-4.7, 0.7, 1.62), (TOWER_C[0], TOWER_C[1], 1.78)]
 SHOTS = [
     (0.0, (gp(*G0)[1:] + [(-4.3, 0.3, 0.8)], (G0[0] - 0.2, G0[1], 0.85), -20, 8, 1.8)),
-    (LS["ready"] + 1.0, (gp(*G0) + TOWER_PTS, (-4.2, 0.45, 0.85), -30, 10, 3.2)),
+    (LS["ready"] + 1.0, (gp(*G0)[1:] + TOWER_PTS, (-4.2, 0.45, 0.85), 60, 14, 4.4)),
     (LS["five"] - 0.3, (gp(*G0) + TOWER_PTS, (-4.2, 0.45, 0.9), -15, 6, 3.0)),
     (LS["ladder"] - 0.3, (gp(*G0)[1:], (G0[0], G0[1], 0.85), -10, 8, 1.5)),
     # that evening: wide -- the tower, the woods they come out of, him far back

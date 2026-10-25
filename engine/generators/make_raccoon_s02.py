@@ -285,7 +285,7 @@ SHOTS = [
     (LS["ready"] + 1.0, (gp(*G1) + gp(*G_LID) + CRATE_PTS, (-2.55, 0.3, 0.55), 185, 16, 2.6)),
     (TUG - 0.7, (gp(CRATE_W - 0.38, 0.22)[1:] + [LATCH], (-2.75, 0.15, 0.6), 175, 12, 1.7)),
     # that evening: wide -- him far back on the path, the crate, the woods she comes out of
-    (TC, (gp(*G_FAR) + CRATE_PTS + [(-2.95, -0.55, 0.05)], (-2.75, 0.2, 0.45), 195, 14, 2.6)),
+    (TC, (gp(*G_FAR)[1:] + CRATE_PTS + [(-2.95, -0.55, 0.05)], (-2.75, 0.2, 0.45), 195, 14, 2.6)),
 ]
 for t, (must, tgt, az, el, d) in SHOTS:
     cam += cut(t, must, tgt, az, el, d, AIR, los=LOS)

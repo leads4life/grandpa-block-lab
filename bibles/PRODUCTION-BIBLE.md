@@ -318,3 +318,12 @@ Shorts follow these on top of the bibles (Grandpa, kindness, kid safety, honest 
   with a `"why"`. `bl_verify` (engine_rev >= 4) fails every side-on chat line and every `"lens": false` with no reason.
 - When it says **restage**, rewrite the moment: he stops walking to say the line, or turns to chat first. Lines he says
   while walking into a wall can't be shot face-on (first tested on Ep 1 Scene 002: 3/8 face-on became 7/8 in one pass).
+
+## Standing authorization: Raccoon Lift episode (user, 2026-10-25)
+"I authorize you to finish all scenes that you create in our plan." For the standalone episode "Grandpa vs. the Raccoon
+Bandits: The Water-Balance Lift", Scenes 02-10: Claude writes each script from the approved beat sheet, builds it,
+reviews the contact sheet itself, renders the preview, and on passing every check (no accepted fails) freezes the voice,
+queues it, verifies the queue entry is identical to the preview and pushes the queue entry to main -- without waiting for
+approval at each gate. Scripts, contact sheets and previews are still sent to the user as they are made; the user can stop,
+redirect or reopen any scene. Creative choices outside the beat sheet take the conservative option and are logged in
+scenes/raccoon_lift/DECISIONS.md. This authorization covers this episode only.

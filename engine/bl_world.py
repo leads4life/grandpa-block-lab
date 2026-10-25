@@ -632,7 +632,7 @@ def build_rigging(sc, P, R, fps):
         d = b - a
         o.location = (a + b) / 2
         o.rotation_quaternion = (d.normalized() if d.length > 1e-6 else Vector((0, 0, 1))).to_track_quat("Z", "Y")
-        o.scale = (w, w, max(1e-4, d.length))
+        o.scale = (w, w, max(1e-4, d.length) if w > 0 else 0.0)
         o.keyframe_insert("location", frame=f); o.keyframe_insert("rotation_quaternion", frame=f); o.keyframe_insert("scale", frame=f)
     at = lambda e, t: [e["at"][i] + Cm.slide_offset(P, e["follow"], t)[i] for i in range(3)]
     def level(e, t):
@@ -644,10 +644,11 @@ def build_rigging(sc, P, R, fps):
         for k0, k1 in zip(ks, ks[1:]):
             if t <= k1[0]:
                 return k0[1] + (k1[1] - k0[1]) * (t - k0[0]) / max(1e-6, k1[0] - k0[0])
-    for i, e in enumerate(R.get("ropes", [])):
+    for i, e in enumerate(R.get("ropes", [])):                    # optional "visible": [t0, t1] (e.g. once it is built)
         o = unit("Rope%d" % i, rope_m)
+        vis = e.get("visible", [-1e9, 1e9])
         for f in range(P["nf"]):
-            place(o, e["top"], at(e, f / fps), e.get("width", 0.014), f)
+            place(o, e["top"], at(e, f / fps), e.get("width", 0.014) if vis[0] <= f / fps <= vis[1] else 0.0, f)
     for i, e in enumerate(R.get("fills", [])):
         o = unit("Fill%d" % i, water_m)
         w, d, h = e["size"]

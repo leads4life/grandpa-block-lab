@@ -147,14 +147,16 @@ def page(ov, c, t):
     """A Page Card: the map / book page / note Grandpa is holding, shown big so viewers can read it, then away.
     {"style": "page", "when", "until", "title", "side": "auto"|"right"|"left"|"center", "tilt": deg,
      "map": {"route": [[u, v], ...], "stops": [{"at": [u, v], "name", "mark": "dot"|"x"|"star"}], "here": i, "done": [i]},
-     "lines": ["...", ...], "ink": "brown"|"red"}       (u, v from 0 to 1 across / down the page)"""
+     "lines": ["...", ...], "ink": "brown"|"red",
+     "drawing": {"rects", "lines", "ropes", "arrows": [[u0, v0, u1, v1]], "circles": [[u, v, r]], "labels": [[u, v, text]]}}
+     (u, v from 0 to 1 across / down the page)"""
     k = env(t, c["t0"], c["t1"], 0.35, 0.35)
     if k <= 0:
         return
     ph0 = int(H * (0.62 if WIDE else 0.36))
-    pw = int(min(ph0 * 1.25, W * (0.40 if c.get("map") else 0.33))) if WIDE else int(ph0 * 1.25)   # stays to one side of him
+    pw = int(min(ph0 * 1.25, W * (0.40 if (c.get("map") or c.get("drawing")) else 0.33))) if WIDE else int(ph0 * 1.25)   # stays to one side of him
     ph = ph0
-    if not c.get("map"):                                     # text only: as tall as the words need
+    if not (c.get("map") or c.get("drawing")):               # text only: as tall as the words need
         fl_ = F("reg", ph0 * 0.06)
         n_ = sum(len(wrap(ln, fl_, pw * 0.84)) for ln in c.get("lines", []))
         ph = int(min(ph0, max(ph0 * 0.4, 36 + (ph0 * 0.085 + 18 if c.get("title") else 0) + n_ * fl_.size * 1.35 + 34)))
@@ -204,6 +206,30 @@ def page(ov, c, t):
             bob = 6 * math.sin(2 * math.pi * 1.2 * t)
             d.polygon([(x, y_ - ph * 0.05 + bob), (x - 14, y_ - ph * 0.10 + bob), (x + 14, y_ - ph * 0.10 + bob)],
                       fill=COL["green"] + (255,), outline=INK + (255,))
+    dw = c.get("drawing")
+    if dw:                                                   # a blueprint sketch: lines, boxes, circles, labels (u, v in 0..1)
+        x0, y0, x1, y1 = 14 + pw * 0.08, y + 6, 14 + pw * 0.92, 14 + ph * 0.95
+        P_ = lambda u, v: (x0 + (x1 - x0) * u, y0 + (y1 - y0) * v)
+        lw = max(3, int(ph * 0.012))
+        for u0, v0, u1, v1 in dw.get("rects", []):
+            d.rectangle(P_(u0, v0) + P_(u1, v1), outline=ink + (255,), width=lw)
+        for u0, v0, u1, v1 in dw.get("lines", []):
+            d.line(P_(u0, v0) + P_(u1, v1), fill=ink + (255,), width=lw)
+        for u0, v0, u1, v1 in dw.get("ropes", []):           # the rope, in red pencil
+            d.line(P_(u0, v0) + P_(u1, v1), fill=INK_RED + (255,), width=lw)
+        for u, v, r in dw.get("circles", []):
+            cx, cy = P_(u, v); rr = r * (x1 - x0)
+            d.ellipse((cx - rr, cy - rr, cx + rr, cy + rr), outline=ink + (255,), width=lw)
+        fs_ = F("bold", ph0 * 0.05)
+        for u, v, txt in dw.get("labels", []):
+            d.text(P_(u, v), txt, font=fs_, fill=ink + (255,), anchor="mm")
+        for u0, v0, u1, v1 in dw.get("arrows", []):           # up / down arrows
+            a_, b_ = P_(u0, v0), P_(u1, v1)
+            d.line(a_ + b_, fill=INK_RED + (255,), width=lw)
+            ang = math.atan2(b_[1] - a_[1], b_[0] - a_[0]); hl = ph * 0.04
+            for s_ in (2.6, -2.6):
+                d.line(b_ + (b_[0] + hl * math.cos(ang + s_), b_[1] + hl * math.sin(ang + s_)), fill=INK_RED + (255,), width=lw)
+        y = y1
     fl = F("reg", ph0 * 0.06)
     for ln in c.get("lines", []):
         for w_ in wrap(ln, fl, pw * 0.84):

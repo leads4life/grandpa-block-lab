@@ -101,3 +101,12 @@ Only established facts. "Engine" = what the renderer can actually do today.
 - He learns he designed the trip hammer years ago: "I built that? ...I built that! Why'd I ever stop?" Tobias: "You stopped
   building. So I started."
 - **Episode 1, Scenes 007–010 (user, 2026-10-21)**: Grandpa streams alone. Tobias is an occasional visitor and does not appear (not even in chat).
+
+## The raccoons (Raccoon Lift episode, 2026-10-25)
+- Original voxel design (`voxelchars.build_raccoon`, sheet `bibles/DESIGN_raccoon.png`): stocky grey-brown body with a
+  humped back, black bandit mask across shiny eyes, white brow and muzzle, black nose, white-tipped ears, a thick ringed
+  tail, dark little hands with five fingers. About 0.30 m long plus the tail.
+- Animated by `bl_cast.build_raccoon_actor` (world "critters", kind "raccoon"): walk, sit, stand, fiddle (hands working
+  a latch), wash, climb, slide; height ("z") and pitch keys; head looks; chitters and claw scrabbles in the sound.
+- Wild animals, never pets: nobody touches or feeds them. They are clever, not villains; they end at the stream catching
+  crayfish (their real food).

@@ -612,7 +612,34 @@ def happy_grunt():                # a pleased little grunt, twice
     return out
 
 
+def chitter():                    # a raccoon's churring trill: a fast-pulsed, wavering high voice
+    x = tt(0.45)
+    f = 2300 + 500 * np.sin(2 * np.pi * 3.0 * x) + 300 * rng.random()
+    v = np.sin(2 * np.pi * np.cumsum(f) / SR) * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * 26 * x)))
+    return bp(v, 1200, 6000) * np.hanning(len(x)) * 0.35
+
+
+def claws(d):                     # little claws scrabbling on wood
+    out = np.zeros(int(d * SR))
+    t = 0.0
+    while t < d - 0.05:
+        j = int(t * SR); x = tt(0.03)
+        g = bp(rng.standard_normal(len(x)), 2500, 8000) * np.exp(-x * 160) * rng.uniform(0.2, 0.5)
+        out[j:j + len(g)] += g[:len(out) - j]
+        t += rng.uniform(0.04, 0.11)
+    return out
+
+
 for c in W.get("critters", []):
+    if c["kind"] == "raccoon":                                  # chitters; claws on wood while it climbs or slides
+        for ts in c.get("chitters", []):
+            x, y = C.critter_state(dict(c, hop=0.0), ts)[:2]
+            place(stems["fx"], ts, chitter(), 0.7 * heard(ts, x, y, 0.8, 0.15, 1.0))
+        for p0, p1, n in c.get("poses", []):
+            if n in ("climb", "slide", "fiddle"):
+                x, y = C.critter_state(dict(c, hop=0.0), p0)[:2]
+                place(stems["fx"], p0, claws(p1 - p0), (0.5 if n != "fiddle" else 0.3) * heard(p0, x, y, 0.8, 0.15, 1.0))
+        continue
     if c["kind"] == "boar":                                     # trotting hooves, huffs, tusk clacks, stomps, a squeal
         for ts in C.actor_steps(c):
             x, y = C.critter_state(dict(c, hop=0.0), ts)[:2]

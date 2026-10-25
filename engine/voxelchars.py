@@ -246,3 +246,68 @@ def build_boar(sc, mood="calm", name="Boar", parts=False):
     out["puff"] = VK.mesh_obj(name + "Puff", puffs, M, parent=out["head"]) if puffs else None
     out["dust"] = VK.mesh_obj(name + "Dust", dust, M, parent=out["body"]) if dust else None
     return out
+
+
+# ------------------------------------------------------------------------------------------------------------- the raccoon
+RACCOON_C = dict(coat=((0.26, 0.25, 0.24), (0.46, 0.44, 0.41)), pale=((0.60, 0.58, 0.55), (0.78, 0.76, 0.72)),
+                 white=((0.86, 0.86, 0.84), (0.97, 0.97, 0.95)), dark=((0.12, 0.12, 0.13), (0.24, 0.24, 0.25)))
+RACCOON_HIP = (-0.11, 0.0, 0.12)                                     # the body pitches (sits up / climbs) about the hips
+
+
+def build_raccoon(sc, name="Raccoon", k=1.0):
+    """An original voxel raccoon (Raccoon Lift episode): a stocky grey body with a humped back, the black bandit mask
+    across white-browed eyes, a white muzzle and a black nose, small white-tipped ears, a thick ringed tail, and dark
+    little hands with fingers (the "dexterous" paws). Faces +x, about 0.30 m long plus the tail, 0.27 m to the ear tips.
+    Returns {"pivot", "body", "head", "tail", "legs": [front R, front L, back R, back L]}: "pivot" sits at the hips
+    (RACCOON_HIP) so the whole animal pitches nose-up to sit or climb; the legs swing at the shoulder / hip, the head
+    turns at the neck, the tail at its base. k scales it."""
+    px = 0.01
+    M = [VK.pixel_material(name + "_coat", *RACCOON_C["coat"], px, bump=0.3), VK.pixel_material(name + "_pale", *RACCOON_C["pale"], px, bump=0.25),
+         VK.pixel_material(name + "_white", *RACCOON_C["white"], px, bump=0.2), VK.pixel_material(name + "_dark", *RACCOON_C["dark"], px, bump=0.25),
+         VK.mat(name + "_black", (0.025, 0.025, 0.03)), VK.mat(name + "_eye", (0.01, 0.01, 0.012), rough=0.15),
+         VK.mat(name + "_shine", (0.9, 0.9, 0.9), rough=0.2)]
+    COAT, PALE, WHITE, DARK, BLACK, EYE, SHINE = range(7)
+    s = lambda bx: [(tuple(v * k for v in c), tuple(v * k for v in sz), m) for c, sz, m in bx]
+    hx, hy, hz = RACCOON_HIP
+    rel = lambda bx: [((c[0] - hx, c[1] - hy, c[2] - hz), sz, m) for c, sz, m in bx]   # boxes about the hip pivot
+    body = [((0.0, 0, 0.17), (0.30, 0.17, 0.14), COAT),               # the barrel
+            ((-0.05, 0, 0.255), (0.19, 0.15, 0.04), COAT),             # the humped back
+            ((0.0, 0, 0.098), (0.24, 0.13, 0.02), PALE),               # the paler belly
+            ((0.13, 0, 0.19), (0.06, 0.15, 0.11), COAT)]               # the shoulders
+    head = [((0.055, 0, 0.02), (0.11, 0.15, 0.11), COAT),             # skull (the neck pivot is its origin)
+            ((0.06, 0, 0.081), (0.08, 0.10, 0.012), COAT),
+            ((0.123, 0, -0.012), (0.03, 0.11, 0.045), WHITE),            # white muzzle, stepping in (below the eyes)
+            ((0.152, 0, -0.015), (0.03, 0.065, 0.04), WHITE),
+            ((0.17, 0, -0.002), (0.008, 0.03, 0.02), BLACK),            # the nose
+            ((0.1125, 0, 0.022), (0.006, 0.156, 0.036), BLACK),        # THE MASK: a black band across the eyes...
+            ((0.08, 0.077, 0.018), (0.06, 0.004, 0.034), BLACK),        # ...wrapping round the cheeks
+            ((0.08, -0.077, 0.018), (0.06, 0.004, 0.034), BLACK),
+            ((0.1135, 0, 0.051), (0.006, 0.13, 0.014), WHITE)]          # white brow above the mask
+    for y in (-0.036, 0.036):
+        head += [((0.1165, y, 0.022), (0.004, 0.022, 0.022), EYE), ((0.119, y + 0.005, 0.028), (0.002, 0.006, 0.006), SHINE)]
+    for y in (-0.055, 0.055):                                        # small rounded ears, white tips
+        head += [((0.03, y, 0.093), (0.03, 0.035, 0.035), COAT), ((0.03, y, 0.115), (0.03, 0.035, 0.01), WHITE),
+                 ((0.042, y, 0.093), (0.004, 0.018, 0.02), DARK)]
+    tail = []
+    for i in range(6):                                                # the ringed tail, dark rings and a dark tip
+        w = 0.075 - 0.006 * i
+        tail.append(((-0.02 - 0.04 * i, 0, 0.0), (0.04, w, w), DARK if i % 2 else COAT))
+    tail.append(((-0.255, 0, 0.0), (0.025, 0.035, 0.035), DARK))
+    def leg(front):
+        bx = [((0, 0, -0.05), (0.045, 0.045, 0.10), DARK), ((0.012, 0, -0.106), (0.06, 0.05, 0.014), DARK)]
+        if front:                                                     # little hands: five dark fingers
+            bx += [((0.046, y, -0.108), (0.016, 0.007, 0.009), BLACK) for y in (-0.02, -0.01, 0.0, 0.01, 0.02)]
+        return bx
+    pivot = bpy.data.objects.new(name + "Pivot", None)
+    sc.collection.objects.link(pivot)
+    pivot.location = tuple(v * k for v in RACCOON_HIP)
+    out = dict(pivot=pivot, body=VK.mesh_obj(name, s(rel(body)), M, parent=pivot), legs=[])
+    out["head"] = VK.mesh_obj(name + "Head", s(head), M, parent=out["body"])
+    out["head"].location = tuple(v * k for v in (0.16 - hx, 0 - hy, 0.22 - hz))
+    out["tail"] = VK.mesh_obj(name + "Tail", s(tail), M, parent=out["body"])
+    out["tail"].location = tuple(v * k for v in (-0.15 - hx, 0 - hy, 0.21 - hz))
+    for i, (lx, ly) in enumerate(((0.10, -0.055), (0.10, 0.055), (-0.10, -0.055), (-0.10, 0.055))):
+        lg = VK.mesh_obj("%sLeg%d" % (name, i), s(leg(i < 2)), M, parent=out["body"])
+        lg.location = tuple(v * k for v in (lx - hx, ly - hy, 0.115 - hz))
+        out["legs"].append(lg)
+    return out

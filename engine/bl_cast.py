@@ -331,3 +331,96 @@ def build_hologram(sc, c, fps, nf):
         root.scale = (s_ * c.get("size", 1.4),) * 3
         _key(root, "location", "rotation_euler", "scale", f=f)
     return root
+
+
+# ------------------------------------------------------------------------------------------------------------- raccoons
+RACCOON_POSES = {                    # name: (body pitch deg, front-leg swing, back-leg swing) -- nose up is negative pitch
+    "sit": (-50.0, 30.0, 50.0),      # up on its haunches, hands in its lap
+    "stand": (-75.0, 0.0, 75.0),     # up on its hind feet, hands out in front (reaching for something)
+    "fiddle": (-75.0, 0.0, 75.0),    # standing, little hands working at a latch
+    "wash": (-50.0, 20.0, 50.0),     # sitting, rubbing its hands together
+    "climb": (-90.0, 0.0, 0.0),      # nose up, belly to the post, hands and feet gripping it
+    "slide": (-90.0, -35.0, -20.0),  # slipping down a smooth face: legs splayed out, scrabbling at nothing
+}
+
+
+def build_raccoon_actor(sc, c, fps, nf):
+    """{"kind": "raccoon", "name": "Bandit", "path": [[t, x, y], ...], "z": [[t, z], ...] (height: up a post, on a crate),
+    "yaw": [[t, deg], ...], "visible": [t_in, t_out], "stride": m, "poses": [[t0, t1, "sit" | "stand" | "fiddle" | "wash" |
+    "climb" | "slide"], ...], "pitch": [[t, deg], ...] (overrides the poses' pitch), "look": [[t0, t1, [x, y, z]], ...],
+    "chitters": [t, ...], "k": size} -- times absolute. Heading: along the path while it moves, else the "yaw" keys.
+    Climbing: head for the post, then "climb" pose with rising "z" keys; the belly faces the way it was heading. Put the
+    path point right on the post's face: the hands and feet then grip it (they reach about 1 cm past the path point)."""
+    name = c.get("name", "Raccoon")
+    k = c.get("k", 1.0)
+    root = bpy.data.objects.new(name + "Actor", None)
+    sc.collection.objects.link(root)
+    parts = CH.build_raccoon(sc, name, k)
+    parts["pivot"].parent = root
+    vis = c.get("visible", [-1e9, 1e9])
+    zk = c.get("z", [[0.0, 0.0]])
+    pk = c.get("pitch")
+    stride, dist, prev = c.get("stride", 0.09) * k, 0.0, None
+    walk = dict(c, hop=0.0)
+    seed = sum(map(ord, name)) % 17
+
+    def keyed(ks, t):
+        if t <= ks[0][0]:
+            return ks[0][1]
+        if t >= ks[-1][0]:
+            return ks[-1][1]
+        for a, b in zip(ks, ks[1:]):
+            if t <= b[0]:
+                return a[1] + (b[1] - a[1]) * C.smooth((t - a[0]) / max(1e-6, b[0] - a[0]))
+    for f in range(nf):
+        t = f / fps
+        x, y, _, _, moving = C.critter_state(walk, t)
+        z = keyed(zk, t)
+        if prev is not None:
+            dist += math.hypot(math.hypot(x - prev[0], y - prev[1]), z - prev[2])
+        moving = moving or (prev is not None and abs(z - prev[2]) > 1e-4)
+        prev = (x, y, z)
+        ph = math.pi * dist / stride
+        on = vis[0] <= t <= vis[1]
+        w = {n: _env(t, p0, p1, 0.18) for p0, p1, n in c.get("poses", [])}
+        pitch = sum(RACCOON_POSES[n][0] * wv for n, wv in w.items())
+        if pk:
+            pitch = keyed(pk, t)
+        front = sum(RACCOON_POSES[n][1] * wv for n, wv in w.items())
+        back = sum(RACCOON_POSES[n][2] * wv for n, wv in w.items())
+        splay = 45.0 * w.get("slide", 0.0)
+        bob = 0.008 * abs(math.sin(ph)) * k if moving and not (w.get("climb", 0) or w.get("slide", 0)) else 0.0
+        root.location = (x, y, z + bob)
+        root.rotation_euler = (0, 0, C.actor_heading(c, t))           # nose along local +x
+        _key(root, "location", "rotation_euler", f=f)
+        parts["pivot"].scale = (1.0, 1.0, 1.0) if on else (0.0, 0.0, 0.0)
+        parts["pivot"].rotation_euler = (0, math.radians(pitch), 0)
+        _key(parts["pivot"], "scale", "rotation_euler", f=f)
+        gait = 32.0 if moving else 0.0
+        for i, lg in enumerate(parts["legs"]):
+            a = (front if i < 2 else back) + gait * math.sin(ph + (math.pi if i in (1, 2) else 0.0))
+            if i < 2 and w.get("fiddle", 0):                          # hands working at the latch, by turns
+                a -= 14.0 * w["fiddle"] * (0.5 + 0.5 * math.sin(2 * math.pi * 3.8 * t + (math.pi if i else 0.0)))
+            if i < 2 and w.get("wash", 0):
+                a += 10.0 * w["wash"] * math.sin(2 * math.pi * 4.6 * t + (math.pi if i else 0.0))
+            if w.get("slide", 0):                                     # scrabbling at the smooth face
+                a += 18.0 * w["slide"] * math.sin(2 * math.pi * 7.0 * t + i)
+            sx = splay * (1 if i % 2 else -1)
+            lg.rotation_euler = (math.radians(sx), math.radians(a), 0)
+            _key(lg, "rotation_euler", f=f)
+        hp = -0.55 * pitch * (1.0 - w.get("climb", 0.0) - w.get("slide", 0.0))   # sitting up: it still looks ahead
+        hy = 0.0
+        for l0, l1, p in c.get("look", []):                           # turns its head toward something
+            kk = _env(t, l0, l1, 0.25)
+            if kk > 0:
+                d = Vector(p) - Vector((x, y, z + 0.2 * k))
+                rel = math.atan2(d.y, d.x) - C.actor_heading(c, t)
+                rel = (rel + math.pi) % (2 * math.pi) - math.pi
+                hy += max(-1.2, min(1.2, rel)) * kk
+        hy += math.radians(6) * math.sin(2 * math.pi * 0.35 * t + seed)   # alive: small curious head turns
+        parts["head"].rotation_euler = (0, math.radians(hp), hy)
+        _key(parts["head"], "rotation_euler", f=f)
+        tail_y = -15.0 - 0.9 * pitch                                  # the tail stays level (or lies on the ground)
+        parts["tail"].rotation_euler = (0, math.radians(tail_y), math.radians(14 * math.sin(2 * math.pi * 0.55 * t + seed)))
+        _key(parts["tail"], "rotation_euler", f=f)
+    return root

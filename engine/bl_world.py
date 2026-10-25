@@ -709,6 +709,9 @@ def build_world(sc, P):
         elif c["kind"] in ("memory_cloud", "hologram"):
             import bl_cast
             (bl_cast.build_memory_cloud if c["kind"] == "memory_cloud" else bl_cast.build_hologram)(sc, c, fps, P["nf"])
+        elif c["kind"] == "raccoon":                                  # Raccoon Lift (bl_cast)
+            import bl_cast
+            bl_cast.build_raccoon_actor(sc, c, fps, P["nf"])
         elif c["kind"] in ("boar", "tobias"):                        # the cast beyond Grandpa (bl_cast)
             import bl_cast
             if c["kind"] == "boar":

@@ -260,7 +260,8 @@ who_at = lambda t: gp(*g_at(t))
 WALL_FREE = lambda eye: eye[0] < -1.95
 AIR = both(clear_air, WALL_FREE)
 PATH = both(solid_free, WALL_FREE)
-LOS = make_los([])
+WHEEL_BOX = ((-5.12, 0.38, -0.05), (-4.88, 1.62, 1.18))                # the waterwheel: its spokes must not cross the view
+LOS = make_los([WHEEL_BOX])
 cam = []
 def framed(t, must, tgt, az, el, d, *a, **kw):
     for dk, dz in ((1.0, 0), (1.0, 35), (1.0, -35), (1.3, 0), (1.3, 35), (1.3, -35), (1.3, 70), (1.3, -70)):
@@ -290,8 +291,8 @@ for t, (must, tgt, az, el, d) in SHOTS:
 INS = (FID0 - 0.2, OPEN + 1.0)                                      # insert: the little hands at the hook (a cutaway)
 tc = math.ceil(INS[0] * FPS - 1e-6) / FPS
 tc1 = math.ceil(INS[1] * FPS - 1e-6) / FPS
-cam += [dict(cam[-1], at=round(tc - 1.0 / FPS, 4)), orbit(tc, (CRATE_W - 0.05, 0.0, 0.26), 215, 18, 0.7),
-        orbit(tc1 - 1.0 / FPS, (CRATE_W - 0.05, 0.0, 0.28), 210, 18, 0.68)]
+cam += [dict(cam[-1], at=round(tc - 1.0 / FPS, 4)), orbit(tc, (CRATE_W - 0.04, 0.0, 0.27), 115, 20, 0.7),   # her hands on the hook, from the side
+        orbit(tc1 - 1.0 / FPS, (CRATE_W - 0.04, 0.0, 0.27), 115, 20, 0.7)]
 SHOTS2 = [
     (INS[1], (gp(*G_FAR)[1:], (G_FAR[0], G_FAR[1], 0.75), 200, 8, 1.6)),
     (LS["bandit"] - 0.3, (gp(*G_FAR)[1:], (G_FAR[0], G_FAR[1], 0.75), 200, 8, 1.6)),
@@ -302,8 +303,8 @@ for t, (must, tgt, az, el, d) in SHOTS2:
         break
     cam += cut(t, must, tgt, az, el, d, AIR, los=LOS)
 RUNSHOT = (RUN0 + 0.35, LS["bandit"] - 0.3)                         # cutaway: she runs to the corner, the kits peek out
-cam += cut(RUNSHOT[0], CRATE_PTS + [(M_CORNER[0], M_CORNER[1], 0.05), (M_CORNER[0], M_CORNER[1], 0.25), (VENT[0] - 0.07, VENT[1], 0.08)],
-           (-2.2, -0.3, 0.2), 180, 12, 1.7, AIR, los=LOS)
+cam += cut(RUNSHOT[0], [(M_CORNER[0], M_CORNER[1], 0.05), (M_CORNER[0], M_CORNER[1], 0.25), (-1.80, VENT[1], 0.08), (-1.80, VENT[1], 0.16)],
+           (-1.95, -0.42, 0.15), 260, 11, 1.6, AIR, los=LOS)                # from the south, along the wall: the corner and the vent
 for t, (must, tgt, az, el, d) in SHOTS2:
     if t > RUN0:
         cam += cut(t, must, tgt, az, el, d, AIR, los=LOS)

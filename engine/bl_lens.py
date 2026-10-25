@@ -153,15 +153,24 @@ class Shot:
                 return False
         return True
 
-    def front(self, az0, margin=0.82):
+    def front(self, az0, subject=None, margin=0.82):
+        """Nearest camera square in front of him. subject: what the scene's own shot was looking at (the wheel he talks
+        about...): kept in the picture too, when it can be, so the line keeps its context."""
+        if subject is not None and (Vector(subject) - self.root).xy.length > 0.5:
+            keep = self.must
+            self.must = keep + [Vector(subject)]
+            k = self.front(az0, None, margin)
+            self.must = keep
+            if k:
+                return k
         zs = [p.z for p in self.must]
-        x, y = self.root.x, self.root.y
-        tgt = (x, y, round((min(zs) + max(zs)) / 2 + 0.08, 3))
+        xs, ys = [p.x for p in self.must], [p.y for p in self.must]
+        tgt = ((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2, round((min(zs) + max(zs)) / 2 + 0.08, 3))
         best = None
         for daz in range(-40, 41, 5):
             for el in range(4, 29, 3):
-                for dist in (1.1, 1.25, 1.4, 1.6, 1.8, 2.05, 2.35, 2.7, 3.1, 3.6, 4.2):
-                    score = abs(daz) / 30 + abs(el - 12) / 10 + (dist - 1.1) * 0.8
+                for dist in (1.25, 1.4, 1.6, 1.8, 2.05, 2.35, 2.7, 3.1, 3.6, 4.2):
+                    score = abs(daz) / 30 + abs(el - 12) / 10 + (dist - 1.25) * 0.8
                     if best and score >= best[0]:
                         continue
                     eye = eye_of(tgt, az0 + daz, el, dist)
@@ -170,7 +179,7 @@ class Shot:
                     pr = [self.project(eye, tgt, p) for p in self.must]
                     if any(q is None or abs(q[0]) > margin or abs(q[1]) > margin for q in pr) or not self.seen(eye):
                         continue
-                    best = (score, dict(target=list(tgt), az=az0 + daz, el=el, dist=dist))
+                    best = (score, dict(target=[round(v, 4) for v in tgt], az=az0 + daz, el=el, dist=dist))
         return best[1] if best else None
 
 
@@ -196,7 +205,8 @@ def fix(sc, arm, P, story, rows):
         keys = []
         for t in times:
             yaw = root(t)["yaw"]
-            k = Shot(sc, arm, P, int(round(t * FPS)), held).front(round(math.degrees(math.atan2(-math.cos(yaw), math.sin(yaw)))))
+            k = Shot(sc, arm, P, int(round(t * FPS)), held).front(round(math.degrees(math.atan2(-math.cos(yaw), math.sin(yaw)))),
+                                                                  cam_key_at(P["camera"], t)["target"])
             keys.append(k)
             if k is None:
                 break

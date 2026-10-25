@@ -50,6 +50,7 @@ PALETTE = {                                    # (dark, light) texel colours
     "leather": ((0.27, 0.12, 0.07), (0.44, 0.22, 0.12)),       # book covers
     "glass": ((0.55, 0.66, 0.62), (0.78, 0.88, 0.84)),         # jars (opaque voxel glass)
     "cabbage": ((0.30, 0.52, 0.22), (0.62, 0.80, 0.42)),       # garden cabbages (pale leafy green)
+    "mud": ((0.42, 0.33, 0.22), (0.56, 0.46, 0.32)),           # soft pale mud that shows tracks
 }
 GLOW = {"screen": ((0.62, 0.80, 1.0), 2.2), "led": ((1.0, 0.12, 0.08), 8.0), "spark": ((1.0, 0.85, 0.25), 14.0), "flame": ((1.0, 0.62, 0.22), 10.0),
         "eyeshine": ((0.80, 1.0, 0.45), 6.0)}                              # emissive extras (eyeshine: an animal's eyes in the dark)

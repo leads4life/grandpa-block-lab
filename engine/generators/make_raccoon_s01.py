@@ -39,10 +39,10 @@ crate = [(x, y, 0) for x in CX for y in CY] + [(x, y, z) for z in (1, 2) for x i
 S["crate"] = dict(cells=[list(c) for c in crate], at=[0.0, 0.0, 0.0], centered=False, material="planks", expect_blocks=len(crate))
 S["lid"] = dict(cells=[[x, y, 3] for x in CX for y in CY], at=[0.0, 0.0, -0.025], centered=False, material="stone",
                 block_shape=[1, 1, 0.5], expect_blocks=12)
-WRECK = [(-27, 1), (-26, -2), (-24, -3), (-22, -2), (-20, 0), (-21, 2), (-26, 3), (-23, 2)]   # planks, flat in the grass
+WRECK = [(-27, 1), (-26, -2), (-24, -3), (-22, -2), (-28, -3), (-21, 2), (-26, 3), (-23, 2)]   # planks, flat in the grass
 S["wreck"] = dict(cells=[[x, y, 0] for x, y in WRECK], at=[0.0, 0.0, -0.035], centered=False, material="planks",
                   block_shape=[1, 0.6, 0.3], expect_blocks=len(WRECK), prebuilt=True)
-CAB_OUT = [(-29, -1), (-19, -1), (-25, -4)]                          # cabbages strewn about
+CAB_OUT = [(-29, -1), (-30, -3), (-25, -4)]                          # cabbages strewn about
 S["cabbages_out"] = dict(cells=[[x, y, 0] for x, y in CAB_OUT], at=[0.0, 0.0, -0.01], centered=False, material="cabbage",
                          block_shape=[1.1, 1.1, 1.0], expect_blocks=len(CAB_OUT), prebuilt=True)
 S["cabbages_in"] = dict(cells=[[x, 0, 1] for x in (-24, -23)] + [[-24, 0, 2]], at=[0.0, 0.0, 0.0], centered=False,
@@ -50,7 +50,7 @@ S["cabbages_in"] = dict(cells=[[x, 0, 1] for x in (-24, -23)] + [[-24, 0, 2]], a
 ROLL0 = [-2.3, 0.18, 0.05]                                         # the cabbage that rolls to the lens (set below)
 S["cabbage_roll"] = dict(cells=[[0, 0, 0]], at=[0.0, 0.0, 0.0], centered=True, material="cabbage", block_shape=[1.1, 1.1, 1.1],
                          expect_blocks=1, prebuilt=True)
-STUMP = (-2.78, 0.38)                                              # the chopping stump: the mug's spot while he builds
+STUMP = (-2.62, 0.82)                                              # the chopping stump: the mug's spot while he builds
 S["stump"] = dict(cells=[[0, 0, z] for z in range(3)], at=[STUMP[0], STUMP[1], 0.0], centered=True, material="oldwood",
                   block_shape=[2.2, 2.2, 1], expect_blocks=3, prebuilt=True)
 STUMP_TOP = 0.3
@@ -61,11 +61,11 @@ paw = []
 for px, py, hd in PRINTS:
     a = math.radians(hd)
     rot = lambda u, v: (px + u * math.cos(a) - v * math.sin(a), py + u * math.sin(a) + v * math.cos(a))
-    for (u, v, su, sv) in [(0.0, 0.0, 0.034, 0.03)] + [(0.034 * math.sin(math.radians(f)), 0.022 + 0.022 * math.cos(math.radians(f)), 0.008, 0.028)
+    for (u, v, su, sv) in [(0.0, 0.0, 0.05, 0.045)] + [(0.05 * math.sin(math.radians(f)), 0.033 + 0.033 * math.cos(math.radians(f)), 0.012, 0.042)
                                                        for f in (-70, -35, 0, 35, 70)]:   # the palm, five long fingers
         x, y = rot(u, v)
-        paw.append(dict(c=[round(x, 4), round(y, 4), 0.0], s=[su, sv, 0.003], m="coffee"))
-S["mud"] = dict(cells=[[0, 0, 0]], at=[-1.95, -0.1, -0.046], centered=True, material="soil", block_shape=[4.4, 5.4, 0.05],
+        paw.append(dict(c=[round(x, 4), round(y, 4), 0.0], s=[su, sv, 0.004], m="coffee"))
+S["mud"] = dict(cells=[[0, 0, 0]], at=[-1.95, -0.1, -0.046], centered=True, material="mud", block_shape=[4.6, 5.8, 0.05],
                 expect_blocks=1, prebuilt=True, extras=[dict(e, c=[round(e["c"][0] + 1.95, 4), round(e["c"][1] + 0.1, 4), 0.0545]) for e in paw])
 VENT = (-1.728, -0.3)                                               # a dark vent under the cabin floor, west wall
 S["vent"] = dict(cells=[[0, 0, 0]], at=[VENT[0], VENT[1], 0.015], centered=True, material="rubber", block_shape=[0.2, 2.4, 1.0],
@@ -118,16 +118,17 @@ POSES = {
     "blocks_up": dict(lean=-0.1, hand_R={"char": [-0.22, -0.1, 1.3]}),
 }
 G_IN = (-1.45, 0.66)                                                # just inside the open door
-G1 = (-2.35, 0.42)                                                 # at the wreck (north of it): the crate's build spot too
+G1 = (-2.35, 0.47)                                                 # at the wreck (north of it): the crate's build spot too
 G_PR = (-2.05, 0.4)                                                # where he points at the prints
-MUG_CARRY = {"char": [0.17, -0.2, 0.74]}
-MUG_SIP = {"char": [0.05, -0.17, 0.86]}
-MUG_DOWN = [STUMP[0], STUMP[1], STUMP_TOP]
+MUG_GRIP = [0.095, 0.0, 0.09]                                      # wrist just outside the handle (Episode 1)
+MUG_CARRY = {"char": [0.06, -0.27, 0.6]}
+MUG_SIP = "mouth"
+MUG_DOWN = [STUMP[0], STUMP[1], round(STUMP_TOP - 0.02, 3)]          # (the mug root sits 2 cm below its base)
 for name in ("webcam", "cam_cap"):                                  # Rule 2: on the strap, hands free, all scene
     act(type="hold", target=name, hand="none", when=-1.0, until=99.0, reach=0.05,
         keys=[dict(t=-1.0, at={"char": STRAP}, rot=[0, 0, 0]), dict(t=99.0, at={"char": STRAP}, rot=[0, 0, 0])])
 MUG = len(A)
-act(type="hold", target="mug", hand="L", when=-1.0, until=99.0, reach=0.3, grip=[0.0, 0.0, 0.05],
+act(type="hold", target="mug", hand="L", when=-1.0, until=99.0, reach=0.3, grip=MUG_GRIP,
     keys=[dict(t=-1.0, at=MUG_CARRY, rot=[0, 0, 0])])
 
 # 1. cold open: the cabbage rolls to the lens; he rushes out of the door
@@ -160,8 +161,8 @@ s, e = say("on", 0.0, at=TAP + 0.25)
 to_lens(s - 0.4, e + 0.2)
 face("raised", s, e + 0.3, set=dict(brow=0.7))
 SIP = e + 0.4
-A[MUG]["keys"] += [dict(t=round(SIP, 3), at=MUG_CARRY, rot=[0, 0, 0]), dict(t=round(SIP + 0.45, 3), at=MUG_SIP, rot=[0, 0, -10]),
-                   dict(t=round(SIP + 1.1, 3), at=MUG_SIP, rot=[0, 0, -10]), dict(t=round(SIP + 1.5, 3), at=MUG_CARRY, rot=[0, 0, 0])]
+A[MUG]["keys"] += [dict(t=round(SIP, 3), at=MUG_CARRY, rot=[0, 0, 0]), dict(t=round(SIP + 0.45, 3), at=MUG_SIP, off=[0.035, -0.07, -0.095], rot=[-22, 0, 0]),
+                   dict(t=round(SIP + 1.1, 3), at=MUG_SIP, off=[0.035, -0.07, -0.095], rot=[-22, 0, 0]), dict(t=round(SIP + 1.5, 3), at=MUG_CARRY, rot=[0, 0, 0])]
 sfx("sip", SIP + 0.5, 0.5)
 face("worried", SIP + 1.0, SIP + 1.6, set=dict(brow=0.9))
 s, e = say("hot", 0.0, at=SIP + 1.3)
@@ -202,7 +203,7 @@ to_lens(s - 0.3, e + 0.2)
 face("content", s, e + 0.3)                                         # sincere: no slang, calm
 
 # 4. the build: mug on the stump, "Blocks up!", the crate back up, cabbages in, the stone lid
-walk(e + 0.3, e + 1.3, (STUMP[0] + 0.28, STUMP[1] + 0.02))
+walk(e + 0.3, e + 1.3, (STUMP[0], STUMP[1] - 0.27))
 DOWN = e + 1.5
 look(e + 1.1, DOWN + 0.4, pos=MUG_DOWN, body=True, rate=0.3)
 A[MUG]["keys"] += [dict(t=round(DOWN - 0.3, 3), at=MUG_CARRY, rot=[0, 0, 0]), dict(t=round(DOWN, 3), at=MUG_DOWN, rot=[0, 0, 0])]
@@ -233,14 +234,14 @@ pose("dust_hands", s - 0.2, e + 0.3, ease=0.2)
 face("smirk", s, e + 0.4)
 
 # 5. the hook: coffee again, so pleased with himself... two eyes blink in the vent
-walk(e + 0.4, e + 1.4, (STUMP[0] + 0.28, STUMP[1] + 0.02))
+walk(e + 0.4, e + 1.4, (STUMP[0], STUMP[1] - 0.27))
 UP = e + 1.6
 look(e + 1.2, UP + 0.3, pos=MUG_DOWN, body=True, rate=0.3)
 A[MUG_REST]["until"] = round(UP, 3)
-act(type="hold", target="mug", hand="L", when=round(UP, 3), until=99.0, reach=0.3, grip=[0.0, 0.0, 0.05],
+act(type="hold", target="mug", hand="L", when=round(UP, 3), until=99.0, reach=0.3, grip=MUG_GRIP,
     keys=[dict(t=round(UP, 3), at=MUG_DOWN, rot=[0, 0, 0]), dict(t=round(UP + 0.4, 3), at=MUG_CARRY, rot=[0, 0, 0]),
-          dict(t=round(UP + 0.7, 3), at=MUG_CARRY, rot=[0, 0, 0]), dict(t=round(UP + 1.1, 3), at=MUG_SIP, rot=[0, 0, -10]),
-          dict(t=round(UP + 1.7, 3), at=MUG_SIP, rot=[0, 0, -10]), dict(t=round(UP + 2.1, 3), at=MUG_CARRY, rot=[0, 0, 0])])
+          dict(t=round(UP + 0.7, 3), at=MUG_CARRY, rot=[0, 0, 0]), dict(t=round(UP + 1.1, 3), at=MUG_SIP, off=[0.035, -0.07, -0.095], rot=[-22, 0, 0]),
+          dict(t=round(UP + 1.7, 3), at=MUG_SIP, off=[0.035, -0.07, -0.095], rot=[-22, 0, 0]), dict(t=round(UP + 2.1, 3), at=MUG_CARRY, rot=[0, 0, 0])])
 s, e = say("nothing", 0.0, at=UP + 2.2)
 to_lens(s - 0.3, 99.0)
 face("smirk", s, 99.0)
@@ -334,7 +335,8 @@ DOOR = (-1.9, 0.6, 1.0)                                             # just outsi
 VENT_PT = (VENT[0] - 0.07, VENT[1], 0.08)                           # (just in front of the wall: the sight rules treat the wall as solid)
 SHOTS = [
     # cold open: low and wide -- the wreck, the cabbage rolling at us, the open door he bursts out of
-    (0.0, (WRECK_PTS + [DOOR, (DOOR[0], DOOR[1], 0.05), ROLL1], (-2.3, 0.3, 0.35), 172, 9, 2.0)),
+    (0.0, ([(CRATE_C[0], CRATE_C[1], 0.03), (-2.55, -0.15, 0.03), (-2.15, 0.15, 0.03), (DOOR[0], DOOR[1], 0.05), (DOOR[0], DOOR[1], 1.25)],
+           (-2.2, 0.3, 0.55), 172, 10, 2.2)),
     # "Somebody robbed me": close on him, crouched by the mess
     (LS["robbed"] - 0.3, (gp(*G1)[1:] + [(CRATE_C[0], CRATE_C[1], 0.0)], (-2.4, 0.25, 0.6), 180, 10, 1.6)),
     # the Morning Ritual: a medium front shot
@@ -351,11 +353,11 @@ cam += [orbit(tc1 - 1.0 / FPS, (-1.95, -0.08, 0.0), 204, 50, 0.7)]
 SHOTS2 = [
     (INSERT[1], (gp(*G_PR)[1:], (G_PR[0], G_PR[1], 0.85), 180, 8, 1.5)),
     # the build, wide: the stump, the crate going back up
-    (LS["ready"] - 0.3, (gp(*G1) + gp(STUMP[0] + 0.28, STUMP[1] + 0.02) + [(CRATE_C[0], CRATE_C[1], 0.4)], (-2.55, 0.3, 0.55), 185, 16, 2.6)),
+    (LS["ready"] - 0.3, (gp(*G1) + gp(STUMP[0], STUMP[1] - 0.27) + [(CRATE_C[0], CRATE_C[1], 0.4)], (-2.55, 0.3, 0.55), 185, 16, 2.6)),
     # "Stone lid. Raccoon-proof.": on him by the finished crate
     (LS["stone"] - 0.3, (gp(*G1)[1:] + [(CRATE_C[0], CRATE_C[1], 0.36)], (-2.4, 0.2, 0.65), 180, 10, 1.7)),
     # the hook: wide, him with his coffee in front, the vent behind
-    (LE["stone"] + 0.5, (gp(STUMP[0] + 0.28, STUMP[1] + 0.02) + [VENT_PT, (VENT_PT[0], VENT[1] - 0.15, 0.3), (CRATE_C[0], CRATE_C[1], 0.36)],
+    (LE["stone"] + 0.5, (gp(STUMP[0], STUMP[1] - 0.27) + [VENT_PT, (VENT_PT[0], VENT[1] - 0.15, 0.3), (CRATE_C[0], CRATE_C[1], 0.36)],
                          (-2.3, 0.15, 0.5), 190, 9, 2.4)),
 ]
 for t, (must, tgt, az, el, d) in SHOTS2:

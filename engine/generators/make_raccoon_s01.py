@@ -116,7 +116,7 @@ POSES = {
     "point_low": dict(lean=0.2, hand_R={"char": [-0.12, -0.42, 0.55]}),
     "dust_hands": dict(hand_R={"char": [-0.05, -0.28, 0.72]}, hand_L={"char": [0.05, -0.28, 0.74]}),
     "blocks_up": dict(lean=-0.1, hand_R={"char": [-0.22, -0.1, 1.3]}),
-    "reach_mug": dict(lean=0.18, hand_L=dict(obj="mug", off=[0.095, 0.0, 0.09])),   # hand on the handle (Episode 1)
+    "reach_mug": dict(lean=0.12, hand_L=dict(obj="mug", off=[0.095, 0.0, 0.09])),   # hand on the handle (Episode 1)
 }
 G_IN = (-1.45, 0.66)                                                # just inside the open door
 G1 = (-2.35, 0.52)                                                 # at the wreck (north of it): the crate's build spot too
@@ -124,7 +124,7 @@ G_PR = (-2.05, 0.4)                                                # where he po
 MUG_GRIP = [0.095, 0.0, 0.09]                                      # wrist just outside the handle (Episode 1)
 MUG_CARRY = {"char": [0.06, -0.27, 0.6]}
 MUG_SIP = "mouth"
-MUG_DOWN = [STUMP[0], STUMP[1] - 0.06, round(STUMP_TOP - 0.02, 3)]          # (the mug root sits 2 cm below its base)
+MUG_DOWN = [STUMP[0], STUMP[1] - 0.08, round(STUMP_TOP - 0.02, 3)]          # (the mug root sits 2 cm below its base)
 for name in ("webcam", "cam_cap"):                                  # Rule 2: on the strap, hands free, all scene
     act(type="hold", target=name, hand="none", when=-1.0, until=99.0, reach=0.05,
         keys=[dict(t=-1.0, at={"char": STRAP}, rot=[0, 0, 0]), dict(t=99.0, at={"char": STRAP}, rot=[0, 0, 0])])
@@ -204,7 +204,7 @@ to_lens(s - 0.3, e + 0.2)
 face("content", s, e + 0.3)                                         # sincere: no slang, calm
 
 # 4. the build: mug on the stump, "Blocks up!", the crate back up, cabbages in, the stone lid
-walk(e + 0.3, e + 1.3, (STUMP[0], STUMP[1] - 0.28))
+walk(e + 0.3, e + 1.3, (STUMP[0], STUMP[1] - 0.34))
 DOWN = e + 1.5
 look(e + 1.1, DOWN + 0.4, pos=MUG_DOWN, body=True, rate=0.3)
 A[MUG]["keys"] += [dict(t=round(DOWN - 0.3, 3), at=MUG_CARRY, rot=[0, 0, 0]), dict(t=round(DOWN, 3), at=MUG_DOWN, rot=[0, 0, 0])]
@@ -238,7 +238,7 @@ pose("dust_hands", s - 0.2, e + 0.3, ease=0.2)
 face("smirk", s, e + 0.4)
 
 # 5. the hook: coffee again, so pleased with himself... two eyes blink in the vent
-walk(e + 0.4, e + 1.4, (STUMP[0], STUMP[1] - 0.28))
+walk(e + 0.4, e + 1.4, (STUMP[0], STUMP[1] - 0.34))
 UP = e + 1.6
 look(e + 1.2, UP + 0.3, pos=MUG_DOWN, body=True, rate=0.3)
 A[MUG_REST]["until"] = round(UP, 3)
@@ -359,11 +359,11 @@ cam += [orbit(tc1 - 1.0 / FPS, (-1.95, -0.08, 0.0), 204, 50, 0.7)]
 SHOTS2 = [
     (INSERT[1], (gp(*G_PR)[1:], (G_PR[0], G_PR[1], 0.85), 180, 8, 1.5)),
     # the build, wide: the stump, the crate going back up
-    (LE["wild"] + 0.25, (gp(*G1) + gp(STUMP[0], STUMP[1] - 0.28) + [(CRATE_C[0], CRATE_C[1], 0.4)], (-2.55, 0.3, 0.55), 185, 16, 2.6)),
+    (LE["wild"] + 0.25, (gp(*G1) + gp(STUMP[0], STUMP[1] - 0.34) + [(CRATE_C[0], CRATE_C[1], 0.4)], (-2.55, 0.3, 0.55), 185, 16, 2.6)),
     # "Stone lid. Raccoon-proof.": on him by the finished crate
     (LS["stone"] - 0.3, (gp(*G1)[1:] + [(CRATE_C[0], CRATE_C[1], 0.36)], (-2.4, 0.2, 0.65), 180, 10, 1.7)),
     # the hook: wide, him with his coffee in front, the vent behind
-    (LE["stone"] + 0.5, (gp(STUMP[0], STUMP[1] - 0.28) + [VENT_PT, (VENT_PT[0], VENT[1] - 0.15, 0.3), (CRATE_C[0], CRATE_C[1], 0.36)],
+    (LE["stone"] + 0.5, (gp(STUMP[0], STUMP[1] - 0.34) + [VENT_PT, (VENT_PT[0], VENT[1] - 0.15, 0.3), (CRATE_C[0], CRATE_C[1], 0.36)],
                          (-2.3, 0.15, 0.5), 190, 9, 2.4)),
 ]
 for t, (must, tgt, az, el, d) in SHOTS2:

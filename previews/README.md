@@ -1,22 +1,25 @@
-# Tesla preview — revised movement and narration
+# Tesla video — continuous 3D direction preview
 
-[![Revised Tesla preview](poster-tesla-v2.jpg)](tesla-preview-v2-A.mp4)
+[![Continuous 3D traffic preview](poster-tesla-dynamic-v3.jpg)](tesla-dynamic-3d-v3.mp4)
 
-## Compare the voices
+## [Watch the 18-second continuous 3D preview](tesla-dynamic-3d-v3.mp4)
 
-- **[Version A — current narrator, conversational rewrite](tesla-preview-v2-A.mp4)** — about 29 seconds.
-- **[Version B — alternative narrator, adjusted pace](tesla-preview-v2-B.mp4)** — about 25 seconds.
+**Voice B is confirmed. No static-image sections.** This short illustrative excerpt tests the updated visual direction before the full film.
 
-Both use the same words and visual sequence, paced to the actual reading. The writing uses contractions and more natural spoken phrasing. No music or narration subtitles. Neither changes the channel narrator automatically.
+A pedestrian crosses, an oncoming car passes, and the blue vehicle yields before following a left-turn route. Wheels roll and steer, the pedestrian is animated, and four actual 3D camera shots follow the action. The road/actors/camera are rendered for every frame; these are not held pictures with pan/zoom effects. Technical labels support the moving scene; there are no burned-in narration captions or music.
 
-## Visual revision
+This is a low-resolution direction draft with original generic props, not exact Tesla CAD, a real vehicle test or a reconstruction of Tesla software. Modeled actor-envelope separation, main-actor framing and video/audio checks passed; this is not real-world safety validation.
 
-Eight shorter directed shots: moving EV, camera pushes, an original stylized patent card, a genuine 3D exploded chip reveal, growing candidate paths, changing example scores, and removal of low-score branches. Scores are illustrative, not Tesla performance measurements.
+## Your choice
 
-**Reply in the chat with A, B, or the changes you want. Nothing has been sent to the work pool.**
+Reply in the chat: **Send to work pool** or **Reject with changes**. Nothing queues automatically. Work-pool approval accepts this direction; the remaining full-film chapters and production-quality preflight still need completion.
 
-If GitHub does not play a clip, use **Download raw file**.
+[Updated full storyboard](tesla-storyboard.md)
 
-[Revised full storyboard](tesla-storyboard.md) · [Earlier rejected preview](tesla-patent-preview.mp4) · [3D piston test](piston-cutaway-test.mp4)
+If GitHub does not play the video, use **Download raw file**.
 
-Sources: [Tesla patent application US20260105614A1](https://patents.google.com/patent/US20260105614A1/en) and [Tesla FSD support](https://www.tesla.com/support/fsd). These are original illustrative props, not exact Tesla CAD. No HW3 feature-parity or 80% performance promise is asserted.
+### Earlier revisions
+
+[Earlier motion/voice A](tesla-preview-v2-A.mp4) · [Earlier motion/voice B](tesla-preview-v2-B.mp4) · [Piston motion reference](piston-cutaway-test.mp4)
+
+Sources: [Tesla patent US20260105614A1](https://patents.google.com/patent/US20260105614A1/en) and [Tesla FSD support](https://www.tesla.com/support/fsd). The full film will retain the verified-patent framing without unsupported HW3 feature-parity or 80% performance promises.

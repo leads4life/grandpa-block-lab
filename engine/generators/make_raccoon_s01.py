@@ -50,10 +50,10 @@ S["cabbages_in"] = dict(cells=[[x, 0, 1] for x in (-24, -23)] + [[-24, 0, 2]], a
 ROLL0 = [-2.3, 0.18, 0.05]                                         # the cabbage that rolls to the lens (set below)
 S["cabbage_roll"] = dict(cells=[[0, 0, 0]], at=[0.0, 0.0, 0.0], centered=True, material="cabbage", block_shape=[1.1, 1.1, 1.1],
                          expect_blocks=1, prebuilt=True)
-STUMP = (-2.62, 0.82)                                              # the chopping stump: the mug's spot while he builds
-S["stump"] = dict(cells=[[0, 0, z] for z in range(3)], at=[STUMP[0], STUMP[1], 0.0], centered=True, material="oldwood",
-                  block_shape=[2.2, 2.2, 1], expect_blocks=3, prebuilt=True)
-STUMP_TOP = 0.3
+STUMP = (-2.8, 0.95)                                              # the chopping stump: the mug's spot while he builds
+S["stump"] = dict(cells=[[0, 0, z] for z in range(4)], at=[STUMP[0], STUMP[1], 0.0], centered=True, material="oldwood",
+                  block_shape=[2.2, 2.2, 1], expect_blocks=4, prebuilt=True)
+STUMP_TOP = 0.4                                                     # (waist-high: the mug is an easy reach)
 
 # ---------------------------------------------------------------- the clue: prints like tiny hands, crate -> the vent
 PRINTS = [(-2.07, 0.03, -125), (-1.97, -0.07, -140), (-1.88, -0.16, -120), (-1.8, -0.25, -138)]   # (x, y, heading deg)
@@ -124,7 +124,7 @@ G_PR = (-2.05, 0.4)                                                # where he po
 MUG_GRIP = [0.095, 0.0, 0.09]                                      # wrist just outside the handle (Episode 1)
 MUG_CARRY = {"char": [0.06, -0.27, 0.6]}
 MUG_SIP = "mouth"
-MUG_DOWN = [STUMP[0], STUMP[1] - 0.04, round(STUMP_TOP - 0.02, 3)]          # (the mug root sits 2 cm below its base)
+MUG_DOWN = [STUMP[0], STUMP[1] - 0.06, round(STUMP_TOP - 0.02, 3)]          # (the mug root sits 2 cm below its base)
 for name in ("webcam", "cam_cap"):                                  # Rule 2: on the strap, hands free, all scene
     act(type="hold", target=name, hand="none", when=-1.0, until=99.0, reach=0.05,
         keys=[dict(t=-1.0, at={"char": STRAP}, rot=[0, 0, 0]), dict(t=99.0, at={"char": STRAP}, rot=[0, 0, 0])])
@@ -204,16 +204,17 @@ to_lens(s - 0.3, e + 0.2)
 face("content", s, e + 0.3)                                         # sincere: no slang, calm
 
 # 4. the build: mug on the stump, "Blocks up!", the crate back up, cabbages in, the stone lid
-walk(e + 0.3, e + 1.3, (STUMP[0], STUMP[1] - 0.33))
+walk(e + 0.3, e + 1.3, (STUMP[0], STUMP[1] - 0.28))
 DOWN = e + 1.5
 look(e + 1.1, DOWN + 0.4, pos=MUG_DOWN, body=True, rate=0.3)
 A[MUG]["keys"] += [dict(t=round(DOWN - 0.3, 3), at=MUG_CARRY, rot=[0, 0, 0]), dict(t=round(DOWN, 3), at=MUG_DOWN, rot=[0, 0, 0])]
-A[MUG]["until"] = round(DOWN, 3)
-pose("reach_mug", DOWN - 0.35, DOWN + 0.35, ease=0.15)             # the hand stays on it as it lets go
+A[MUG]["keys"].append(dict(t=round(DOWN + 0.3, 3), at=MUG_DOWN, rot=[0, 0, 0]))   # he lets go after it has landed
+A[MUG]["until"] = round(DOWN + 0.3, 3)
+pose("reach_mug", DOWN - 0.35, DOWN + 0.7, ease=0.2)             # the hand stays on it as it lets go
 sfx("clink", DOWN, 0.4)
 MUG_REST = len(A)
-act(type="hold", target="mug", hand="none", when=round(DOWN + 0.05, 3), until=99.0, reach=0.05,
-    keys=[dict(t=round(DOWN + 0.05, 3), at=MUG_DOWN, rot=[0, 0, 0])])
+act(type="hold", target="mug", hand="none", when=round(DOWN + 0.4, 3), until=99.0, reach=0.05,
+    keys=[dict(t=round(DOWN + 0.4, 3), at=MUG_DOWN, rot=[0, 0, 0])])
 s, e = say("ready", 0.0, at=DOWN + 0.5)
 to_lens(s - 0.3, e + 0.2)
 pose("blocks_up", s + 0.6, e + 0.4, ease=0.2)
@@ -226,7 +227,8 @@ act(type="build", target="cabbages_in", when=round(B0 + 5.7, 3), until=round(B0 
 A[ROLL]["until"] = round(B0 + 1.65, 3)
 act(type="hold", target="cabbage_roll", hand="none", when=round(B0 + 1.7, 3), until=99.0, reach=0.05,   # (this one goes in too)
     keys=[dict(t=round(B0 + 1.7, 3), at=HIDE, rot=[0, 0, 0])])
-LID = B0 + 6.9
+walk(B0 + 6.55, B0 + 7.0, (G1[0], G1[1] + 0.1))                     # a step back before the stone slab drops
+LID = B0 + 7.1
 act(type="build", target="lid", when=round(LID, 3), until=round(LID + 0.5, 3), stand_at=[G1[0], G1[1], 0.0], order="z", quiet=True)
 sfx("thud", LID + 0.4, 1.0)
 look(B0 + 0.3, LID + 0.9, pos=(CRATE_C[0], CRATE_C[1], 0.2), body=True, rate=0.3)
@@ -236,7 +238,7 @@ pose("dust_hands", s - 0.2, e + 0.3, ease=0.2)
 face("smirk", s, e + 0.4)
 
 # 5. the hook: coffee again, so pleased with himself... two eyes blink in the vent
-walk(e + 0.4, e + 1.4, (STUMP[0], STUMP[1] - 0.33))
+walk(e + 0.4, e + 1.4, (STUMP[0], STUMP[1] - 0.28))
 UP = e + 1.6
 look(e + 1.2, UP + 0.3, pos=MUG_DOWN, body=True, rate=0.3)
 A[MUG_REST]["until"] = round(UP, 3)
@@ -357,11 +359,11 @@ cam += [orbit(tc1 - 1.0 / FPS, (-1.95, -0.08, 0.0), 204, 50, 0.7)]
 SHOTS2 = [
     (INSERT[1], (gp(*G_PR)[1:], (G_PR[0], G_PR[1], 0.85), 180, 8, 1.5)),
     # the build, wide: the stump, the crate going back up
-    (LS["ready"] - 0.3, (gp(*G1) + gp(STUMP[0], STUMP[1] - 0.33) + [(CRATE_C[0], CRATE_C[1], 0.4)], (-2.55, 0.3, 0.55), 185, 16, 2.6)),
+    (LE["wild"] + 0.25, (gp(*G1) + gp(STUMP[0], STUMP[1] - 0.28) + [(CRATE_C[0], CRATE_C[1], 0.4)], (-2.55, 0.3, 0.55), 185, 16, 2.6)),
     # "Stone lid. Raccoon-proof.": on him by the finished crate
     (LS["stone"] - 0.3, (gp(*G1)[1:] + [(CRATE_C[0], CRATE_C[1], 0.36)], (-2.4, 0.2, 0.65), 180, 10, 1.7)),
     # the hook: wide, him with his coffee in front, the vent behind
-    (LE["stone"] + 0.5, (gp(STUMP[0], STUMP[1] - 0.33) + [VENT_PT, (VENT_PT[0], VENT[1] - 0.15, 0.3), (CRATE_C[0], CRATE_C[1], 0.36)],
+    (LE["stone"] + 0.5, (gp(STUMP[0], STUMP[1] - 0.28) + [VENT_PT, (VENT_PT[0], VENT[1] - 0.15, 0.3), (CRATE_C[0], CRATE_C[1], 0.36)],
                          (-2.3, 0.15, 0.5), 190, 9, 2.4)),
 ]
 for t, (must, tgt, az, el, d) in SHOTS2:

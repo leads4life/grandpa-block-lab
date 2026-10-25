@@ -250,7 +250,9 @@
   {
    "id": "moved",
    "text": "They moved the STONE?!",
-   "pause": 2.0
+   "pause": 2.0,
+   "lens": false,
+   "why": "shouted at the mess, like Scene 01's cold open"
   },
   {
    "id": "okay",
@@ -294,7 +296,9 @@
   {
    "id": "mama",
    "text": "Oh. A mama. With babies.",
-   "pause": 0.6
+   "pause": 0.6,
+   "lens": false,
+   "why": "said as the kits peek out: the wide shot keeps them in view"
   },
   {
    "id": "bandit",

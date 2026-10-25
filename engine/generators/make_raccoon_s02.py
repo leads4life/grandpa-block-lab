@@ -48,7 +48,7 @@ VENT = (-1.728, -0.3)
 G_FAR = (-3.2, 0.78)                                                # where he watches from that evening (well back)
 
 # ---------------------------------------------------------------- lines
-LINES = [("moved", "They moved the STONE?!", {}),
+LINES = [("moved", "They moved the STONE?!", dict(lens=False, why="shouted at the mess, like Scene 01's cold open")),
          ("okay", "Okay. Stone didn't work. We need a real lock.", {}),
          ("ready", "Ready, chat? Blocks up!", {}),
          ("hook", "Hook latch. Let's see a bandit do THAT.", {}),
@@ -56,7 +56,7 @@ LINES = [("moved", "They moved the STONE?!", {}),
          ("three", "...Three seconds. THREE.", {}),
          ("dext", "That's a word for good with your hands. Five fingers... and they feel everything.", {}),
          ("hey", "Hey! Not tonight!", dict(lens=False, why="called out to the raccoon, from far away")),
-         ("mama", "Oh. A mama. With babies.", {}),
+         ("mama", "Oh. A mama. With babies.", dict(lens=False, why="said as the kits peek out: the wide shot keeps them in view")),
          ("bandit", "She's not a bandit, chat. She's feeding her family.", {}),
          ("safety", "If you see one: give it space, make a little noise, and never feed it.", {}),
          ("up", "If they can open anything... maybe the answer is UP.", {})]

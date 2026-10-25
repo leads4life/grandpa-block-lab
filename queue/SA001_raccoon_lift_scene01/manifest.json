@@ -1,0 +1,26 @@
+{
+ "slug": "raccoon_lift_scene01",
+ "title": "The Raid",
+ "episode": "raccoon_lift",
+ "scene": 1,
+ "film": 63.266666666666666,
+ "engine_commit": "233471542c744a0561ad145ec5c8d0476dc3dfea",
+ "engine_files": [
+  "bl_audio.py",
+  "bl_cast.py",
+  "bl_common.py",
+  "bl_lens.py",
+  "bl_overlay.py",
+  "bl_perform.py",
+  "bl_scene.py",
+  "bl_verify.py",
+  "bl_voice.py",
+  "bl_world.py",
+  "render.py",
+  "voxelchars.py",
+  "voxelkit.py"
+ ],
+ "engine_sha": "d40dabe159fb",
+ "accepted_fails": [],
+ "approved": "2026-10-25 04:53"
+}

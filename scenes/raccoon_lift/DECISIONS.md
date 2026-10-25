@@ -10,3 +10,6 @@
 | 03 | The food box is built on top by Block Lab "magic"; he mentions the ladder rule instead of climbing | Keeps Grandpa off a ladder on screen; "Never ride a load lift" is saved for Scene 06 |
 | 05 | The flume comes from upstream on trestles; the stream itself stays level in the picture | Water must run downhill to fill a bucket that hangs 1.6 m up; the upstream end is out of frame (honest: mill races and flumes start upstream) |
 | 05 | The launched cabbage lands in the stream and is fished out | No food left lying around for the raccoons (no feeding) |
+| 06 | "Stuck halfway" is explained by the leaking plug (in = out, so the weight stays the same) | Honest physics for the stop, and it makes BALANCED a real lesson |
+| 06 | The ride lasts ~1 m and ends by draining him back down; then the plain safety line | The agreed correction; no peril played for laughs beyond "I may have made a mistake" |
+| 06 | The bucket becomes a barrel, under a platform | A bucket of water could never lift him; a barrel can (honest scale) |

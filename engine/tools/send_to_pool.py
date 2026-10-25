@@ -41,7 +41,10 @@ def main():
     story = json.load(open(story_p))
     dlg = json.load(open(dlg_p))
     sc = story.get("scene", {})
-    order = "%02d%03d" % (sc.get("episode", 0), sc.get("scene", 0))
+    if isinstance(sc.get("episode", 0), int):
+        order = "%02d%03d" % (sc.get("episode", 0), sc.get("scene", 0))
+    else:                                                       # a standalone (unnumbered) episode, e.g. "raccoon_lift"
+        order = "SA%03d" % sc.get("scene", 0)
     dst = os.path.join(repo, "queue", "%s_%s" % (order, slug))
     os.makedirs(dst, exist_ok=True)
     shutil.copy(story_p, os.path.join(dst, "story.json"))

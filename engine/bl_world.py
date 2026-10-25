@@ -613,6 +613,61 @@ def build_clouds_pass(sc, W, fps):
             sun.color = [c0[i] + ((tc or c0)[i] - c0[i]) * min(1.0, u) for i in range(3)]; sun.keyframe_insert("color", frame=f)
 
 
+def build_rigging(sc, P, R, fps):
+    """'rigging' (Raccoon Lift): ropes, water filling a bucket, and pouring water -- each follows its structure's slides.
+    {"ropes": [{"top": [x, y, z], "follow": name, "at": [x, y, z], "width": m}],     # a rope from a fixed pulley down to
+     "fills": [{"follow": name, "at": [x, y, z], "size": [w, d, h], "level": [[t, 0..1], ...]}],   # water in a bucket
+     "pours": [{"from": [x, y, z], "follow": name, "at": [x, y, z], "on": [[t0, t1], ...], "width": m}]}
+    Every "at" is the world point with the structure at rest (before its slides)."""
+    import bl_common as Cm
+    rope_m = VK.pixel_material("Rope", (0.50, 0.40, 0.24), (0.70, 0.58, 0.38), 0.004, bump=0.3)
+    water_m = bpy.data.materials.get("Water") or VK.mat("Water", (0.10, 0.32, 0.42), rough=0.06)
+    pour_m = VK.mat("PourWater", (0.30, 0.55, 0.68), rough=0.05)
+    def unit(name, m):
+        o = VK.mesh_obj(name, [((0, 0, 0), (1, 1, 1), 0)], [m], coll=sc.collection)
+        o.rotation_mode = "QUATERNION"
+        return o
+    def place(o, a, b, w, f):
+        a, b = Vector(a), Vector(b)
+        d = b - a
+        o.location = (a + b) / 2
+        o.rotation_quaternion = (d.normalized() if d.length > 1e-6 else Vector((0, 0, 1))).to_track_quat("Z", "Y")
+        o.scale = (w, w, max(1e-4, d.length))
+        o.keyframe_insert("location", frame=f); o.keyframe_insert("rotation_quaternion", frame=f); o.keyframe_insert("scale", frame=f)
+    at = lambda e, t: [e["at"][i] + Cm.slide_offset(P, e["follow"], t)[i] for i in range(3)]
+    def level(e, t):
+        ks = e["level"]
+        if t <= ks[0][0]:
+            return ks[0][1]
+        if t >= ks[-1][0]:
+            return ks[-1][1]
+        for k0, k1 in zip(ks, ks[1:]):
+            if t <= k1[0]:
+                return k0[1] + (k1[1] - k0[1]) * (t - k0[0]) / max(1e-6, k1[0] - k0[0])
+    for i, e in enumerate(R.get("ropes", [])):
+        o = unit("Rope%d" % i, rope_m)
+        for f in range(P["nf"]):
+            place(o, e["top"], at(e, f / fps), e.get("width", 0.014), f)
+    for i, e in enumerate(R.get("fills", [])):
+        o = unit("Fill%d" % i, water_m)
+        w, d, h = e["size"]
+        for f in range(P["nf"]):
+            b, L = at(e, f / fps), level(e, f / fps)
+            o.location = (b[0], b[1], b[2] + h * L / 2)
+            o.rotation_quaternion = (1, 0, 0, 0)
+            o.scale = (w, d, h * L) if L > 0.002 else (0, 0, 0)
+            o.keyframe_insert("location", frame=f); o.keyframe_insert("rotation_quaternion", frame=f); o.keyframe_insert("scale", frame=f)
+    for i, e in enumerate(R.get("pours", [])):
+        o = unit("Pour%d" % i, pour_m)
+        for f in range(P["nf"]):
+            t = f / fps
+            if any(t0 <= t <= t1 for t0, t1 in e["on"]):
+                wob = 0.003 * math.sin(2 * math.pi * 7.0 * t)
+                place(o, e["from"], [at(e, t)[0] + wob, at(e, t)[1], at(e, t)[2]], e.get("width", 0.03), f)
+            else:
+                o.scale = (0, 0, 0); o.keyframe_insert("scale", frame=f)
+
+
 def build_leaves(sc, L, fps, nf):
     """'leaves': {"at": [x, y], "r": m, "n": count, "t0": s, "t1": s} -- a breeze shakes leaves down: they flutter and land."""
     r = random.Random(77)
@@ -707,6 +762,8 @@ def build_world(sc, P):
         build_clouds_pass(sc, W, fps)
     if W.get("leaves"):
         build_leaves(sc, W["leaves"], fps, P["nf"])
+    if W.get("rigging"):
+        build_rigging(sc, P, W["rigging"], fps)
     for c in W.get("critters", []):
         if c["kind"] == "rabbit":
             build_rabbit(sc, c, fps, P["nf"])

@@ -51,7 +51,7 @@ WORLD_OPTIONS = {                                  # story "world": {...}; anyth
     "interior": ("none", "cabin"),                 # "cabin": grandpa's log cabin around the middle of the island
     "terrain": ("island", "forest_west"),          # "forest_west": a forest with a stream joins the island to the west
 }
-WORLD_FREE = ("sun", "exposure", "roof", "door_open", "clouds_pass", "leaves", "critters", "lantern")   # roof: true (seen from outside only); door_open: [t0, t1, deg]                   # free values: "sun" light travel direction [x,y,z], "exposure" offset
+WORLD_FREE = ("sun", "exposure", "roof", "door_open", "clouds_pass", "leaves", "critters", "lantern", "rigging")   # roof: true (seen from outside only); door_open: [t0, t1, deg]                   # free values: "sun" light travel direction [x,y,z], "exposure" offset
 OUTFIT_OPTIONS = {                                 # story "grandpa": {"outfit": {...}}
     "hat": ("cap", "hardhat", "santa", "beret", "straw", "beanie", "none"),
     "shirt": ("rust", "red", "blue", "green", "yellow", "purple", "white", "striped"),
@@ -83,6 +83,16 @@ def cl(x, a=0.0, b=1.0):
 def smooth(x):
     x = cl(x)
     return x * x * (3 - 2 * x)
+
+
+def slide_offset(P, name, t):
+    """World offset of structure `name` at t from its (non-local) "slide" actions -- what the rigging follows."""
+    off = [0.0, 0.0, 0.0]
+    for a in P["actions"]:
+        if a["type"] == "slide" and a["target"] == name and not a.get("local"):
+            u = smoother((t - a["t0"]) / max(1e-6, a["t1"] - a["t0"]))
+            off = [off[i] + a["by"][i] * u for i in range(3)]
+    return off
 
 
 def smoother(x):

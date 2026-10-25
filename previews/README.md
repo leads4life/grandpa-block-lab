@@ -1,13 +1,25 @@
-# 3D explainer preview
+# Tesla patent video — first preview
 
-## How a piston moves — six-second test
+[![Tesla patent preview](poster-tesla.jpg)](tesla-patent-preview.mp4)
 
-[![Piston cutaway preview](poster-piston.jpg)](piston-cutaway-test.mp4)
+**[Watch the 33-second narrated preview](tesla-patent-preview.mp4)** · **[Read the revised full storyboard](tesla-storyboard.md)**
 
-**[Open the video](piston-cutaway-test.mp4)** · **[View looping animation without audio](piston-test.gif)**
+## Your decision
 
-The MP4 includes narration and a restrained mechanical sound. If GitHub does not play it, use its Download raw file button. An optional self-contained [browser viewer](piston-viewer.html) can be downloaded with the same button, then opened locally; it has native Play/Pause controls and needs no server. GitHub shows HTML source rather than running the viewer in its repository browser.
+After watching, reply in the chat with **Send to work pool** or **Reject** and the changes you want. This GitHub page does not queue anything automatically. The remaining full-video chapters are not yet rendered.
 
-This is a visual-quality pilot: a physically sectioned hollow cylinder, piston, fixed-length connecting rod and rotating crankshaft, with tracked explanatory labels. Original procedural geometry; no downloaded model assets. Kinematics, frame bounds, video/audio format, duration, loudness and clipping were checked. It is an ideal illustrative mechanism, without combustion, valves, lubrication or force simulation.
+This previews the first chapter: an original illustrative 3D EV, a generic compute module, and timed technical graphics. They are not exact Tesla CAD or a reconstruction of Tesla's deployed software. No music or burned-in narration captions.
 
-The previous [branching-path workflow test](path-selection-test.mp4) remains available.
+The verified patent supports graph-based planning, scoring and pruning. This video does not claim it proves HW3/V14 feature parity or an 80% measured saving.
+
+### Primary sources
+
+- [Tesla patent application US20260105614A1](https://patents.google.com/patent/US20260105614A1/en)
+- [Tesla FSD (Supervised) support documentation](https://www.tesla.com/support/fsd)
+
+If the video does not play in GitHub, use **Download raw file**. The [self-contained browser viewer](tesla-viewer.html) can also be downloaded, then opened locally; GitHub displays its HTML source rather than hosting it as a page.
+
+### Earlier engine tests
+
+- [3D piston cutaway](piston-cutaway-test.mp4)
+- [Branching-path workflow test](path-selection-test.mp4)

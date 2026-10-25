@@ -572,8 +572,16 @@ def animate(sc, arm, roots, objs, puffs, cam):
                 continue
             a0, a1, u, off, rot = PF.hold_key(ha, t)
             where = lambda k_: mouth_w if k_ == "mouth" else (Wroot @ Vector(k_["char"])) if isinstance(k_, dict) else Vector(k_)
-            carried = (isinstance(a0, dict)) * (1 - u) + (isinstance(a1, dict)) * u      # char keys turn with his body
-            Mh = (Matrix.Translation(where(a0).lerp(where(a1), u) + Vector(off)) @ Matrix.Rotation(yaw * carried, 4, "Z")
+            rev4 = P.get("engine_rev", 1) >= 4
+            is_c = lambda k_: isinstance(k_, dict) or (rev4 and k_ == "mouth")      # rev 4: at his mouth turns with him too
+            carried = is_c(a0) * (1 - u) + is_c(a1) * u          # char keys turn with his body
+            yaw_c = yaw
+            if rev4 and is_c(a0) != is_c(a1):                  # rev 4: his heading counts whole turns -- blending a prop between
+                k0_, k1_ = PF.hold_pair(ha, t)                 # the world and his hand takes the nearest one (no extra spin)
+                rc = math.radians((k0_ if is_c(a0) else k1_).get("rot", (0, 0, 0))[2])
+                rw = math.radians((k1_ if is_c(a0) else k0_).get("rot", (0, 0, 0))[2])
+                yaw_c = yaw - 2 * math.pi * round((yaw + rc - rw) / (2 * math.pi))
+            Mh = (Matrix.Translation(where(a0).lerp(where(a1), u) + Vector(off)) @ Matrix.Rotation(yaw_c * carried, 4, "Z")
                   @ Euler([math.radians(v) for v in rot], "XYZ").to_matrix().to_4x4())
             scaled = any("scale" in k_ for k_ in ha["keys"])         # folding a map / page smaller (only when keyed)
             if scaled:

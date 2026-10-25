@@ -140,6 +140,19 @@ def holds(P):
     return [a for a in P["actions"] if a["type"] == "hold"]
 
 
+def hold_pair(a, t):
+    """The two keys hold_key(a, t) is blending between (the same key twice before the first / after the last)."""
+    ks = a["keys"]
+    if t <= ks[0]["t"]:
+        return ks[0], ks[0]
+    if t >= ks[-1]["t"]:
+        return ks[-1], ks[-1]
+    for k0, k1 in zip(ks, ks[1:]):
+        if t <= k1["t"]:
+            return k0, k1
+    return ks[-1], ks[-1]
+
+
 def hold_key(a, t):
     """(at, off, rot) of the keyed path at time t (smoothly between keys, held after the last)."""
     ks = a["keys"]

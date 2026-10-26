@@ -1,17 +1,23 @@
-# Tesla opening — moving 3D search
+# Complete Tesla planning explainer
 
-[![Watch the opening](poster-tesla-opening-v2.jpg)](tesla-opening-v2.mp4)
+[![Watch the complete film](poster-tesla-complete.jpg)](tesla-planning-complete.mp4)
 
-## [Watch the 15-second opening](tesla-opening-v2.mp4)
+## [Watch / download the full 5-minute 10-second video](tesla-planning-complete.mp4)
 
-This starts the film at 00:00. The preferred narrator B returns at approximately 178 words per minute. A car approaches a junction; three moving miniature traffic worlds show possible choices. Poor branches are removed, and the retained branch develops further choices.
+All 13 chapters are assembled. The preferred narrator is retained, with no music or burned-in narration captions. The remaining chapters include lower street and follow cameras, a front-wheel detail, frontal technical views and a hardware workbench.
 
-Original 3D vehicle and roads, four camera setups, rolling wheels, moving traffic and a pedestrian. No held-image sections, narration captions or music. Preview-resolution rendering is upscaled to 960×540; this is a direction review, not the full film.
+This is a schematic explanation of published Tesla patent application US20260105614A1. The original generic props are not manufacturer CAD, and the graphics are not a reconstruction or benchmark of Tesla software. The application does not prove HW3/V14 parity, an 80% measured saving or deployment.
 
-The miniatures and rankings illustrate the idea, not Tesla's actual software or scores. The narration refers to published patent application US20260105614A1; it makes no HW3/V14, measured savings or deployment promise.
+Export: 960×540, 30 fps, H.264/AAC; the approved opening was rendered at640×360 and upscaled. Media checks pass. Final inspection used decoded frame sequences across the whole film, additional checks of the repaired section, frozen-voice timing and audio-level checks. Subjective audiovisual judgment remains for the viewer.
 
-**Reply in chat: Send to work pool, or Reject with changes. Nothing queues automatically.**
+## Project files
 
-[Opening narration, storyboard and evidence](tesla-opening-review.md) · [Previous voice pace test](tesla-paced-v4.mp4) · [Full draft storyboard](tesla-storyboard.md)
+- [Master project JSON](tesla-project.json?raw=true)
+- [Colab source and media package](tesla-colab-package.zip?raw=true)
+- [Colab notebook](Tesla_Explainer_Colab.ipynb)
+- [Full storyboard](tesla-full-storyboard.md)
+- [Sources, description and chapter times](tesla-video-description.md)
 
-If GitHub does not play the clip, use **Download raw file**.
+The package now includes all 13 completed chapters and frozen narration. Local package, source-hash, notebook-syntax and CPU smoke checks pass; actual Colab/GPU execution has not been tested here. The Colab adapter reuses checked clips and leaves new outputs subject to their own final review. Nothing has been uploaded to YouTube.
+
+If GitHub does not play the video, select **Download raw file**.

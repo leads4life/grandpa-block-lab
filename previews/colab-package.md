@@ -1,11 +1,9 @@
-# Colab project package
+# Complete Colab project package
 
-[Download project ZIP](tesla-colab-package.zip?raw=true) · [Notebook](Tesla_Explainer_Colab.ipynb) · [ZIP checksum](tesla-colab-package.sha256)
+[Download ZIP](tesla-colab-package.zip?raw=true) · [Notebook](Tesla_Explainer_Colab.ipynb) · [Checksum](tesla-colab-package.sha256)
 
-The ZIP includes the master project JSON, engine/model/camera sources, topic bibles, frozen narration, approved opening and 11 completed checked chapters. It excludes native frame sequences, temporary denoise files and voice weight binaries. Missing chapters can be rendered in Colab; completed clips are reused.
+This snapshot contains the engine and procedural model/camera sources, bibles, master project JSON, frozen narration, approved opening and all 13 completed chapters. Native image sequences, temporary files and voice weights are excluded. Completed clips are reused; assembling this snapshot needs no new narration or frame rendering.
 
-Open the notebook in Colab and upload the ZIP when prompted. Choose a GPU runtime if available. The notebook creates an isolated Python 3.13 environment and tests an actual render device before resuming. No AI API key or new speech generation is needed for this snapshot.
+Open the notebook in Colab and upload the ZIP. Use the device smoke cell to verify a usable GPU; CPU fallback is available. No AI API key is needed for the bundled film. Local checks cover package integrity, extracted source hashes, all unit tests, notebook syntax and a CPU render. Colab/GPU execution itself is untested here.
 
-Validation here: ZIP and file checksums, extracted-source checks, notebook-cell syntax, all 68 unit tests, and a small CPU render. **Colab and GPU execution have not been tested from this chat.**
-
-This is an in-progress production snapshot. The main cloud render continues independently. Media QA and actual final visual review are recorded separately; the package does not claim the unfinished film is approved.
+The master JSON contains source definitions and references to separate media, rather than embedding all binary media. The full film is available separately: [watch/download](tesla-planning-complete.mp4).

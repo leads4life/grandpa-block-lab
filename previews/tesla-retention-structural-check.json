@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "errors": [],
+  "warnings": [
+    "Draft timing only: measure and review the narration before production"
+  ],
+  "runtime_seconds": 209.33333333333331,
+  "timing_basis": "estimated",
+  "rungs": [
+    {
+      "id": "r1",
+      "prompt_seconds": 0.15,
+      "payoff_seconds": 9.87,
+      "wait_seconds": 9.719999999999999,
+      "new_knowledge": "Waiting is a candidate decision linked to the actual crossing and oncoming traffic."
+    },
+    {
+      "id": "r2",
+      "prompt_seconds": 26.53,
+      "payoff_seconds": 32.23,
+      "wait_seconds": 5.699999999999996,
+      "new_knowledge": "Three alternatives at each of three stages produce 27 sequences in this example."
+    },
+    {
+      "id": "r3",
+      "prompt_seconds": 51.906666666666666,
+      "payoff_seconds": 60.61666666666666,
+      "wait_seconds": 8.709999999999994,
+      "new_knowledge": "A trajectory links dependent interactions to a goal rather than being an isolated line."
+    },
+    {
+      "id": "r4",
+      "prompt_seconds": 79.3,
+      "payoff_seconds": 82.64999999999999,
+      "wait_seconds": 3.3499999999999943,
+      "new_knowledge": "Changing relevance to a candidate interaction does not justify ignoring the road user."
+    },
+    {
+      "id": "r5",
+      "prompt_seconds": 105.67666666666666,
+      "payoff_seconds": 112.37666666666667,
+      "wait_seconds": 6.700000000000003,
+      "new_knowledge": "Candidate evaluation can consider several behavior factors rather than an invented single score."
+    },
+    {
+      "id": "r6",
+      "prompt_seconds": 129.02666666666667,
+      "payoff_seconds": 133.37666666666667,
+      "wait_seconds": 4.349999999999994,
+      "new_knowledge": "Threshold pruning stops developing a poor candidate and directs expansion toward promising nodes."
+    },
+    {
+      "id": "r7",
+      "prompt_seconds": 157.41666666666666,
+      "payoff_seconds": 161.77666666666664,
+      "wait_seconds": 4.359999999999985,
+      "new_knowledge": "An application about planning does not establish deployment or feature parity for a specific hardware generation."
+    },
+    {
+      "id": "r8",
+      "prompt_seconds": 190.4933333333333,
+      "payoff_seconds": 193.5033333333333,
+      "wait_seconds": 3.009999999999991,
+      "new_knowledge": "The viewer can distinguish pruning candidate decisions from losing representation of an agent."
+    }
+  ],
+  "maximum_open_loops": 1,
+  "longest_value_gap_seconds": 31.72666666666666,
+  "content_sha256": "251271e97eed22481e9ee11df520b1b3b521e3895a0637f1e1d76788a430ff0a",
+  "scope": "Structural/editorial planning validation; no measured audience retention or guarantee of engagement"
+}

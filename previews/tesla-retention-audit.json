@@ -1,0 +1,248 @@
+{
+  "status": "needs_editorial_and_visual_revision",
+  "delivered_video_sha256": "b67863c981cd765856b49959a5e72e348befe3639fbc3d8bce9b580b4aa3e53b",
+  "runtime_seconds": 309.59999999999997,
+  "technical_media_qa": "passed",
+  "retention_system_in_delivered_v1": "not_explicitly_implemented",
+  "audit_scope": [
+    "Frozen production script and measured chapter timeline",
+    "Actual renderer/camera and audio-cue code",
+    "Prior complete-film frame-sequence review, including repaired segment"
+  ],
+  "not_claimed": [
+    "Real-time audio listening for this audit",
+    "YouTube audience analytics",
+    "Viewer-retention improvement proved by structural checks"
+  ],
+  "findings": [
+    {
+      "area": "Opening hook",
+      "status": "partial",
+      "evidence": "Opening spoken question plus visible search/pruning provides an initial hook and small payoff. The viewer benefit and next question are less specific than they could be.",
+      "time": "00:00\u201300:15"
+    },
+    {
+      "area": "Early value",
+      "status": "weak",
+      "evidence": "The full formal patent title and process vocabulary occupy the next chapter before the driving situation is developed.",
+      "time": "00:15\u201300:39"
+    },
+    {
+      "area": "Knowledge hooks",
+      "status": "present_but_not_systematic",
+      "evidence": "3\u21929\u219227, the cyclist remaining represented, and pruning versus hardware parity are useful learning rewards. They have no explicit question/payoff contract.",
+      "time": "01:06,02:16,03:32,03:59"
+    },
+    {
+      "area": "Worked situation",
+      "status": "late_after_teaser",
+      "evidence": "The complete left-turn setup begins around01:29 after the opening teaser. Start the main explanation inside this situation.",
+      "time": "01:29"
+    },
+    {
+      "area": "Reward ladder and carrots",
+      "status": "missing_as_explicit_system",
+      "evidence": "No retention contract, promise/payoff mapping, value-gap checks or editorial retention gate exists in the delivered v1 source. Original supplied-plan hook notes are prose, not enforced behavior.",
+      "time": "whole film"
+    },
+    {
+      "area": "Visual hooks and rich staging",
+      "status": "partial_needs_redesign",
+      "evidence": "171.4s (55.4% of runtime) uses graph/growth/layers/pruning/scores/evidence modes with recurring studio backgrounds. Street/follow/wheel views improved variety, but the abstract explaining areas remain sparse. This is a mode classification, not a measured attention score.",
+      "time": "multiple chapters"
+    },
+    {
+      "area": "Visual cause and effect",
+      "status": "weak_in_score_scene",
+      "evidence": "Score-bar heights use a sine animation without being driven by the narrated physical consequence. Movement by itself does not deliver a knowledge payoff.",
+      "time": "03:05\u201303:32"
+    },
+    {
+      "area": "Narration and audio hooks",
+      "status": "pacing_present_hook_plan_missing",
+      "evidence": "Preferred narrator and measured pace are present. The producer schedules quiet movement cues; it has no semantic prompt/pause/reveal schedule. Camera beats are largely duration quarters rather than measured spoken-thought events. This finding concerns code and script, not an auditory listening judgment.",
+      "time": "whole film"
+    },
+    {
+      "area": "Main mechanism payoff",
+      "status": "late_as_dedicated_explanation",
+      "evidence": "Pruning is teased/explained briefly in the opening; the dedicated threshold-and-removal chapter starts around03:32. Bring a concrete useful demonstration forward and build later depth around it.",
+      "time": "03:32"
+    },
+    {
+      "area": "Measured audience behavior",
+      "status": "unavailable",
+      "evidence": "No YouTube retention curve, watch-time data, audience drop-off or A/B result is available. No retention percentage or guaranteed engagement can be verified.",
+      "time": "not applicable"
+    }
+  ],
+  "chapter_timeline": [
+    {
+      "id": "01_question",
+      "title": "Opening",
+      "start_seconds": 0,
+      "end_seconds": 15.1,
+      "mode": "opening"
+    },
+    {
+      "id": "02_patent",
+      "title": "What Tesla disclosed",
+      "start_seconds": 15.1,
+      "end_seconds": 39.13333333333333,
+      "mode": "graph"
+    },
+    {
+      "id": "03_time",
+      "title": "Why decision time matters",
+      "start_seconds": 39.13333333333333,
+      "end_seconds": 66.26666666666667,
+      "mode": "latency"
+    },
+    {
+      "id": "04_growth",
+      "title": "How search grows",
+      "start_seconds": 66.26666666666667,
+      "end_seconds": 88.56666666666666,
+      "mode": "growth"
+    },
+    {
+      "id": "05_intersection",
+      "title": "Start with a goal",
+      "start_seconds": 88.56666666666666,
+      "end_seconds": 111.33333333333333,
+      "mode": "traffic"
+    },
+    {
+      "id": "06_layers",
+      "title": "Layers of interaction",
+      "start_seconds": 111.33333333333333,
+      "end_seconds": 136.53333333333333,
+      "mode": "layers"
+    },
+    {
+      "id": "07_attention",
+      "title": "Relevant agents remain visible",
+      "start_seconds": 136.53333333333333,
+      "end_seconds": 161.8,
+      "mode": "attention"
+    },
+    {
+      "id": "08_options",
+      "title": "Compare coherent choices",
+      "start_seconds": 161.8,
+      "end_seconds": 185.5,
+      "mode": "traffic"
+    },
+    {
+      "id": "09_scores",
+      "title": "What scores can consider",
+      "start_seconds": 185.5,
+      "end_seconds": 211.96666666666667,
+      "mode": "scores"
+    },
+    {
+      "id": "10_pruning",
+      "title": "Prune poor branches",
+      "start_seconds": 211.96666666666667,
+      "end_seconds": 238.73333333333335,
+      "mode": "pruning"
+    },
+    {
+      "id": "11_tradeoffs",
+      "title": "Efficiency and hardware limits",
+      "start_seconds": 238.73333333333335,
+      "end_seconds": 263.0,
+      "mode": "compute"
+    },
+    {
+      "id": "12_evidence",
+      "title": "Application versus deployment",
+      "start_seconds": 263.0,
+      "end_seconds": 288.96666666666664,
+      "mode": "evidence"
+    },
+    {
+      "id": "13_takeaway",
+      "title": "Selective effort",
+      "start_seconds": 288.96666666666664,
+      "end_seconds": 309.59999999999997,
+      "mode": "graph"
+    }
+  ],
+  "studio_mode_seconds": 171.36666666666667,
+  "studio_mode_share": 0.5535099052540914,
+  "new_engine_checks": "retention.py plus required new-project flag, storyboard/final editorial review gates and custom-producer render gate",
+  "draft_revision": "script-and-retention-draft.json",
+  "draft_check": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "Draft timing only: measure and review the narration before production"
+    ],
+    "runtime_seconds": 209.33333333333331,
+    "timing_basis": "estimated",
+    "rungs": [
+      {
+        "id": "r1",
+        "prompt_seconds": 0.15,
+        "payoff_seconds": 9.87,
+        "wait_seconds": 9.719999999999999,
+        "new_knowledge": "Waiting is a candidate decision linked to the actual crossing and oncoming traffic."
+      },
+      {
+        "id": "r2",
+        "prompt_seconds": 26.53,
+        "payoff_seconds": 32.23,
+        "wait_seconds": 5.699999999999996,
+        "new_knowledge": "Three alternatives at each of three stages produce27 sequences in this example."
+      },
+      {
+        "id": "r3",
+        "prompt_seconds": 51.906666666666666,
+        "payoff_seconds": 60.61666666666666,
+        "wait_seconds": 8.709999999999994,
+        "new_knowledge": "A trajectory links dependent interactions to a goal rather than being an isolated line."
+      },
+      {
+        "id": "r4",
+        "prompt_seconds": 79.3,
+        "payoff_seconds": 82.64999999999999,
+        "wait_seconds": 3.3499999999999943,
+        "new_knowledge": "Changing relevance to a candidate interaction does not justify ignoring the road user."
+      },
+      {
+        "id": "r5",
+        "prompt_seconds": 105.67666666666666,
+        "payoff_seconds": 112.37666666666667,
+        "wait_seconds": 6.700000000000003,
+        "new_knowledge": "Candidate evaluation can consider several behavior factors rather than an invented single score."
+      },
+      {
+        "id": "r6",
+        "prompt_seconds": 129.02666666666667,
+        "payoff_seconds": 133.37666666666667,
+        "wait_seconds": 4.349999999999994,
+        "new_knowledge": "Threshold pruning stops developing a poor candidate and directs expansion toward promising nodes."
+      },
+      {
+        "id": "r7",
+        "prompt_seconds": 157.41666666666666,
+        "payoff_seconds": 161.77666666666664,
+        "wait_seconds": 4.359999999999985,
+        "new_knowledge": "An application about planning does not establish deployment or feature parity for a specific hardware generation."
+      },
+      {
+        "id": "r8",
+        "prompt_seconds": 190.4933333333333,
+        "payoff_seconds": 193.5033333333333,
+        "wait_seconds": 3.009999999999991,
+        "new_knowledge": "The viewer can distinguish pruning candidate decisions from losing representation of an agent."
+      }
+    ],
+    "maximum_open_loops": 1,
+    "longest_value_gap_seconds": 31.72666666666666,
+    "content_sha256": "079b1fd063e1530c235086d660c19d8c5c6cb33521ee11ae28b99ac7dd866ac9",
+    "scope": "Structural/editorial planning validation; no measured audience retention or guarantee of engagement"
+  },
+  "new_full_video_rendered": false
+}

@@ -1,0 +1,118 @@
+{
+  "checks": {
+    "video_format": true,
+    "audio_format": true,
+    "duration": true,
+    "frame_count": true,
+    "no_caption_track": true,
+    "loudness": true,
+    "no_clipping": true
+  },
+  "passed": true,
+  "lufs": -15.1,
+  "peak_dbfs": -2.8,
+  "review": "passed",
+  "purpose": "One richer visual-direction and micro hook/reward test; not a new full episode",
+  "audio_timing": "Measured thought groups drive count reveals; narration is not time-stretched",
+  "voice": {
+    "text": "Three choices seem manageable. What happens after three decision stages? In this example: three. Then nine. Then twenty-seven. Watch how quickly the search grows.",
+    "voice": "am_fenrir",
+    "synthesis_speed": 1.2937906608796297,
+    "seconds": 8.766666666666667,
+    "measured_words_per_minute": 175.7740977336534,
+    "pace_attempts": [
+      {
+        "speed": 1.16,
+        "words_per_minute": 160.4896420096498,
+        "seconds": 8.972541666666666
+      },
+      {
+        "speed": 1.2937906608796297,
+        "words_per_minute": 175.7740977336534,
+        "seconds": 8.192333333333334
+      }
+    ],
+    "thought_groups": [
+      {
+        "text": "Three choices seem manageable. What happens after three decision stages?",
+        "start": 0.12,
+        "seconds": 3.74925
+      },
+      {
+        "text": "In this example: three.",
+        "start": 3.98925,
+        "seconds": 1.07325
+      },
+      {
+        "text": "Then nine.",
+        "start": 5.1825,
+        "seconds": 0.588125
+      },
+      {
+        "text": "Then twenty-seven.",
+        "start": 5.890625,
+        "seconds": 0.8462916666666667
+      },
+      {
+        "text": "Watch how quickly the search grows.",
+        "start": 6.856916666666667,
+        "seconds": 1.4554166666666666
+      }
+    ],
+    "sha256": "e0c7fff663713fd64303b60584b2651bdd82c4f1c4589ff38184c4d58a2760e5",
+    "speech_time_stretched": false
+  },
+  "scene": {
+    "passed": true,
+    "frames": 263,
+    "continuous_3d": true,
+    "claim": "Illustrative3^1,3^2,3^3 branching counts, not Tesla measurements",
+    "lenses": {
+      "decision": 27.81023462283209,
+      "grow": 36.0,
+      "reward": 39.0
+    },
+    "purpose": "Proposed richer art direction and one measured micro hook/reward; not a revision of the complete film"
+  },
+  "review_purpose": "Ready for proposed-art-direction feedback, not final full-film production approval",
+  "video_sha256": "588de59d46189011f8b7b31cd6ab8e01701808201148c33fe1211df99e6c2166",
+  "visual_review": "passed_for_direction_preview",
+  "technical_review": "passed",
+  "user_approval": "not_recorded",
+  "inspection": {
+    "method": "Opened six-frame encoded-source sheet, 21 decoded temporal samples across the clip including both shot changes, and individual 6.0s image. Full 263-frame decode plus every-frame source framing and vehicle-envelope checks.",
+    "observations": "Rich street context, opposing vehicle movement, rolling hero vehicle, planted verges and benches, three staged future worlds, nine intermediate states and twenty-seven terminal markers. Readable count badges; none of the adjacent decoded frames is an exact held duplicate.",
+    "audio_scope": "Checked frozen narration text/hash, measured thought groups, 175.8wpm pace, no time stretching, sound-cue direction, loudness and peak. No direct auditory audition claimed; subjective delivery remains for user.",
+    "accuracy": "3\u00d73\u00d73 is illustrative mathematics, not a Tesla performance result. Original schematic models; no OEM CAD.",
+    "limitations": "A small background set-edge shape remains at the top of some close frames; polish that staging before a final production render. Stylized low-sample schematic output, not photorealism. No YouTube retention data or guarantee of interest."
+  },
+  "decoded_review": {
+    "decoded_frames": 263,
+    "decoded_timestamps_reviewed": [
+      0,
+      15,
+      30,
+      45,
+      60,
+      75,
+      90,
+      102,
+      105,
+      108,
+      120,
+      135,
+      150,
+      165,
+      174,
+      180,
+      195,
+      210,
+      225,
+      240,
+      255
+    ],
+    "exact_duplicate_adjacent_frames": 0,
+    "scope": "Decoded temporal samples for visual inspection; numerical frame difference is not an interest or audience-retention score",
+    "video_sha256": "588de59d46189011f8b7b31cd6ab8e01701808201148c33fe1211df99e6c2166"
+  }
+}

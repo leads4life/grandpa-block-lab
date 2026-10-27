@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 27, 2026 at 02:54:04 AM EDT**
+**Last checked: October 27, 2026 at 02:56:05 AM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ **86.2% of native frames present**
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ **86.9% of native frames present**
 
-**5,379 / 6,239** native frames · **6 / 8** checked chapter clips complete
+**5,420 / 6,239** native frames · **6 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -22,7 +22,7 @@ Current section: **7 / 8 — Separate the hardware claim**
 | 4. The cyclist stays | 722 | 722 |
 | 5. A useful choice has consequences | 807 | 807 |
 | 6. Pay off the pruning idea | 860 | 860 |
-| 7. Separate the hardware claim | 699 | 964 |
+| 7. Separate the hardware claim | 740 | 964 |
 | 8. Test and apply the lesson | 6 | 601 |
 
 Native-frame counts include the valid diagnostic frames rendered during preflight. A frame percentage is not a claim that editing, encoding or final review is finished.

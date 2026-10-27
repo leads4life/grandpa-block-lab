@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 27, 2026 at 02:56:05 AM EDT**
+**Last checked: October 27, 2026 at 02:58:07 AM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ **86.9% of native frames present**
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ **87.4% of native frames present**
 
-**5,420 / 6,239** native frames · **6 / 8** checked chapter clips complete
+**5,455 / 6,239** native frames · **6 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -22,7 +22,7 @@ Current section: **7 / 8 — Separate the hardware claim**
 | 4. The cyclist stays | 722 | 722 |
 | 5. A useful choice has consequences | 807 | 807 |
 | 6. Pay off the pruning idea | 860 | 860 |
-| 7. Separate the hardware claim | 740 | 964 |
+| 7. Separate the hardware claim | 775 | 964 |
 | 8. Test and apply the lesson | 6 | 601 |
 
 Native-frame counts include the valid diagnostic frames rendered during preflight. A frame percentage is not a claim that editing, encoding or final review is finished.
@@ -34,7 +34,7 @@ Native-frame counts include the valid diagnostic frames rendered during prefligh
 - Peek 3: 01:00–01:30 — ready for assistant visual review
 - Peek 4: 01:30–02:00 — ready for assistant visual review
 - Peek 5: 02:00–02:30 — ready for assistant visual review
-- Peek 6: 02:30–03:00 — waiting for native frames
+- Peek 6: 02:30–03:00 — ready for assistant visual review
 - Peek 7: 02:57–03:27 — waiting for native frames
 
 Progress excerpts are built from the main render; they do not start duplicate 3D rendering or new narration synthesis. Each excerpt is inspected before its public link is posted.

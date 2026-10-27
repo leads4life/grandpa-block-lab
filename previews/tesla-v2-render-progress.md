@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 27, 2026 at 01:30:48 AM EDT**
+**Last checked: October 27, 2026 at 01:32:50 AM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ **61.0% of native frames present**
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ **61.4% of native frames present**
 
-**3,805 / 6,239** native frames · **4 / 8** checked chapter clips complete
+**3,829 / 6,239** native frames · **4 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -20,7 +20,7 @@ Current section: **5 / 8 — A useful choice has consequences**
 | 2. Why three choices grow quickly | 723 | 723 |
 | 3. Connect the decisions | 853 | 853 |
 | 4. The cyclist stays | 722 | 722 |
-| 5. A useful choice has consequences | 774 | 807 |
+| 5. A useful choice has consequences | 798 | 807 |
 | 6. Pay off the pruning idea | 9 | 860 |
 | 7. Separate the hardware claim | 9 | 964 |
 | 8. Test and apply the lesson | 6 | 601 |
@@ -45,7 +45,7 @@ The earlier v1 movie remains unchanged. No YouTube upload has been performed.
 
 ## Separate gritty urban environment test
 
-**🟢 Urban test rendering** · 817 / 900 native frames for30seconds
+**🟢 Urban test rendering** · 833 / 900 native frames for30seconds
 
 Same opening script and audio. This is a separate style experiment; the main production continues above.
 

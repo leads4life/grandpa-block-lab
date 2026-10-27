@@ -25,3 +25,5 @@ These are stills from the eight animated sets, not a replacement video or eviden
 The patent is disclosure, not evidence of HW3/V14 feature parity, rollout or eighty-percent savings. No audience-retention increase has been measured.
 
 [View the timestamped render activity indicator](tesla-v2-render-progress.md).
+
+[Watch the 30-second progress sneak peeks](tesla-v2-sneak-peeks.md).

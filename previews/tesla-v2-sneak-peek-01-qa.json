@@ -1,0 +1,40 @@
+{
+  "checks": {
+    "video_format": true,
+    "audio_format": true,
+    "duration": true,
+    "frame_count": true,
+    "no_caption_track": true,
+    "loudness": true,
+    "no_clipping": true
+  },
+  "passed": true,
+  "lufs": -15.4,
+  "peak_dbfs": -2.9,
+  "status": "reviewed_for_progress_delivery",
+  "visual_review": "passed",
+  "user_approval": "not_recorded",
+  "video_sha256": "298424f5c5fa85ffe91a7d8d3382073997045f94a8a2b5c43df7cc5b85bde1e7",
+  "seconds": 30.0,
+  "film_start_seconds": 0.0,
+  "film_end_seconds": 30.0,
+  "native_frames": 900,
+  "source_render_hashes": {
+    "r1": "08a5693572ac6bbdaec8a93a005c25310b2faf9e2a7a73b4545462cc413cdf3c",
+    "r2": "303c6d90acbfd2eb26d44c0c85e43b6bd456dd44f1bfa32ae812f068e00a1aab"
+  },
+  "helper_sha256": "b6b7c2401eb6f684027b41c1cd4be3819dd988c80eb7cd8a85ec9dc171d33564",
+  "plan_sha256": "372eb43e57312e9ffbf381a1f4e6c74ff35c47ce0f8b722d207abd5e1bdf1d25",
+  "minimum_native_luma": 35.64800347222222,
+  "identical_adjacent_native_frames": 0,
+  "scope": "Working progress excerpt, not final release or a new production approval. Actual encoded-image inspection is required before sharing. No new voice synthesis or 3D rendering used.",
+  "technical_review": "passed",
+  "reviewed_utc": "2026-10-27T02:24:00.263664+00:00",
+  "inspection_notes": {
+    "visual": "Opened all three actual decoded chronological sheets covering 00:00-00:29, full-resolution PNGs at13s and29s, and12 consecutive-frame samples around the2.43s,9.23s and23.63s transitions. Vehicles and road users move coherently, the car waits, candidate worlds emerge and the illustrative nine-sequence reveal matches the explanation. Technical labels are readable at full size. No obvious black-surface cache failure or obstructed teaching subject in this excerpt.",
+    "motion_scope": "Decoded temporal and consecutive-cut samples plus the already-passed all-frame source geometry checks; not a claim of real-time audiovisual playback.",
+    "audio": "Frozen chosen-voice source, exact extraction timing, codec/loudness/peak checks verified; -15.4LUFS and -2.9dBFS peak. No direct auditory audition claimed.",
+    "accuracy": "Generic schematic driving/planning example, not a Tesla implementation or benchmark. Three-way branching arithmetic is illustrative.",
+    "release_scope": "User-requested30-second progress sneak peek only; main production continues and final-film/user approval remains pending."
+  }
+}

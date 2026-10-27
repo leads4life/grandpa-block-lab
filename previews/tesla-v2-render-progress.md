@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 26, 2026 at 10:33:21 PM EDT**
+**Last checked: October 26, 2026 at 10:35:23 PM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ **21.0% of native frames present**
+🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ **21.7% of native frames present**
 
-**1,313 / 6,239** native frames · **1 / 8** checked chapter clips complete
+**1,353 / 6,239** native frames · **1 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -17,7 +17,7 @@ Current section: **2 / 8 — Why three choices grow quickly**
 | Section | Native frames present | Planned |
 |---|---:|---:|
 | 1. Choose what deserves attention | 709 | 709 |
-| 2. Why three choices grow quickly | 551 | 723 |
+| 2. Why three choices grow quickly | 591 | 723 |
 | 3. Connect the decisions | 10 | 853 |
 | 4. The cyclist stays | 10 | 722 |
 | 5. A useful choice has consequences | 9 | 807 |

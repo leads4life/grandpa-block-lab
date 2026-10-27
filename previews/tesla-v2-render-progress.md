@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 27, 2026 at 02:11:26 AM EDT**
+**Last checked: October 27, 2026 at 02:13:27 AM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ **72.4% of native frames present**
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜ **72.9% of native frames present**
 
-**4,514 / 6,239** native frames · **5 / 8** checked chapter clips complete
+**4,547 / 6,239** native frames · **5 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -21,7 +21,7 @@ Current section: **6 / 8 — Pay off the pruning idea**
 | 3. Connect the decisions | 853 | 853 |
 | 4. The cyclist stays | 722 | 722 |
 | 5. A useful choice has consequences | 807 | 807 |
-| 6. Pay off the pruning idea | 685 | 860 |
+| 6. Pay off the pruning idea | 718 | 860 |
 | 7. Separate the hardware claim | 9 | 964 |
 | 8. Test and apply the lesson | 6 | 601 |
 
@@ -33,7 +33,7 @@ Native-frame counts include the valid diagnostic frames rendered during prefligh
 - [Peek 2: 00:30–01:00](tesla-v2-sneak-peek-02.mp4) — inspected and posted
 - Peek 3: 01:00–01:30 — ready for assistant visual review
 - Peek 4: 01:30–02:00 — ready for assistant visual review
-- Peek 5: 02:00–02:30 — waiting for native frames
+- Peek 5: 02:00–02:30 — ready for assistant visual review
 - Peek 6: 02:30–03:00 — waiting for native frames
 - Peek 7: 02:57–03:27 — waiting for native frames
 

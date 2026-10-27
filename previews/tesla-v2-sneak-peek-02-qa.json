@@ -1,0 +1,39 @@
+{
+  "checks": {
+    "video_format": true,
+    "audio_format": true,
+    "duration": true,
+    "frame_count": true,
+    "no_caption_track": true,
+    "loudness": true,
+    "no_clipping": true
+  },
+  "passed": true,
+  "lufs": -15.4,
+  "peak_dbfs": -2.7,
+  "status": "reviewed_for_progress_delivery",
+  "visual_review": "passed",
+  "user_approval": "not_recorded",
+  "video_sha256": "a8639427fe8e9b5eef34c2fc9afca560d95b4269f77805b0b2b1adaf32422db5",
+  "seconds": 30.0,
+  "film_start_seconds": 30.0,
+  "film_end_seconds": 60.0,
+  "native_frames": 900,
+  "source_render_hashes": {
+    "r2": "303c6d90acbfd2eb26d44c0c85e43b6bd456dd44f1bfa32ae812f068e00a1aab",
+    "r3": "60c792db6e680365836b8926287442c5c52c5d0864389423da0cc4f38cf44ae1"
+  },
+  "helper_sha256": "b6b7c2401eb6f684027b41c1cd4be3819dd988c80eb7cd8a85ec9dc171d33564",
+  "plan_sha256": "372eb43e57312e9ffbf381a1f4e6c74ff35c47ce0f8b722d207abd5e1bdf1d25",
+  "minimum_native_luma": 36.393229166666664,
+  "identical_adjacent_native_frames": 0,
+  "scope": "Working progress excerpt, not final release or a new production approval. Actual encoded-image inspection is required before sharing. No new voice synthesis or 3D rendering used.",
+  "technical_review": "passed",
+  "reviewed_utc": "2026-10-27T03:11:19.129383+00:00",
+  "inspection_notes": {
+    "visual": "Opened all three decoded chronological sheets covering film00:30-00:59 and full-resolution PNGs at excerpt12s and22s. Growth from nine to twenty-seven, candidate-world close-up, goal-lane setup and connected interactions match the measured script. Technical labels readable at full size. No obvious model/material-cache failure.",
+    "motion_scope": "Decoded temporal sequence plus source all-frame geometry checks; not real-time audiovisual playback.",
+    "audio": "Frozen preferred narration extraction and passing media/loudness/peak checks; no subjective auditory audition claimed.",
+    "scope": "Original approved full-v2 progress clip, separate from the newly requested gritty urban environment experiment. User approval of the urban style is not implied."
+  }
+}

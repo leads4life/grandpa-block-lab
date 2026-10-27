@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 27, 2026 at 03:26:34 AM EDT**
+**Last checked: October 27, 2026 at 03:28:36 AM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ **96.2% of native frames present**
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ **96.8% of native frames present**
 
-**6,003 / 6,239** native frames · **7 / 8** checked chapter clips complete
+**6,041 / 6,239** native frames · **7 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -23,7 +23,7 @@ Current section: **8 / 8 — Test and apply the lesson**
 | 5. A useful choice has consequences | 807 | 807 |
 | 6. Pay off the pruning idea | 860 | 860 |
 | 7. Separate the hardware claim | 964 | 964 |
-| 8. Test and apply the lesson | 365 | 601 |
+| 8. Test and apply the lesson | 403 | 601 |
 
 Native-frame counts include the valid diagnostic frames rendered during preflight. A frame percentage is not a claim that editing, encoding or final review is finished.
 

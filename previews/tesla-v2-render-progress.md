@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 27, 2026 at 01:43:00 AM EDT**
+**Last checked: October 27, 2026 at 01:45:02 AM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ **63.2% of native frames present**
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ **63.9% of native frames present**
 
-**3,943 / 6,239** native frames · **5 / 8** checked chapter clips complete
+**3,986 / 6,239** native frames · **5 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -21,7 +21,7 @@ Current section: **6 / 8 — Pay off the pruning idea**
 | 3. Connect the decisions | 853 | 853 |
 | 4. The cyclist stays | 722 | 722 |
 | 5. A useful choice has consequences | 807 | 807 |
-| 6. Pay off the pruning idea | 114 | 860 |
+| 6. Pay off the pruning idea | 157 | 860 |
 | 7. Separate the hardware claim | 9 | 964 |
 | 8. Test and apply the lesson | 6 | 601 |
 

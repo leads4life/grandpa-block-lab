@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 26, 2026 at 10:00:52 PM EDT**
+**Last checked: October 26, 2026 at 10:02:54 PM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ **10.9% of native frames present**
+🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ **11.6% of native frames present**
 
-**681 / 6,239** native frames · **0 / 8** checked chapter clips complete
+**724 / 6,239** native frames · **0 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -16,7 +16,7 @@ Current section: **1 / 8 — Choose what deserves attention**
 
 | Section | Native frames present | Planned |
 |---|---:|---:|
-| 1. Choose what deserves attention | 619 | 709 |
+| 1. Choose what deserves attention | 662 | 709 |
 | 2. Why three choices grow quickly | 9 | 723 |
 | 3. Connect the decisions | 10 | 853 |
 | 4. The cyclist stays | 10 | 722 |

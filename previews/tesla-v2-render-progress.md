@@ -1,18 +1,16 @@
 # Tesla v2 render activity
 
-## 🟢 BACKGROUND RENDERER RUNNING
+## 🟡 RENDER COMPLETE — FINAL INSPECTION PENDING
 
-**Last checked: October 27, 2026 at 03:38:45 AM EDT**
+**Last checked: October 27, 2026 at 03:40:47 AM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ **100.0% of native frames present**
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 **100.0% of native frames present**
 
-**6,238 / 6,239** native frames · **7 / 8** checked chapter clips complete
+**6,239 / 6,239** native frames · **8 / 8** checked chapter clips complete
 
-Current stage: **rendering**
-
-Current section: **8 / 8 — Test and apply the lesson**
+Current stage: **awaiting final inspection**
 
 | Section | Native frames present | Planned |
 |---|---:|---:|
@@ -23,7 +21,7 @@ Current section: **8 / 8 — Test and apply the lesson**
 | 5. A useful choice has consequences | 807 | 807 |
 | 6. Pay off the pruning idea | 860 | 860 |
 | 7. Separate the hardware claim | 964 | 964 |
-| 8. Test and apply the lesson | 600 | 601 |
+| 8. Test and apply the lesson | 601 | 601 |
 
 Native-frame counts include the valid diagnostic frames rendered during preflight. A frame percentage is not a claim that editing, encoding or final review is finished.
 
@@ -35,7 +33,7 @@ Native-frame counts include the valid diagnostic frames rendered during prefligh
 - Peek 4: 01:30–02:00 — ready for assistant visual review
 - Peek 5: 02:00–02:30 — ready for assistant visual review
 - Peek 6: 02:30–03:00 — ready for assistant visual review
-- Peek 7: 02:57–03:27 — waiting for native frames
+- Peek 7: 02:57–03:27 — ready for assistant visual review
 
 Progress excerpts are built from the main render; they do not start duplicate 3D rendering or new narration synthesis. Each excerpt is inspected before its public link is posted.
 

@@ -1,0 +1,32 @@
+{
+  "checks": {
+    "video_format": true,
+    "audio_format": true,
+    "duration": true,
+    "frame_count": true,
+    "no_caption_track": true,
+    "loudness": true,
+    "no_clipping": true
+  },
+  "passed": true,
+  "lufs": -15.1,
+  "peak_dbfs": -3.1,
+  "status": "reviewed_for_progress_delivery",
+  "visual_review": "passed",
+  "seconds": 8,
+  "native_frames": 240,
+  "video_sha256": "76ae09b3f50a34aaaaf7aaacee8e4b3d9218f71b56539c83c18403c550ad772d",
+  "audio_source": "First eight seconds of the exact delivered opening audio; AAC packets copied unchanged",
+  "unchanged_audio_packets": 376,
+  "script_unchanged": true,
+  "thirty_second_test_complete": false,
+  "user_style_approval": "not_recorded",
+  "main_production_modified": false,
+  "reviewed_utc": "2026-10-27T04:27:25.221587+00:00",
+  "inspection_notes": {
+    "visual": "Opened eight chronological decoded PNG samples and the full-resolution7s decoded frame. Cars, pedestrian, cyclist, growing candidate lines and two camera changes show actual moving3D footage; storefront graffiti, brickwork and road wear remain visible. No foreground post or roof blocks the teaching subjects in these views.",
+    "motion_scope": "Decoded temporal samples plus the ongoing renderer validates primary bounds and traffic clearance before every native image. Not a claim of real-time auditory playback.",
+    "audio": "376 AAC packet hashes match the reference opening prefix exactly; passing format, duration, loudness and peak checks. No new voice or time stretching.",
+    "release_scope": "Eight-second moving progress excerpt only; the user-requested full30-second environment test remains rendering. No style approval is claimed."
+  }
+}

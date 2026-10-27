@@ -1,23 +1,20 @@
-# Urban environment stress test — first look
+# Gritty urban environment — moving preview
 
-**These are corrected 3D stills. The new 30-second moving preview is rendering and is not ready yet.** Status snapshot: October 26, 2026, 11:50 PM EDT.
+## [▶ PLAY THE 8-SECOND VIDEO (MP4)](tesla-urban-grit-moving-peek-8s.mp4)
 
-Same opening script and narration; a separate original urban set. The completed test will use the delivered opening's exact AAC audio. The main Tesla production continues independently.
+This is actual continuously rendered 3D footage from 00:00–00:08, with the same opening script and narration. The full 30-second environment test is still rendering. The main Tesla production continues separately.
 
-The test adds worn brick storefronts, tagged shutters, original wall lettering and spray details, fire escapes, utility wires, patched asphalt, faded crossings, drains, damp road scars and restrained street clutter. Camera placement was adapted to keep the car and crossing readable in the denser streets.
+The excerpt has passing media checks and decoded-image inspection. It uses 240 native frames at 30fps; the 376 copied AAC audio packets match the delivered opening. No new narration, music or narration captions.
 
-Eleven native diagnostic images were inspected. Initial pole/roof obstructions, graffiti placement and primary framing were corrected; 14 sampled hero/pedestrian sightlines pass. The moving output still needs its own full excerpt inspection. This is an art-direction experiment, not approval to replace the full film's style.
+[Render activity for both jobs](tesla-v2-render-progress.md) · [Preview QA](tesla-urban-grit-moving-peek-8s-qa.json)
 
-## Current look versus urban test
+<details>
+<summary>Optional still-frame comparison with the original setting</summary>
 
-Left: current production. Right: urban test at the same script moments.
+Left: current production. Right: the urban experiment at the same script moments.
 
-![Current production and gritty urban test](tesla-urban-look-comparison.jpg)
+![Current and urban comparison](tesla-urban-look-comparison.jpg)
 
-## Opening frame — new environment
+</details>
 
-![Urban opening first-look still](tesla-urban-opening-first-look.jpg)
-
-[Main render activity indicator](tesla-v2-render-progress.md) · [Existing 30-second progress peeks](tesla-v2-sneak-peeks.md)
-
-All new set geometry and graphics are original procedural work, with DejaVu lettering. Generic schematic vehicles; no manufacturer CAD or Tesla implementation/benchmark data. Nothing has been uploaded to YouTube.
+The urban set adds original procedural graffiti, weathered brick storefronts, shutters, fire escapes, patched asphalt, drains and utility wires. Camera placement was adapted to keep the traffic and explanation clear. User approval of the new art direction remains pending; no YouTube upload has been performed.

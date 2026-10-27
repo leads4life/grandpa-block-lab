@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 26, 2026 at 10:17:06 PM EDT**
+**Last checked: October 26, 2026 at 10:19:08 PM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ **15.8% of native frames present**
+🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ **16.4% of native frames present**
 
-**984 / 6,239** native frames · **1 / 8** checked chapter clips complete
+**1,025 / 6,239** native frames · **1 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -17,7 +17,7 @@ Current section: **2 / 8 — Why three choices grow quickly**
 | Section | Native frames present | Planned |
 |---|---:|---:|
 | 1. Choose what deserves attention | 709 | 709 |
-| 2. Why three choices grow quickly | 222 | 723 |
+| 2. Why three choices grow quickly | 263 | 723 |
 | 3. Connect the decisions | 10 | 853 |
 | 4. The cyclist stays | 10 | 722 |
 | 5. A useful choice has consequences | 9 | 807 |
@@ -29,7 +29,7 @@ Native-frame counts include the valid diagnostic frames rendered during prefligh
 
 ## Thirty-second sneak peeks
 
-- Peek 1: 00:00–00:30 — waiting for native frames
+- Peek 1: 00:00–00:30 — ready for assistant visual review
 - Peek 2: 00:30–01:00 — waiting for native frames
 - Peek 3: 01:00–01:30 — waiting for native frames
 - Peek 4: 01:30–02:00 — waiting for native frames

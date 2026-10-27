@@ -1,29 +1,26 @@
-# Tesla v2 — full production running
+# Complete Tesla explainer — revised production
 
-Status snapshot: October 26, 2026, 09:32 PM EDT. **The new full film is rendering. It is not finished or finally inspected yet.** This page is a checkpoint, not a live progress meter.
+## [▶ WATCH THE COMPLETE 3-MINUTE 28-SECOND VIDEO](tesla-planning-v2.mp4)
 
-The second audit is complete. The production version has measured narration of 3 minutes 28 seconds, eight question/payoff sections and 6239 native 3D frames. The preferred voice is retained near 178–184 wpm, with no time stretching, music or narration captions.
+All eight chapters are rendered and assembled. This is the complete main film in the approved clean environment. The gritty urban setting is a separate experiment.
 
-Improvements include clearer early viewer value, layered street/future/workbench scenes, actual motion comparisons in place of arbitrary score bars, plain-language factor callouts, camera reveals tied to spoken ideas, cyclist sightline repairs, and a final wheel detail/follow shot. The native render is 768×432 at 30 fps, exported at 960×540. All props are original schematic models, not Tesla CAD or software/benchmark data.
+The preferred narrator is retained, with restrained mechanical cues, no music and no burned-in narration captions. Final review covered chronological decoded frames throughout the full film, all seven chapter transitions, denser opening/pruning/turn motion samples and full-resolution label inspection. A rooftop obstruction near the ending was corrected with an earlier wheel-detail cut. Frozen narration and all final audio packets and timing are unchanged by that correction. Media checks pass; direct real-time listening was not part of this automated/decoded review.
 
-Seventy native diagnostic images were inspected; every source pose passed primary framing/traffic checks, and all 274 sampled cyclist teaching-view sightlines are clear. All 86 unit tests pass. The full render, mixed-audio QA, complete encoded-film inspection and final release are still pending. The CPU render is a multi-hour stage; its time does not represent AI API generation. No YouTube upload is scheduled.
+This is an original schematic explanation of Tesla patent application US20260105614A1, not Tesla software, manufacturer CAD or measured performance. It does not establish HW3/V14 feature parity, deployment or an 80% saving. No YouTube upload or final user acceptance is implied.
 
-- [Second audit](tesla-v2-audit.md)
-- [Measured production storyboard](tesla-v2-storyboard.md)
-- [Master project JSON checkpoint](tesla-v2-project.json?raw=true)
-- [Matching v2 Colab/source/frozen-voice package](tesla-colab-v2.zip?raw=true) · [checksum](tesla-colab-v2.sha256)
-- [V2 notebook](Tesla_Explainer_v2_Colab.ipynb)
+Export: **960×540, 30fps**, from native 768×432 rendering; H.264/AAC. Review copy, not a 1080p/4K master. Audio: -15.4 LUFS, peak -2.1 dBFS.
 
-This ZIP is a production snapshot, not the finished movie. It includes frozen narration and procedural sources, with any checked completed clips available at snapshot time. It excludes native frame caches and voice weights. Local extraction, file hashes, relocated production/retention gates, all 86 tests and a tiny CPU device render pass. Actual Colab/GPU execution remains untested. Use the v2 notebook with the v2 ZIP in a fresh workspace. The old v1 movie, JSON and Colab package are preserved.
+## Project files
 
-## Scene design board — preflight stills
+- [Complete project JSON](tesla-project-v2.json?raw=true)
+- [Colab source and media ZIP](tesla-colab-v2.zip?raw=true)
+- [Colab notebook](Tesla_Explainer_v2_Colab.ipynb)
+- [ZIP checksum](tesla-colab-v2.sha256)
+- [Final QA](tesla-v2-final-qa.json)
+- [Inspection and repair notes](tesla-v2-final-inspection.json)
+- [Storyboard and exact narration](tesla-v2-storyboard.md)
+- [Sources and chapter times](tesla-v2-video-description.md)
 
-These are stills from the eight animated sets, not a replacement video or evidence of a completed film.
+The ZIP includes all eight completed chapter clips, frozen narration, procedural sources, bibles, project JSON and the camera-repair adapter. Native frames and voice weights are excluded. Local integrity and syntax checks pass; actual Colab/GPU execution is untested. The original v1 delivery remains available under its original filenames.
 
-![Eight v2 production scenes](tesla-v2-scenes.jpg)
-
-The patent is disclosure, not evidence of HW3/V14 feature parity, rollout or eighty-percent savings. No audience-retention increase has been measured.
-
-[View the timestamped render activity indicator](tesla-v2-render-progress.md).
-
-[Watch the 30-second progress sneak peeks](tesla-v2-sneak-peeks.md).
+If GitHub does not play the MP4, select **Download raw file**.

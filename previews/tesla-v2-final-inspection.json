@@ -1,0 +1,116 @@
+{
+  "reviewed_utc": "2026-10-27T12:08:48.516030+00:00",
+  "passed": true,
+  "video_sha256": "427cb6bccd65c4fb7a7a13e71f6e832cfa5f3cf4c45fce9e5c65aa174c101b16",
+  "scope": "Actual decoded temporal-image inspection and automated media/geometry/source/audio checks; no claim of subjective real-time audiovisual listening.",
+  "inspected": {
+    "whole_film_sequence_samples": 104,
+    "spacing_seconds": 2,
+    "chapter_transition_frames": 42,
+    "dense_opening_pruning_turn_samples": 36,
+    "full_resolution_label_frame": "workbench at 162s",
+    "post_repair_decoded_ending": "All r8 two-second samples, corrected turn sample sequence and 51 consecutive final MP4 frames covering correction and boundaries"
+  },
+  "findings": [
+    "Opening shows crossing pedestrian and opposing car while hero waits. Graph alternatives grow from 3 through 9 to 27 in the explicit example.",
+    "Connected trajectory, cyclist distinction and pruning are illustrated with road users retained; no invented utilization or score measurements.",
+    "Two physical motion studies use equal time/distance; hardware workbench separates application disclosure from product evidence.",
+    "Chapter cuts remain intentional, no black frames or decode errors observed. Labels inspected at full size and narration captions absent.",
+    "Brief rooftop occlusion near 199.8s fixed by advancing wheel-detail camera to chapter time 11.4s; 47 newly rendered native frames replace that camera segment.",
+    "Sparse graph views have low global pixel-change scores; all 6239 original native images had unique consecutive hashes. No duplicated held plates. Background and camera motion do not prove audience retention."
+  ],
+  "audio": {
+    "frozen_voice": "am_fenrir",
+    "measured_delivery": "178\u2013184 wpm across substantive chapter passages",
+    "lufs": -15.4,
+    "peak_dbfs": -2.1,
+    "final_original_aac_packet_hashes_and_timing_identical": true,
+    "subjective_listening": "not_performed_in_this_final_inspection",
+    "music": false,
+    "narration_captions": false
+  },
+  "correction": {
+    "purpose": "Replace rooftop-obstructed following view with earlier wheel-detail cut; same actors, motion time and narration.",
+    "original_renderer_sha256": "9e608f9a75b1b31b69892cb525d0e94193258368e7f776a1f75a02bd35b3cc2a",
+    "repair_source_sha256": "f6b2557343854ebd5a78a853ba12d1c038b85881a8633e791c2a740a1b80494c",
+    "chapter": "r8",
+    "frames": [
+      342,
+      343,
+      344,
+      345,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351,
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367,
+      368,
+      369,
+      370,
+      371,
+      372,
+      373,
+      374,
+      375,
+      376,
+      377,
+      378,
+      379,
+      380,
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387,
+      388
+    ],
+    "original_sources_modified": false,
+    "user_approval": "not_recorded",
+    "single_frame_visibility_repair": {
+      "frame": 347,
+      "source": {
+        "purpose": "Replace rooftop-obstructed following view with earlier wheel-detail cut; same actors, motion time and narration.",
+        "original_renderer_sha256": "9e608f9a75b1b31b69892cb525d0e94193258368e7f776a1f75a02bd35b3cc2a",
+        "repair_source_sha256": "a12c1b349a85c9231890db5b322fe09831c3ec7b9a9f104bc1124aa8c5b36dd9",
+        "chapter": "r8",
+        "frames": [
+          347
+        ],
+        "original_sources_modified": false,
+        "user_approval": "not_recorded"
+      },
+      "occluder": {
+        "object": "Rider sleeve",
+        "frame": 347,
+        "reason": "Foreground structure between camera and teaching wheel"
+      },
+      "scope": "Omit the offscreen rider sleeve intersecting the close-up camera near plane in one frame; no road-user or trajectory state changes."
+    }
+  },
+  "limitations": [
+    "Native 768\u00d7432 exported to 960\u00d7540 at 30fps; not a 1080p or 4K master.",
+    "Schematic original geometry, not manufacturer CAD or Tesla software/performance.",
+    "No measured audience retention. Actual Colab/GPU execution untested."
+  ],
+  "final_user_acceptance": "not_recorded",
+  "youtube_uploaded": false
+}

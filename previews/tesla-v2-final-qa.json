@@ -1,0 +1,168 @@
+{
+  "checks": {
+    "video_format": true,
+    "audio_format": true,
+    "duration": true,
+    "frame_count": true,
+    "no_caption_track": true,
+    "loudness": true,
+    "no_clipping": true
+  },
+  "passed": true,
+  "lufs": -15.4,
+  "peak_dbfs": -2.1,
+  "review": "passed_decoded_sequence_and_repaired_transition_inspection",
+  "video_sha256": "427cb6bccd65c4fb7a7a13e71f6e832cfa5f3cf4c45fce9e5c65aa174c101b16",
+  "chapters": 8,
+  "retention": {
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "runtime_seconds": 207.96666666666664,
+    "timing_basis": "measured",
+    "rungs": [
+      {
+        "id": "r1",
+        "prompt_seconds": 0.12,
+        "payoff_seconds": 9.225999999999999,
+        "wait_seconds": 9.106,
+        "new_knowledge": "Waiting is a candidate decision linked to the actual crossing and oncoming traffic."
+      },
+      {
+        "id": "r2",
+        "prompt_seconds": 26.12375,
+        "payoff_seconds": 30.161291666666667,
+        "wait_seconds": 4.037541666666666,
+        "new_knowledge": "Three alternatives at each of three stages produce 27 sequences in this example."
+      },
+      {
+        "id": "r3",
+        "prompt_seconds": 49.60666666666667,
+        "payoff_seconds": 59.55458333333333,
+        "wait_seconds": 9.947916666666664,
+        "new_knowledge": "A trajectory links dependent interactions to a goal rather than being an isolated line."
+      },
+      {
+        "id": "r4",
+        "prompt_seconds": 78.03770833333334,
+        "payoff_seconds": 81.93158333333334,
+        "wait_seconds": 3.893874999999994,
+        "new_knowledge": "Changing relevance to a candidate interaction does not justify ignoring the road user."
+      },
+      {
+        "id": "r5",
+        "prompt_seconds": 104.21558333333333,
+        "payoff_seconds": 113.23754166666667,
+        "wait_seconds": 9.021958333333345,
+        "new_knowledge": "Candidate evaluation can consider several behavior factors rather than an invented single score."
+      },
+      {
+        "id": "r6",
+        "prompt_seconds": 127.25333333333333,
+        "payoff_seconds": 132.64166666666665,
+        "wait_seconds": 5.388333333333321,
+        "new_knowledge": "Threshold pruning stops developing a poor candidate and directs expansion toward promising nodes."
+      },
+      {
+        "id": "r7",
+        "prompt_seconds": 155.92,
+        "payoff_seconds": 159.77145833333333,
+        "wait_seconds": 3.8514583333333405,
+        "new_knowledge": "An application about planning does not establish deployment or feature parity for a specific hardware generation."
+      },
+      {
+        "id": "r8",
+        "prompt_seconds": 188.0533333333333,
+        "payoff_seconds": 191.79124999999996,
+        "wait_seconds": 3.7379166666666492,
+        "new_knowledge": "Apply the candidate-versus-road-user distinction while resolving the illustrative turn."
+      }
+    ],
+    "maximum_open_loops": 1,
+    "longest_value_gap_seconds": 32.019791666666634,
+    "content_sha256": "e1587d16333fccdf6c5ff2e26cba8b37fb103e9984a970b31783b8a91080b446",
+    "scope": "Structural/editorial planning validation; no measured audience retention or guarantee of engagement"
+  },
+  "native_width": 768,
+  "native_height": 432,
+  "native_fps": 30,
+  "editorial_camera_repair": {
+    "purpose": "Replace rooftop-obstructed following view with earlier wheel-detail cut; same actors, motion time and narration.",
+    "original_renderer_sha256": "9e608f9a75b1b31b69892cb525d0e94193258368e7f776a1f75a02bd35b3cc2a",
+    "repair_source_sha256": "f6b2557343854ebd5a78a853ba12d1c038b85881a8633e791c2a740a1b80494c",
+    "chapter": "r8",
+    "frames": [
+      342,
+      343,
+      344,
+      345,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351,
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367,
+      368,
+      369,
+      370,
+      371,
+      372,
+      373,
+      374,
+      375,
+      376,
+      377,
+      378,
+      379,
+      380,
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387,
+      388
+    ],
+    "original_sources_modified": false,
+    "user_approval": "not_recorded",
+    "single_frame_visibility_repair": {
+      "frame": 347,
+      "source": {
+        "purpose": "Replace rooftop-obstructed following view with earlier wheel-detail cut; same actors, motion time and narration.",
+        "original_renderer_sha256": "9e608f9a75b1b31b69892cb525d0e94193258368e7f776a1f75a02bd35b3cc2a",
+        "repair_source_sha256": "a12c1b349a85c9231890db5b322fe09831c3ec7b9a9f104bc1124aa8c5b36dd9",
+        "chapter": "r8",
+        "frames": [
+          347
+        ],
+        "original_sources_modified": false,
+        "user_approval": "not_recorded"
+      },
+      "occluder": {
+        "object": "Rider sleeve",
+        "frame": 347,
+        "reason": "Foreground structure between camera and teaching wheel"
+      },
+      "scope": "Omit the offscreen rider sleeve intersecting the close-up camera near plane in one frame; no road-user or trajectory state changes."
+    }
+  },
+  "audio_original_packet_hashes_and_timestamps_identical": true,
+  "final_inspection": "final-inspection.json"
+}

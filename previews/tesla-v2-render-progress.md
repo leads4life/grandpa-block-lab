@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 27, 2026 at 12:03:25 AM EDT**
+**Last checked: October 27, 2026 at 12:05:27 AM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ **45.1% of native frames present**
+🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ **45.4% of native frames present**
 
-**2,813 / 6,239** native frames · **3 / 8** checked chapter clips complete
+**2,835 / 6,239** native frames · **3 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -19,7 +19,7 @@ Current section: **4 / 8 — The cyclist stays**
 | 1. Choose what deserves attention | 709 | 709 |
 | 2. Why three choices grow quickly | 723 | 723 |
 | 3. Connect the decisions | 853 | 853 |
-| 4. The cyclist stays | 495 | 722 |
+| 4. The cyclist stays | 517 | 722 |
 | 5. A useful choice has consequences | 9 | 807 |
 | 6. Pay off the pruning idea | 9 | 860 |
 | 7. Separate the hardware claim | 9 | 964 |
@@ -45,7 +45,7 @@ The earlier v1 movie remains unchanged. No YouTube upload has been performed.
 
 ## Separate gritty urban environment test
 
-**🟢 Urban test rendering** · 106 / 900 native frames for30seconds
+**🟢 Urban test rendering** · 123 / 900 native frames for30seconds
 
 Same opening script and audio. This is a separate style experiment; the main production continues above.
 

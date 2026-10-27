@@ -2,13 +2,13 @@
 
 ## 🟢 BACKGROUND RENDERER RUNNING
 
-**Last checked: October 27, 2026 at 01:16:34 AM EDT**
+**Last checked: October 27, 2026 at 01:18:36 AM EDT**
 
 **This page updates about every two minutes. Refresh it to see the latest check.** It tracks the background renderer, not whether a chat response is being generated. If the timestamp stops advancing, treat it as an old status snapshot.
 
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ **58.3% of native frames present**
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜ **58.7% of native frames present**
 
-**3,637 / 6,239** native frames · **4 / 8** checked chapter clips complete
+**3,663 / 6,239** native frames · **4 / 8** checked chapter clips complete
 
 Current stage: **rendering**
 
@@ -20,7 +20,7 @@ Current section: **5 / 8 — A useful choice has consequences**
 | 2. Why three choices grow quickly | 723 | 723 |
 | 3. Connect the decisions | 853 | 853 |
 | 4. The cyclist stays | 722 | 722 |
-| 5. A useful choice has consequences | 606 | 807 |
+| 5. A useful choice has consequences | 632 | 807 |
 | 6. Pay off the pruning idea | 9 | 860 |
 | 7. Separate the hardware claim | 9 | 964 |
 | 8. Test and apply the lesson | 6 | 601 |
@@ -32,7 +32,7 @@ Native-frame counts include the valid diagnostic frames rendered during prefligh
 - [Peek 1: 00:00–00:30](tesla-v2-sneak-peek-01.mp4) — inspected and posted
 - [Peek 2: 00:30–01:00](tesla-v2-sneak-peek-02.mp4) — inspected and posted
 - Peek 3: 01:00–01:30 — ready for assistant visual review
-- Peek 4: 01:30–02:00 — waiting for native frames
+- Peek 4: 01:30–02:00 — ready for assistant visual review
 - Peek 5: 02:00–02:30 — waiting for native frames
 - Peek 6: 02:30–03:00 — waiting for native frames
 - Peek 7: 02:57–03:27 — waiting for native frames
@@ -45,7 +45,7 @@ The earlier v1 movie remains unchanged. No YouTube upload has been performed.
 
 ## Separate gritty urban environment test
 
-**🟢 Urban test rendering** · 712 / 900 native frames for30seconds
+**🟢 Urban test rendering** · 719 / 900 native frames for30seconds
 
 Same opening script and audio. This is a separate style experiment; the main production continues above.
 

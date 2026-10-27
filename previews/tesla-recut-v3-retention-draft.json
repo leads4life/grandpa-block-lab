@@ -1,0 +1,49 @@
+{
+  "status": "editorial_draft_not_full_measured_production_gate",
+  "rungs": [
+    {
+      "payoff_scene": "s1",
+      "prompt_quote": "Can smarter software give an older driving computer a second life?",
+      "payoff_quote": "A smarter search can reduce wasted work.",
+      "new_knowledge": "Method-level benefit answered early; hardware promise is explicitly limited at8.014s."
+    },
+    {
+      "payoff_scene": "s2",
+      "prompt_quote": "Start with three possible actions.",
+      "payoff_quote": "Nothing at a single step became complicated.",
+      "new_knowledge": "Actual3^n example pays off the combinatorial-growth question."
+    },
+    {
+      "payoff_scene": "s3",
+      "prompt_quote": "So how can the planner organize that web?",
+      "payoff_quote": "Following those links produces a candidate trajectory: one possible way our car could move through the situation.",
+      "new_knowledge": "Goal and dependent interactions explain a candidate trajectory."
+    },
+    {
+      "payoff_scene": "s4",
+      "prompt_quote": "Watch what happens when one candidate scores poorly.",
+      "payoff_quote": "Here is the payoff: its descendants don't keep multiplying while more promising candidates receive further development.",
+      "new_knowledge": "Threshold decision visibly stops candidate expansion while road user stays."
+    },
+    {
+      "payoff_scene": "s5",
+      "prompt_quote": "Which raises the next question: what makes an option poor?",
+      "payoff_quote": "The patent lists factors including physics-based constraints, comfort, intervention likelihood, and a human-like discriminator.",
+      "new_knowledge": "Four documented considerations, distinguished from invented scores."
+    },
+    {
+      "payoff_scene": "s6",
+      "prompt_quote": "Back to the chip.",
+      "payoff_quote": "It isn't proof that Hardware Three can run a newer feature, that version fourteen has shipped to those vehicles, or that computation fell by eighty percent.",
+      "new_knowledge": "Hardware boundary resolved and original turn completes."
+    }
+  ],
+  "opening_measured": {
+    "hook_seconds": 0.12,
+    "first_spoken_reward_seconds": 5.691375,
+    "hardware_limit_seconds": 8.013916666666667,
+    "visible_pruning_payoff_approximately_seconds": 19.0
+  },
+  "remaining_scene_timings": "Unmeasured. Freeze speech and align actual reveals before production. Cross-scene handoffs and long overall hardware throughline require explicit measured editorial review; this file is not a claim of passing the engine production gate.",
+  "engagement_evidence": "No audience retention data or performance guarantee."
+}

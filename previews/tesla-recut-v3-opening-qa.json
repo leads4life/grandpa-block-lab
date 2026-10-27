@@ -1,0 +1,34 @@
+{
+  "checks": {
+    "video_format": true,
+    "audio_format": true,
+    "duration": true,
+    "frame_count": true,
+    "no_caption_track": true,
+    "loudness": true,
+    "no_clipping": true
+  },
+  "passed": true,
+  "lufs": -15.4,
+  "peak_dbfs": -2.6,
+  "status": "internally_checked_edit_study_for_user_review",
+  "visual_review": "passed_for_edit_study_scope",
+  "voice_audition": "pending_user_judgment",
+  "seconds": 33.233333333333334,
+  "video_sha256": "04b35798ae69b7ebbdafee1ad300de1e38e1025fd6e365cc61cac50b5dac7e9d",
+  "script_sha256": "a54f7b68f142d2e696704abacf05966321f44cdeb45eca8867ad72df6028f566",
+  "source_scope": "First-scene edit study using completed v2 moving footage; new final scene assets and full recut are not built.",
+  "full_production_approval": "not_recorded",
+  "preview_approval": "not_recorded",
+  "native_new_3d_frames": 0,
+  "music": false,
+  "narration_captions": false,
+  "reviewed_utc": "2026-10-27T13:06:23.928307+00:00",
+  "inspection": {
+    "visual": "Actually opened all three chronological decoded-image sheets, covering34 samples at one-second intervals, plus full-resolution split-screen frame. Hardware comparison, road-user motion, tree expansion, candidate removal and wheel-detail ending are visible. No black output or rooftop obstruction in the sample.",
+    "motion": "Inspected chronological actual decoded samples and transitions in the33.233s moving edit. Reuses completed30fps rendered3D, never a still-image montage.",
+    "audio": "Preferred am_fenrir, measured185.56wpm for this opening; frozen new wording, no time stretching. Format/loudness/peak checks pass. Direct subjective listening is not claimed; narrator audition remains a user decision.",
+    "limits": "Edit and timing study, not a final new3D set or full re-cut. Split-screen uses a small graph view; newly staged comparisons and the four-factor assembly remain planned work.",
+    "technical": "Reviewed corrected wording against retained patent and Tesla supervision evidence. No ignored-cyclist/zero-FLOPS/hardware-capacity claim."
+  }
+}
